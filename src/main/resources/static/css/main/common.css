@@ -207,7 +207,7 @@ h2 {
     font-weight: bold;
 }
 
-input [type="search"] {
+input [type='search'] {
     -webkit-appearance: textfield;
     outline-offset: -2px;
 }
@@ -222,3 +222,37 @@ h1 {
     margin: 0.67em 0;
 }
 
+/* ---------------footer 추가 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
+
+strong {
+    font-weight: bold;
+}
+
+b, strong {
+    font-weight: inherit;
+    font-weight: bolder;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}

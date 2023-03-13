@@ -1,0 +1,232 @@
+/* footer Css */
+
+.footer-whole-container {
+    padding: 40px 20px 96px;
+    background-color: rgb(248, 248, 248);
+}
+
+.footer-wrap {
+    margin: 0px auto;
+    width: 100%;
+    max-width: 768px;
+}
+
+.top-wrap {
+    display: flex;
+    font-size: 15px;
+}
+
+.top-wrap a {
+    color: rgb(119, 119, 119);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -1px;
+    margin-right: 50px;
+}
+
+.logo-wrap {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-wrap img {
+    width: 150px;
+    height: 100%;
+}
+
+.support-wrap {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.support-title {
+    color: rgb(51, 51, 51);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.support-ul {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 19px 0px 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.support-li {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.support-li span {
+    display: block;
+    margin-right: 8px;
+    color: rgb(102, 102, 102);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.support-li a {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.kakao-img {
+    width: 13px;
+    height: 13px;
+}
+
+a .kakao-span {
+    display: block;
+    margin-left: 2px;
+    color: rgb(51, 51, 51);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+    margin: 0;
+}
+
+.footer-border {
+    margin-top: 20px;
+    border-top: 1px solid rgb(238, 238, 238);
+}
+
+.footer-cs-wrap {
+    color: rgb(119, 119, 119);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+}
+
+.footer-cs-wrap p:first-child {
+    margin-top: 20px;
+}
+.footer-cs-wrap p:nth-child(2) {
+    margin-top: 12px;
+}
+
+.footer-info-wrap {
+    display: flex;
+}
+
+.info-title {
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+}
+
+.footer-info-wrap a {
+    width: 67px;
+    margin-left: 20px;
+}
+
+.footer-detail-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 11px;
+    line-height: 1.36;
+    letter-spacing: -0.28px;
+    color: rgb(153, 153, 153);
+}
+
+.footer-detail-wrap span {
+    display: inline-block;
+    margin: 3px 0px;
+}
+
+.footer-detail-wrap p {
+    line-height: 1.36;
+    margin-top: 5px;
+}
+
+.footer-devide {
+    display: inline-block;
+    padding: 0px 5px;
+    color: rgb(224, 224, 224);
+    font-size: 10px;
+    line-height: 1.54;
+}
+
+.bot-wrap {
+    display: flex;
+    margin: 20px 0px;
+    font-size: 12px;
+    color: rgb(51, 51, 51);
+    line-height: 18px;
+}
+
+.bot-wrap > * {
+    padding-left: 6px;
+    padding-right: 6px;
+    border-right: 1px solid rgb(224, 224, 224);
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: -0.33px;
+    min-height: 1px;
+}
+
+.bot-wrap a:first-child {
+    padding-left: 0px;
+}
+.bot-wrap a:last-child {
+    padding-right: 0px;
+    border: none;
+}
+
+.footer-app-wrap {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(67, 136, 32);
+    height: 45px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.3px;
+}
+
+.footer-app-wrap img {
+    width: 16px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.footer-icons-wrap {
+    display: flex;
+    margin-top: 20px;
+    color: rgb(155, 155, 155);
+    font-size: 9px;
+    line-height: 18px;
+}
+
+.footer-icon {
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+}
+
+.footer-icon img{
+    margin-left: 20px;
+}
+.footer-icon img:first-child{
+    margin-left: 0px;
+}
