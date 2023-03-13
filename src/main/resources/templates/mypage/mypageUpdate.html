@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 수정하기</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/mypage/mypageUpdate.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
+  </head>
+  <body>
+    <main id="mypageUpdate">
+      <div class="modal-container">
+        <div class="modal-wrap">
+          <div>
+            <div class="modal"></div>
+          </div>
+        </div>
+      </div>
+      <section class="mypageUpdate-header-wrap">
+        <article class="mypageUpdate-header">
+          <h1 class="mypageUpdate-header-text">내 정보</h1>
+          <button class="mypageUpdate-header-save">저장</button>
+        </article>
+      </section>
+      <hr class="mypageUpdate-head-hr" />
+      <section class="mypageUpdate-main-wrap">
+        <article class="mypageUpdate-main">
+          <label>
+            <img
+            src="/src/main/resources/static/images/jiwook.jpg"
+            class="user-profile-image"
+            />
+            <!-- 프로필 이미지 클릭시 변경 -->
+            <div class="user-profile-image-update">
+              <!-- 프로필 이미지에 달려있는 카메라 아이콘 -->
+              <img
+              src="data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.72386 3.05752L10.4714 3.80507C10.5964 3.93009 10.766 4.00032 10.9428 4.00033H12.6667C13.403 4.00033 14 4.59728 14 5.33366V11.3337C14 12.07 13.403 12.667 12.6667 12.667H3.33333C2.59695 12.667 2 12.07 2 11.3337V5.33366C2 4.59728 2.59695 4.00033 3.33333 4.00033H5.05719C5.234 4.00032 5.40357 3.93009 5.52859 3.80507L6.27614 3.05752C6.52619 2.80747 6.86533 2.66699 7.21895 2.66699H8.78105C9.13467 2.66699 9.47381 2.80747 9.72386 3.05752ZM10.6667 8.00033C10.6667 9.47308 9.47276 10.667 8 10.667C6.52724 10.667 5.33333 9.47308 5.33333 8.00033C5.33333 6.52757 6.52724 5.33366 8 5.33366C9.47276 5.33366 10.6667 6.52757 10.6667 8.00033ZM11.5 6.00024C11.7761 6.00024 12 5.77639 12 5.50024C12 5.2241 11.7761 5.00024 11.5 5.00024C11.2239 5.00024 11 5.2241 11 5.50024C11 5.77639 11.2239 6.00024 11.5 6.00024Z' fill='white'/%3E %3C/svg%3E"
+              class="user-profile-image-camera"
+              />
+            </div>
+            <!-- 숨겨 놓은 파일 선택 버튼 -->
+            <input accept="image/*" type="file" class="profile-upload-button" />
+          </label>
+        </article>
+        <article class="update-user-info">
+          <div class="update-user-wrap">
+            <div>
+              <label class="update-user-text">닉네임</label>
+              <div class="update-user-nickname">
+                <input disabled="" name="memberNickname" class="update-user-value change-value" value="정지욱97" />
+              </div>
+            </div>
+            <div class="update-user-change">
+              <button type="button" class="change-button">변경하기</button>
+            </div>
+            <div class="update-user-save">
+              <button type="button" class="save-button">저장하기</button>
+            </div>
+          </div>
+          <div class="update-user-wrap">
+            <div>
+              <label class="update-user-text">휴대폰 번호</label>
+              <div class="update-user">
+                <input disabled="" name="memberPhone" class="update-user-value" value="01041998127" />
+              </div>
+            </div>
+          </div>
+          <div class="update-user-wrap">
+            <div>
+              <label class="update-user-text">이메일</label>
+              <div class="update-user">
+                <input disabled="" name="memberEmail" class="update-user-value" value="jiwook6273@naver.com" />
+              </div>
+            </div>
+          </div>
+          <div class="update-user-wrap">
+            <div>
+              <label class="update-user-text">비밀번호</label>
+              <div class="update-user">
+                <input
+                  type="password"
+                  disabled=""
+                  name="memberPassword"
+                  class="update-user-value"
+                  value="0000000"
+                />
+              </div>
+            </div>
+            <div class="update-user-change">
+              <button type="button" class="go-change-button">변경하기</button>
+            </div>
+          </div>
+          <div class="update-user-wrap">
+            <div>
+              <label class="update-user-text">생년월일</label>
+              <div class="update-user">
+                <input disabled="" name="memberBirth" class="update-user-value change-value" value="2000.01.01" />
+              </div>
+            </div>
+            <div class="update-user-change">
+              <button type="button" class="change-button">변경하기</button>
+            </div>
+            <div class="update-user-save">
+              <button type="button" class="save-button">저장하기</button>
+            </div>
+          </div>
+          <div class="update-user-wrap">
+            <div>
+              <label class="update-user-text">성별</label>
+              <div class="update-user">
+                <input disabled="" name="memberGender" class="update-user-value" value="남자" />
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="/src/main/resources/static/js/mypage/mypageUpdate.js"></script>
+</html>

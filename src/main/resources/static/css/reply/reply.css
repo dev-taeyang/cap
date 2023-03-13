@@ -1,0 +1,169 @@
+
+/* 댓글 관련 */
+
+.page_wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 0px 75px;
+    min-height: 100vh;
+}
+
+.Center_wrapper {
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.Center_wrapper h3 {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.54px;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.boardReplyList_wrapper {
+    margin-top: 10px;
+    padding: 0px 20px;
+}
+
+.ReplyContent_wrapper {
+    display: flex;
+    padding: 15px 0px;
+}
+
+.replyContent_profile {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+}
+
+.Image_wrapper {
+    min-height: 1px;
+}
+
+.Image_style {
+    display: initial;
+    border-radius: 36px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ReplyContent_container {
+    max-width: calc(100% - 46px);
+}
+
+.replyContent_member {
+    display: block;
+    font-size: 12px;
+    letter-spacing: -0.43px;
+    color: rgb(78, 89, 104);
+    margin-bottom: 3px;
+}
+
+.replyContent_comment {
+    max-width: 100%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 23px;
+    padding: 10px 13px;
+    letter-spacing: -0.5px;
+    color: rgb(78, 89, 104);
+    background-color: rgb(242, 243, 246);
+    border-radius: 21.5px;
+    margin-bottom: 4px;
+}
+
+.actionGroup_section {
+    display: flex;
+}
+
+.actionGroup_section * {
+    font-size: 12px;
+    color: rgb(198, 202, 208);
+}
+
+.actionMenu_time {
+    margin-right: 15px;
+}
+
+.actionMenu_button {
+    cursor: pointer;
+    text-decoration: underline;
+    margin-right: 15px;
+    padding: 0px;
+}
+
+.TextAreaSection_wrapper {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    min-height: 75px;
+    padding: 10px 20px 20px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    border-top: 1px solid rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
+}
+
+.TextAreaSection_container {
+    display: flex;
+    width: 100%;
+    max-width: 768px;
+}
+
+.TextAreaSection_profile {
+    min-width: 45px;
+    max-width: 45px;
+    height: 45px;
+    overflow: hidden;
+}
+
+.TextAreaSection_textAreaWrapper {
+    position: relative;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.TextAreaSection_textWrite {
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    line-height: 20px;
+    color: rgb(78, 89, 104);
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 22.5px;
+    padding: 12px 50px 12px 15px;
+    resize: none;
+}
+
+.TextAreaSection_submitButton:not(:disabled) {
+   color: rgb(5, 116, 230);
+}
+
+.TextAreaSection_submitButton {
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    padding: 0px;
+    color: rgb(139, 187, 236);
+}

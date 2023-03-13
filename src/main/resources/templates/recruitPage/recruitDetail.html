@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/board2/boardDetail.css">
+    <title>원정대 상세페이지</title>
+</head>
+<body>
+    <div class="boardDetailPage_wrapper">
+        <div class="boardDetailPage_contentWrapper">
+            <!-- 원정대에 관한 상세정보 -->
+            <div class="boardDetailPage_contentContainer">
+                <!-- 컨셉 이미지와 작성자의 정보가 나오는 섹션 -->
+                <section class="boardDetail_headSectionWrapper">
+                    <!-- 원정대 소개 사진들이 나오는 곳 -->
+                    <div class="presentationImage_wrapper">
+                        <div class="presentationImage_content">
+                            <div class="introduceImage_wrapper">
+                                <!-- 이미지가 들어갈 곳 -->
+                                <img style="height: 375px;" src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 원정대 이름과 작성자가 나오는 곳 -->
+                    <div class="presentationInfo_wrapper">
+                        <section class="presentationInfo_InfoSection infoSection_infoWrapper ">
+                            <div class="infoSection_TitleWrapper">
+                                <hgroup class="infoSection_TitleContainer">
+                                    <h1 class="infoSection_Title">[오싹/공포]흉가체험</h1>
+                                </hgroup>
+                            </div>
+                        </section>
+                        <section class="presentationInfo_InfoSection infoSection_MemberWrapper ">
+                            <div class="infoSection_MemberProfileWrapper">
+                                <div class="ProfileInfo_wrapper">
+                                    <!-- 작성자의 프로필 이미지 나오는 곳 -->
+                                    <div class="ProfileInfo_profileImage">
+                                        <a href="">
+                                            <div class="Image_wrapper">
+                                                <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                                                <img class="Image_style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- 작성자의 정보가 나오는 곳 -->
+                                    <div class="ProfileInfo_profileContent">
+                                        <div class="Profile_MemberNameWrapper">
+                                            <a href="">
+                                                <span class="Profile_Nickname">
+                                                    <span>댕댕쓰</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <span class="Profile_MemberStat">
+                                            <!-- 작성자가 소유한 원정대 갯수 받는 곳 -->
+                                            보유 원정대 2
+                                            <span>|</span>
+                                            <!-- 작성자가 작성한 리뷰의 갯수 받는 곳 -->
+                                            탐사 결과 3
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <!-- 나타낼 기본 정보가 나오는 섹션 -->
+                <section class="boardDetail_sectionContainer">
+                    <article>
+                        <header class="Article_header">
+                            <hgroup>
+                                <h2 class="Article_title">모집 상세</h2>
+                            </hgroup>
+                        </header>
+                        <dl class="ArticleInfoSection_infoContainer">
+                            <div>
+                                <dt>장소</dt>
+                                <dd>용인</dd>
+                            </div>
+                            <div>
+                                <dt>시간</dt>
+                                <dd>3.12(일) 오후 7시</dd>
+                            </div>
+                            <div>
+                                <dt>인원</dt>
+                                <dd>최대 6명</dd>
+                            </div>
+                            <div>
+                                <dt>모집마감</dt>
+                                <dd>3.11(토) 오후 11시</dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+                <section class="boardDetail_sectionContainer">
+                    <article>
+                        <header class="Article_header">
+                            <hgroup>
+                                <h2 class="Article_title">진행하는 장소</h2>
+                            </hgroup>
+                        </header>
+                        <div class="placeMapSection_container">
+                            <div class="placeMapContainer">
+                                <!-- 지도를 표시할 div 입니다 -->
+                                <div id="map" style="width:100%; height:170px;"></div>
+                                <div class="place_container">
+                                    <div class="placeLocation_container">
+                                        <div class="placeLocationTitle_container">
+                                            <strong class="placeLocationTitle">정신병원</strong>
+                                            <span id="coordAddr" class="placeLocationTitleDetail"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+            <!-- 원정대에 참여할 건지 결정하는 버튼 -->
+            <div class="floatActionBar_wrapper">
+                <div class="floatActionBar_buttonWrapper">
+                    <button class="floatActionBar_submitButton button_enterRecruit">
+                        <div class="enterButton_Text">참여하기</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e010e1c47083a81e5873ca2682380a56&libraries=services"></script>
+<script type="text/javascript">
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.2504431, 127.1555927), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+    // 마커가 표시될 위치입니다 
+    var markerPosition  = new kakao.maps.LatLng(37.2504431, 127.1555927); 
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    function searchAddrFromCoords(coords, callback) {
+    // 좌표로 행정동 주소 정보를 요청합니다
+    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+}
+
+    // 현재 지도 설정좌표로 주소를 검색해서 지정한 위치에 표시합니다
+    searchAddrFromCoords(markerPosition, displayAdderessInfo);
+
+    // 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+    function displayAdderessInfo(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            var infoDiv = document.getElementById('coordAddr');
+
+            for(var i = 0; i < result.length; i++) {
+                // 행정동의 region_type 값은 'H' 이므로
+                if (result[i].region_type === 'H') {
+                    infoDiv.innerHTML = result[i].address_name;
+                    break;
+                }
+            }
+        }    
+    }
+
+    
+</script>
+</html>

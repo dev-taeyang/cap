@@ -1,0 +1,292 @@
+/* 공통 요소 시작 */
+/* * {
+  outline: none;
+  font-family: inherit;
+}
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat;
+  box-sizing: inherit;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+::selection {
+  background-color: #b3d4fc;
+  color: #000000;
+  text-shadow: none;
+}
+
+html {
+  box-sizing: border-box;
+  cursor: default;
+  font-family: sans-serif;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  font-size: 14px;
+  color: black;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+body {
+  display: block;
+  margin: 0;
+}
+
+div {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+img {
+  border-style: none;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+hr {
+  height: 0;
+  overflow: visible;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+p,
+label {
+  margin: 0px;
+}
+
+button,
+input,
+select,
+textarea {
+  background-color: transparent;
+  border-style: none;
+  color: inherit;
+  font-size: 1em;
+  margin: 0;
+} */
+
+/* 공통 요소 끝 */
+
+#mypageUpdate {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.mypageUpdate-header-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0px auto;
+  max-width: 808px;
+  width: 100%;
+  padding: 0px 20px;
+  min-height: 1px;
+}
+
+.mypageUpdate-header {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 50px 0px 20px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.mypageUpdate-header-text {
+  color: rgb(51, 51, 51);
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.mypageUpdate-header-save {
+  color: rgb(0, 117, 239);
+  font-weight: 700;
+  font-size: 16px;
+  background-color: transparent;
+  border-style: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+.mypageUpdate-head-hr {
+  width: 100%;
+  border-top: 1px solid rgb(238, 238, 238);
+  border-bottom: none;
+  margin: 0px 0px 16px;
+}
+
+.mypageUpdate-main-wrap {
+  margin: 24px auto;
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 808px;
+  width: 100%;
+  padding: 0px 20px;
+  min-height: 1px;
+}
+
+.mypageUpdate-main {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0px 0px 16px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mypageUpdate-main > label {
+  cursor: pointer;
+}
+
+.user-profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.user-profile-image-update {
+  position: absolute;
+  bottom: 0px;
+  right: -3px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  background-color: rgb(51, 51, 51);
+  border-radius: 100%;
+}
+
+.user-profile-image-camera {
+  width: 18px;
+  height: 16px;
+}
+
+.profile-upload-button {
+  display: none;
+}
+
+.update-user-info > div {
+  margin: 0px 0px 16px;
+}
+
+.update-user-text {
+  display: block;
+  margin-bottom: 6px;
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.update-user {
+  position: relative;
+}
+
+.update-user-value {
+  width: 100%;
+  border: 1px solid rgb(238, 238, 238);
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 14px 14px 12px;
+  background: rgb(250, 250, 250);
+  color: rgb(17, 17, 17);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.update-user-value:focus{
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+}
+
+.update-user-nickname-value:focus {
+  border-color: rgb(0, 117, 239);
+  background: rgb(255, 255, 255);
+}
+
+.update-user-wrap {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.update-user-wrap > div:first-child {
+  width: 100%;
+  margin: 0px 8px 0px 0px;
+}
+
+.update-user-change, .update-user-save {
+  display: flex;
+  align-items: flex-end;
+}
+
+.change-button, .save-button, .go-change-button {
+  width: 87px;
+  height: 50px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  color: rgb(51, 51, 51);
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.change-button:hover, .save-button:hover, .go-change-button:hover {
+  background: rgb(250, 250, 250);
+}

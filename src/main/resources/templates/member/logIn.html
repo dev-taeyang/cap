@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>로그인</title>
+        <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
+        <link rel="stylesheet" href="/src/main/resources/static/css/member/logIn.css" />
+    </head>
+    <body>
+        <section class="login-container">
+            <!-- 전체 DIV -->
+            <div class="login-wrap">
+                <br />
+                <div class="login-title">
+                    <h3>로그인</h3>
+                </div>
+                <!-- 입력 받는 곳 -->
+                <form class="login-form">
+                    <div>
+                        <input
+                            type="text"
+                            name="id"
+                            placeholder="아이디(E-mail)"
+                            class="login-id"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            name="password"
+                            placeholder="비밀번호"
+                            class="login-password"
+                        />
+                        <p class="login-password-p"></p>
+                    </div>
+                    <section class="stayloginSection">
+                        <input type="checkbox" name="auto-login" value="true" />
+                        <span class="stayLoginCheckbox">
+                            <img
+                                src="/src/main/resources/static/images/check_all.png"
+                                width="15px"
+                                class="checkAllImg"
+                            />
+                        </span>
+                        <p class="stayLoginText">로그인 상태 유지</p>
+                        <a href="" class="find-password">비밀번호 찾기</a>
+                    </section>
+                    <button type="submit" class="login-btn">로그인</button>
+                </form>
+                <div class="another-login-wrap">
+                    다른방식으로 로그인
+                    <div class="another-login">
+                        <!--카카오 버튼  -->
+                        <button type="button">
+                            <img
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' viewBox='0 0 48 48'%3E %3Crect width='48' height='48' fill='%23FBE850' rx='10'/%3E %3Cpath fill='%23000' d='M24 14c-6.628 0-12 4.236-12 9.462 0 3.378 2.246 6.342 5.625 8.016-.184.634-1.181 4.078-1.221 4.349 0 0-.024.203.108.28.131.078.286.018.286.018.378-.053 4.378-2.863 5.07-3.35.692.097 1.405.148 2.132.148 6.628 0 12-4.236 12-9.462C36 18.236 30.628 14 24 14z'/%3E %3C/svg%3E"
+                                alt=""
+                            />
+                        </button>
+                        <!-- 페이스북 버튼 -->
+                        <button type="button">
+                            <img
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' viewBox='0 0 48 48'%3E %3Crect width='48' height='48' fill='%234273D2' rx='10'/%3E %3Cpath fill='%23fff' d='M22.252 24.42V34h3.888v-9.578h3.244l.485-3.733H26.14v-2.384c0-1.08.303-1.817 1.866-1.817L30 16.487v-3.34c-.345-.045-1.528-.147-2.905-.147-2.876 0-4.843 1.74-4.843 4.935v2.753H19v3.733h3.252z'/%3E %3C/svg%3E"
+                                alt=""
+                            />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/src/main/resources/static/js/member/login.js"></script>
+</html>

@@ -1,0 +1,433 @@
+/* main Css */
+
+.main-container {
+    min-height: 1px;
+}
+
+.main-whole-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+/* 배너 */
+/* 
+.banner-wrap {
+    width: auto;
+    height: auto;
+    transition: opacity 200ms ease-in-out 0s;
+    display: none;
+    opacity: 0;
+    min-width: 0px;
+    min-height: 1px;
+    opacity: 1;
+    display: block;
+}
+
+.banner-main-wrap {
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.banner-img-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-btn {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    right: 12px;
+    height: 28px;
+    padding: 6px 10px;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    bottom: 12px;
+}
+
+.slide-img-wrp {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    visibility: visible;
+}
+
+.prev-btn {
+    display: block;
+    left: 10px;
+    z-index: 1;
+    width: 50px !important;
+    height: 50px !important;
+    transform: rotate(180deg) translate(0px, 50%) !important;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.prev-btn:before,
+.next-btn:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0.75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.prev-btn::before {
+    content: '←';
+}
+
+*,
+::before,
+::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+::before,
+::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
+}
+
+.next-btn {
+    display: block;
+    right: 10px;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.next-btn::before {
+    content: '→';
+}
+
+.slide-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+} */
+
+.ad-list-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+}
+
+.ad-list {
+    width: auto;
+    height: auto;
+    transition: opacity 200ms ease-in-out 0s;
+    display: none;
+    opacity: 0;
+    min-width: 0px;
+    min-height: 1px;
+    opacity: 1;
+    display: block;
+}
+
+.ad-section {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 1px;
+    padding-bottom: 18px;
+}
+
+.ad-top {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+.ad-title {
+    display: flex;
+    max-width: calc(100% - 62px);
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.ad-title-h2 {
+    display: block;
+    margin-right: 8px;
+    font-weight: bold;
+    color: black;
+    font-size: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ad-whole-btn {
+    min-width: 52px;
+    position: relative;
+    top: 10px;
+}
+
+.ad-whole-btn-a {
+    color: black;
+    width: 52px;
+    
+}
+
+/* 탐험대 구하기 바디 */
+.ad-body {
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 1px;
+}
+
+/* ------------------------------------------------------------------------------- */
+
+/* 영준이 꺼 보드리스트*/
+.boardList_wrapper {
+    width: 100%;
+    height: 100%;
+    transition: opacity 200ms ease-in-out 0s;
+    display: block;
+    opacity: 1;
+    min-width: 0px;
+    min-height: 1px;
+}
+
+.view_boardList_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+
+/* 위에서 2개만 보더 탑 주기*/
+.view_boardList_wrapper > :nth-child(1) {
+    border-top: 1px solid rgb(238, 238, 238);
+}
+.view_boardList_wrapper > :nth-child(2) {
+    border-top: 1px solid rgb(238, 238, 238);
+}
+
+.view_boardList_wrapper > div {
+    max-width: 385px;
+    width: 100%;
+    padding: 30px 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    border-left: 1px solid rgb(238, 238, 238);
+    margin-left: -1px;
+}
+
+.profile_wrapper {
+    margin-bottom: 15px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.MemberProfile_wrapper {
+    display: flex;
+}
+
+.MemberProfileImg_wrapper {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+}
+
+.Image_wrapper {
+    min-height: 1px;
+}
+
+.Image_style {
+    display: initial;
+    border-radius: 36px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.MemberProfileText_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.ProfileName {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: rgb(78, 89, 104);
+}
+
+.RegistTime {
+    font-size: 12px;
+    line-height: 12px;
+    color: rgb(142, 151, 163);
+}
+
+.boardImg_wrapper {
+    height: 344px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgb(242, 243, 246);
+    cursor: pointer;
+    backface-visibility: hidden;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.boardImg_wrapper div {
+    padding-bottom: initial;
+    height: 100%;
+}
+
+.introduceImage_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.description_wrapper {
+    margin-top: 18px;
+    margin-bottom: 21px;
+    letter-spacing: -0.4px;
+}
+
+.description_detail {
+    font-size: 16px;
+    color: rgb(78, 89, 104);
+    white-space: pre-line;
+}
+
+.TextLine_Description {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 48px;
+}
+
+.Description_ExpandButton {
+    padding: 0px;
+    color: rgb(171, 182, 196);
+    border: none;
+    background-color: white;
+}
+
+.actionGroup_wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: rgb(78, 89, 104);
+}
+
+.actionGroup_wrapper span {
+    margin-left: 8px;
+}
+
+.actionGroup_reply {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.view_boardList_wrapper .description_space {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* 리뷰 관련 CSS */
+
+.reviewSummary_wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reviewStar_wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.reviewStar_wrapper img {
+    margin-right: 1px;
+}
+
+.reviewSummary_Average {
+    margin: 0px 0px 0px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.reviewCategory {
+    display: block;
+    color: rgb(119, 119, 119);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
+    margin: 12px 2px 0px;
+}

@@ -1,0 +1,58 @@
+/* mypageReply.html */
+
+#mypage-reply {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0px auto;
+  max-width: 808px;
+  width: 100%;
+  padding: 0px 20px;
+  min-height: 1px;
+}
+
+.mypage-reply-header {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 20px;
+  -webkit-box-align: center;
+  align-items: center;
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.mypage-reply-header h1 {
+  width: auto;
+  margin: 0px;
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.mypage-reply-list {
+  opacity: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  transition: opacity 200ms ease-in-out 0s;
+  min-width: 0px;
+  min-height: 1px;
+}
+
+.mypage-reply-empty {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.mypage-reply-empty-text {
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 18px;
+  text-align: center;
+  color: rgb(155, 155, 155);
+  margin-top: 10px;
+}

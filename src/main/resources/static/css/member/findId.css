@@ -1,0 +1,113 @@
+/* findId Css */
+@charset "UTF-8";
+
+.id-change-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px;
+    min-height: 653px;
+}
+
+.id-change-title {
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 50px;
+    position: relative;
+}
+
+.id-change-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0px auto 12px;
+    padding: 24px 20px;
+}
+
+/* 회원가입에서 가져온 phone 부분 */
+.join-phone-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.join-phone {
+    width: 100%;
+    padding: 14px 14px 12px;
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.42px;
+    border-radius: 3px;
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(238, 238, 238);
+    margin: 4px 0px 8px;
+}
+.join-phone-btn {
+    width: 130px;
+    height: 50px;
+    line-height: 20px;
+    padding: 0px 13px;
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+    cursor: not-allowed;
+    border-radius: 8px;
+    color: rgb(170, 170, 170);
+    font-size: 14px;
+    margin: 4px 0px 8px;
+    border: none;
+}
+
+.join-check-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.join-check {
+    width: 100%;
+    padding: 14px 14px 12px;
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.42px;
+    border-radius: 3px;
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(238, 238, 238);
+    margin: 4px 0px 8px;
+}
+
+.join-check-btn {
+    width: 130px;
+    height: 50px;
+    line-height: 20px;
+    padding: 0px 13px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    cursor: not-allowed;
+    border: 1px solid rgb(181, 197, 214);
+    border-radius: 8px;
+    color: rgb(181, 197, 214);
+    font-size: 14px;
+    margin: 4px 0px 8px;
+}
+
+.change-password {
+    height: 50px;
+    width: 100%;
+    padding: 14px 14px 12px;
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.42px;
+    border-radius: 15px;
+    background-color: rgb(255 255 255);
+    margin: 4px 0px 8px;
+    border: 2px solid #b5c5d6;
+    margin-top: 30px;
+}
+

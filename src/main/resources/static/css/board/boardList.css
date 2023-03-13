@@ -1,0 +1,281 @@
+/* 공통 */
+
+button {
+    cursor: pointer;
+}
+
+
+/* 게시글 관련 */
+
+.boardPage_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 768px;
+    margin: 0px auto;
+}
+
+.boardPage_header {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.boardPage_title {
+    color: rgb(51, 61, 75);
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.boardList_wrapper {
+    width: auto;
+    height: auto;
+    transition: opacity 200ms ease-in-out 0s;
+    display: block;
+    opacity: 1;
+    min-width: 0px;
+    min-height: 1px;
+}
+
+.view_boardList_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+
+.view_boardList_wrapper > div {
+    max-width: 385px;
+    width: 100%;
+    padding: 30px 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    border-left: 1px solid rgb(238, 238, 238);
+    margin-left: -1px;
+}
+
+.profile_wrapper {
+    margin-bottom: 15px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.MemberProfile_wrapper {
+    display: flex;
+}
+
+.MemberProfileImg_wrapper {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+}
+
+.Image_wrapper {
+    min-height: 1px;
+}
+
+.Image_style {
+    display: initial;
+    border-radius: 36px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.MemberProfileText_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.ProfileName {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: rgb(78, 89, 104);
+}
+
+.RegistTime {
+    font-size: 12px;
+    line-height: 12px;
+    color: rgb(142, 151, 163);
+}
+
+.boardImg_wrapper {
+    height: 344px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgb(242, 243, 246);
+    cursor: pointer;
+    backface-visibility: hidden;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.boardImg_wrapper div {
+    padding-bottom: initial;
+    height: 100%;
+}
+
+.introduceImage_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.description_wrapper {
+    margin-top: 18px;
+    margin-bottom: 21px;
+    letter-spacing: -0.4px;
+}
+
+.description_detail {
+    font-size: 16px;
+    color: rgb(78, 89, 104);
+    white-space: pre-line;
+}
+
+.TextLine_Description {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 48px;
+}
+
+.Description_ExpandButton {
+    padding: 0px;
+    color: rgb(171, 182, 196);
+}
+
+.actionGroup_wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    color: rgb(78, 89, 104);
+}
+
+.actionGroup_wrapper span {
+    margin-left: 8px;
+}
+
+.actionGroup_reply {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+/* 모집 게시판 관련 */
+
+.categoryItem_list {
+    display: flex;
+}
+
+.categoryItem {
+    width: 115px;
+    display: flex;
+    align-items: flex-end;
+    height: 50px;
+    border-radius: 5px;
+    padding: 6px 10px;
+    background-color: rgb(244, 244, 244);
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.48px;
+    position: relative;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.categoryItem span {
+    z-index: 1;
+}
+
+.category_background {
+    opacity: 0.5;
+    background-color: rgb(17, 17, 17);
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    position: absolute;
+    border-radius: 5px;
+    
+}
+
+.category_Adventure {
+    background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/category-outdoor_gch4e1');
+    background-size: cover;
+}
+.category_Horror {
+    background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_17_p');
+    background-size: cover;
+}
+.category_Water {
+    background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_8_p");
+    background-size: cover;
+}
+.category_Mountain {
+    background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_2_p");
+    background-size: cover;
+}
+
+.boardLocation_wrapper {
+    margin-left: 2px;
+    margin-top: 10px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+/* 리뷰 페이지 관련 */
+
+.view_boardList_wrapper .description_space {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.reviewSummary_wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reviewStar_wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.reviewStar_wrapper img {
+    margin-right: 1px;
+}
+
+.reviewSummary_Average {
+    margin: 0px 0px 0px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.reviewCategory {
+    display: block;
+    color: rgb(119, 119, 119);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
+    margin: 12px 2px 0px;
+}
