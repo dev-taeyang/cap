@@ -37,7 +37,6 @@ html {
 
 html,
 body {
-    width: 100%;
     font-size: 14px;
     color: black;
     word-break: normal;
@@ -142,28 +141,6 @@ a {
 }
 
 button {
-    appearance: auto;
-    writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: buttontext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    cursor: default;
-    box-sizing: border-box;
-    background-color: buttonface;
-    margin: 0em;
-    padding: 1px 6px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonborder;
-    border-image: initial;
     cursor: pointer;
 }
 button:disabled {
@@ -234,3 +211,14 @@ input [type="search"] {
     -webkit-appearance: textfield;
     outline-offset: -2px;
 }
+
+hr {
+    height: 0;
+    overflow: visible;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
