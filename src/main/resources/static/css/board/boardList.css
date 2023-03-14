@@ -279,3 +279,39 @@ button {
     line-height: 13px;
     margin: 12px 2px 0px;
 }
+
+/* 게시글 작성용 버튼 */
+.FloatingButton_wrapper {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.FloatingButton_layoutWrapper {
+    position: relative;
+    max-width: 768px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.plusLink_icon {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid rgb(242, 242, 242);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px 0px;
+    background-color: rgb(255, 255, 255);
+    bottom: calc(34px + env(safe-area-inset-bottom));
+}
+
+.plusLink_icon img {
+    width: 18px;
+}

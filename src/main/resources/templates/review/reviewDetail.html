@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/board/boardDetail.css">
+    <title>리뷰 상세페이지</title>
+</head>
+<body>
+    <div class="boardDetailPage_wrapper">
+        <div class="boardDetailPage_contentWrapper">
+            <!-- 원정대에 관한 상세정보 -->
+            <div class="boardDetailPage_contentContainer">
+                <!-- 컨셉 이미지와 작성자의 정보가 나오는 섹션 -->
+                <section class="boardDetail_headSectionWrapper">
+                    <!-- 원정대 소개 사진들이 나오는 곳 -->
+                    <div class="presentationImage_wrapper">
+                        <div class="presentationImage_content">
+                            <div class="introduceImage_wrapper">
+                                <!-- 이미지가 들어갈 곳 -->
+                                <img style="height: 375px;" src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 원정대 이름과 작성자가 나오는 곳 -->
+                    <div class="presentationInfo_wrapper">
+                        <section class="presentationInfo_InfoSection infoSection_infoWrapper ">
+                            <div class="infoSection_TitleWrapper">
+                                <hgroup class="infoSection_TitleContainer">
+                                    <!-- 작성한 제목이 들어갈 곳 -->
+                                    <h1 class="infoSection_Title">[오싹/공포]흉가탐사 결과보고서</h1>
+                                </hgroup>
+                            </div>
+                        </section>
+                        <section class="presentationInfo_InfoSection infoSection_MemberWrapper ">
+                            <div class="infoSection_MemberProfileWrapper">
+                                <div class="ProfileInfo_wrapper">
+                                    <!-- 작성자의 프로필 이미지 나오는 곳 -->
+                                    <div class="ProfileInfo_profileImage">
+                                        <a href="">
+                                            <div class="Image_wrapper">
+                                                <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                                                <img class="Image_style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- 작성자의 정보가 나오는 곳 -->
+                                    <div class="ProfileInfo_profileContent">
+                                        <div class="Profile_MemberNameWrapper">
+                                            <a href="">
+                                                <span class="Profile_Nickname">
+                                                    <span>댕댕쓰</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <span class="Profile_MemberStat">
+                                            <!-- 작성자가 소유한 원정대 갯수 받는 곳 -->
+                                            보유 원정대 2
+                                            <span>|</span>
+                                            <!-- 작성자가 작성한 리뷰의 갯수 받는 곳 -->
+                                            탐사 결과 3
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="presentationInfo_InfoSection">
+                            <div class="buttonSection_buttonWrapper">
+                                <button class="buttonSection_button">수정</button>
+                                <button class="buttonSection_button">삭제</button>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <!-- 나타낼 기본 정보가 나오는 섹션 -->
+                <section class="boardDetail_sectionContainer">
+                    <article>
+                        <header class="Article_header">
+                            <hgroup>
+                                <h2 class="Article_title">결과 소개</h2>
+                            </hgroup>
+                        </header>
+                        <div class="Article_descriptionContainer">
+                            <div class="Article_description">작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.</div>
+                        </div>
+                    </article>
+                </section>
+                <section class="boardDetail_sectionContainer">
+                    <article>
+                        <header class="Article_header">
+                            <hgroup>
+                                <h2 class="Article_title">다른 탐험대원 들의 의견</h2>
+                            </hgroup>
+                        </header>
+                        <div class="reviewSummary_wrapper">
+                            <!-- 별점 -->
+                            <div class="reviewStar_wrapper">
+                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
+                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
+                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
+                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
+                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
+                            </div>
+                            <!-- 평균점수 -->
+                            <strong class="reviewSummary_Average">5.0</strong>
+                        </div>
+                        <div class="Article_descriptionContainer">
+                            <div class="Article_description">작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.</div>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
