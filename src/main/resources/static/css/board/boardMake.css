@@ -1,0 +1,197 @@
+
+body {
+    background-color: #eceff1;
+}
+
+.SectionWrapper {
+    display: flex;
+    place-content: center;
+}
+
+.makeSection_wrapper {
+    width: 750px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    border: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 0.6rem;
+    
+}
+
+.makeSection_header {
+    border-radius: calc(0.6rem - 1px) calc(0.6rem - 1px) 0 0;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.SectionMaker_Wrapper {
+    margin-bottom: 16px;
+}
+
+.SectionMaker_contentWrapper {
+    padding-top: 1rem!important;
+}
+
+.SectionMaker_contentHeader {
+    padding-left: 1.5rem!important;
+    padding-bottom: 0.5rem!important;
+}
+
+.SectionMaker_contentHeader > h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.formSection_contentContainer {
+    padding-left: 1rem!important;
+    padding-right: 1rem!important;
+}
+
+.form_image {
+    display: flex;
+}
+
+.formTitle {
+    display: flex;
+    padding-left: 1rem!important;
+    margin-top: 1rem!important;
+}
+
+.formTitle_legend {
+    flex: 0 0 13.66667%;
+    padding-top: calc(0.9rem + 1px);
+    padding-bottom: calc(0.9rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+
+}
+
+.form_meetEndTime {
+    margin-left: 25px;
+}
+
+.formTime {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.image_legend {
+    flex: none;
+    padding-right: 32px;
+}
+
+.formInputBox {
+    border: 1px solid #ddd;
+    padding-left: 13px;
+    border-radius: 5px;
+    width: 85%;
+}
+
+.text_detail {
+    font-size: 13px;
+    color:  #296d2b !important;
+}
+
+.space {
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin-top: 1em!important;
+    margin-bottom: 1em!important;
+}
+
+.addMainImage_wrapper {
+    flex: 0 0 80%;
+    max-width: 80%;
+}
+
+.MainImage_wrapper {
+    display: flex;
+    place-content: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-bottom: 20px;
+}
+
+.container_imageInput {
+    width: 180px;
+    background-color: transparent;
+    border: 1px dashed #bfbfbf;
+    position: relative;
+    align-items: center;
+    min-height: 15rem;
+    cursor: pointer;
+}
+
+.container_imageInput:hover {
+    border-color: rgb(67, 136, 32);
+    color: rgb(67, 136, 32);;
+}
+
+.imgText_container {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.detailText_text {
+    width: 85%;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 100px;
+}
+
+.bottomButton_wrapper {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.registButton_button {
+    border: 1px solid;
+    width: 90px;
+    height: 40px;
+    margin-right: 24px;
+    border-radius: 5px;
+    background-color: rgb(67, 136, 32);
+    color: white;
+}
+
+.registButton_button:hover {
+    background-color: #2c5815;
+}
+
+/* 카테고리 */
+
+
+.categoryItem_list {
+    display: flex;
+}
+
+.categoryItem {
+    width: 115px;
+    height: 46px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 47px;
+    color: #757575;
+}
+
+.categoryItem:hover {
+    color: rgb(67, 136, 32);
+    border-color: rgb(67, 136, 32);
+}
