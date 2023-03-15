@@ -54,8 +54,8 @@ button {
     width: 100%;
     padding: 30px 20px;
     border-bottom: 1px solid rgb(238, 238, 238);
-    border-left: 1px solid rgb(238, 238, 238);
-    margin-left: -1px;
+    border-right: 1px solid rgb(238, 238, 238);
+    margin-right: -1px;
 }
 
 .profile_wrapper {
@@ -107,11 +107,11 @@ button {
 }
 
 .boardImg_wrapper {
+    cursor: pointer;
     height: 344px;
     border-radius: 20px;
     overflow: hidden;
     background-color: rgb(242, 243, 246);
-    cursor: pointer;
     backface-visibility: hidden;
     transform: translate3d(0px, 0px, 0px);
 }
@@ -261,12 +261,13 @@ button {
 }
 
 .reviewStar_wrapper img {
-    margin-right: 1px;
+    margin-right: 2px;
+    width: 16px;
 }
 
 .reviewSummary_Average {
-    margin: 0px 0px 0px 8px;
-    font-size: 16px;
+    margin: 0px 8px 0px 0px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 24px;
 }

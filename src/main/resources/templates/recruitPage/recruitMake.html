@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
     <link rel="stylesheet" href="/src/main/resources/static/css/board/boardMake.css">
+    <link rel="icon" href="/src/main/resources/static/images/favicon.png" />
     <title>탐험대 개설</title>
 </head>
 <body>
+    <div id="header"></div>
     <div class="SectionWrapper">
         <div class="makeSection_wrapper">
             <div class="makeSection_header">
@@ -59,17 +61,17 @@
                                     <legend class="formTitle_legend">
                                         <span>카테고리</span>
                                     </legend>
-                                    <div class="categoryItem_list">
-                                        <button type="button" class="categoryItem">
+                                    <div class="ButtonItem_list">
+                                        <button type="button" class="ButtonItem">
                                             <div>모험</div>
                                         </button>
-                                        <button type="button" class="categoryItem">
+                                        <button type="button" class="ButtonItem">
                                             <div>공포</div>
                                         </button>
-                                        <button type="button" class="categoryItem">
+                                        <button type="button" class="ButtonItem">
                                             <div>관광</div>
                                         </button>
-                                        <button type="button" class="categoryItem">
+                                        <button type="button" class="ButtonItem">
                                             <div>레저</div>
                                         </button>
                                     </div>
@@ -145,6 +147,7 @@
             </div>
         </div>
     </div>
+    <div id="footer"></div>
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -158,5 +161,10 @@ window.onload = function(){
         }).open();
     });
 }
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $("#header").load("/src/main/resources/templates/main/header.html")
+    $("#footer").load("/src/main/resources/templates/main/footer.html")
 </script>
 </html>

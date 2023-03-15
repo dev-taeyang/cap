@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
     <link rel="stylesheet" href="/src/main/resources/static/css/board/boardDetail.css">
+    <link rel="icon" href="/src/main/resources/static/images/favicon.png" />
     <title>리뷰 상세페이지</title>
 </head>
 <body>
+    <div id="header"></div>
     <div class="boardDetailPage_wrapper">
         <div class="boardDetailPage_contentWrapper">
             <!-- 원정대에 관한 상세정보 -->
@@ -57,17 +59,33 @@
                                         </div>
                                         <span class="Profile_MemberStat">
                                             <!-- 작성자가 소유한 원정대 갯수 받는 곳 -->
-                                            보유 원정대 2
+                                            보유 탐험대 2
                                             <span>|</span>
                                             <!-- 작성자가 작성한 리뷰의 갯수 받는 곳 -->
-                                            탐사 결과 3
+                                            탐사 보고서 3
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </section>
+                        <section class="boardDetail_sectionContainer reviewStar_section">
+                            
+                            <div class="reviewSummary_wrapper">
+                                <div class="reviewPoint_section">
+                                    <span>평점</span>
+                                </div>
+                                <!-- 별점 -->
+                                <div class="reviewStar_wrapper">
+                                    <img src="/src/main/resources/static/images/star.png" alt="★">
+                                    <img src="/src/main/resources/static/images/star.png" alt="★">
+                                    <img src="/src/main/resources/static/images/star.png" alt="★">
+                                    <img src="/src/main/resources/static/images/star.png" alt="★">
+                                    <img src="/src/main/resources/static/images/star.png" alt="★">
+                                </div>
+                            </div>
+                        </section>
                         <section class="presentationInfo_InfoSection">
-                            <div class="buttonSection_buttonWrapper">
+                            <div class="buttonSection_buttonWrapper reviewButton_section">
                                 <button class="buttonSection_button">수정</button>
                                 <button class="buttonSection_button">삭제</button>
                             </div>
@@ -87,32 +105,14 @@
                         </div>
                     </article>
                 </section>
-                <section class="boardDetail_sectionContainer">
-                    <article>
-                        <header class="Article_header">
-                            <hgroup>
-                                <h2 class="Article_title">다른 탐험대원 들의 의견</h2>
-                            </hgroup>
-                        </header>
-                        <div class="reviewSummary_wrapper">
-                            <!-- 별점 -->
-                            <div class="reviewStar_wrapper">
-                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
-                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
-                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
-                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
-                                <img src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E" alt="">
-                            </div>
-                            <!-- 평균점수 -->
-                            <strong class="reviewSummary_Average">5.0</strong>
-                        </div>
-                        <div class="Article_descriptionContainer">
-                            <div class="Article_description">작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.</div>
-                        </div>
-                    </article>
-                </section>
             </div>
         </div>
     </div>
+    <div id="footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $("#header").load("/src/main/resources/templates/main/header.html")
+    $("#footer").load("/src/main/resources/templates/main/footer.html")
+</script>
 </html>
