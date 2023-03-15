@@ -15,10 +15,13 @@
         </style>
     </head>
     <body>
+        <div id="header"></div>
         <section class="main-section">
             <div class="main-container">
                 <div class="main-whole-wrap">
                     <!-- 배너 -->
+                    <div id="top-banner"></div>
+                    <div style="margin-top: 60px;"></div>
                     <!-- 탐험대 리스트 -->
                     <div class="ad-list-wrap">
                         <div class="ad-list">
@@ -683,5 +686,14 @@
                 </div>
             </div>
         </section>
+        <div id="bot-banner"></div>
+        <div id="footer"></div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+        $("#bot-banner").load('/src/main/resources/templates/main/bot-banner.html')
+        $("#top-banner").load('/src/main/resources/templates/main/header-banner.html');
+        $("#header").load("/src/main/resources/templates/main/header.html")
+        $("#footer").load("/src/main/resources/templates/main/footer.html")
+    </script>
 </html>
