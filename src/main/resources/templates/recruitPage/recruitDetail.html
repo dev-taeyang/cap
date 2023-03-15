@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
     <link rel="stylesheet" href="/src/main/resources/static/css/board/boardDetail.css">
-    <title>원정대 상세페이지</title>
+    <link rel="icon" href="/src/main/resources/static/images/favicon.png" />
+    <title>탐험대 상세페이지</title>
 </head>
 <body>
+    <div id="header"></div>
     <div class="boardDetailPage_wrapper">
         <div class="boardDetailPage_contentWrapper">
             <!-- 원정대에 관한 상세정보 -->
@@ -57,17 +59,23 @@
                                         </div>
                                         <span class="Profile_MemberStat">
                                             <!-- 작성자가 소유한 원정대 갯수 받는 곳 -->
-                                            보유 원정대 2
+                                            보유 탐험대 2
                                             <span>|</span>
                                             <!-- 작성자가 작성한 리뷰의 갯수 받는 곳 -->
-                                            탐사 결과 3
+                                            탐사 보고서 3
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                        <button class="buttonSection_button section_recruit">수정</button>
-                        <button class="buttonSection_button section_recruit">삭제</button>
+                        <section class="presentationInfo_InfoSection infoSection_space"></section>
+                        <section class="presentationInfo_InfoSection">
+                            <div class="buttonSection_buttonWrapper">
+                                <button class="buttonSection_button">수정</button>
+                                <button class="buttonSection_button">삭제</button>
+                            </div>
+                            <button class="buttonSection_button button_reply">댓글작성</button>
+                        </section>
                     </div>
                 </section>
                 <!-- 나타낼 기본 정보가 나오는 섹션 -->
@@ -157,6 +165,7 @@
             </div>
         </div>
     </div>
+    <div id="footer"></div>
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e010e1c47083a81e5873ca2682380a56&libraries=services"></script>
 <script type="text/javascript">
@@ -208,5 +217,10 @@
     }
 
     
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $("#header").load("/src/main/resources/templates/main/header.html")
+    $("#footer").load("/src/main/resources/templates/main/footer.html")
 </script>
 </html>
