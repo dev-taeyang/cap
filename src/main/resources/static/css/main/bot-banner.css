@@ -1,0 +1,21 @@
+/* bot-banner.html */
+
+.main-whole-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.bot-banner-wrapper {
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.bot-banner {
+    width: 100%;
+}
