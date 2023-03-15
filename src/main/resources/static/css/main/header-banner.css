@@ -1,0 +1,127 @@
+/* header-banner.html */
+
+.main-whole-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.main-header-banner-wrap {
+    margin-bottom: 24px;
+    position: relative;
+    width: 768px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.main-header-banner {
+    width: 6144px;
+    transition: transform 0.3s;
+}
+
+.main-header-banner img {
+    width: 768px;
+    height: 100%;
+    float: left;
+}
+
+.prev-button {
+    z-index: 1;
+    display: block;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    padding: 0;
+    transform: rotate(180deg) translate(0px, 50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.prev-button:before {
+    content: '←';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.header-banner-slide {
+    width: 8448px;
+    display: block;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+.header-banner-image {
+    display: block;
+}
+
+.next-button {
+    display: block;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.next-button:before {
+    content: '→';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+.header-banner-page-button {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    right: 12px;
+    height: 28px;
+    padding: 6px 10px;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    font-weight: bold;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    bottom: 12px;
+}
+
+.header-banner-page {
+    color: rgb(255, 255, 255);
+    margin-right: 2px;
+}
+
+.header-banner-page-button-image {
+    margin-left: 4px;
+}
