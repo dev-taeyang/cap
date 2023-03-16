@@ -37,7 +37,8 @@
 }
 
 .join-phone {
-    width: 100%;
+    /* 이쪽 수정 */
+    width: 210px;
     padding: 14px 14px 12px;
     color: rgb(17, 17, 17);
     font-size: 14px;
@@ -69,7 +70,8 @@
 }
 
 .join-check {
-    width: 100%;
+    /* 이쪽 수정 */
+    width: 210px;
     padding: 14px 14px 12px;
     color: rgb(17, 17, 17);
     font-size: 14px;
