@@ -1,69 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>아이디 찾기</title>
-        <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
-        <link rel="stylesheet" href="/src/main/resources/static/css/member/findId.css" />
-        <link rel="shortcut icon" href="/src/main/resources/static/images/favicon.png" type="image/x-icon">
-        <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-        <style>
-            body {
-                font-family: 'SUIT Variable', sans-serif; 
-            }
-        </style>
-    </head>
-    <body>
-        <div id="header"></div>
-        <section class="find-id-container">
-            <!-- 전체 DIV -->
-            <div class="id-change-wrap">
-                <br />
-                <!-- 타이틀 -->
-                <div class="id-change-title">
-                    <h3>아이디 찾기</h3>
-                </div>
-                <!-- 입력받는 곳 -->
-                <form class="id-change-form">
-                    <div class="join-phone-wrap">
-                        <div>
-                            <input
-                                type="tell"
-                                name="phoneNumber"
-                                placeholder="휴대폰 번호(-없이 입력)"
-                                class="join-phone"
-                            />
-                        </div>
-                        <button type="button" class="join-phone-btn">인증번호 전송</button>
-                    </div>
-                    <div class="join-check-wrap">
-                        <div>
-                            <div>
-                                <input
-                                    type="number"
-                                    name="phone-check"
-                                    placeholder="인증번호"
-                                    pattern="[0-9]*"
-                                    class="join-check"
-                                />
-                            </div>
-                        </div>
-                        <button type="button" class="join-check-btn">인증하기</button>
-                    </div>
-                    <!-- 인증했을 때 아이디 띄우는곳 -->
-                    <div style="display: none">
-                        <input type="text" name="email" placeholder="" class="change-password" />
-                    </div>
-                </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이디 찾기</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/member/findId.css" />
+    <link
+      rel="shortcut icon"
+      href="/src/main/resources/static/images/favicon.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'SUIT Variable', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <section class="find-id-container">
+      <!-- 전체 DIV -->
+      <div class="id-change-wrap">
+        <br />
+        <!-- 타이틀 -->
+        <div class="id-change-title">
+          <h3>아이디 찾기</h3>
+        </div>
+        <!-- 입력받는 곳 -->
+        <form class="id-change-form">
+          <div class="join-phone-wrap">
+            <div>
+              <input
+                type="tell"
+                name="phoneNumber"
+                placeholder="휴대폰 번호(-없이 입력)"
+                class="join-phone"
+              />
             </div>
-        </section>
-        <div id="footer"></div>
-    </body>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script>
-        $("#header").load("/src/main/resources/templates/main/header.html")
-        $("#footer").load("/src/main/resources/templates/main/footer.html")
-    </script>
+            <button type="button" class="join-phone-btn">인증번호 전송</button>
+          </div>
+          <div class="join-check-wrap">
+            <div>
+              <div>
+                <input
+                  type="number"
+                  name="phone-check"
+                  placeholder="인증번호"
+                  pattern="[0-9]*"
+                  class="join-check"
+                />
+              </div>
+            </div>
+            <button type="button" class="join-check-btn">인증하기</button>
+          </div>
+          <!-- 인증했을 때 아이디 띄우는곳 -->
+          <div style="display: none">
+            <input type="text" name="email" placeholder="" class="change-password" />
+          </div>
+        </form>
+      </div>
+    </section>
+    <div id="footer"></div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script>
+    $('#header').load('/src/main/resources/templates/main/header.html');
+    $('#footer').load('/src/main/resources/templates/main/footer.html');
+  </script>
 </html>

@@ -115,6 +115,7 @@ textarea {
   width: 100%;
   padding: 0px 20px;
   min-height: 1px;
+  border-bottom: 1px solid rgb(238, 238, 238);
 }
 
 .mypageUpdate-header {

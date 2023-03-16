@@ -17,7 +17,6 @@ li {
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    min-height: 100vh;
 }
 
 .notice-info-box {
