@@ -35,7 +35,7 @@
   font-weight: bold;
 }
 
-.replcounty- {
+.reply-count {
   font-weight: normal;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .mypage-reply-empty {
-  display: flex;
+  display: none;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
@@ -59,6 +59,10 @@
   text-align: center;
   color: rgb(155, 155, 155);
   margin-top: 10px;
+}
+
+.mypage-reply-list {
+  margin: 0;
 }
 
 li {

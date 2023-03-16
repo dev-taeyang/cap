@@ -1,134 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
-    <link rel="stylesheet" href="/src/main/resources/static/css/board/boardMake.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/board/boardMake.css" />
     <link rel="icon" href="/src/main/resources/static/images/favicon.png" />
     <title>보고서 작성</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="header"></div>
     <div class="SectionWrapper">
-        <div class="makeSection_wrapper">
-            <div class="makeSection_header">
-                <span style="font-weight: 700;">보고서 작성</span>
-            </div>
-            <div class="SectionMaker_Wrapper">
-                <div class="SectionMaker_contentWrapper">
-                    <div class="SectionMaker_contentHeader">
-                        <h2>등록 정보</h2>
-                    </div>
-                    <form action="">
-                        <div class="formSection_contentContainer">
-                            <div class="formTitle_wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle_legend">
-                                        <span>보고서 명</span>
-                                    </legend>
-                                    <input class="formInputBox" type="text" placeholder="보고서 명을 입력해주세요">
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="space">
-                        <div class="formSection_contentContainer">
-                            <div class="formTitle_wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle_legend">
-                                        <span>카테고리</span>
-                                    </legend>
-                                    <div class="ButtonItem_list">
-                                        <button type="button" class="ButtonItem">
-                                            <div>모험</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem">
-                                            <div>공포</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem">
-                                            <div>관광</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem">
-                                            <div>레저</div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="space">
-                        <div class="formSection_contentContainer">
-                            <div class="formTitle_wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle_legend">
-                                        <span>평점</span>
-                                    </legend>
-                                    <div class="ButtonItem_list">
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>1개★</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>2개★</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>3개★</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>4개★</div>
-                                        </button>
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>5개★</div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="space">
-                        <div class="formSection_contentContainer">
-                            <div class="formTitle_wrapper form_image">
-                                <div class="formTitle">
-                                    <legend class="formTitle_legend image_legend">
-                                        <span>대표 이미지</span>
-                                    </legend>
-                                </div>
-                                <div class="addMainImage_wrapper">
-                                    <div class="MainImage_wrapper">
-                                        <div class="container_imageInput">
-                                            <div class="imgText_container">
-                                                <img src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                <div>이미지 추가하기</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text_detail"> 최소 사이즈: 가로 600px * 세로 600px </div>
-                                    <div class="text_detail"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="space">
-                        <div class="formSection_contentContainer">
-                            <div class="formTitle_wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle_legend">
-                                        <span>결과 소개</span>
-                                    </legend>
-                                    <textarea id="editor" class="detailText_text" placeholder="상세 내용을 적어주세요"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bottomButton_wrapper">
-                            <button class="registButton_button">등록하기</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      <div class="makeSection_wrapper">
+        <div class="makeSection_header">
+          <span style="font-weight: 700">보고서 작성</span>
         </div>
+        <div class="SectionMaker_Wrapper">
+          <div class="SectionMaker_contentWrapper">
+            <div class="SectionMaker_contentHeader">
+              <h2>등록 정보</h2>
+            </div>
+            <form action="">
+              <div class="formSection_contentContainer">
+                <div class="formTitle_wrapper">
+                  <div class="formTitle">
+                    <legend class="formTitle_legend">
+                      <span>보고서 명</span>
+                    </legend>
+                    <input
+                      class="formInputBox"
+                      type="text"
+                      placeholder="보고서 명을 입력해주세요"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr class="space" />
+              <div class="formSection_contentContainer">
+                <div class="formTitle_wrapper">
+                  <div class="formTitle">
+                    <legend class="formTitle_legend">
+                      <span>카테고리</span>
+                    </legend>
+                    <div class="ButtonItem_list">
+                      <button type="button" class="ButtonItem">
+                        <div>모험</div>
+                      </button>
+                      <button type="button" class="ButtonItem">
+                        <div>공포</div>
+                      </button>
+                      <button type="button" class="ButtonItem">
+                        <div>관광</div>
+                      </button>
+                      <button type="button" class="ButtonItem">
+                        <div>레저</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="space" />
+              <div class="formSection_contentContainer">
+                <div class="formTitle_wrapper">
+                  <div class="formTitle">
+                    <legend class="formTitle_legend">
+                      <span>평점</span>
+                    </legend>
+                    <div class="ButtonItem_list">
+                      <button type="button" class="ButtonItem summaryButtton">
+                        <div>1개★</div>
+                      </button>
+                      <button type="button" class="ButtonItem summaryButtton">
+                        <div>2개★</div>
+                      </button>
+                      <button type="button" class="ButtonItem summaryButtton">
+                        <div>3개★</div>
+                      </button>
+                      <button type="button" class="ButtonItem summaryButtton">
+                        <div>4개★</div>
+                      </button>
+                      <button type="button" class="ButtonItem summaryButtton">
+                        <div>5개★</div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="space" />
+              <div class="formSection_contentContainer">
+                <div class="formTitle_wrapper form_image">
+                  <div class="formTitle">
+                    <legend class="formTitle_legend image_legend">
+                      <span>대표 이미지</span>
+                    </legend>
+                  </div>
+                  <div class="addMainImage_wrapper">
+                    <div class="MainImage_wrapper">
+                      <div class="container_imageInput">
+                        <div class="imgText_container">
+                          <img src="https://frip.host/img/add.85e31315.svg" alt="+" />
+                          <div>이미지 추가하기</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text_detail">최소 사이즈: 가로 600px * 세로 600px</div>
+                    <div class="text_detail">용량: 10MB 이하, 파일유형: JPG, PNG, GIF</div>
+                  </div>
+                </div>
+              </div>
+              <hr class="space" />
+              <div class="formSection_contentContainer">
+                <div class="formTitle_wrapper">
+                  <div class="formTitle">
+                    <legend class="formTitle_legend">
+                      <span>결과 소개</span>
+                    </legend>
+                    <textarea
+                      id="editor"
+                      class="detailText_text"
+                      placeholder="상세 내용을 적어주세요"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="bottomButton_wrapper">
+                <button class="registButton_button">등록하기</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="footer"></div>
-</body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-    $("#header").load("/src/main/resources/templates/main/header.html")
-    $("#footer").load("/src/main/resources/templates/main/footer.html")
-</script>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+    $('#header').load('/src/main/resources/templates/main/header.html');
+    $('#footer').load('/src/main/resources/templates/main/footer.html');
+  </script>
 </html>

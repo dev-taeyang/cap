@@ -5,122 +5,160 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이페이지</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/mypage/mypage.css">
-    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
-    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
+    <link
+      rel="shortcut icon"
+      href="/src/main/resources/static/images/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/css/mypage/mypage.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
   </head>
   <style>
     body {
-        font-family: 'SUIT Variable', sans-serif; 
+      font-family: 'SUIT Variable', sans-serif;
     }
-</style>
+  </style>
   <body>
     <div id="header"></div>
     <main id="mypage">
       <!-- 마이페이지 맨 위 유저 프로필 -->
       <div class="head-user-info-wrap">
         <a class="head-user-info" href=""
-          ><img
-            src="/src/main/resources/static/images/jiwook.jpg"
-            class="user-profile-image"
-          />
+          ><img src="/src/main/resources/static/images/jiwook.jpg" class="user-profile-image" />
           <div class="head-userinfo-textwrapper">
             <div class="head-userinfo-nickname">정지욱97</div>
             <div class="head-userinfo-email">이메일 계정</div>
-          </div></a
-        >
+          </div>
+        </a>
       </div>
       <!-- 유저가 작성한 후기 및 댓글 목록 -->
       <div class="user-content-wrap">
         <a href=""
-          ><div class="user-review">후기</div>
-          <div class="user-review-count">0</div></a
+          ><div class="user-review">보고서</div>
+          <div class="user-review-count">1</div></a
         ><a href=""
           ><div class="user-reply">댓글</div>
-          <div class="user-reply-count">0</div></a
+          <div class="user-reply-count">3</div></a
         >
       </div>
       <hr class="mypage-head-hr" />
       <!-- 유저 프로필 -->
       <div class="mypage-user-info">
-          <header class="mypage-user-info-header">
-            <div>내 정보</div>
-            <button>수정</button>
-          </header>
-          <div class="mypage-user-container">
-            <div class="mypage-user-wrapper">
-              <div class="mypage-user">닉네임</div>
-              <input disabled="" class="mypage-user-value" type="text" name="memberNickname" value="정지욱97"/>
-            </div>
-          </div>
+        <header class="mypage-user-info-header">
+          <div>내 정보</div>
+          <button>수정</button>
+        </header>
         <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
-              <div class="mypage-user">휴대폰 번호</div>
-              <input disabled="" class="mypage-user-value" type="text" name="memberPhone" value="01041998127" />
+            <div class="mypage-user">닉네임</div>
+            <input
+              disabled=""
+              class="mypage-user-value"
+              type="text"
+              name="memberNickname"
+              value="정지욱97"
+            />
+          </div>
+        </div>
+        <div class="mypage-user-container">
+          <div class="mypage-user-wrapper">
+            <div class="mypage-user">휴대폰 번호</div>
+            <input
+              disabled=""
+              class="mypage-user-value"
+              type="text"
+              name="memberPhone"
+              value="01041998127"
+            />
           </div>
         </div>
         <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
             <div class="mypage-user">이메일</div>
-            <input disabled="" class="mypage-user-value" type="text" name="memberEmail" value="jiwook6273@naver.com" />
+            <input
+              disabled=""
+              class="mypage-user-value"
+              type="text"
+              name="memberEmail"
+              value="jiwook6273@naver.com"
+            />
           </div>
         </div>
         <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
             <div class="mypage-user">비밀번호</div>
             <input
-            disabled=""
-            type="password"
-            class="mypage-user-value"
-            name="memberPassword"
-            value="0000000"
-          />
+              disabled=""
+              type="password"
+              class="mypage-user-value"
+              name="memberPassword"
+              value="0000000"
+            />
           </div>
         </div>
         <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
             <div class="mypage-user">생년월일</div>
-            <input disabled="" type="text" class="mypage-user-value" name="memberBirth" value="2000.01.01" />
+            <input
+              disabled=""
+              type="text"
+              class="mypage-user-value"
+              name="memberBirth"
+              value="2000.01.01"
+            />
           </div>
         </div>
         <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
             <div class="mypage-user">성별</div>
-            <input disabled="" type="text" class="mypage-user-value" name="memberGender" value="남자" />
+            <input
+              disabled=""
+              type="text"
+              class="mypage-user-value"
+              name="memberGender"
+              value="남자"
+            />
           </div>
         </div>
+      </div>
       <hr size="32" type="Line" class="mypage-hr" />
       <div class="mypage-user-group">
         <header>내 탐험대</header>
         <div class="mypage-user-container">
-            <div class="mypage-user-wrapper">
-              <div class="mypage-user-make-group">내가 개설한 탐험대</div>
-            </div></div>
+          <div class="mypage-user-wrapper">
+            <div class="mypage-user-make-group">내가 개설한 탐험대</div>
+          </div>
+        </div>
         <div class="mypage-user-container">
-            <div class="mypage-user-wrapper">
-              <div class="mypage-user-participate-group">내가 참여한 탐험대</div>
-            </div> 
+          <div class="mypage-user-wrapper">
+            <div class="mypage-user-participate-group">내가 참여한 탐험대</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <hr size="32" type="Line" class="mypage-hr" />
-    <div class="mypage-user-customer-service">
-      <header>고객센터</header>
-      <div class="mypage-user-container">
+      <hr size="32" type="Line" class="mypage-hr" />
+      <div class="mypage-user-customer-service">
+        <header>고객센터</header>
+        <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
             <div class="mypage-user-notice">공지사항</div>
-          </div></div>
-      <div class="mypage-user-container">
+          </div>
+        </div>
+        <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
             <div class="mypage-user-FAQ">FAQ</div>
-          </div> 
-    </div>
-  </div>
-</main>
-  <div id="footer"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script>
-        $("#header").load("/src/main/resources/templates/main/header.html")
-        $("#footer").load("/src/main/resources/templates/main/footer.html")
-    </script>
+  <script>
+    $('#header').load('/src/main/resources/templates/main/header.html');
+    $('#footer').load('/src/main/resources/templates/main/footer.html');
+  </script>
 </html>
