@@ -7,7 +7,7 @@ button {
 
 /* 게시글 관련 */
 
-.boardPage_wrapper {
+.boardPage-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -15,7 +15,7 @@ button {
     margin: 0px auto;
 }
 
-.boardPage_header {
+.boardPage-header {
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -25,13 +25,13 @@ button {
     border-bottom: 1px solid rgb(238, 238, 238);
 }
 
-.boardPage_title {
+.boardPage-title {
     color: rgb(51, 61, 75);
     font-weight: bold;
     font-size: 24px;
 }
 
-.boardList_wrapper {
+.boardList-wrapper {
     width: auto;
     height: auto;
     transition: opacity 200ms ease-in-out 0s;
@@ -41,7 +41,7 @@ button {
     min-height: 1px;
 }
 
-.view_boardList_wrapper {
+.view-boardList-wrapper {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-pack: justify;
@@ -49,7 +49,7 @@ button {
     overflow-x: hidden;
 }
 
-.view_boardList_wrapper > div {
+.view-boardList-wrapper > div {
     max-width: 385px;
     width: 100%;
     padding: 30px 20px;
@@ -58,28 +58,28 @@ button {
     margin-right: -1px;
 }
 
-.profile_wrapper {
+.profile-wrapper {
     margin-bottom: 15px;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
 
-.MemberProfile_wrapper {
+.MemberProfile-wrapper {
     display: flex;
 }
 
-.MemberProfileImg_wrapper {
+.MemberProfileImg-wrapper {
     width: 36px;
     height: 36px;
     margin-right: 10px;
 }
 
-.Image_wrapper {
+.Image-wrapper {
     min-height: 1px;
 }
 
-.Image_style {
+.Image-style {
     display: initial;
     border-radius: 36px;
     width: 100%;
@@ -87,7 +87,7 @@ button {
     object-fit: cover;
 }
 
-.MemberProfileText_wrapper {
+.MemberProfileText-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -106,7 +106,7 @@ button {
     color: rgb(142, 151, 163);
 }
 
-.boardImg_wrapper {
+.boardImg-wrapper {
     cursor: pointer;
     height: 344px;
     border-radius: 20px;
@@ -116,30 +116,30 @@ button {
     transform: translate3d(0px, 0px, 0px);
 }
 
-.boardImg_wrapper div {
+.boardImg-wrapper div {
     padding-bottom: initial;
     height: 100%;
 }
 
-.introduceImage_wrapper img {
+.introduceImage-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
 
-.description_wrapper {
+.description-wrapper {
     margin-top: 18px;
     margin-bottom: 21px;
     letter-spacing: -0.4px;
 }
 
-.description_detail {
+.description-detail {
     font-size: 16px;
     color: rgb(78, 89, 104);
     white-space: pre-line;
 }
 
-.TextLine_Description {
+.TextLine-Description {
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -148,12 +148,12 @@ button {
     max-height: 48px;
 }
 
-.Description_ExpandButton {
+.Description-ExpandButton {
     padding: 0px;
     color: rgb(171, 182, 196);
 }
 
-.actionGroup_wrapper {
+.actionGroup-wrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -163,11 +163,11 @@ button {
     color: rgb(78, 89, 104);
 }
 
-.actionGroup_wrapper span {
+.actionGroup-wrapper span {
     margin-left: 8px;
 }
 
-.actionGroup_reply {
+.actionGroup-reply {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -175,7 +175,7 @@ button {
 
 /* 모집 게시판 관련 */
 
-.categoryItem_list {
+.categoryItem-list {
     display: flex;
 }
 
@@ -201,7 +201,7 @@ button {
     z-index: 1;
 }
 
-.category_background {
+.category-background {
     opacity: 0.5;
     background-color: rgb(17, 17, 17);
     height: 100%;
@@ -213,24 +213,24 @@ button {
     
 }
 
-.category_Adventure {
+.category-Adventure {
     background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/category-outdoor_gch4e1');
     background-size: cover;
 }
-.category_Horror {
+.category-Horror {
     background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_17_p');
     background-size: cover;
 }
-.category_Water {
+.category-Water {
     background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_8_p");
     background-size: cover;
 }
-.category_Mountain {
+.category-Mountain {
     background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_2_p");
     background-size: cover;
 }
 
-.boardLocation_wrapper {
+.boardLocation-wrapper {
     margin-left: 2px;
     margin-top: 10px;
     display: block;
@@ -243,29 +243,29 @@ button {
 
 /* 리뷰 페이지 관련 */
 
-.view_boardList_wrapper .description_space {
+.view_boardList-wrapper .description-space {
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
-.reviewSummary_wrapper {
+.reviewSummary-wrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.reviewStar_wrapper {
+.reviewStar-wrapper {
     display: flex;
     flex-flow: row nowrap;
 }
 
-.reviewStar_wrapper img {
+.reviewStar-wrapper img {
     margin-right: 2px;
     width: 16px;
 }
 
-.reviewSummary_Average {
+.reviewSummary-Average {
     margin: 0px 8px 0px 0px;
     font-size: 15px;
     font-weight: 700;
@@ -282,21 +282,21 @@ button {
 }
 
 /* 게시글 작성용 버튼 */
-.FloatingButton_wrapper {
+.FloatingButton-wrapper {
     position: fixed;
     left: 0px;
     bottom: 0px;
     width: 100%;
 }
 
-.FloatingButton_layoutWrapper {
+.FloatingButton-layoutWrapper {
     position: relative;
     max-width: 768px;
     width: 100%;
     margin: 0px auto;
 }
 
-.plusLink_icon {
+.plusLink-icon {
     position: absolute;
     right: 20px;
     display: flex;
@@ -313,6 +313,6 @@ button {
     bottom: calc(34px + env(safe-area-inset-bottom));
 }
 
-.plusLink_icon img {
+.plusLink-icon img {
     width: 18px;
 }

@@ -1,7 +1,7 @@
 
 /* 댓글 관련 */
 
-.page_wrapper {
+.page-wrapper {
     display: flex;
     flex-flow: column nowrap;
     align-content: flex-start;
@@ -12,7 +12,7 @@
     min-height: 100vh;
 }
 
-.Center_wrapper {
+.Center-wrapper {
     width: 100%;
     display: flex;
     -webkit-box-pack: center;
@@ -24,7 +24,7 @@
     border-bottom: 1px solid rgb(238, 238, 238);
 }
 
-.Center_wrapper h3 {
+.Center-wrapper h3 {
     font-size: 18px;
     line-height: 26px;
     letter-spacing: -0.54px;
@@ -34,28 +34,28 @@
     margin: 0px;
 }
 
-.boardReplyList_wrapper {
+.boardReplyList-wrapper {
     margin-top: 10px;
     padding: 0px 20px;
 }
 
-.ReplyContent_wrapper {
+.ReplyContent-wrapper {
     display: flex;
     padding: 15px 0px;
 }
 
-.replyContent_profile {
+.replyContent-profile {
     display: inline-block;
     width: 36px;
     height: 36px;
     margin-right: 10px;
 }
 
-.Image_wrapper {
+.Image-wrapper {
     min-height: 1px;
 }
 
-.Image_style {
+.Image-style {
     display: initial;
     border-radius: 36px;
     width: 100%;
@@ -63,11 +63,11 @@
     object-fit: cover;
 }
 
-.ReplyContent_container {
+.ReplyContent-container {
     max-width: calc(100% - 46px);
 }
 
-.replyContent_member {
+.replyContent-member {
     display: block;
     font-size: 12px;
     letter-spacing: -0.43px;
@@ -75,7 +75,7 @@
     margin-bottom: 3px;
 }
 
-.replyContent_comment {
+.replyContent-comment {
     max-width: 100%;
     display: inline-block;
     font-size: 14px;
@@ -88,27 +88,27 @@
     margin-bottom: 4px;
 }
 
-.actionGroup_section {
+.actionGroup-section {
     display: flex;
 }
 
-.actionGroup_section * {
+.actionGroup-section * {
     font-size: 12px;
     color: rgb(198, 202, 208);
 }
 
-.actionMenu_time {
+.actionMenu-time {
     margin-right: 15px;
 }
 
-.actionMenu_button {
+.actionMenu-button {
     cursor: pointer;
     text-decoration: underline;
     margin-right: 15px;
     padding: 0px;
 }
 
-.TextAreaSection_wrapper {
+.TextAreaSection-wrapper {
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -122,26 +122,26 @@
     background-color: rgb(255, 255, 255);
 }
 
-.TextAreaSection_container {
+.TextAreaSection-container {
     display: flex;
     width: 100%;
     max-width: 768px;
 }
 
-.TextAreaSection_profile {
+.TextAreaSection-profile {
     min-width: 45px;
     max-width: 45px;
     height: 45px;
     overflow: hidden;
 }
 
-.TextAreaSection_textAreaWrapper {
+.TextAreaSection-textAreaWrapper {
     position: relative;
     width: 100%;
     margin-left: 10px;
 }
 
-.TextAreaSection_textWrite {
+.TextAreaSection-textWrite {
     font-size: 14px;
     letter-spacing: -0.5px;
     line-height: 20px;
@@ -153,11 +153,11 @@
     resize: none;
 }
 
-.TextAreaSection_submitButton:not(:disabled) {
+.TextAreaSection-submitButton:not(:disabled) {
    color: rgb(5, 116, 230);
 }
 
-.TextAreaSection_submitButton {
+.TextAreaSection-submitButton {
     position: absolute;
     right: 15px;
     bottom: 18px;

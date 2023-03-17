@@ -2,7 +2,7 @@
 
 
 
-.boardDetailPage_wrapper {
+.boardDetailPage-wrapper {
     width: 100%;
     max-width: 828px;
     min-height: 1px;
@@ -11,7 +11,7 @@
     position: relative;
 }
 
-.boardDetailPage_contentWrapper {
+.boardDetailPage-contentWrapper {
     position: relative;
     display: flex;
     -webkit-box-flex: 1;
@@ -21,7 +21,7 @@
     margin: 0px auto;
 }
 
-.boardDetailPage_contentContainer {
+.boardDetailPage-contentContainer {
     display: flex;
     flex-flow: column nowrap;
     -webkit-box-flex: 1;
@@ -31,7 +31,7 @@
     padding: 40px 30px 30px;
 }
 
-.boardDetail_headSectionWrapper {
+.boardDetail-headSectionWrapper {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-pack: justify;
@@ -40,7 +40,7 @@
     padding-bottom: 24px;
 }
 
-.boardDetail_headSectionWrapper > * {
+.boardDetail-headSectionWrapper > * {
     width: 50%;
     max-width: 375px;
 }
@@ -48,13 +48,13 @@
 
 /* 원정대 메인 설명 관련 */
 
-.presentationImage_wrapper {
+.presentationImage-wrapper {
     position: relative;
     min-height: 1px;
     text-align: center;
 }
 
-.presentationImage_content {
+.presentationImage-content {
     position: relative;
     display: block;
     overflow: hidden;
@@ -63,14 +63,14 @@
     border-radius: 5px;
 }
 
-.introduceImage_wrapper img {
+.introduceImage-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
 
 
-.presentationInfo_InfoSection {
+.presentationInfo-InfoSection {
     padding-top: 24px;
     padding-bottom: 24px;
     line-height: 1.8;
@@ -78,37 +78,85 @@
     background-color: rgb(255, 255, 255);
 }
 
-.infoSection_infoWrapper {
+.infoSection-infoWrapper {
     position: relative;
     padding: 0px 0px 12px;
     border-bottom: initial;
 }
 
-.presentationInfo_InfoSection:last-child {
+.OtherMemberCount-wrapper {
+    display: grid;
+    text-align: center;
+    align-items: center;
+    height: 50px;
+}
+
+.OtherMember-title {
+    color: #bfbfbf;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.OtherMemberContent-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 172px;
+    overflow: hidden;
+}
+
+.OtherMember-wrapper {
+    text-align: center;
+    height: 66px;
+    margin: 10px 10px;
+}
+
+.OtherMember-profile {
+    overflow: hidden;
+}
+
+.OtherMember-image {
+    min-height: 1px;
+}
+
+.OtherMember-nickname {
+    color: #cacaca;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.replyAction-wrapper {
+    float: right;
+}
+
+.replyAction-wrapper > span {
+    color: #d1cfcf;
+    cursor: pointer;
+}
+
+.presentationInfo-InfoSection:last-child {
     border-bottom: initial;
     padding-bottom: initial;
 }
 
-.presentationInfo_wrapper {
+.presentationInfo-wrapper {
     display: flex;
     flex-direction: column;
     -webkit-box-pack: justify;
     padding: 0px 0px 0px 6px;
 }
 
-.infoSection_TitleWrapper {
+.infoSection-TitleWrapper {
     width: 100%;
     min-width: 0px;
 }
 
-.infoSection_TitleContainer {
+.infoSection-TitleContainer {
     display: flex;
-    flex-direction: column;
 }
 
-.infoSection_Title {
+.infoSection-Title {
     margin: 0px;
-    max-width: 320px;
+    width: 272px;
     line-height: 28px;
     font-size: 20px;
     font-weight: 400;
@@ -123,12 +171,33 @@
     color: rgb(51, 51, 51);
 }
 
-.infoSection_MemberWrapper {
+.infoSection-actionWrapper {
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
+}
+
+.actionSection-title {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.actionSection-title:first-child {
+    margin-right: 27px;
+}
+
+.actionSection-title:hover {
+    color: #2c5815;
+}
+
+.infoSection-MemberWrapper {
     border-top: 1px solid rgb(238, 238, 238);
     padding-right: 12px;
 }
 
-.infoSection_MemberProfileWrapper {
+
+
+.infoSection-MemberWrapper {
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -138,25 +207,33 @@
     line-height: 24px;
 }
 
-.ProfileInfo_wrapper {
+.ProfileInfo-wrapper {
     display: flex;
-    width: 100%;
+}
+
+.ProfileInfo-Review {
+    margin-top: 25px;
 }
 
 
-.ProfileInfo_profileImage {
+.ProfileInfo-profileImage {
     margin-right: 20px;
     overflow: hidden;
     width: 56px;
     min-width: 56px;
 }
 
+.reviewSection-profile {
+    width: 45px;
+    min-width: 45px;
+}
 
-.Image_wrapper {
+
+.Image-wrapper {
     min-height: 1px;
 }
 
-.Image_style {
+.Image-style {
     display: initial;
     border-radius: 36px;
     width: 100%;
@@ -164,19 +241,18 @@
     object-fit: cover;
 }
 
+.recruit-Member {
+    width: 45px;
+}
 
-
-
-
-.ProfileInfo_profileContent {
+.ProfileInfo-profileContent {
     display: flex;
     flex-flow: column;
     -webkit-box-pack: center;
     justify-content: center;
-    width: 100%;
 }
 
-.Profile_MemberNameWrapper {
+.Profile-MemberNameWrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -184,7 +260,7 @@
     max-width: 212px;
 }
 
-.Profile_Nickname {
+.Profile-Nickname {
     display: inline-flex;
     font-weight: bold;
     font-size: 18px;
@@ -193,14 +269,14 @@
     color: rgb(51, 51, 51);
 }
 
-.Profile_Nickname > span {
+.Profile-Nickname > span {
     max-width: 170px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.Profile_MemberStat {
+.Profile-MemberStat {
     margin-top: 2px;
     color: rgb(170, 170, 170);
     font-size: 12px;
@@ -208,7 +284,7 @@
     letter-spacing: -0.36px;
 }
 
-.Profile_MemberStat > span {
+.Profile-MemberStat > span {
     color: rgb(221, 221, 221);
     font-size: 10px;
     vertical-align: top;
@@ -216,21 +292,22 @@
     padding: 0px 6px;
 }
 
-.infoSection_space {
+.infoSection-space {
     border-top: 1px solid rgb(238, 238, 238);
     height: 100%;
+    padding-bottom: 0;
 }
 
-.buttonSection_buttonWrapper {
+.buttonSection-buttonWrapper {
     display: flex;
     margin-bottom: 10px;
 }
 
-.reviewButton_section {
+.reviewButton-section {
     margin-bottom: 0;
 }
 
-.buttonSection_button {
+.buttonSection-button {
     font-weight: 600;
     font-size: 15px;
     width: 180px;
@@ -240,66 +317,66 @@
     background-color: rgb(67, 136, 32);
 }
 
-.buttonSection_button:hover {
+.buttonSection-button:hover {
     background-color: #2c5815;
 }
 
-.buttonSection_button:first-child {
+.buttonSection-button:first-child {
     margin-right: 10px;
 }
 
-.button_reply {
+.button-reply {
     width: 100%;
 }
 
-.section_recruit {
+.section-recruit {
     width: auto;
 }
 
 /* 원정대 추가 정보들 */
-.boardDetail_sectionContainer {
+.boardDetail-sectionContainer {
     padding: 40px 0px;
     border-top: 1px solid rgb(238, 238, 238);
     border-bottom: none;
 }
 
-.reviewStar_section {
+.reviewStar-section {
     padding-top: 10px;
     height: 100%;
 }
 
-.Article_header {
+.Article-header {
     margin: 0px 0px 24px;
     padding: 0px;
 }
 
-.Article_title {
+.Article-title {
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;
     margin: 0px;
 }
 
-.ArticleInfoSection_infoContainer {
+.ArticleInfoSection-infoContainer {
     margin: 0px;
     padding: 0px;
 }
 
-.ArticleInfoSection_infoContainer > div {
+.ArticleInfoSection-infoContainer > div {
     display: flex;
     margin: 0px 0px 12px;
 }
 
-.ArticleInfoSection_infoContainer > div > dt {
+.ArticleInfoSection-infoContainer > div > dt {
     width: 76px;
     color: rgb(153, 153, 153);
 }
 
-.ArticleInfoSection_infoContainer > div > dd {
+.ArticleInfoSection-infoContainer > div > dd {
     margin: 0px;
 }
 
-.placeMapSection_container > div:last-child {
+.placeMapSection-container > div:last-child {
     margin: 0px 0px 20px;
 }
 
@@ -309,12 +386,12 @@
     border-radius: 5px;
 }
 
-.place_container {
+.place-container {
     height: auto;
     padding: 0px 14px;
 }
 
-.placeLocation_container {
+.placeLocation-container {
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -323,7 +400,7 @@
     padding: 14px 0px;
 }
 
-.placeLocationTitle_container {
+.placeLocationTitle-container {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -349,29 +426,29 @@
 
 /* reviewDetail */
 
-.Article_descriptionContainer {
+.Article-descriptionContainer {
     margin: 0px 0px 10px;
 }
 
-.Article_description {
+.Article-description {
     color: rgb(51, 51, 51);
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
 }
 
-.reviewSummary_Average {
+.reviewSummary-Average {
     margin-left: 10px;
 }
 
-.reviewSummary_wrapper {
+.reviewSummary-wrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.reviewPoint_section {
+.reviewPoint-section {
     position: relative;
     top: 4px;
     font-size: 20px;
@@ -379,19 +456,19 @@
     margin-right: 10px;
 }
 
-.reviewStar_wrapper {
+.reviewStar-wrapper {
     display: flex;
     flex-flow: row nowrap;
 }
 
-.reviewStar_wrapper img {
+.reviewStar-wrapper img {
     margin-right: 4px;
     width: 33px;
 }
 
 
 
-.floatActionBar_wrapper {
+.floatActionBar-wrapper {
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -402,7 +479,7 @@
     z-index: 200;
 }
 
-.floatActionBar_buttonWrapper {
+.floatActionBar-buttonWrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -410,7 +487,7 @@
     max-width: 768px;
 }
 
-.floatActionBar_submitButton {
+.floatActionBar-submitButton {
     width: 100%;
     height: 56px;
     line-height: 24px;
@@ -424,11 +501,11 @@
     margin: 0px;
 }
 
-.floatActionBar_submitButton:hover {
+.floatActionBar-submitButton:hover {
     background-color: #2c5815;
 }
 
-.button_enterRecruit {
+.button-enterRecruit {
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -436,14 +513,44 @@
     align-items: center;
 }
 
-.enterButton_Text {
+.enterButton-Text {
     -webkit-box-flex: 0;
     flex: 0 0 auto;
 }
 
-/* 멤버들의 리뷰 */
+/* 리뷰 */
 
-.MemberReview_SectionContainer {
+.reviewHeader {
+    line-height: 16px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 40px 20px;
+    font-size: 16px;
+}
+
+.reviewSection-time {
+    margin-bottom: 30px;
+    line-height: 14px;
+    color: rgb(155, 155, 155);
+    font-size: 14px;
+}
+
+.reviewSection-wrapper {
+    display: flex;
+}
+
+.reviewSection-title {
+    width: 662px;
+    line-height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.actionReviewSection {
+    font-size: 25px;
+}
+
+
+.MemberReview-SectionContainer {
     height: 220px;
     position: relative;
     padding-top: 24px;
@@ -453,7 +560,7 @@
     overflow: hidden;
 }
 
-.MemberReview_slider {
+.MemberReview-slider {
     margin-bottom: 12px;
     padding: 0px 18px;
     display: block;
@@ -482,16 +589,16 @@
 
 }
 
-.slider_prev {
+.slider-prev {
     left: 3px;
     transform: rotate(180deg)
 }
 
-.slider_after {
+.slider-after {
     right: 3px;
 }
 
-.MemberReview_list {
+.MemberReview-list {
     position: relative;
     display: block;
     overflow: hidden;
@@ -499,18 +606,18 @@
     padding: 0;
 }
 
-.MemberReview_wrapper {
+.MemberReview-wrapper {
     display: flex;
 }
 
-.CoverReview_wrapper {
+.CoverReview-wrapper {
     margin: 20px 0px 10px 35px;
     width: 200px;
 }
 
 
 
-.spaceReview_section {
+.spaceReview-section {
     color: rgb(170, 170, 170);
     font-size: 12px;
     line-height: 16px;
@@ -521,7 +628,7 @@
     margin-bottom: 10px;
 }
 
-.Cover_MemberReview {
+.Cover-MemberReview {
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -536,10 +643,10 @@
     height: 66px;
 }
 
-.ReviewSection_profile {
+.ReviewSection-profile {
     margin: 0;
 }
 
-.ReviewSection_image {
+.ReviewSection-image {
     width: 40px;
 }
