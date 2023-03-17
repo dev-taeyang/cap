@@ -5,12 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이페이지 수정하기</title>
-    <link
-      rel="shortcut icon"
-      href="../../static/images/favicon.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="../../static/images/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="../../static/css/mypage/mypageUpdate.css" />
+    <link rel="stylesheet" href="../../static/css/mypage/modal.css" />
     <link rel="stylesheet" href="../../static/css/main/common.css" />
     <link
       href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
@@ -25,17 +22,16 @@
   <body>
     <div id="header"></div>
     <main id="mypageUpdate">
-      <div class="modal-container">
-        <div class="modal-wrap">
-          <div>
-            <div class="modal"></div>
+      <div class="modal">
+        <div class="warn-modal">
+            <div class="modal-content">
           </div>
         </div>
       </div>
       <section class="mypageUpdate-header-wrap">
         <article class="mypageUpdate-header">
           <h1 class="mypageUpdate-header-text">내 정보</h1>
-          <button class="mypageUpdate-header-save">저장</button>
+          <button class="save-button">저장</button>
         </article>
       </section>
       <section class="mypageUpdate-main-wrap">
@@ -54,7 +50,7 @@
             <input accept="image/*" type="file" class="profile-upload-button" />
           </label>
         </article>
-        <article class="update-user-info">
+        <form action="" class="update-user-info" autocomplete="off">
           <div class="update-user-wrap">
             <div>
               <label class="update-user-text">닉네임</label>
@@ -69,9 +65,6 @@
             </div>
             <div class="update-user-change">
               <button type="button" class="change-button">변경하기</button>
-            </div>
-            <div class="update-user-save">
-              <button type="button" class="save-button">저장하기</button>
             </div>
           </div>
           <div class="update-user-wrap">
@@ -132,9 +125,6 @@
             <div class="update-user-change">
               <button type="button" class="change-button">변경하기</button>
             </div>
-            <div class="update-user-save">
-              <button type="button" class="save-button">저장하기</button>
-            </div>
           </div>
           <div class="update-user-wrap">
             <div>
@@ -144,7 +134,7 @@
               </div>
             </div>
           </div>
-        </article>
+        </form>
       </section>
     </main>
     <div id="footer"></div>

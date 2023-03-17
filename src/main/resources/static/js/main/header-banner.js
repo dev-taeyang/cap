@@ -13,15 +13,15 @@ let count = 1;
 let auto = setInterval(autoSlide, 3000);
 
 HTMLCollection.prototype.forEach = Array.prototype.forEach;
-images.forEach((img, i) => img.setAttribute('src', `../../static/images/mainHeaderBanner0${i+1}.png`));
+images.forEach((img, i) => img.setAttribute('src', `../../static/images/main-header-banner0${i+1}.png`));
 
 banner.style.transform = `translate(-768px)`;
 
 banner.appendChild(lastImage);
-lastImage.setAttribute('src', `../../static/images/mainHeaderBanner01.png`);
+lastImage.setAttribute('src', `../../static/images/main-header-banner01.png`);
 
 banner.insertBefore(firstImage, document.querySelector(".main-header-banner img"));
-firstImage.setAttribute('src', `../../static/images/mainHeaderBanner0${images.length}.png`);
+firstImage.setAttribute('src', `../../static/images/main-header-banner0${images.length}.png`);
 
 function autoSlide() {
     banner.style.transition = 'transform 0.7s';

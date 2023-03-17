@@ -1,0 +1,36 @@
+.modal {
+    position: fixed;
+    left: 0px;
+    width: 100%;
+    z-index: 1;
+    bottom: 34px;
+}
+
+.warn-modal {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.modal-content {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px 16px;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    line-height: 22px;
+    white-space: pre-line;
+    user-select: none;
+    opacity: 0.9;
+    border-radius: 10px;
+    min-height: 45px;
+    background-color: rgb(17, 17, 17);
+}
