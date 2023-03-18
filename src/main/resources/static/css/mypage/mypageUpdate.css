@@ -135,7 +135,7 @@ textarea {
   line-height: 24px;
 }
 
-.mypageUpdate-header-save {
+.save-button {
   color: rgb(0, 117, 239);
   font-weight: 700;
   font-size: 16px;
@@ -265,7 +265,7 @@ textarea {
   align-items: flex-end;
 }
 
-.change-button, .save-button, .go-change-button {
+.change-button, .go-change-button {
   width: 87px;
   height: 50px;
   border: 1px solid rgb(204, 204, 204);
@@ -288,6 +288,6 @@ textarea {
   cursor: pointer;
 }
 
-.change-button:hover, .save-button:hover, .go-change-button:hover {
+.change-button:hover, .go-change-button:hover {
   background: rgb(250, 250, 250);
 }
