@@ -224,7 +224,28 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-right: 47px;
-    color: #757575;
+    color: white;
+    display: flex;
+    font-weight: 600;
+    opacity: 0.4;
+}
+
+.category-Adventure {
+    background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/category-outdoor_gch4e1');
+    background-size: cover;
+}
+
+.category-Horror {
+    background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_17_p');
+    background-size: cover;
+}
+.category-Water {
+    background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_8_p");
+    background-size: cover;
+}
+.category-Mountain {
+    background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_2_p");
+    background-size: cover;
 }
 
 .summaryButtton {
@@ -233,6 +254,5 @@ body {
 }
 
 .ButtonItem:hover {
-    color: rgb(67, 136, 32);
-    border-color: rgb(67, 136, 32);
+    opacity: 1;
 }
