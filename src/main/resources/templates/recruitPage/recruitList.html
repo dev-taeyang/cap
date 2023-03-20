@@ -10,6 +10,7 @@
     <title>탐험대 모집</title>
 </head>
 <body>
+    <div id="header"></div>
     <div class="boardPage-wrapper">
         <!-- 게시판 제목이 적혀있는 곳 -->
         <div class="boardPage-header">
@@ -230,5 +231,11 @@
             </button>
         </div>
     </div>
+    <div id="footer"></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $("#header").load("/src/main/resources/templates/main/header.html")
+    $("#footer").load("/src/main/resources/templates/main/footer.html")
+</script>
 </html>

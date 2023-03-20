@@ -145,6 +145,10 @@ body {
     padding-bottom: 20px;
 }
 
+.reviewImage-wrapper {
+    height: 110px;
+}
+
 .container-imageInput {
     width: 180px;
     background-color: transparent;
@@ -160,12 +164,23 @@ body {
     color: rgb(67, 136, 32);;
 }
 
+.imageInput-ReviewContainer {
+    min-height: 0;
+    width: 82px;
+    height: 82px;
+    margin-right: 4px;
+}
+
 .imgText-container {
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.plusImageText {
+    font-size: 11px;
 }
 
 .detailText-text {
