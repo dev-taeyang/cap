@@ -16,6 +16,9 @@ const nicknameRegex = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
 const birthRegex = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 /* 경고문구 */
 const $warnText = $(".warn-text");
+/* 프로필 파일첨부 */
+const file = document.querySelector('input[type=file]');
+const img = document.querySelector('.user-profile-image');
 
 let nicknameCheck = true;
 let birthCheck = true;
@@ -23,6 +26,25 @@ let saveChecks = [false, false];
 
 
 $(".modal").hide();
+
+file.addEventListener('change', function (e) {
+  // 기존의 이미지 숨김 처리
+  let reader = new FileReader();
+  // 이벤트 타겟의 url을 불러와서
+  reader.readAsDataURL(e.target.files[0]);
+  // 올리기
+  // onload - file이 로드된 후 발생하는 이벤트
+  reader.onload = function (e) {
+      // 이벤트가 발생된 타겟의 url을 출력해서 result에 담아줌
+      let result = e.target.result;
+      // result가 이미지라면 result에 담긴 이미지로 설정
+      if (result.includes('image')) {
+          img.src = `${result}`;
+      } else {
+        img.attr('src', '../../static/images/jiwook.jpg');
+      }
+  };
+});
 
 /* 닉네임 포커스 이벤트 */
 $inputNickname.on('focus', function () {
