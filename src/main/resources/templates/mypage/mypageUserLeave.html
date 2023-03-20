@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이페이지 회원탈퇴</title>
+    <link rel="stylesheet" href="../../static/css/mypage/mypageUserLeave.css" />
+    <link rel="shortcut icon" href="../../static/images/favicon.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: 'SUIT Variable', sans-serif;
+    }
+  </style>
+  <body>
+    <div id="header"></div>
+    <!-- 메뉴 -->
+    <section class="wrap">
+      <div class="all-wrapper">
+        <div class="modal-container">
+            <div class="modal">
+              <div class="warn-modal">
+                <div class="modal-content"></div>
+              </div>
+              <div class="modal-button-wrap">
+                <button class="modal-leave-button">탈퇴하기</button>
+                <button class="modal-cancel-button">취소</button>
+              </div>
+            </div>
+          </div>
+        <!-- 본 컨텐츠 -->
+        <div class="contents-container">
+          <div class="leave-wrap">
+            <div class="leave-header">
+              <div class="leave-title-wrap">
+                <h3 class="leave-title">회원탈퇴</h3>
+              </div>
+            </div>
+            <div class="leave-thx-wrap">
+              <p class="leave-thx-letter">지금까지 탐험대장을 이용해주셔서 감사합니다.</p>
+            </div>
+            <div class="leave-explain">
+              <div class="explain-box">
+                <p>
+                  <strong>
+                    <span style="background-color: rgb(247, 218, 100)"> ✅ 탈퇴 시 유의사항 </span>
+                  </strong>
+                </p>
+                <p>1) 탈퇴 즉시 모든 개인정보와 개설 및 가입한 탐험대, 보고서가 삭제됩니다.</p>
+                <p>2) 삭제된 모든 정보들은 재가입 후에도 복구가 불가합니다.</p>
+                <br />
+                <p>유의사항이 모두 확인되셨다면, '탈퇴하기' 버튼을 클릭해주세요.</p>
+                <br />
+                <p>
+                  만약, 카카오톡, 페이스북 계정으로 연동되어 로그인된 상태라면<br />프립에는 별도의
+                  정보를 저장하고 있지 않기 때문에 직접 해당 앱에서 연동을 해제해 주세요.
+                </p>
+                <ul>
+                  <li>
+                    <strong>
+                        <span style="background-color: rgb(247, 218, 100)">카카오톡</span> &gt; 전체
+                      설정 &gt; 카카오 계정 &gt; 연결된 서비스 관리 &gt; 외부 서비스
+                    </strong>
+                  </li>
+                  <li>
+                    <strong><span style="background-color: rgb(247, 218, 100)">네이버</span> &gt; 설정
+                      &gt; 마이페이지 &gt; 연결된 서비스 관리 &gt; 탐험대장 선택 &gt;
+                      삭제
+                    </strong>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <form action="" name="leave" method="">
+              <div class="leave-reason">
+                <dt class="reason-message">
+                  탈퇴 하시려는 사유를 작성해주세요. 탐험대장 서비스 운영에 많은 도움이 됩니다.
+                </dt>
+                <label>
+                  <textarea
+                    class="reason-write"
+                    name="reason"
+                    placeholder="탈퇴 사유를 작성해주세요."
+                  ></textarea>
+                </label>
+              </div>
+
+              <div class="leave-site-btns">
+                <a href="javascript:void(0)" class="go-on-btn">
+                    <div class="keep-service">
+                        서비스 계속 이용하기
+                    </div>
+                </a>
+                <button type="button" class="leave-btn">탈퇴하기</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="footer"></div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="../../static/js/mypage/mypageUserLeave.js"></script>
+  <script>
+    $('#header').load('../../templates/main/header.html');
+    $('#footer').load('../../templates/main/footer.html');
+  </script>
+</html>
