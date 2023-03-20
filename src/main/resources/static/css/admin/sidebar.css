@@ -15,7 +15,7 @@
 .sidebar__wrapper {
   width: 45px;
   height: 100vh;
-  background-color: #24232f;
+  background-color: #1d7801;
 }
 
 .sidebar__wrapper__slider{
@@ -32,7 +32,7 @@
 
 .sidebar__logo {
   width: 100%;
-  border-bottom: 2px solid #24232f;
+  border-bottom: 1.5px solid #21825b;
   display: flex;
   justify-content: center;
   align-items: center;

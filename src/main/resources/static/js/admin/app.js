@@ -9,6 +9,7 @@
 /* 사이드바 */
 const $sidebar = $('.sidebar__main');
 const $sidebarSlide = $('.sidebar__wrapper__slider');
+const $sidebarMenu = $('.sidebar__menu');
 
 /* 테이블 내용(컨텐츠) */
 const $tableContent = $('.table__content');
@@ -37,3 +38,6 @@ const clock = document.querySelector('.clock h1');
 /* 파일 썸네일교체 */
 const $storageFile = $("input[name='file']");
 const $thumbnail = $(".content__img img");
+
+/* 페이징 */
+const $pageNumber = $(".page-number ");

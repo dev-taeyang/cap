@@ -15,6 +15,17 @@ $sidebarSlide.on('click', function () {
   $sidebar.animate({ width: 'toggle' }, 500);
 });
 
+// 사이드바 마우스 오버
+$sidebarMenu.on('mouseover', function() {
+  $(this).css('background-color', '#8080800f');
+  $(this).css('font-weight','bold');
+});
+
+$sidebarMenu.on('mouseout',function() {
+  $(this).css('background-color', '');
+  $(this).css('font-weight','');
+});
+
 /*  listbox 선택 이벤트 ======================================= */
 $selectBox.on('click', function (e) {
   e.preventDefault();
@@ -172,4 +183,13 @@ confirmButton.click(function () {
 
 cancelButton.click(function () {
   modal.css('display', 'none');
+});
+
+
+/* 페이징 처리 */
+$pageNumber.each((i, e) => {
+  $(e).click(function(){
+      $pageNumber.removeClass("page-active");
+      $(e).addClass("page-active");
+  });
 });
