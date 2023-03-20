@@ -1,0 +1,294 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문의 관리</title>
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/admin/default.css" />
+    <link rel="stylesheet" href="/static/css/admin/sidebar.css" />
+    <link rel="stylesheet" href="/static/css/admin/content.css" />
+    <link rel="stylesheet" href="/static/css/admin/status.css" />
+    <link rel="stylesheet" href="/static/css/admin/enquiry-modal.css" />
+  </head>
+  <body>
+    <section class="main">
+      <!-- content.css -->
+      <section class="content">
+        <div class="content__header">
+          <h2>문의 관리</h2>
+          <a href="javascript:void(0)"> 로그아웃 </a>
+        </div>
+        <main class="content__main">
+          <div class="table__container">
+            <!-- status.css -->
+            <section class="trip-status">
+              <ul class="status-list">
+                <li class="status-list-item">
+                  <div class="status-item-wrapper">
+                    <svg
+                      width="36"
+                      height="36"
+                      viewBox="0 0 36 36"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
+                      <path
+                        d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
+                        fill="#11CA2D"></path>
+                      <path
+                        d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
+                        fill="#11CA2D"></path>
+                    </svg>
+                    <div class="status-item-name">답변 대기중</div>
+                  </div>
+                  <div class="status-item-count">
+                    <a href="">0</a>
+                  </div>
+                </li>
+                <li class="status-list-item">
+                  <div class="status-item-wrapper">
+                    <div class="problem-icon-wrapper">
+                      <div class="problem-icon">
+                        <div>
+                          <div>
+                            <span>
+                              <svg
+                                width="36"
+                                height="36"
+                                viewBox="0 0 36 36"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
+                                <path
+                                  d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
+                                  fill="#11CA2D"></path>
+                                <path
+                                  d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
+                                  fill="#11CA2D"></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="status-item-name">답변 완료</div>
+                  </div>
+                  <div class="status-item-count">
+                    <a href="">0</a>
+                  </div>
+                </li>
+                <li class="status-list-item">
+                  <div class="status-item-wrapper">
+                    <div class="problem-icon-wrapper">
+                      <div class="problem-icon">
+                        <div>
+                          <div>
+                            <span>
+                              <svg
+                                width="36"
+                                height="36"
+                                viewBox="0 0 36 36"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" rx="12" fill="#EDFEE0"></rect>
+                                <path
+                                  d="M9.75 12.75H24.25C25.3546 12.75 26.25 13.6454 26.25 14.75V24.25C26.25 25.3546 25.3546 26.25 24.25 26.25H11.75C10.6454 26.25 9.75 25.3546 9.75 24.25V12.75Z"
+                                  fill="#11CA2D"></path>
+                                <path
+                                  d="M9.75 12.5C9.75 11.3954 10.6454 10.5 11.75 10.5H16.125L18 12.75H9.75V12.5Z"
+                                  fill="#11CA2D"></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="status-item-name">총 문의 개수</div>
+                  </div>
+                  <div class="status-item-count">
+                    <a href="">0</a>
+                  </div>
+                </li>
+                <div class="clock">
+                  <h2>현재시간</h2>
+                  <h1></h1>
+                </div>
+              </ul>
+            </section>
+            <div class="table__box">
+              <div class="table__search__form">
+                <button
+                  id="delete-button"
+                  class="button__type_2 button__color__red"
+                  style="width: 120px">
+                  문의내역 삭제
+                </button>
+                <!-- default.css -->
+                <div class="search-box-wrap">
+                  <div class="select-box">
+                    <button class="listbox-selecter">검색조건 선택</button>
+                    <ul class="listbox displayNone" id="listbox">
+                      <li><button class="list">전체</button></li>
+                      <li><button class="list">검색조건1</button></li>
+                      <li><button class="list">검색조건2</button></li>
+                    </ul>
+                    <input type="text" name="searchType" style="display: none" value="all" />
+                  </div>
+                  <div class="search-box">
+                    <input
+                      type="text"
+                      name="userId"
+                      class="input__type_1 search-input"
+                      placeholder="검색" />
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        enable-background="new 0 0 32 32"
+                        id="Glyph"
+                        version="1.1"
+                        viewBox="0 0 32 32"
+                        xml:space="preserve">
+                        <path
+                          d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"
+                          id="XMLID_223_" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <table class="table">
+                <tr class="table__header">
+                  <th class="content_check">
+                    <label class="check-label">
+                      <input type="checkbox" id="checkAll" />
+                    </label>
+                  </th>
+                  <th class="content__id">문의번호</th>
+                  <th>유저 아이디</th>
+                  <th>이메일</th>
+                  <th>문의 등록날짜</th>
+                  <th>답변완료</th>
+                  <th></th>
+                </tr>
+                <tr class="table__content">
+                  <td>
+                    <label class="check-label">
+                      <input type="checkbox" name="check" />
+                    </label>
+                  </td>
+                  <td class="content__id">1</td>
+                  <td>kmg2331</td>
+                  <td>kmg2331@gmail.com</td>
+                  <td>2023-01-01</td>
+                  <!-- default.css -->
+                  <td class="enquiryOk">답변완료</td>
+                  <td>
+                    <button class="content__detail__btn button__type_2 button__color__green">
+                      상세보기
+                    </button>
+                  </td>
+                </tr>
+                <tr class="table__content">
+                  <td>
+                    <label class="check-label">
+                      <input type="checkbox" name="check" />
+                    </label>
+                  </td>
+                  <td class="content__id">1</td>
+                  <td>kmg2331</td>
+                  <td>kmg2331@gmail.com</td>
+                  <td>2023-01-01</td>
+                  <!-- default.css -->
+                  <td class="enquiryNo">답변대기</td>
+                  <td>
+                    <button class="content__detail__btn button__type_2 button__color__green">
+                      상세보기
+                    </button>
+                  </td>
+                </tr>
+              </table>
+              <!-- default.css > pagenation -->
+              <div class="pagenation">
+                <a href="javascript:void(0)">1</a>
+                <a href="javascript:void(0)">2</a>
+                <a href="javascript:void(0)">3</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+      <!-- 모달창 들어가야할 곳 -->
+      <!-- 추후 타임리프로 불러와야 함 -->
+      <div id="confirm-modal" style="display: none">
+        <div class="confirm_modal_content">
+          <p>정말로 삭제하겠습니까?</p>
+          <div class="confirm_btn">
+            <button id="confirm-delete">확인</button>
+            <button id="cancel-delete">취소</button>
+          </div>
+        </div>
+      </div>
+      <section class="modal-stage" style="display: none">
+        <section class="modal">
+          <div class="modal__header">
+            <h3 class="modal__title">문의 상세보기</h3>
+            <a class="modal-close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                data-name="Capa 1"
+                id="Capa_1"
+                viewBox="0 0 20 19.84">
+                <path
+                  d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z" />
+              </svg>
+            </a>
+          </div>
+          <form action="">
+            <main class="modal__main">
+              <div class="modal__profile__top">
+                <h4>회원정보</h4>
+                <div class="user__profile">
+                  <h5>아이디</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="example1234" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                  <h5>이메일</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="example@gmail.com" readonly="true" />
+                  </div>
+                </div>
+                <div class="user__profile">
+                  <h5>전화번호</h5>
+                  <div class="user__profile__input">
+                    <input type="text" name="" value="01012341234" readonly="true" />
+                  </div>
+                </div>
+              </div>
+              <div class="modal__profile__bottom">
+                <h4>테스트 문의 제목</h4>
+                <textarea cols="30" rows="10" readonly="true">테스트 문의 내용</textarea>
+              </div>
+              <div class="user__profile__button">
+                <button id="completeBtn" class="button__type_2 button__color__green">
+                  답변완료
+                </button>
+              </div>
+            </main>
+          </form>
+        </section>
+      </section>
+    </section>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="/static/js/admin/app.js"></script>
+  <script src="/static/js/admin/events.js"></script>
+</html>
