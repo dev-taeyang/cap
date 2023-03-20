@@ -40,9 +40,9 @@
     padding-bottom: 24px;
 }
 
-.boardDetail-headSectionWrapper > * {
-    width: 50%;
-    max-width: 375px;
+.boardDetail-reviewSection {
+    display: block;
+    padding: 0 20px 24px;
 }
 
 
@@ -54,19 +54,25 @@
     text-align: center;
 }
 
+.RecruitImage-section {
+    width: 50%;
+    max-width: 375px;
+}
+
 .presentationImage-content {
     position: relative;
     display: block;
     overflow: hidden;
     margin: 0;
     padding: 0;
-    border-radius: 5px;
 }
 
 .introduceImage-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: fill;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 
@@ -82,6 +88,48 @@
     position: relative;
     padding: 0px 0px 12px;
     border-bottom: initial;
+}
+
+
+.OtherReviewSection-container {
+    padding-top: 24px;
+    border-top: 1px solid rgb(244, 244, 244);
+    border-bottom: 1px solid rgb(244, 244, 244);
+    background-color: rgb(250, 250, 250);
+    overflow: hidden;
+}
+
+.OtherReviewSection-wrapper {
+    margin-bottom: 12px;
+    padding: 0px 18px;
+}
+
+.OtherReview-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.slick-track {
+    opacity: 1;
+    width: 3172px;
 }
 
 .OtherMemberCount-wrapper {
@@ -110,6 +158,13 @@
     margin: 10px 10px;
 }
 
+.OtherMember-profileWrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
 .OtherMember-profile {
     overflow: hidden;
 }
@@ -123,6 +178,69 @@
     font-size: 14px;
     font-weight: 600;
 }
+
+.profile-NicknameWrapper {
+    margin-left: 9px;
+}
+
+.Otherprofile-Nickname {
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.42px;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+.ReviewSection-spaceP {
+    color: rgb(170, 170, 170);
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.36px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}
+
+.OtherMember-Review {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: rgb(51, 51, 51);
+    letter-spacing: -0.42px;
+    margin-bottom: 22px;
+    word-break: break-all;
+    font-size: 14px;
+    line-height: 22px;
+    height: 66px;
+}
+
+.sliderButton {
+    position: absolute;
+    border-radius: 50%;
+    top: 40%;
+    cursor: pointer;
+    z-index: 1;
+    width: 44px !important;
+    height: 44px !important;
+    background-color: white;
+
+}
+
+.slider-prev {
+    left: -25px;
+    transform: rotate(180deg)
+}
+
+.slider-after {
+    right: -25px;
+}
+
+
+
 
 .replyAction-wrapper {
     float: right;
@@ -180,6 +298,7 @@
 .actionSection-title {
     font-size: 16px;
     cursor: pointer;
+    color: #5e5e5ead;
 }
 
 .actionSection-title:first-child {
@@ -250,6 +369,7 @@
     flex-flow: column;
     -webkit-box-pack: center;
     justify-content: center;
+    width: 78%;
 }
 
 .Profile-MemberNameWrapper {
@@ -539,14 +659,14 @@
 }
 
 .reviewSection-title {
-    width: 662px;
+    width: 100%;
     line-height: 30px;
     font-size: 30px;
     font-weight: bold;
 }
 
 .actionReviewSection {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
@@ -576,27 +696,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.sliderButton {
-    position: absolute;
-    border: 1px solid #e5e2e285;
-    border-radius: 50%;
-    top: 40%;
-    cursor: pointer;
-    z-index: 1;
-    width: 44px !important;
-    height: 44px !important;
-    background-color: white;
 
-}
-
-.slider-prev {
-    left: 3px;
-    transform: rotate(180deg)
-}
-
-.slider-after {
-    right: 3px;
-}
 
 .MemberReview-list {
     position: relative;
