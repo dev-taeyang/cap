@@ -1,0 +1,83 @@
+.sidebar {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar__main {
+  background-color: #ffffff;
+  color: #24232f;
+  width: 246px;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__wrapper {
+  width: 45px;
+  height: 100vh;
+  background-color: #24232f;
+}
+
+.sidebar__wrapper__slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 21px;
+}
+
+.sidebar__wrapper__slider svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar__logo {
+  width: 100%;
+  border-bottom: 2px solid #24232f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar__logo img {
+  height: 61px;
+  margin: 0;
+}
+
+.sidebar__menu-nav {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  gap: 8px;
+  flex: 1;
+}
+
+.sidebar__menu {
+  display: flex;
+  margin: 0 14px;
+  height: 60px;
+  font-weight: 300;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar__menu span {
+  margin-left: 8px;
+}
+.sidebar__menu svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar__menu svg polygon {
+  fill: #24232f;
+}
+
+.sidebar__menu__name{
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__menu__name div svg path {
+  fill: #24232f;
+}
