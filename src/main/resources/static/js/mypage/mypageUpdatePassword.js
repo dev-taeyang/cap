@@ -40,8 +40,8 @@ $passwordInput.on('blur', function () {
   let value = $(this).val();
 
   if (!value) {
-    $regexText.css('color', 'rgb(222, 28, 34)');
-    $passwordInput.css('border', '1px solid rgb(222, 28, 34)');
+    $regexText.css('color', 'rgb(153, 153, 153)');
+    $passwordInput.css('border', '1px solid rgb(238, 238, 238)');
     passwordCheck = false;
     passwordCheckAll[1] = passwordCheck;
     return;

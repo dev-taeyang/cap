@@ -1,0 +1,238 @@
+
+/*메뉴*/
+.wrap{
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.all-wrapper{
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.contents-container{
+    padding-left: 4%;
+    width: 100%;
+}
+
+.leave-header {
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.leave-title-wrap {
+    padding: 50px 20px 20px;
+    margin: 0px auto;
+    max-width: 768px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+
+
+.leave-title{
+    font-size: 20px;
+    margin: 0;
+    letter-spacing: -0.05em;
+}
+
+.leave-thx-wrap {
+    width: auto;
+    height: 56px;
+    margin: 0;
+    padding: 0 20px;
+}
+
+.leave-thx-letter{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100%;
+    padding: 16px 0px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.leave-explain{
+    background-color: #f2f2f2;
+    line-height: 18px;
+    border-radius: 4px;
+}
+
+.explain-box{
+    width: 100%;
+    min-height: 84px;
+    padding: 20px;
+    background-color: rgb(239, 247, 255);
+    color: rgb(74, 74, 74);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.leave-reason{
+    margin-top: 20px;
+}
+
+.reason-message{
+    padding: 15px 0;
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #222624;
+    word-break: keep-all;
+}
+
+.reason-write{
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 13px 19px;
+    line-height: 20px;
+    font-size: 15px;
+    color: #808080;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.reason-write:focus {
+    border: 1px solid black;
+}
+
+textarea::placeholder {
+    color: #B3B3B3;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+    font-size: 15px;
+}
+
+.leave-site-btns{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.keep-service {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    background-color: #009a3e;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: -0.05em;
+}
+
+.leave-btn{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 8px;
+    color: #fff;
+    background-color: #4d4d4d;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+  
+  .modal {
+    margin: 0px 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4px;
+    background-color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .warn-modal {
+    padding: 20px;
+    font-size: 13px;
+    word-break: keep-all;
+    line-height: 22px;
+  }
+  
+  .modal-content {
+    font-size: 13px;
+    text-align: center;
+    line-height: 22px;
+  }
+  
+  .modal-button-wrap {
+    display: flex;
+    border-top: 1px solid rgb(230, 230, 230);
+  }
+  
+  .modal-leave-button {
+    width: 100%;
+    height: auto;
+    line-height: normal;
+    padding: 16px 32px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0px;
+    color: rgb(255, 102, 102);
+    font-size: 14px;
+    font-weight: bold;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    border-left: 1px solid rgb(230, 230, 230);
+  }
+  
+  .modal-cancel-button {
+    width: 100%;
+    height: auto;
+    line-height: normal;
+    padding: 16px 32px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+  }
+  
+  .modal-leave-button:hover,
+  .modal-cancel-button:hover {
+    background-color: rgb(245, 250, 255);
+  }
