@@ -246,7 +246,7 @@
     float: right;
 }
 
-.replyAction-wrapper > span {
+.replyAction-wrapper span {
     color: #d1cfcf;
     cursor: pointer;
 }
@@ -296,14 +296,15 @@
 }
 
 .actionSection-title {
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
     color: #5e5e5ead;
 }
 
-.actionSection-title:first-child {
+.firstActionSection {
     margin-right: 27px;
 }
+
 
 .actionSection-title:hover {
     color: #2c5815;
@@ -453,16 +454,12 @@
     width: auto;
 }
 
-/* 원정대 추가 정보들 */
+
+/* 탐험대 추가 정보들 */
 .boardDetail-sectionContainer {
     padding: 40px 0px;
     border-top: 1px solid rgb(238, 238, 238);
     border-bottom: none;
-}
-
-.reviewStar-section {
-    padding-top: 10px;
-    height: 100%;
 }
 
 .Article-header {
@@ -470,12 +467,30 @@
     padding: 0px;
 }
 
+
 .Article-title {
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;
     margin: 0px;
 }
+
+.reviewDetail-point-wrapper {
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .reviewDetail-star {
+    width: 27px;
+  }
+
+  .reviewDetail-point {
+    margin-left: 5px;
+    color: #5f5f5f;
+    height: 25px;
+  }
 
 .ArticleInfoSection-infoContainer {
     margin: 0px;
@@ -494,6 +509,11 @@
 
 .ArticleInfoSection-infoContainer > div > dd {
     margin: 0px;
+    font-weight: 500;
+}
+
+.InfoRecruitDetail-section > p {
+    font-weight: 500;
 }
 
 .placeMapSection-container > div:last-child {
@@ -543,49 +563,6 @@
     font-weight: 400;
     line-height: 22px;
 }
-
-/* reviewDetail */
-
-.Article-descriptionContainer {
-    margin: 0px 0px 10px;
-}
-
-.Article-description {
-    color: rgb(51, 51, 51);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22px;
-}
-
-.reviewSummary-Average {
-    margin-left: 10px;
-}
-
-.reviewSummary-wrapper {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.reviewPoint-section {
-    position: relative;
-    top: 4px;
-    font-size: 20px;
-    font-weight: 600;
-    margin-right: 10px;
-}
-
-.reviewStar-wrapper {
-    display: flex;
-    flex-flow: row nowrap;
-}
-
-.reviewStar-wrapper img {
-    margin-right: 4px;
-    width: 33px;
-}
-
 
 
 .floatActionBar-wrapper {
@@ -638,7 +615,48 @@
     flex: 0 0 auto;
 }
 
-/* 리뷰 */
+
+/* reviewDetail */
+
+.Article-descriptionContainer {
+    margin: 0px 0px 10px;
+}
+
+.Article-description {
+    color: rgb(51, 51, 51);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.reviewSummary-Average {
+    margin-left: 10px;
+}
+
+.reviewSummary-wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reviewPoint-section {
+    position: relative;
+    top: 4px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.reviewStar-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.reviewStar-wrapper img {
+    margin-right: 4px;
+    width: 33px;
+}
 
 .reviewHeader {
     line-height: 16px;
@@ -665,88 +683,18 @@
     font-weight: bold;
 }
 
-.actionReviewSection {
-    font-size: 20px;
-}
-
-
-.MemberReview-SectionContainer {
-    height: 220px;
-    position: relative;
-    padding-top: 24px;
-    border-top: 1px solid rgb(244, 244, 244);
-    border-bottom: 1px solid rgb(244, 244, 244);
-    background-color: rgb(250, 250, 250);
-    overflow: hidden;
-}
-
-.MemberReview-slider {
-    margin-bottom: 12px;
-    padding: 0px 18px;
-    display: block;
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-
-.MemberReview-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-
-.MemberReview-wrapper {
-    display: flex;
-}
-
-.CoverReview-wrapper {
-    margin: 20px 0px 10px 35px;
-    width: 200px;
-}
-
-
-
-.spaceReview-section {
-    color: rgb(170, 170, 170);
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: -0.36px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-bottom: 10px;
-}
-
-.Cover-MemberReview {
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    color: rgb(51, 51, 51);
-    letter-spacing: -0.42px;
-    margin-bottom: 22px;
-    word-break: break-all;
-    font-size: 14px;
-    line-height: 22px;
-    height: 66px;
-}
-
 .ReviewSection-profile {
     margin: 0;
 }
 
-.ReviewSection-image {
-    width: 40px;
+.plusImages-wrapper {
+    display: flex;
+    margin-top: 20px;
+}
+
+.plusImages {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    cursor: pointer;
 }

@@ -45,8 +45,12 @@
                     </span>
                 </div>
                 <div class="infoSection-actionWrapper">
-                    <span class="actionSection-title actionReviewSection">수정</span>
-                    <span class="actionSection-title actionReviewSection">삭제</span>
+                    <a href="">
+                        <span class="actionSection-title firstActionSection">수정</span>
+                    </a>
+                    <a href="">
+                        <span class="actionSection-title">삭제</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -55,7 +59,7 @@
             <div class="boardDetailPage-contentContainer">
                 <!-- 컨셉 이미지와 작성자의 정보가 나오는 섹션 -->
                 <section class="boardDetail-headSectionWrapper boardDetail-reviewSection">
-                    <!-- 원정대 소개 사진들이 나오는 곳 -->
+                    <!-- 원정대 소개 메인 사진이 나오는 곳 -->
                     <div class="presentationImage-wrapper">
                         <div class="presentationImage-content">
                             <div class="introduceImage-wrapper">
@@ -73,7 +77,15 @@
                                 <h2 class="Article-title">결과 소개</h2>
                             </hgroup>
                         </header>
+                        <div class="reviewDetail-point-wrapper">
+                            <div>
+                                <img class="reviewDetail-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                            </div>
+                            <!-- 리뷰 만들때 준 별점이 들어갈 곳 -->
+                            <div class="reviewDetail-point">5</div>
+                        </div>
                         <div class="Article-descriptionContainer">
+                            <!-- 리뷰 작성한 내용이 들어갈 곳 -->
                             <div class="Article-description">
                                 작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.
                                 작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.작성자가 리뷰 내용으로 작성한 내용이 들어갑니다.
@@ -82,6 +94,24 @@
                     </article>
                 </section>
                 <section class="boardDetail-sectionContainer">
+                    <article>
+                        <header class="Article-header">
+                            <hgroup>
+                                <h2 class="Article-title">추가 사진들</h2>
+                            </hgroup>
+                        </header>
+                        <div class="plusImages-wrapper">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                            <img class="plusImages" src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg" alt="test">
+                        </div>
+                    </article>
+                </section>
+                <section class="boardDetail-sectionContainer" style="display: none;">
                     <article>
                         <!-- 별점이 나오는 부분 -->
                         <div></div>
@@ -122,8 +152,23 @@
                             </div>
                         </div>
                     </article>
-                </section>
+                </section> 
             </div>
+        </div>
+    </div>
+    <div class="modal-Image" style="display: none;">
+        <div>
+            <div></div>
+            <button type="button" class="arrow-direction">
+                <span>
+                    
+                </span>
+            </button>
+            <button type="button" class="arrow-direction">
+                <span>
+
+                </span>
+            </button>
         </div>
     </div>
     <div id="footer"></div>

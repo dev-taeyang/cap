@@ -128,7 +128,7 @@ button {
 }
 
 .description-wrapper {
-    margin-top: 18px;
+    margin-top: 10px;
     margin-bottom: 21px;
     letter-spacing: -0.4px;
 }
@@ -230,9 +230,10 @@ button {
     background-size: cover;
 }
 
-.boardLocation-wrapper {
+.boardCategory-wrapper {
     margin-left: 2px;
     margin-top: 10px;
+    color: #80808099;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -391,6 +392,11 @@ button {
       font-size: 12px;
       border-radius: inherit;
   }
+
+  .review-category-name {
+    margin-bottom: 8px;
+    color: #808080b3;
+  }
   
   .review-image-content {
     margin-bottom: 10px;
@@ -402,6 +408,21 @@ button {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+  }
+
+  .review-point-wrapper {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+  }
+
+  .review-star {
+    width: 18px;
+  }
+
+  .review-point {
+    margin-left: 5px;
+    color: #5f5f5f;
   }
 
 
