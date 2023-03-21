@@ -698,3 +698,219 @@
     margin-right: 10px;
     cursor: pointer;
 }
+
+/* 모달창 관련 */
+
+.modal-Image {
+    -webkit-align-items: center;
+    -moz-box-sizing: border-box;
+    -webkit-justify-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    height: 100%;
+    justify-content: center;
+    left: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 2001;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-status {
+    padding: 0;
+    background-color: rgba(0,0,0,.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-status > div {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.modalContent-wrapper {
+    position: relative !important;
+}
+
+.modal-header {
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.header-status {
+    display: inline-block;
+    position: fixed;
+    left: 20px;
+    right: 0;
+    top: 54px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    z-index: 99;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    top: 0px;
+    vertical-align: bottom;
+    z-index: 1;
+    height: 40px;
+    margin-right: -10px;
+    padding: 10px;
+    width: 40px;
+    fill: white;
+}
+
+.close-status {
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    padding: 8px;
+    background-color: #fff;
+}
+
+.close-status > span {
+    display: flex;
+    height: 100%;
+}
+
+.figure-status {
+    margin: 0px !important;
+}
+
+.image-in-modal {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-transition: opacity 0.3s !important;
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    user-select: none !important;
+    opacity: 1 !important;
+    transition: opacity 0.3s !important;
+}
+
+.image-status {
+    width: 100%;
+}
+
+.modal-footer {
+    -moz-box-sizing: border-box;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    box-sizing: border-box;
+    color: white;
+    cursor: auto;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    left: 0px;
+    line-height: 1.3;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    height: 40px;
+}
+
+.footer-status {
+    position: fixed;
+    top: 54px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0;
+}
+
+.footer-count {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85em;
+    padding-left: 1em;
+}
+
+.count-status {
+    color: #fff;
+    padding: 0;
+}
+
+
+.left-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    user-select: none;
+    fill: white;
+    height: 120px;
+    left: 10px;
+    margin-top: -60px;
+    width: 40px;
+}
+
+.right-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    user-select: none;
+    fill: white;
+    height: 120px;
+    right: 10px;
+    margin-top: -60px;
+    width: 40px;
+}
+
+.arrow-direction {
+    width: 50px;
+    height: 50px;
+    top: calc(50% + 34px);
+}
