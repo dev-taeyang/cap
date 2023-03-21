@@ -37,6 +37,7 @@ const $MakeInput = $('input[type="text"], .CategoryItem, .ButtonItem, .detailTex
 // 카테고리 체크
     $Category.each((i, e) => {
     $(e).click(function(){
+        console.log($Category);
         $Category.removeClass("CategoryActive");
         $(e).addClass("CategoryActive");
         $Categoryradio[i].checked = true;

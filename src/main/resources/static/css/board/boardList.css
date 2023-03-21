@@ -175,11 +175,11 @@ button {
 
 /* 모집 게시판 관련 */
 
-.categoryItem-list {
+.CategoryItem-list {
     display: flex;
 }
 
-.categoryItem {
+.CategoryItem {
     width: 115px;
     display: flex;
     align-items: flex-end;
@@ -194,15 +194,15 @@ button {
     letter-spacing: -0.48px;
     position: relative;
     margin-right: 10px;
+    opacity: 0.5;
     cursor: pointer;
 }
 
-.categoryItem span {
+.CategoryItem span {
     z-index: 1;
 }
 
-.category-background {
-    opacity: 0.5;
+.Category-background {
     background-color: rgb(17, 17, 17);
     height: 100%;
     width: 100%;
@@ -221,11 +221,11 @@ button {
     background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_17_p');
     background-size: cover;
 }
-.category-Water {
+.category-Tour {
     background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_8_p");
     background-size: cover;
 }
-.category-Mountain {
+.category-Leisure {
     background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_2_p");
     background-size: cover;
 }
@@ -238,6 +238,14 @@ button {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.CategoryItem:hover {
+  opacity: 1;
+}
+
+.CategoryActive {
+  opacity: 1;
 }
 
 
