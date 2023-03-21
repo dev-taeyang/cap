@@ -4,15 +4,35 @@ li {
 }
 
 .modal {
-  width: 900px;
+  width: 650px;
+  height: 600px;
+  overflow-y: scroll;
   margin: 0 auto;
   padding: 12px;
   background-color: #fcfcfc;
-  border: 1px solid #3b4e7d;
+  border: 1px solid #8080806e;
   border-radius: 12px;
   opacity: 0; /* 처음에 투명도 0으로 설정 */
   animation: fade-in 0.4s ease-in-out forwards; /* 애니메이션 효과 적용 */
 }
+
+/*===================== 스크롤 설정 ============================*/
+
+.modal::-webkit-scrollbar {
+  width: 13px;  /* 스크롤바의 너비 */
+}
+.modal::-webkit-scrollbar-thumb {
+  height: 20%; /* 스크롤바의 길이 */
+  background: rgb(172, 172, 172); /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: #a5a4a447;  /*스크롤바 뒷 배경 색상*/
+}
+
+/* ============================================================= */
+
 
 @keyframes fade-in {
   from {
@@ -29,7 +49,8 @@ li {
   display: flex;
   justify-content: space-between;
   margin: 12px;
-  border-radius: 12px;
+  border-bottom: 1px solid #80808061;
+  padding: 10px;
 }
 
 .modal__header a {
@@ -142,7 +163,9 @@ li {
 }
 
 .content__list span {
-  margin-left: 40px;
+  margin-left: 20px;
+  display: block;
+  width: 80px;
 }
 
 .user__profile__input input:focus {
