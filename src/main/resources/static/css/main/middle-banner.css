@@ -1,0 +1,87 @@
+/* header-banner.html */
+
+.middle-whole-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.middle-header-banner-wrap {
+    margin-bottom: 24px;
+    position: relative;
+    width: 768px;
+    left: -21px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.middle-header-banner {
+    width: 6144px;
+    transition: transform 0.3s;
+}
+
+.middle-header-banner img {
+    width: 768px;
+    height: 100px;
+    float: left;
+}
+
+.before-button {
+    z-index: 1;
+    display: block;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    padding: 0;
+    transform: rotate(180deg) translate(0px, 50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.before-button:before {
+    content: '←';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+.follow-button {
+    display: block;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.follow-button:before {
+    content: '→';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
