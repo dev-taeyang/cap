@@ -90,9 +90,9 @@
 /* ------------------------------------------------------------------------------- */
 
 /* 영준이 꺼 보드리스트*/
-.boardList_wrapper {
-    width: 100%;
-    height: 100%;
+.boardList-wrapper {
+    width: auto;
+    height: auto;
     transition: opacity 200ms ease-in-out 0s;
     display: block;
     opacity: 1;
@@ -100,7 +100,7 @@
     min-height: 1px;
 }
 
-.view_boardList_wrapper {
+.view-boardList-wrapper {
     display: flex;
     flex-wrap: wrap;
     -webkit-box-pack: justify;
@@ -109,44 +109,44 @@
 }
 
 /* 위에서 2개만 보더 탑 주기*/
-.view_boardList_wrapper > :nth-child(1) {
+.view-boardList-wrapper > :nth-child(1) {
     border-top: 1px solid rgb(238, 238, 238);
 }
-.view_boardList_wrapper > :nth-child(2) {
+.view-boardList-wrapper > :nth-child(2) {
     border-top: 1px solid rgb(238, 238, 238);
 }
 
-.view_boardList_wrapper > div {
+.view-boardList-wrapper > div {
     max-width: 385px;
     width: 100%;
     padding: 30px 20px;
     border-bottom: 1px solid rgb(238, 238, 238);
-    border-left: 1px solid rgb(238, 238, 238);
-    margin-left: -1px;
+    border-right: 1px solid rgb(238, 238, 238);
+    margin-right: -1px;
 }
 
-.profile_wrapper {
+.profile-wrapper {
     margin-bottom: 15px;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
 
-.MemberProfile_wrapper {
+.MemberProfile-wrapper {
     display: flex;
 }
 
-.MemberProfileImg_wrapper {
+.MemberProfileImg-wrapper {
     width: 36px;
     height: 36px;
     margin-right: 10px;
 }
 
-.Image_wrapper {
+.Image-wrapper {
     min-height: 1px;
 }
 
-.Image_style {
+.Image-style {
     display: initial;
     border-radius: 36px;
     width: 100%;
@@ -154,7 +154,7 @@
     object-fit: cover;
 }
 
-.MemberProfileText_wrapper {
+.MemberProfileText-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -173,40 +173,50 @@
     color: rgb(142, 151, 163);
 }
 
-.boardImg_wrapper {
+.boardImg-wrapper {
+    cursor: pointer;
     height: 344px;
     border-radius: 20px;
     overflow: hidden;
     background-color: rgb(242, 243, 246);
-    cursor: pointer;
     backface-visibility: hidden;
     transform: translate3d(0px, 0px, 0px);
 }
 
-.boardImg_wrapper div {
+.boardImg-wrapper div {
     padding-bottom: initial;
     height: 100%;
 }
 
-.introduceImage_wrapper img {
+.introduceImage-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
 
-.description_wrapper {
-    margin-top: 18px;
+.boardCategory-wrapper {
+    margin-left: 2px;
+    margin-top: 10px;
+    color: #80808099;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.description-wrapper {
+    margin-top: 10px;
     margin-bottom: 21px;
     letter-spacing: -0.4px;
 }
 
-.description_detail {
+.description-detail {
     font-size: 16px;
     color: rgb(78, 89, 104);
     white-space: pre-line;
 }
 
-.TextLine_Description {
+.TextLine-Description {
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -215,14 +225,12 @@
     max-height: 48px;
 }
 
-.Description_ExpandButton {
+.Description-ExpandButton {
     padding: 0px;
     color: rgb(171, 182, 196);
-    border: none;
-    background-color: white;
 }
 
-.actionGroup_wrapper {
+.actionGroup-wrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -232,42 +240,48 @@
     color: rgb(78, 89, 104);
 }
 
-.actionGroup_wrapper span {
+.actionGroup-wrapper span {
     margin-left: 8px;
 }
 
-.actionGroup_reply {
+.actionGroup-reply {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
 }
 
-.view_boardList_wrapper .description_space {
+.view-boardList-wrapper .description-space {
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
 /* 리뷰 관련 CSS */
 
-.reviewSummary_wrapper {
+.view-boardList-wrapper .description-space {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.reviewSummary-wrapper {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.reviewStar_wrapper {
+.reviewStar-wrapper {
     display: flex;
     flex-flow: row nowrap;
 }
 
-.reviewStar_wrapper img {
-    margin-right: 1px;
+.reviewStar-wrapper img {
+    margin-right: 2px;
+    width: 16px;
 }
 
-.reviewSummary_Average {
-    margin: 0px 0px 0px 8px;
-    font-size: 16px;
+.reviewSummary-Average {
+    margin: 0px 8px 0px 0px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 24px;
 }
@@ -279,4 +293,170 @@
     font-weight: 400;
     line-height: 13px;
     margin: 12px 2px 0px;
+}
+
+.mypage-review-list-wrap {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    flex-flow: row wrap;
+    border-bottom: 1px solid rgb(238, 238, 238);
+  }
+  
+  .mypage-review-list {
+    margin-right: 5px;
+      margin-left: 5px;
+    -webkit-box-flex: 1;
+    flex: 0 1 246px;
+      width: 246px;
+    padding: 0;
+    display: flex;
+      flex-flow: column nowrap;
+      background-color: white;
+      margin-bottom: 30px;
+  }
+  
+  .mypage-review-list:nth-child(3n) {
+    margin-right: 0px;
+  }
+  
+  .review-detail {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .review-image-container {
+    height: 0px;
+    position: relative;
+    width: 100%;
+    padding-top: 79.2079%;
+  }
+  
+  .review-image-wrap {
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+  }
+  
+  .review-image {
+    display: flex;
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .review-image-content-wrap {
+    display: flex;
+      flex-flow: column nowrap;
+      line-height: 12px;
+      padding: 20px;
+      background-color: white;
+      font-size: 12px;
+      border-radius: inherit;
+  }
+
+  .review-category-name {
+    margin-bottom: 8px;
+    color: #808080b3;
+  }
+  
+  .review-image-content {
+    margin-bottom: 10px;
+      height: 29px;
+      line-height: normal;
+      font-size: 20px;
+      font-weight: bold;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+  }
+
+  .review-point-wrapper {
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+  }
+
+  .review-star {
+    width: 18px;
+  }
+
+  .review-point {
+    margin-left: 5px;
+    color: #5f5f5f;
+  }
+
+
+  /* 카테고리 */
+
+.ButtonItem-list {
+    display: flex;
+    justify-content: center;
+}
+
+.CategoryItem {
+    width: 115px;
+    height: 46px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 70px;
+    color: white;
+    display: flex;
+    font-weight: 600;
+    opacity: 0.4;
+}
+
+.CategoryItem:last-child {
+    margin: 0;
+}
+
+.ButtonItem {
+    height: 46px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.category-Adventure {
+    background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/category-outdoor_gch4e1');
+    background-size: cover;
+}
+
+.category-Horror {
+    background-image: url('https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_17_p');
+    background-size: cover;
+}
+.category-Tour {
+    background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_8_p");
+    background-size: cover;
+}
+.category-Leisure {
+    background-image: url("https://res.cloudinary.com/frientrip/image/upload/c_fill,dpr_2,f_auto,h_77,q_auto,w_162/v1/categories/display_category_2_p");
+    background-size: cover;
+}
+
+.summaryButtton {
+    margin-right: 7.9px;
+    width: 114px;
+}
+
+.ButtonItem:hover {
+    border-color: rgb(67, 136, 32);
+    color: rgb(67, 136, 32);
+}
+
+.CategoryItem:hover {
+    opacity: 1;
+}
+
+.CategoryActive {
+    opacity: 1;
 }

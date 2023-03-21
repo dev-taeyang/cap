@@ -107,6 +107,10 @@ body {
     height: 210px;
 }
 
+.review-section {
+    height: 0;
+}
+
 .cancelImage {
     text-align: center;
     display: none;
@@ -120,6 +124,13 @@ body {
     color: white;
     background-color: #00000094;
     cursor: pointer;
+}
+
+.reviewCancel {
+    width: 14px;
+    height: 14px;
+    left: 37px;
+    font-size: 4px;
 }
 
 .text-detail {
@@ -170,6 +181,7 @@ body {
     width: 82px;
     height: 82px;
     margin-right: 4px;
+    background-size: 100%;
 }
 
 .imgText-container {

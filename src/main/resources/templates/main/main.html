@@ -30,6 +30,21 @@
           <!-- 배너 -->
           <div id="top-banner"></div>
           <div style="margin-top: 30px"></div>
+          <div class="ButtonItem-list">
+            <button type="button" class="CategoryItem category-Adventure">
+                <span>모험</span>
+            </button>
+            <button type="button" class="CategoryItem category-Horror">
+                <div>공포</div>
+            </button>
+            <button type="button" class="CategoryItem category-Tour">
+                <div>관광</div>
+            </button>
+            <button type="button" class="CategoryItem category-Leisure">
+                <div>레저</div>
+            </button>
+        </div>
+        <div style="margin-top: 20px"></div>
           <!-- 탐험대 리스트 -->
           <div class="ad-list-wrap">
             <div class="ad-list">
@@ -45,255 +60,200 @@
                 </div>
                 <!-- 탐험대 리스트 들(4개만 띄우기) -->
                 <div class="ad-body">
-                  <div class="boardList_wrapper">
+                  <div class="boardList-wrapper">
                     <!-- 이 안에서 리스트로 받는 곳 -->
-                    <div class="view_boardList_wrapper">
-                      <!-- 각 리스트 내용(1번) -->
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
+                    <div class="view-boardList-wrapper">
+                        <!-- 각 리스트 내용 -->
+                        <div>
+                            <!-- 글쓴이의 정보가 나올 곳 -->
+                            <div class="profile-wrapper">
+                                <!-- 프로필 사진 -->
+                                <div class="MemberProfile-wrapper">
+                                    <div class="MemberProfileImg-wrapper">
+                                       <div class="Image-wrapper">
+                                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                                       </div>
+                                    </div>
+                                    <!-- 글쓴이의 이름과 글쓴 시간 -->
+                                    <div class="MemberProfileText-wrapper">
+                                        <p class="ProfileName">댕댕쓰</p>
+                                        <div class="RegistTime">15분전</div>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
+                            <!-- 원정대 소개 이미지 -->
+                            <div class="boardImg-wrapper">
+                                <a href="">
+                                    <div class="boardSlideImg-wrapper">
+                                        <div class="introduceImage-wrapper">
+                                            <!-- 이미지가 들어갈 곳 -->
+                                            <img src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75" alt="">
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
+                            <!-- 모임 장소가 나타날 곳 -->
+                            <div class="boardCategory-wrapper">
+                                <!-- 작성자가 작성한 지역 나오기 -->
+                                <span>공포</span> 
                             </div>
-                          </div>
-                        </div>
-                        <!-- 모임 장소가 나타날 곳 -->
-                        <div class="boardLocation_wrapper">
-                          <img
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
-                            alt=""
-                          />
-                          <!-- 작성자가 작성한 지역 나오기 -->
-                          <span>마포/서대문구/은평</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
+                            <!-- 작성자가 작성한 글이 들어갈 곳 -->
+                            <div class="description-wrapper description-detail"><span class="TextLine-Description">테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.
+                                    테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span><button class="Description-ExpandButton">더보기</button>
                             </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
+                            <!-- 댓글로 이동할 수 있는 곳 -->
+                            <div class="actionGroup-wrapper">
+                                <a class="actionGroup-reply" href="">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E" alt="">
+                                    <!-- 댓글의 갯수가 들어오는 곳 -->
+                                    <span>0</span>
+                                </a>
                             </div>
-                          </div>
                         </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
+                        <div>
+                            <!-- 글쓴이의 정보가 나올 곳 -->
+                            <div class="profile-wrapper">
+                                <!-- 프로필 사진 -->
+                                <div class="MemberProfile-wrapper">
+                                    <div class="MemberProfileImg-wrapper">
+                                       <div class="Image-wrapper">
+                                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                                       </div>
+                                    </div>
+                                    <!-- 글쓴이의 이름과 글쓴 시간 -->
+                                    <div class="MemberProfileText-wrapper">
+                                        <p class="ProfileName">댕댕쓰</p>
+                                        <div class="RegistTime">15분전</div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                        <!-- 모임 장소가 나타날 곳 -->
-                        <div class="boardLocation_wrapper">
-                          <img
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
-                            alt=""
-                          />
-                          <!-- 작성자가 작성한 지역 나오기 -->
-                          <span>마포/서대문구/은평</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
+                            <!-- 원정대 소개 이미지 -->
+                            <div class="boardImg-wrapper">
+                                <a href="">
+                                    <div class="boardSlideImg-wrapper">
+                                        <div class="introduceImage-wrapper">
+                                            <!-- 이미지가 들어갈 곳 -->
+                                            <img src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75" alt="">
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
+                            <!-- 모임 장소가 나타날 곳 -->
+                            <div class="boardCategory-wrapper">
+                                <!-- 작성자가 작성한 지역 나오기 -->
+                                <span>공포</span> 
                             </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
+                            <!-- 작성자가 작성한 글이 들어갈 곳 -->
+                            <div class="description-wrapper description-detail"><span class="TextLine-Description">테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span><button class="Description-ExpandButton">더보기</button>
                             </div>
-                          </div>
-                        </div>
-                        <!-- 모임 장소가 나타날 곳 -->
-                        <div class="boardLocation_wrapper">
-                          <img
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
-                            alt=""
-                          />
-                          <!-- 작성자가 작성한 지역 나오기 -->
-                          <span>마포/서대문구/은평</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
+                            <!-- 댓글로 이동할 수 있는 곳 -->
+                            <div class="actionGroup-wrapper">
+                                <a class="actionGroup-reply" href="">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E" alt="">
+                                    <!-- 댓글의 갯수가 들어오는 곳 -->
+                                    <span>0</span>
+                                </a>
                             </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
+                        </div>
+                        <div>
+                            <!-- 글쓴이의 정보가 나올 곳 -->
+                            <div class="profile-wrapper">
+                                <!-- 프로필 사진 -->
+                                <div class="MemberProfile-wrapper">
+                                    <div class="MemberProfileImg-wrapper">
+                                       <div class="Image-wrapper">
+                                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                                       </div>
+                                    </div>
+                                    <!-- 글쓴이의 이름과 글쓴 시간 -->
+                                    <div class="MemberProfileText-wrapper">
+                                        <p class="ProfileName">댕댕쓰</p>
+                                        <div class="RegistTime">15분전</div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
+                            <!-- 원정대 소개 이미지 -->
+                            <div class="boardImg-wrapper">
+                                <a href="">
+                                    <div class="boardSlideImg-wrapper">
+                                        <div class="introduceImage-wrapper">
+                                            <!-- 이미지가 들어갈 곳 -->
+                                            <img src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75" alt="">
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                          </div>
+                            <!-- 모임 장소가 나타날 곳 -->
+                            <div class="boardCategory-wrapper">
+                                <!-- 작성자가 작성한 지역 나오기 -->
+                                <span>레저</span> 
+                            </div>
+                            <!-- 작성자가 작성한 글이 들어갈 곳 -->
+                            <div class="description-wrapper description-detail"><span class="TextLine-Description">테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.
+                                    테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span><button class="Description-ExpandButton">더보기</button>
+                            </div>
+                            <!-- 댓글로 이동할 수 있는 곳 -->
+                            <div class="actionGroup-wrapper">
+                                <a class="actionGroup-reply" href="">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E" alt="">
+                                    <!-- 댓글의 갯수가 들어오는 곳 -->
+                                    <span>0</span>
+                                </a>
+                            </div>
                         </div>
-                        <!-- 모임 장소가 나타날 곳 -->
-                        <div class="boardLocation_wrapper">
-                          <img
-                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' viewBox='0 0 12 14'%3E %3Cg fill='%230574E6'%3E %3Cpath d='M0 .708v12.584c0 .181.08.372.21.5A.728.728 0 00.716 14c.185-.008.377-.067.507-.206a.73.73 0 00.21-.5v-.337-.918-1.351-1.655V7.22 5.398v-1.7-1.443-1.037V.73.708a.732.732 0 00-.21-.5A.728.728 0 00.716 0C.532.009.34.068.21.207a.732.732 0 00-.21.5z' transform='translate(.104)'/%3E %3Cpath d='M10.108 2.339c0-.192.078-.362.198-.5a.674.674 0 01.479-.207.668.668 0 01.478.206c.122.129.198.32.198.501v.013c.004.281 0 .564 0 .846V9.29c0 .383-.311.707-.676.707h-.017c-.351.004-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27l-.463-.54-.88-1.026.479.206H.678c-.366 0-.676-.325-.676-.707v-.013c-.004-.281 0-.564 0-.846V5.066 3.06v-1.66-.69c0-.383.31-.707.676-.707h.018c.362-.004.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098-.479-.206h4.2c.184 0 .346.079.478.206.133.129.19.318.198.501a.732.732 0 01-.198.5.688.688 0 01-.478.207h-.017c-.351.005-.704 0-1.056 0H6.587a.71.71 0 01-.533-.27A22157517.325 22157517.325 0 004.71 1.21c.16.068.32.137.479.207H.678l.676-.708v.013c.004.281 0 .564 0 .846v6.093l-.676-.707h.018c.362-.006.724 0 1.087 0h3.393c.192.003.383.08.513.232l.434.506.941 1.098c-.16-.068-.319-.137-.479-.207h4.2l-.677.708v-.013c-.004-.281 0-.564 0-.846V6.696 4.69v-1.66-.69z' transform='translate(.104)'/%3E %3C/g%3E %3C/svg%3E"
-                            alt=""
-                          />
-                          <!-- 작성자가 작성한 지역 나오기 -->
-                          <span>마포/서대문구/은평</span>
+                        <div>
+                            <!-- 글쓴이의 정보가 나올 곳 -->
+                            <div class="profile-wrapper">
+                                <!-- 프로필 사진 -->
+                                <div class="MemberProfile-wrapper">
+                                    <div class="MemberProfileImg-wrapper">
+                                       <div class="Image-wrapper">
+                                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                                       </div>
+                                    </div>
+                                    <!-- 글쓴이의 이름과 글쓴 시간 -->
+                                    <div class="MemberProfileText-wrapper">
+                                        <p class="ProfileName">댕댕쓰</p>
+                                        <div class="RegistTime">15분전</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 원정대 소개 이미지 -->
+                            <div class="boardImg-wrapper">
+                                <a href="">
+                                    <div class="boardSlideImg-wrapper">
+                                        <div class="introduceImage-wrapper">
+                                            <!-- 이미지가 들어갈 곳 -->
+                                            <img src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- 모임 장소가 나타날 곳 -->
+                            <div class="boardCategory-wrapper">
+                                <!-- 작성자가 작성한 지역 나오기 -->
+                                <span>관광</span> 
+                            </div>
+                            <!-- 작성자가 작성한 글이 들어갈 곳 -->
+                            <div class="description-wrapper description-detail"><span class="TextLine-Description">테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.
+                                    테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span><button class="Description-ExpandButton">더보기</button>
+                            </div>
+                            <!-- 댓글로 이동할 수 있는 곳 -->
+                            <div class="actionGroup-wrapper">
+                                <a class="actionGroup-reply" href="">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E" alt="">
+                                    <!-- 댓글의 갯수가 들어오는 곳 -->
+                                    <span>0</span>
+                                </a>
+                            </div>
                         </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
                 </div>
               </section>
-<!-- ============================================== 여기에 배너 넣으면됨 넣고 지우기================================= -->
+              <div style="margin-top: 30px"></div>
+              <div id="middle-banner"></div>
+              <div style="margin-top: 30px"></div>
               <!-- 탐험대 Reivew 리스트 -->
               <section class="ad-section">
                 <div class="ad-top">
@@ -304,342 +264,174 @@
                     <a href="" class="ad-whole-btn-a"> 전체보기 </a>
                   </div>
                 </div>
+                <div style="margin-bottom: 30px; border-top: 1px solid rgb(238, 238, 238);"></div>
                 <!-- 탐험대 Reivew 리스트(4개만 띄우기) -->
                 <div class="ad-body">
-                  <div class="boardList_wrapper">
+                  <div class="boardList-wrapper">
                     <!-- 이 안에서 리스트로 받는 곳 -->
-                    <div class="view_boardList_wrapper">
-                      <!-- 각 리스트 내용(1번) -->
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
-                            </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="boardCategory_wrapper">
-                          <span class="reviewCategory">공포</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail description_space">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 점수가 나오는 곳 -->
-                        <div class="reviewSummary_wrapper">
-                          <!-- 별점 -->
-                          <div class="reviewStar_wrapper">
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                          </div>
-                          <!-- 평균점수 -->
-                          <strong class="reviewSummary_Average">5.0</strong>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
-                            </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="boardCategory_wrapper">
-                          <span class="reviewCategory">공포</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail description_space">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 점수가 나오는 곳 -->
-                        <div class="reviewSummary_wrapper">
-                          <!-- 별점 -->
-                          <div class="reviewStar_wrapper">
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                          </div>
-                          <!-- 평균점수 -->
-                          <strong class="reviewSummary_Average">5.0</strong>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
-                            </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="boardCategory_wrapper">
-                          <span class="reviewCategory">공포</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail description_space">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 점수가 나오는 곳 -->
-                        <div class="reviewSummary_wrapper">
-                          <!-- 별점 -->
-                          <div class="reviewStar_wrapper">
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                          </div>
-                          <!-- 평균점수 -->
-                          <strong class="reviewSummary_Average">5.0</strong>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div>
-                        <!-- 글쓴이의 정보가 나올 곳 -->
-                        <div class="profile_wrapper">
-                          <!-- 프로필 사진 -->
-                          <div class="MemberProfile_wrapper">
-                            <div class="MemberProfileImg_wrapper">
-                              <div class="Image_wrapper">
-                                <img
-                                  class="Image_style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                                />
-                              </div>
-                            </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText_wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg_wrapper">
-                          <div class="boardSlideImg_wrapper">
-                            <div class="introduceImage_wrapper">
-                              <!-- 이미지가 들어갈 곳 -->
-                              <img
-                                src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="boardCategory_wrapper">
-                          <span class="reviewCategory">공포</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description_wrapper description_detail description_space">
-                          <span class="TextLine_Description"
-                            >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                            내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-                          ><button class="Description_ExpandButton">더보기</button>
-                        </div>
-                        <!-- 점수가 나오는 곳 -->
-                        <div class="reviewSummary_wrapper">
-                          <!-- 별점 -->
-                          <div class="reviewStar_wrapper">
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <img
-                              src="data:image/svg+xml,%3Csvg width='16' height='14' viewBox='0 0 16 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M12.293 8.6189L15.7442 6.00968C16.2325 5.63914 15.9799 4.9135 15.3402 4.88263L10.8957 4.6356C10.6263 4.62016 10.3906 4.46577 10.2896 4.23418L8.65658 0.405277C8.42088 -0.135092 7.59595 -0.135092 7.36026 0.405277L5.72724 4.21874C5.62623 4.45033 5.39053 4.60472 5.12117 4.62016L0.659819 4.86719C0.0200779 4.89806 -0.232451 5.6237 0.255772 5.99424L3.707 8.58802C3.90903 8.74241 4.01004 9.00487 3.9427 9.23646L2.81473 13.2043C2.66322 13.7601 3.31979 14.2079 3.85852 13.8991L7.61279 11.6913C7.84848 11.5523 8.13468 11.5523 8.35354 11.6913L12.1246 13.8991C12.6634 14.2079 13.3199 13.7601 13.1684 13.2043L12.0405 9.2519C11.99 9.02031 12.0741 8.77329 12.293 8.6189Z' fill='%237A29FA'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                          </div>
-                          <!-- 평균점수 -->
-                          <strong class="reviewSummary_Average">5.0</strong>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup_wrapper">
-                          <a class="actionGroup_reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
-                          </a>
-                        </div>
-                      </div>
+                    <div class="view-boardList-wrapper">
+                        <!-- 각 리스트 내용 -->
+                        <section class="BoardList-reviewWrapper">
+                        <ul class="mypage-review-list-wrap">
+                            <li class="mypage-review-list">
+                              <a class="go-review-detail" href=""
+                                ><div class="review-detail">
+                                  <div class="review-image-container">
+                                    <div class="review-image-wrap">
+                                      <img
+                                        alt="2월 말고 두 번째 1월! 썸네일"
+                                        class="review-image"
+                                        width="256"
+                                        src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="review-image-content-wrap">
+                                    <div class="review-category-name">공포</div>
+                                    <div class="review-image-content">정신병원에 다녀왔습니다!</div>
+                                    <div class="review-point-wrapper">
+                                      <div>
+                                        <img class="review-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                                      </div>
+                                      <div class="review-point">5</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            <li class="mypage-review-list">
+                              <a class="go-review-detail" href=""
+                                ><div class="review-detail">
+                                  <div class="review-image-container">
+                                    <div class="review-image-wrap">
+                                      <img
+                                        alt="2월 말고 두 번째 1월! 썸네일"
+                                        class="review-image"
+                                        width="256"
+                                        src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="review-image-content-wrap">
+                                    <div class="review-category-name">공포</div>
+                                    <div class="review-image-content">정신병원에 다녀왔습니다!</div>
+                                    <div class="review-point-wrapper">
+                                      <div>
+                                        <img class="review-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                                      </div>
+                                      <div class="review-point">5</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            <li class="mypage-review-list">
+                              <a class="go-review-detail" href=""
+                                ><div class="review-detail">
+                                  <div class="review-image-container">
+                                    <div class="review-image-wrap">
+                                      <img
+                                        alt="2월 말고 두 번째 1월! 썸네일"
+                                        class="review-image"
+                                        width="256"
+                                        src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="review-image-content-wrap">
+                                    <div class="review-category-name">공포</div>
+                                    <div class="review-image-content">정신병원에 다녀왔습니다!</div>
+                                    <div class="review-point-wrapper">
+                                      <div>
+                                        <img class="review-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                                      </div>
+                                      <div class="review-point">5</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            <li class="mypage-review-list">
+                              <a class="go-review-detail" href=""
+                                ><div class="review-detail">
+                                  <div class="review-image-container">
+                                    <div class="review-image-wrap">
+                                      <img
+                                        alt="2월 말고 두 번째 1월! 썸네일"
+                                        class="review-image"
+                                        width="256"
+                                        src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="review-image-content-wrap">
+                                    <div class="review-category-name">공포</div>
+                                    <div class="review-image-content">정신병원에 다녀왔습니다!</div>
+                                    <div class="review-point-wrapper">
+                                      <div>
+                                        <img class="review-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                                      </div>
+                                      <div class="review-point">5</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            <li class="mypage-review-list">
+                              <a class="go-review-detail" href=""
+                                ><div class="review-detail">
+                                  <div class="review-image-container">
+                                    <div class="review-image-wrap">
+                                      <img
+                                        alt="2월 말고 두 번째 1월! 썸네일"
+                                        class="review-image"
+                                        width="256"
+                                        src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="review-image-content-wrap">
+                                    <div class="review-category-name">공포</div>
+                                    <div class="review-image-content">정신병원에 다녀왔습니다!</div>
+                                    <div class="review-point-wrapper">
+                                      <div>
+                                        <img class="review-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                                      </div>
+                                      <div class="review-point">5</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            <li class="mypage-review-list">
+                              <a class="go-review-detail" href=""
+                                ><div class="review-detail">
+                                  <div class="review-image-container">
+                                    <div class="review-image-wrap">
+                                      <img
+                                        alt="2월 말고 두 번째 1월! 썸네일"
+                                        class="review-image"
+                                        width="256"
+                                        src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="review-image-content-wrap">
+                                    <div class="review-category-name">공포</div>
+                                    <div class="review-image-content">정신병원에 다녀왔습니다!</div>
+                                    <div class="review-point-wrapper">
+                                      <div>
+                                        <img class="review-star" src="https://media.istockphoto.com/id/1173610414/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD-%EB%90%9C-%EA%B2%8C%EC%9E%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A8%EB%93%A0-%EC%8A%A4%ED%83%80-%EC%83%81-%EC%8A%A4%ED%83%80-%EC%8A%A4%ED%83%80-%EC%83%81-3d-%EA%B7%B8%EB%A6%BC.jpg?s=612x612&w=0&k=20&c=EyATks9Ec2CvVfd7RU1sw0yOpJWzYfHqT5SEsXwpmho=" alt="★">
+                                      </div>
+                                      <div class="review-point">5</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                          </ul>
+                        </section>
                     </div>
-                  </div>
                 </div>
               </section>
             </div>
@@ -651,10 +443,12 @@
     <div id="footer"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="../../static/js/board/boardList.js"></script>
   <script>
     $('#bot-banner').load('/src/main/resources/templates/main/bot-banner.html');
     $('#top-banner').load('/src/main/resources/templates/main/header-banner.html');
     $('#header').load('/src/main/resources/templates/main/header.html');
     $('#footer').load('/src/main/resources/templates/main/footer.html');
+    $('#middle-banner').load('/src/main/resources/templates/main/middle-banner.html');
   </script>
 </html>
