@@ -6,17 +6,26 @@ const $close = $(".close-modal");
 const $Image = $(".plusImages");
 const $modalImage = $(".image-in-modal");
 const $imageCount = $(".footer-count");
+const $leftButton = $(".left-button");
+const $rightButton = $(".right-button");
+
 
 console.log($Image);
-console.log($modalImage.attr('src'));
-console.log($imageCount.text());
 
 $Image.each((i,e) => {
     $(e).click(function(){
         $modal.show();
         $modalImage.attr('src', $(e).attr('src'));
         $imageCount.text(`${i + 1} / ${$Image.length}`);
+        $index = $Image.index($(this))
+
     })
+    
+    $leftButton.on('click', function(){
+        console.log($index);
+    })
+
+    
 })
 
 $close.on('click', function(){
