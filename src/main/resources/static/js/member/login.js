@@ -15,8 +15,8 @@ $checkAutoLogin.on('click', function () {
 });
 
 function checkedAutoLogin() {
-    $('.stayLoginCheckbox').css('border-color', '#ff5d00');
-    $('.stayLoginCheckbox').css('background-color', '#ff5d00');
+    $('.stayLoginCheckbox').css('border-color', '#00800082');
+    $('.stayLoginCheckbox').css('background-color', '#00800082');
 }
 
 function notCheckedAutoLogin() {
