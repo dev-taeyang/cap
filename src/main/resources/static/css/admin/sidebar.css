@@ -15,7 +15,7 @@
 .sidebar__wrapper {
   width: 45px;
   height: 100vh;
-  background-color: #1d7801;
+  background-color: #59bb66b8;
 }
 
 .sidebar__wrapper__slider{
@@ -54,7 +54,7 @@
 .sidebar__menu {
   display: flex;
   margin: 0 14px;
-  height: 60px;
+  height: 70px;
   font-weight: 300;
   align-items: center;
   justify-content: space-between;
@@ -76,6 +76,8 @@
 .sidebar__menu__name{
   display: flex;
   align-items: center;
+  margin-left: 15px;
+  font-size: 16px;
 }
 
 .sidebar__menu__name div svg path {

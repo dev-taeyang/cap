@@ -193,3 +193,12 @@ $pageNumber.each((i, e) => {
       $(e).addClass("page-active");
   });
 });
+
+/* input 효과 */
+
+$input.on("mouseover", function() {
+  $(this).css("border","1px solid #05ae68");
+});
+$input.on("mouseout", function(){
+  $(this).css("border","1px solid #80808042");
+});

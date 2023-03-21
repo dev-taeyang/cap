@@ -41,3 +41,7 @@ const $thumbnail = $(".content__img img");
 
 /* 페이징 */
 const $pageNumber = $(".page-number ");
+
+/* input[type=text] 효과 */
+
+const $input = $('.content__intput');

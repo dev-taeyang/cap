@@ -50,7 +50,6 @@ main.content__main {
 div.table__container {
     margin: 24px auto;
     width: 70vw;
-    font-family: 'NanumBareunGothicLight';
     text-align: center;
     display: flex;
     flex-direction: column;

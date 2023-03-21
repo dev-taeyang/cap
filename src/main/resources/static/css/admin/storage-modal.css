@@ -101,7 +101,7 @@ li {
   font-size: 16px;
   text-align: left;
   font-weight: 400;
-  border: 0;
+  border: 1px solid #80808042;
 }
 
 .content__intput input {
@@ -159,13 +159,13 @@ li {
   display: flex;
   align-items: center;
   font-weight: 600;
-  gap: 80px;
+  gap: 20px;
 }
 
 .content__list span {
   margin-left: 20px;
   display: block;
-  width: 80px;
+  width: 86px;
 }
 
 .user__profile__input input:focus {
