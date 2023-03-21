@@ -40,38 +40,77 @@
             <input type="text" name="password" placeholder="비밀번호" class="login-password" />
             <p class="login-password-p"></p>
           </div>
-          <section class="stayloginSection">
-            <input type="checkbox" name="auto-login" value="true" />
-            <span class="stayLoginCheckbox">
-              <img
-                src="/src/main/resources/static/images/check_all.png"
-                width="15px"
-                class="checkAllImg"
-              />
-            </span>
-            <p class="stayLoginText">로그인 상태 유지</p>
-            <a href="" class="find-password">비밀번호 찾기</a>
-          </section>
+          <div>
+            <section class="stayloginSection">
+              <label>
+                <input type="checkbox" name="auto-login" value="true" />
+                <span class="stayLoginCheckbox">
+                  <img
+                    src="/src/main/resources/static/images/check_all.png"
+                    width="15px"
+                    class="checkAllImg"
+                  />
+                </span>
+                <p class="stayLoginText">로그인 상태 유지</p>
+              </label>
+              <div>
+                <a href="" class="find-password">비밀번호 찾기</a>
+              </div>
+            </section>
+          </div>
           <button type="submit" class="login-btn">로그인</button>
         </form>
-        <div class="another-login-wrap">
-          다른방식으로 로그인
-          <div class="another-login">
-            <!--카카오 버튼  -->
-            <button type="button">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' viewBox='0 0 48 48'%3E %3Crect width='48' height='48' fill='%23FBE850' rx='10'/%3E %3Cpath fill='%23000' d='M24 14c-6.628 0-12 4.236-12 9.462 0 3.378 2.246 6.342 5.625 8.016-.184.634-1.181 4.078-1.221 4.349 0 0-.024.203.108.28.131.078.286.018.286.018.378-.053 4.378-2.863 5.07-3.35.692.097 1.405.148 2.132.148 6.628 0 12-4.236 12-9.462C36 18.236 30.628 14 24 14z'/%3E %3C/svg%3E"
-                alt=""
-              />
-            </button>
-            <!-- 페이스북 버튼 -->
-            <button type="button">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none' viewBox='0 0 48 48'%3E %3Crect width='48' height='48' fill='%234273D2' rx='10'/%3E %3Cpath fill='%23fff' d='M22.252 24.42V34h3.888v-9.578h3.244l.485-3.733H26.14v-2.384c0-1.08.303-1.817 1.866-1.817L30 16.487v-3.34c-.345-.045-1.528-.147-2.905-.147-2.876 0-4.843 1.74-4.843 4.935v2.753H19v3.733h3.252z'/%3E %3C/svg%3E"
-                alt=""
-              />
-            </button>
-          </div>
+        <div class="formLine"></div>
+        <div class="snsLoginSection">
+          <button
+            class="kakaoButton"
+            style="color: rgb(243, 243, 243); - -system-on-color: #f3f3f3;"
+          >
+            <div class="kakaoButtonDiv">
+              <div class="kakaoButtonDivDiv"></div>
+              <span class="kakaoButtonDivSpan">
+                <svg viewBox="0 0 24 24" class="kakaoButtonDivSpanSvg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.9997 2.5C6.24348 2.5 1 6.32322 1 11.0393c0 2.9316 1.90428 5.5179 4.80469 7.0555l-1.22042 4.4795c-.10756.3967.34284.7126.68935.4828l5.34918-3.5482c.4516.044.9106.0691 1.3769.0691C18.0755 19.578 23 15.7548 23 11.0393 23 6.32322 18.0755 2.5 11.9997 2.5Z"
+                    class="kakaoLogoPath"
+                  ></path>
+                </svg>
+              </span>
+              <div class="kakaoButtonDivDiv2"></div>
+              <div class="kakaoButtonDivDiv3"></div>
+              <div class="kakaoButtonDivDiv4"></div>
+              <span class="kakaoButtonDivDivSpan">
+                <p class="kakaoButtonDivDiv5P">카카오로 로그인</p>
+              </span>
+              <div class="kakaoButtonDivDiv6"></div>
+            </div>
+          </button>
+          <div class="kakaoNaverbetween"></div>
+          <button
+            class="naverButton"
+            style="color: rgb(243, 243, 243); - -system-on-color: #f3f3f3;"
+          >
+            <div class="naverButtonDiv">
+              <div class="naverButtonDivDiv"></div>
+              <span class="naverButtonDivSpan">
+                <svg viewBox="0 0 24 24" class="naverButtonDivSpanSvg">
+                  <path
+                    d="M15.3858 12.67L8.34138 2.57471H2.5V21.4259H8.61423V11.3306L15.6586 21.4259H21.5V2.57471H15.3858V12.67Z"
+                    class="naverLogoPath"
+                  ></path>
+                </svg>
+              </span>
+              <div class="naverButtonDivDiv2"></div>
+              <div class="naverButtonDivDiv3"></div>
+              <div class="naverButtonDivDiv4"></div>
+              <span class="naverButtonDivDivSpan">
+                <p class="naverButtonDivDiv5P">네이버로 로그인</p>
+              </span>
+              <div class="naverButtonDivDiv6"></div>
+            </div>
+          </button>
         </div>
       </div>
     </section>
