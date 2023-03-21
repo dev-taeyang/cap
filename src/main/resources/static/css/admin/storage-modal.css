@@ -19,16 +19,17 @@ li {
 /*===================== 스크롤 설정 ============================*/
 
 .modal::-webkit-scrollbar {
-  width: 13px;  /* 스크롤바의 너비 */
+  width: 10px;  /* 스크롤바의 너비 */
 }
 .modal::-webkit-scrollbar-thumb {
-  height: 20%; /* 스크롤바의 길이 */
-  background: rgb(172, 172, 172); /* 스크롤바의 색상 */
+  height: 10%; /* 스크롤바의 길이 */
+  background: #9eadff61; /* 스크롤바의 색상 */
   border-radius: 10px;
 }
 
 .modal::-webkit-scrollbar-track {
-  background: #a5a4a447;  /*스크롤바 뒷 배경 색상*/
+  background: #fafafa;  /*스크롤바 뒷 배경 색상*/
+  border-radius: 10px;
 }
 
 /* ============================================================= */
@@ -125,20 +126,18 @@ li {
 }
 
 .content__img__wrap::-webkit-scrollbar {
-  width: 8px;
-  height: 12px;
+  height: 10px;  /* 스크롤바의 너비 */
 }
 
 .content__img__wrap::-webkit-scrollbar-thumb {
-  background-color: #3b4e7d;
-  border-radius: 4px;
-  padding: 0 6px;
+  width: 10%; /* 스크롤바의 길이 */
+  background:#9eadff61; /* 스크롤바의 색상 */
+  border-radius: 10px;
 }
 
 .content__img__wrap::-webkit-scrollbar-track {
-  padding: 0 8px;
-  background-color: #fcfcfc;
-  border-radius: 4px;
+  background: rgb(255 255 255);  /*스크롤바 뒷 배경 색상*/
+  border-radius: 10px;
 }
 
 .content__img__wrap label {

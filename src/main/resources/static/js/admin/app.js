@@ -29,7 +29,9 @@ const $searchBar = $('.search-input');
 
 /* 상세보기 관련 */
 const $detailButton = $('.content__detail__btn');
+const $insertButton = $('#insert-button');
 const $modalStage = $('.modal-stage');
+const $modalInsert = $('.modal-stage-insert');
 
 /* 시게 */
 const clock = document.querySelector('.clock h1');
@@ -45,3 +47,4 @@ const $pageNumber = $(".page-number ");
 /* input[type=text] 효과 */
 
 const $input = $('.content__intput');
+

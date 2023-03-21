@@ -127,6 +127,13 @@ section.main {
 .button__color__red:hover {
   background: #c0331a;
 }
+.button__color__blue {
+  background: #737cf8;
+}
+
+.button__color__blue:hover {
+  background: #3c49f5;
+}
 
 .pagenation {
   display: flex;
@@ -157,6 +164,12 @@ section.main {
 /* 모달창  ============================ */
 
 section.modal-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section.modal-stage-insert {
   position: absolute;
   top: 50%;
   left: 50%;
