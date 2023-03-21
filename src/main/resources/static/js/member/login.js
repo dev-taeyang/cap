@@ -4,9 +4,17 @@
 
 console.log('들어옴');
 const $checkAutoLogin = $("input[name='auto-login']");
+const $id = $(".login-id");
+const $password = $(".login-password");
+const $inputs = $(".login-id, .login-password")
+let checks = [false, false];
 console.log($checkAutoLogin);
-// const $id = $("input#id");
-// const $password = $("input#password");
+/* ============================================= */
+/* keyup 이벤트용 상수 선언 */
+const idForm = document.querySelector('.login-id');
+const pwForm = document.querySelector('.login-password');
+const loginButton = document.querySelector('.login-btn');
+
 
 $checkAutoLogin.on('click', function () {
     let isChecked = $(this).prop('checked');
@@ -43,37 +51,46 @@ function notCheckedAutoLogin() {
 //     document.login.submit();
 // }
 
-// $id.on("blur", function(){
-//     $id.next().hide();
-//     if($id.val()){
-//         $id.next().fadeIn(500);
-//         showHelp($id, contextPath + "/static/images/pass.png");
-//     }
-// });
+$id.on("blur", function(){
+    $id.next().hide();
+    if($id.val()){
+        $id.css("border", "1px solid #05AE68");
+        checks[0] = true;
+        return;
+    }
+    $id.css("border", "1px solid rgb(255, 64, 62)");
+});
 
-// $password.on("blur", function(){
-//     $password.next().hide();
-//     if($password.val()){
-//         $password.next().fadeIn(500);
-//         showHelp($password, contextPath + "/static/images/pass.png");
-//     }
-// });
+$password.on("blur", function(){
+    $password.next().hide();
+    if($password.val()){
+        $password.css("border", "1px solid #05AE68");
+        checks[1] = true;
+        return;
+    }
+    $password.css("border", "1px solid rgb(255, 64, 62)");
+});
 
-// $password.on("blur", function(){
+/* $inputs.on('blur', function () {
+    if (checks.filter(check => check).length == $inputs.length) {
+		$(".login-btn").attr("disabled", false);
+		return;
+	}
+    $(".login-btn").attr('disabled', true);
+  });
+ */
+/* ============================================================= */
+/* 아이디, 비밀번호 입력 시 로그인 버튼 활성화  */
+idForm.addEventListener('keyup', activeEvent);
+pwForm.addEventListener('keyup', activeEvent);
 
-// });
+function activeEvent() {
+  switch(!(idForm.value && pwForm.value)){
+    case true : loginButton.disabled = true; break;
+    case false : loginButton.disabled = false; break
+  }
+};
 
-// function showHelp($input, fileName){
-//     $input.next().attr("src", fileName);
-
-//     if(fileName == contextPath + "/static/images/pass.png") {
-//         $input.css("border", "1px solid rgba(0, 0, 0, 0.1)");
-//         $input.css("background", "rgb(255, 255, 255)");
-//     }else {
-//         $input.css("border", "1px solid rgb(255, 64, 62)");
-//         $input.css("background", "rgb(255, 246, 246)");
-//     }
-// }
 
 // let modalCheck;
 // function showWarnModal(modalMessage){

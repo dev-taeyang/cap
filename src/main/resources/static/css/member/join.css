@@ -44,7 +44,7 @@
     padding: 24px 20px;
 }
 
-.join-id {
+.join-id, .join-birth, .join-name, .join-nickname {
     width: 100%;
     padding: 14px 14px 12px;
     color: rgb(17, 17, 17);
@@ -75,7 +75,7 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.36px;
-    color: rgb(69 147 107);
+    color: rgb(170, 170, 170);
 }
 
 .join-phone-wrap {
@@ -95,19 +95,27 @@
     border: 1px solid rgb(238, 238, 238);
     margin: 4px 0px 8px;
 }
+
+.join-phone-btn:disabled {
+    cursor: not-allowed;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #80808042;
+    color: rgb(170, 170, 170);
+}
+
 .join-phone-btn {
     width: 130px;
     height: 50px;
     line-height: 20px;
     padding: 0px 13px;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #00800082;
     text-align: center;
-    cursor: not-allowed;
+    cursor: pointer;
     border-radius: 8px;
-    color: rgb(170, 170, 170);
+    color: #05AE68;
     font-size: 14px;
     margin: 4px 0px 8px;
-    border: none;
 }
 
 .join-check-wrap {
@@ -128,6 +136,13 @@
     margin: 4px 0px 8px;
 }
 
+.join-check-btn:disabled {
+    cursor: not-allowed;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #80808042;
+    color: rgb(170, 170, 170);
+}
+
 .join-check-btn {
     width: 130px;
     height: 50px;
@@ -135,12 +150,100 @@
     padding: 0px 13px;
     background-color: rgb(255, 255, 255);
     text-align: center;
-    cursor: not-allowed;
-    border: 1px solid rgb(181, 197, 214);
+    cursor: pointer;
+    border: 1px solid #00800082;
     border-radius: 8px;
-    color: rgb(181, 197, 214);
+    color: #05AE68;
     font-size: 14px;
     margin: 4px 0px 8px;
+}
+
+.genderText {
+	border-width: 0px;
+    color: gray;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.125rem;
+    left: 14px;
+    position: absolute;
+    top: 18px;
+}
+
+.womanText, .manText {
+	border-width: 0px;
+    color: rgb(58, 58, 58);
+    margin: 0px;
+    padding: 0px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.125rem;
+}
+
+.genderCheckbox {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 1px;
+}
+
+img[src="../../static/images/check_all.png"] {
+    filter: opacity(0.5) drop-shadow(0 0 0  #05AE68);
+}
+
+.genderCheckImg {
+    display: flex;
+}
+
+input[type="radio"] {
+    border: 0px;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0px;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.checkWrap {
+	display: flex;
+    justify-content: center;
+    border: 1px solid rgb(238, 238, 238);
+    position: relative;
+    height: 50px;
+    background-color: rgb(250, 250, 250);
+    margin-top: 4px;
+}
+
+.checkLabel {
+	display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.checkLabelMargin {
+	width: 80px;
+	display: inline-block;
+}
+
+.pText {
+	display: flex;
+	border-width: 0px;
+    margin-left: 8px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.125rem;
+}
+
+.join-btn:disabled {
+    background-color: #00800082;
+    cursor: not-allowed;
 }
 
 .join-btn {
@@ -148,12 +251,20 @@
     height: 56px;
     line-height: 24px;
     padding: 16px;
-    background-color: rgb(181, 197, 214);
+    background-color: #05AE68;
     text-align: center;
-    cursor: not-allowed;
+    cursor: pointer;
     border-radius: 10px;
     color: rgb(244, 244, 244);
     font-size: 16px;
     margin: 33px 0px 0px;
     border: none;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
+    border: 1px solid #05AE68;
+}
+
+.help {
+    font-size: 12px;
 }
