@@ -88,6 +88,7 @@ div.table__box .table__search__form {
 table.table {
     border-collapse: collapse;
     width: 100%;
+    height: 400px;
 }
 
 .table tr:not(:first-child) {
@@ -98,7 +99,6 @@ table.table {
 }
 
 .table th {
-    /* max-height: 60px; */
     width: 20%;
 }
 
@@ -107,6 +107,7 @@ table.table {
 
 .table__header .content_check {
     width: 5%;
+    height: 20px;
 }
 
 .table__header .content__id {

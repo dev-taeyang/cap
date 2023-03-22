@@ -3,8 +3,8 @@ ul.status-list {
   border-radius: 12px;
   display: flex;
   min-width: 900px;
-  gap: 16px;
-  margin: 16px;
+  gap: 70px;
+  margin: 10px;
 }
 
 li.status-list-item {
@@ -63,10 +63,11 @@ input[type='date']::-webkit-datetime-edit-text {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  flex: 1;
+  gap: 13px;
+  flex: 1 1;
+  position: relative;
 }
 
 .clock h1 {
-  font-size: 50px;
+  font-size: 30px;
 }
