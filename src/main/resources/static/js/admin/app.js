@@ -37,6 +37,9 @@ const $modalInsert = $('.modal-stage-insert');
 const clock = document.querySelector('.clock h1');
 
 /* 모달창 */
+
+
+
 /* 파일 썸네일교체 */
 const $storageFile = $("input[name='file']");
 const $thumbnail = $(".content__img img");
