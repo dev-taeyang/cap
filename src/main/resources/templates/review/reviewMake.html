@@ -25,7 +25,7 @@
                                     <legend class="formTitle-legend">
                                         <span>보고서 명</span>
                                     </legend>
-                                    <input class="formInputBox" type="text" placeholder="보고서 명을 입력해주세요">
+                                    <input name="reviewTitle" class="formInputBox" type="text" placeholder="보고서 명을 입력해주세요">
                                 </div>
                             </div>
                         </div>
@@ -37,19 +37,19 @@
                                         <span>카테고리</span>
                                     </legend>
                                     <div class="ButtonItem-list">
-                                        <input type="radio" name="category" id="adventure" value="모험" style="display: none;">
+                                        <input type="radio" name="reviewCategory" id="adventure" value="모험" style="display: none;">
                                         <button type="button" class="CategoryItem category-Adventure">
                                             <span>모험</span>
                                         </button>
-                                        <input type="radio" name="category" id="horror" value="공포" style="display: none;">
-                                        <button type="button" class="CategoryItem category-Horror" value="공포">
+                                        <input type="radio" name="reviewCategory" id="horror" value="공포" style="display: none;">
+                                        <button type="button" class="CategoryItem category-Horror">
                                             <div>공포</div>
                                         </button>
-                                        <input type="radio" name="category" id="tour" value="관광" style="display: none;">
+                                        <input type="radio" name="reviewCategory" id="tour" value="관광" style="display: none;">
                                         <button type="button" class="CategoryItem category-Tour">
                                             <div>관광</div>
                                         </button>
-                                        <input type="radio" name="category" id="leisure" value="레저" style="display: none;">
+                                        <input type="radio" name="reviewCategory" id="leisure" value="레저" style="display: none;">
                                         <button type="button" class="CategoryItem category-Leisure">
                                             <div>레저</div>
                                         </button>
@@ -65,23 +65,23 @@
                                         <span>평점</span>
                                     </legend>
                                     <div class="ButtonItem-list">
-                                        <input type="radio" name="reviewStar" id="one" value="1" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="one" value="1" style="display: none;">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>1개★</div>
                                         </button>
-                                        <input type="radio" name="reviewStar" id="two" value="2" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="two" value="2" style="display: none;">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>2개★</div>
                                         </button>
-                                        <input type="radio" name="reviewStar" id="three" value="3" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="three" value="3" style="display: none;">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>3개★</div>
                                         </button>
-                                        <input type="radio" name="reviewStar" id="four" value="4" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="four" value="4" style="display: none;">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>4개★</div>
                                         </button>
-                                        <input type="radio" name="reviewStar" id="five" value="5" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="five" value="5" style="display: none;">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>5개★</div>
                                         </button>
@@ -98,25 +98,24 @@
                                     </legend>
                                 </div>
                                 <div class="addMainImage-wrapper">
-                                    <div class="MainImage-wrapper reviewImage-wrapper">
-                                        <label for="attach">
-                                        <div class="container-imageInput imageInput-ReviewContainer">
-                                            <div class="imgText-container">
-                                                <img style="width: 25px;" src="https://frip.host/img/add.85e31315.svg" alt="+">
-                                                <div class="plusImageText">
-                                                    이미지 
-                                                    추가하기
+                                    <div class="imageContainer">
+                                        <div class="imageWrapperPadding">
+                                            <div class="imageWrapper">
+                                                <div id="thumbnail-list" class="imageDiv">
+                                                    <div class="imgButtonWrap">
+                                                        <label for="photo-picker">
+                                                            <div class="imgButton" >
+                                                                <span class="cameraIconImg"></span>
+                                                            </div>
+                                                            <input name="reviewFile" class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp"/>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </label>
-                                        <input type="file" id="attach" style="display: none;">
-                                        <div class="showThumbnail-section review-section">
-                                            <span class="cancelImage reviewCancel">X</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="text-detail"> 최소 사이즈: 가로 600px * 세로 600px </div>
-                                <div class="text-detail"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF </div>
+                                    <div class="text-detail"> 최소 사이즈: 가로 600px * 세로 600px </div>
+                                    <div class="text-detail"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF </div>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +126,7 @@
                                     <legend class="formTitle-legend">
                                         <span>결과 소개</span>
                                     </legend>
-                                    <textarea id="editor" class="detailText-text" placeholder="상세 내용을 적어주세요"></textarea>
+                                    <textarea name="reviewContent" id="editor" class="detailText-text" placeholder="상세 내용을 적어주세요"></textarea>
                                 </div>
                             </div>
                         </div>

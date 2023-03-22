@@ -690,12 +690,12 @@
 .plusImages-wrapper {
     display: flex;
     margin-top: 20px;
+    gap: 10px;
 }
 
 .plusImages {
     width: 100px;
     height: 100px;
-    margin-right: 10px;
     cursor: pointer;
 }
 
