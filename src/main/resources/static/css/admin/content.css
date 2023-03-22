@@ -191,5 +191,9 @@ input[type='checkbox'] {
 }
 
 .page-active {
-    color: rgb(51, 151, 255);
+    color: #00ae68;
+}
+
+.content__img{
+    margin: 0 auto;
 }

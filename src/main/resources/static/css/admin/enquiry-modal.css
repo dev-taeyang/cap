@@ -87,6 +87,7 @@
 .user__profile h5 {
   width: 12%;
   margin: 15px 0;
+  font-weight: bold;
 }
 
 .user__profile__input {
