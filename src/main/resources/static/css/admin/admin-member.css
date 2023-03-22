@@ -1,0 +1,51 @@
+
+/* 유저 관리 css */
+
+.profile-img-wrapper{
+    display: flex;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.content__img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content__img img{
+    width: 100%;
+    height: 100%;
+}
+
+.review-img-wrapper::-webkit-scrollbar {
+    height: 10px; /* 스크롤바의 너비 */
+}
+
+.review-img-wrapper::-webkit-scrollbar-thumb {
+    width: 10%; /* 스크롤바의 길이 */
+    background: #9eadff61; /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.review-img-wrapper::-webkit-scrollbar-track {
+    background: rgb(255 255 255); /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px;
+}
+
+.termsTitle {
+    margin-bottom: 10px;
+}
+
+.RequiredInput {
+    font-weight: bold;
+}
+
+.stay-img {
+  font-weight: bold;
+}

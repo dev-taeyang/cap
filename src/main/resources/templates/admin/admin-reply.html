@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>탐험대 관리</title>
+        <title>댓글 관리</title>
         <link
             href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
             rel="stylesheet"
@@ -36,7 +36,7 @@
             <!-- content.css -->
             <section class="content">
                 <div class="content__header">
-                    <span>탐험대 관리</span>
+                    <span>댓글 관리</span>
                     <a href="javascript:void(0)"> 로그아웃 </a>
                 </div>
                 <main class="content__main">
@@ -47,10 +47,10 @@
                                 <li class="status-list-item">
                                     <div class="status-item-wrapper">
                                         <img
-                                            src="../../static/images/adventures.png"
+                                            src="../../static/images/reply.png"
                                             class="profile-img"
                                         />
-                                        <div class="status-item-name">금일 신규등록</div>
+                                        <div class="status-item-name">금일 신규댓글</div>
                                     </div>
                                     <div class="status-item-count">
                                         <a href="">0</a>
@@ -64,7 +64,7 @@
                                                     <div>
                                                         <span>
                                                             <img
-                                                                src="../../static/images/adventures.png"
+                                                                src="../../static/images/reply.png"
                                                                 class="profile-img"
                                                             />
                                                         </span>
@@ -72,7 +72,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="status-item-name">총 탐험대 수</div>
+                                        <div class="status-item-name">총 댓글 수</div>
                                     </div>
                                     <div class="status-item-count">
                                         <a href="">0</a>
@@ -86,12 +86,14 @@
                         </section>
                         <div class="table__box">
                             <div class="table__search__form">
-                                <button
-                                    id="delete-button"
-                                    class="button__type_2 button__color__red"
-                                >
-                                    탐험대 해산
-                                </button>
+                                <div>
+                                    <button
+                                        id="delete-button"
+                                        class="button__type_2 button__color__red"
+                                    >
+                                        댓글 삭제
+                                    </button>
+                                </div>
                                 <!-- default.css -->
                                 <div class="search-box-wrap">
                                     <div class="select-box">
@@ -141,13 +143,10 @@
                                             <input type="checkbox" id="checkAll" />
                                         </label>
                                     </th>
-                                    <th class="content__id" style="width: 5%;">번호</th>
-                                    <th>탐험대 명</th>
-                                    <th>인원 수</th>
-                                    <th>탐험 위치</th>
-                                    <th>카테고리</th>
-                                    <th style="width: 13%;">등록일</th>
-                                    <th></th>
+                                    <th class="content__id">번호</th>
+                                    <th>제목</th>
+                                    <th style="width: 35%">내용</th>
+                                    <th>작성자</th>
                                 </tr>
                                 <tr class="table__content">
                                     <td>
@@ -156,11 +155,11 @@
                                         </label>
                                     </td>
                                     <td class="content__id">1</td>
-                                    <td>kmg2331</td>
-                                    <td>kmg2331@gmail.com</td>
-                                    <td>경기 의왕시 경수대로 262</td>
-                                    <td>2023-01-01</td>
-                                    <td>중</td>
+                                    <td>지욱이형이 게시판해야되는데</td>
+                                    <td>
+                                        어떻게 생각하시나요?
+                                    </td>
+                                    <td>이영준</td>
                                     <td>
                                         <button
                                             class="content__detail__btn button__type_2 button__color__green"
@@ -175,12 +174,10 @@
                                             <input type="checkbox" name="check" />
                                         </label>
                                     </td>
-                                    <td class="content__id">1</td>
-                                    <td>kmg2331</td>
-                                    <td>kmg2331@gmail.com</td>
-                                    <td>서울시 강남구 테헤란로 146</td>
-                                    <td>2023-01-01</td>
-                                    <td>특대</td>
+                                    <td class="content__id">2</td>
+                                    <td>지욱아 관리자 빨리하고 도와줘야된다</td>
+                                    <td>오키?</td>
+                                    <td>오태양</td>
                                     <td>
                                         <button
                                             class="content__detail__btn button__type_2 button__color__green"
@@ -191,11 +188,35 @@
                                 </tr>
                             </table>
                             <!-- default.css > pagenation -->
-                            <div class="pagenation">
-                                <a href="javascript:void(0)">1</a>
-                                <a href="javascript:void(0)">2</a>
-                                <a href="javascript:void(0)">3</a>
-                            </div>
+                            <footer class="page-box">
+                                <div class="page-prev-arrow-box">
+                                    <button class="page-double-prev page-button">
+                                        <img
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E"
+                                        />
+                                    </button>
+                                    <button class="page-prev page-button">
+                                        <img
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                                        />
+                                    </button>
+                                </div>
+                                <button class="page-number page-button page-active">1</button>
+                                <button class="page-number page-button">2</button>
+                                <button class="page-number page-button">3</button>
+                                <div class="page-next-arrow-box">
+                                    <button class="page-next page-button">
+                                        <img
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                                        />
+                                    </button>
+                                    <button class="page-double-next page-button">
+                                        <img
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E"
+                                        />
+                                    </button>
+                                </div>
+                            </footer>
                         </div>
                     </div>
                 </main>
@@ -209,7 +230,7 @@
                         <button class="close-btn">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>정말로 탐험대를 해산하겠습니까?</p>
+                        <p>정말로 댓글을 삭제하겠습니까?</p>
                     </div>
                     <div class="modal-footer">
                         <button id="confirm-delete" class="btn confirm-btn">확인</button>
@@ -217,10 +238,11 @@
                     </div>
                 </div>
             </div>
+            <!-- 댓글 상제보기 모달 -->
             <section class="modal-stage" style="display: none">
                 <section class="modal">
                     <div class="modal__header">
-                        <h3 class="modal__title">탐험대 상세보기</h3>
+                        <h3 class="modal__title">댓글 상세보기</h3>
                         <a class="modal-close">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -237,98 +259,22 @@
                     <form class="storage_form" action="">
                         <main class="modal__main">
                             <div class="modal__content">
-                                <div class="content__title">
-                                    <h4>탐험 위치</h4>
-                                </div>
-                                <div class="content__intput input_box_shadow">
-                                    <input
-                                        type="text"
-                                        name=""
-                                        value="경기 의왕시 경수대로 262"
-                                        readonly="true"
-                                    />
-                                </div>
-                                <!-- 지도 API 사용하는곳 -->
-                                <div>
-                                    <section class="boardDetail-sectionContainer">
-                                        <article>
-                                            <header class="Article-header">
-                                                <hgroup>
-                                                    <h2 class="Article-title">진행하는 장소</h2>
-                                                </hgroup>
-                                            </header>
-                                            <div class="placeMapSection-container">
-                                                <div class="placeMapContainer">
-                                                    <!-- 지도를 표시할 div 입니다 -->
-                                                    <div
-                                                        id="map"
-                                                        style="width: 100%; height: 170px"
-                                                    ></div>
-                                                    <div class="place-container">
-                                                        <div class="placeLocation-container">
-                                                            <div
-                                                                class="placeLocationTitle-container"
-                                                            >
-                                                                <strong class="placeLocationTitle"
-                                                                    >정신병원</strong
-                                                                >
-                                                                <span
-                                                                    id="coordAddr"
-                                                                    class="placeLocationTitleDetail"
-                                                                ></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </section>
-                                </div>
                                 <div class="content__main">
-                                    <div class="content__img__wrap">
-                                        <!-- 임시로 name='file' 해둠 -->
-                                        <label>
-                                            <div class="content__img">
-                                                <img
-                                                    src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
-                                                />
-                                            </div>
-                                            <input type="file" name="file" style="display: none" />
-                                        </label>
-                                    </div>
                                     <ul class="content__list__wrap">
                                         <li class="content__list">
-                                            <span>번호</span>
+                                            <span>제목</span>
                                             <div class="content__intput input_box_shadow">
                                                 <input type="text" />
                                             </div>
                                         </li>
                                         <li class="content__list">
-                                            <span>닉네임</span>
+                                            <span>내용</span>
                                             <div class="content__intput input_box_shadow">
                                                 <input type="text" />
                                             </div>
                                         </li>
                                         <li class="content__list">
-                                            <span>탐험대(이름)</span>
-                                            <div class="content__intput input_box_shadow">
-                                                <input type="text" />
-                                            </div>
-                                        </li>
-                                        <li class="content__list">
-                                            <span>인원수</span>
-                                            <div class="content__intput input_box_shadow">
-                                                <input type="text" />
-                                            </div>
-                                        </li>
-                                        <li class="content__list">
-                                            <span>탐험 위치</span>
-                                            <div class="content__intput input_box_shadow">
-                                                <input type="text" />
-                                            </div>
-                                        </li>
-                                        <li class="content__list">
-                                            <span>탐험 종류</span>
+                                            <span>작성자</span>
                                             <div class="content__intput input_box_shadow">
                                                 <input type="text" />
                                             </div>
@@ -341,7 +287,7 @@
                                     id="completeBtn"
                                     class="button__type_2 button__color__green"
                                 >
-                                    작성완료
+                                    수정 완료
                                 </button>
                             </div>
                         </main>

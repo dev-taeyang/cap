@@ -15,12 +15,13 @@
         <link rel="stylesheet" href="../../static/css/admin/sidebar.css" />
         <link rel="stylesheet" href="../../static/css/admin/content.css" />
         <link rel="stylesheet" href="../../static/css/admin/status.css" />
+        <link rel="stylesheet" href="../../static/css/admin/admin-member.css" />
         <link
             rel="shortcut icon"
             href="/src/main/resources/static/images/favicon.png"
             type="image/x-icon"
         />
-        <link rel="stylesheet" href="../../static/css/admin/user-modal.css" />
+        <link rel="stylesheet" href="../../static/css/admin/storage-modal.css" />
         <link
             href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
             rel="stylesheet"
@@ -274,7 +275,7 @@
             <section class="content">
                 <div>
                     <div class="content__header">
-                        <span>회원 관리</span>
+                        <span>탐험대원 관리</span>
                         <a href="javascript:void(0)"> 로그아웃 </a>
                     </div>
                 </div>
@@ -289,7 +290,7 @@
                                             src="../../static/images/profile.png"
                                             class="profile-img"
                                         />
-                                        <div class="status-item-name">금일 신규회원</div>
+                                        <div class="status-item-name">금일 신규대원</div>
                                     </div>
                                     <div class="status-item-count">
                                         <a href="">0</a>
@@ -311,7 +312,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="status-item-name">총 회원수</div>
+                                        <div class="status-item-name">총 대원수</div>
                                     </div>
                                     <div class="status-item-count">
                                         <a href="">0</a>
@@ -333,7 +334,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="status-item-name">탈퇴 회원수</div>
+                                        <div class="status-item-name">탈퇴 대원수</div>
                                     </div>
                                     <div class="status-item-count">
                                         <a href="">0</a>
@@ -354,6 +355,7 @@
                                     강제 퇴소
                                 </button>
                                 <!-- default.css -->
+                                <!-- 검색 부분 -->
                                 <div class="search-box-wrap">
                                     <div class="select-box">
                                         <button class="listbox-selecter">검색조건 선택</button>
@@ -402,11 +404,11 @@
                                             <input type="checkbox" id="checkAll" />
                                         </label>
                                     </th>
-                                    <th class="content__id">회원번호</th>
-                                    <th>이메일(ID)</th>
-                                    <th>탐험대</th>
-                                    <th>가입일</th>
-                                    <th>성별</th>
+                                    <th class="content__id">번호</th>
+                                    <th>ID</th>
+                                    <th>이름</th>
+                                    <th>이메일</th>
+                                    <th>가입일자</th>
                                     <th></th>
                                 </tr>
                                 <tr class="table__content">
@@ -416,10 +418,10 @@
                                         </label>
                                     </td>
                                     <td class="content__id">1</td>
-                                    <td>원숭이@gmail.com</td>
+                                    <td>jjw123</td>
                                     <td>정지욱</td>
+                                    <td>jjw123@gmail.com</td>
                                     <td>2023-03-20</td>
-                                    <td>남</td>
                                     <td>
                                         <button
                                             class="content__detail__btn button__type_2 button__color__green"
@@ -435,10 +437,10 @@
                                         </label>
                                     </td>
                                     <td class="content__id">1</td>
-                                    <td>kmg2331</td>
-                                    <td>kmg2331@gmail.com</td>
-                                    <td>2023-01-01</td>
-                                    <td>남</td>
+                                    <td>jjw123</td>
+                                    <td>정지욱</td>
+                                    <td>jjw123@gmail.com</td>
+                                    <td>2023-03-20</td>
                                     <td>
                                         <button
                                             class="content__detail__btn button__type_2 button__color__green"
@@ -519,51 +521,69 @@
                     <form class="storage_form" action="">
                         <main class="modal__main">
                             <div class="modal__profile__top">
-                                <h4>수정가능</h4>
-                                <div class="user__profile">
-                                    <h5>아이디</h5>
-                                    <div class="user__profile__input">
-                                        <input type="text" name="" value="example1234" />
-                                    </div>
+                                <h4>탐험가 정보</h4>
+                                <!-- 회원 프로필 이미지 -->
+                                <div class="profile-img-wrapper">
+                                    <label>
+                                        <div class="content__img">
+                                            <img
+                                                src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
+                                            />
+                                        </div>
+                                        <input type="file" name="file" style="display: none" />
+                                    </label>
                                 </div>
-                                <div class="user__profile">
-                                    <h5>이메일</h5>
-                                    <div class="user__profile__input">
-                                        <input type="text" name="" value="example@gmail.com" />
-                                    </div>
-                                </div>
-                                <div class="user__profile">
-                                    <h5>전화번호</h5>
-                                    <div class="user__profile__input">
-                                        <input type="text" name="" value="01012341234" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal__profile__bottom">
-                                <h4>수정 불가능</h4>
-                                <div class="user__profile">
-                                    <h5>이름</h5>
-                                    <div class="user__profile__input">
-                                        <input type="text" name="" value="홍길동" readonly="true" />
-                                    </div>
-                                </div>
-                                <div class="user__profile">
-                                    <h5>가입일</h5>
-                                    <div class="user__profile__input">
-                                        <input
-                                            type="text"
-                                            name=""
-                                            value="2023-01-01"
-                                            readonly="true"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="user__profile">
-                                    <h5>성별</h5>
-                                    <div class="user__profile__input">
-                                        <input type="text" name="" value="성별" readonly="true" />
-                                    </div>
-                                </div>
+                                <!-- 회원 정보 -->
+                                <ul class="content__list__wrap">
+                                    <li class="content__list">
+                                        <span>번호</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>아이디</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>이메일</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>이름</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>닉네임</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>휴대폰</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>생년월일</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                    <li class="content__list">
+                                        <span>성별</span>
+                                        <div class="content__intput input_box_shadow">
+                                            <input type="text" />
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="user__profile__button">
                                 <button
