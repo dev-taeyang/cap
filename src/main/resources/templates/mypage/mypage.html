@@ -22,6 +22,17 @@
     <div id="header"></div>
     <main id="mypage">
       <!-- 마이페이지 맨 위 유저 프로필 -->
+      <div class="modal-container">
+        <div class="modal">
+          <div class="warn-modal">
+            <div class="modal-content"></div>
+          </div>
+          <div class="modal-button-wrap">
+            <button class="logout-button">로그아웃</button>
+            <button class="cancel-button">취소</button>
+          </div>
+        </div>
+      </div>
       <div class="head-user-info-wrap">
         <a class="head-user-info" href="javascript:void(0)">
           <img src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png" class="user-profile-image" />
@@ -156,18 +167,29 @@
             </div>
           </div>
         </a>
-        <a href="javascript:void(0)">
+      </div>
+      <div class="mypage-user-group">
+        <header>설정</header>
+        <div class="setting-list">
+          <a href="javascript:void(0)">
+            <div class="mypage-user-container">
+              <div class="mypage-user-wrapper">
+                <div class="user-leave">회원탈퇴</div>
+              </div>
+            </div>
+          </a>
           <div class="mypage-user-container">
-            <div class="mypage-user-wrapper">
-              <div class="mypage-user-setting">설정</div>
+            <div class="mypage-user-wrapper logout-wrap">
+              <div class="logout">로그아웃</div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </main>
     <div id="footer"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="../../static/js/mypage/mypageSetting.js"></script>
   <script>
     $('#header').load('../../templates/main/header.html');
     $('#footer').load('../../templates/main/footer.html');
