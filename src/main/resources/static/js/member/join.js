@@ -17,23 +17,24 @@ const $checks = $("input[name='memberGender']");
 const $genderCheckImg = $(".genderCheckImg");
 let phoneNumberCheck;
 
-let joinBlurMessages = ["이메일을 입력하세요.", "비밀번호를 입력하세요.",
+let joinBlurMessages = ["아이디를 입력하세요.", "비밀번호를 입력하세요.",
 	"비밀번호 확인을 위해 한번 더 입력하세요.", "이름을 입력하세요.", "휴대폰 번호를 입력하세요.",
-	"인증번호를 입력하세요", "닉네임을 입력하세요.", "생년월일을 입력하세요."];
-let joinRegexMessages = ["이메일 형식에 맞게 입력해주세요.",
-	"대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자 이상",
-	"위 비밀번호와 일치하지 않습니다.", "휴대폰 번호를 확인하세요.", "영문 혹은 한글로 2자~20자", 
-    "인증번호를 확인하세요.", "영문 혹은 한글로 2자~20자", "생년월일을 확인하세요."];
+	"인증번호를 입력하세요", "닉네임을 입력하세요.", "이메일을 입력하세요.", "생년월일을 입력하세요."];
+let joinRegexMessages = ["영문 혹은 영문과 숫자를 조합하여 4자~20자로 입력해주세요.",
+"공백 제외 영어 및 숫자, 특수문자 모두 포함하여 10~20자로 입력해주세요.",
+"위 비밀번호와 일치하지 않습니다. 다시 입력해주세요.", "영문 혹은 한글로 2자~20자로 입력해주세요.",
+"영문 혹은 한글로 2자~20자로 입력해주세요.", "휴대폰 번호를 확인하세요.", "인증번호를 확인하세요.", 
+"이메일 주소를 확인해주세요.", "생년월일을 확인하세요."];
 const $joinHelp = $("p.help");
 
 let joinCheck;
-let joinCheckAll = [false, false, false, false, false, false, false, false];
+let joinCheckAll = [false, false, false, false, false, false, false, false, false];
 
 $joinInputs.eq(4).on("focus", function() {
 	$(this).val($(this).val().replaceAll("-", ""));
 });
 
-$joinInputs.eq(7).on("focus", function() {
+$joinInputs.eq(8).on("focus", function() {
 	$(this).val($(this).val().replaceAll(".", ""));
 });
 
@@ -86,7 +87,9 @@ $joinInputs.on("blur", function() {
 
 	switch (i) {
 		case 0:
-			joinCheck = emailRegex.test(value);
+			joinCheck = value.length > 3 && value.length < 21
+				&& idRegex.test(value)
+				&& !specialCharacterRegex.test(value);
 			break;
 		case 1:
 			let numberCheck = value.search(passwordNumberRegex);
@@ -127,6 +130,9 @@ $joinInputs.on("blur", function() {
 				&& !specialCharacterRegex.test(value);
 			break;
 		case 7:
+			joinCheck = emailRegex.test(value);
+			break;
+		case 8:
 			joinCheck = birthRegex.test(value)
 			if (joinCheck) {
 				$(this).val(value.replace(/^(\d{4})(\d{2})(\d{2})$/, `$1.$2.$3`));
