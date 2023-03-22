@@ -1,0 +1,294 @@
+/**
+ * join.jsp
+ */
+
+const $joinInputs = $(".inputbox-wrap input[type='text'], input[type='password']");
+const nameRegex = /^[가-힣|a-z|A-Z|]+$/;
+const specialCharacterRegex = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gim;
+const birthRegex = /^(19[0-9][0-9]|20\d{2}).?(0[0-9]|1[0-2]).?(0[1-9]|[1-2][0-9]|3[0-1])$/;
+const phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/
+const idRegex = /^(?!(?:[0-9]+)$)([a-zA-Z]|[0-9a-zA-Z]){4,}$/;
+const passwordNumberRegex = /[0-9]/g;
+const passwordEnglishRegex = /[a-z]/ig;
+const passwordSpecialCharacterRegex = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi;
+const emailRegex = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
+const $phoneCheck = $(".join-phone-btn");
+const $checks = $("input[name='memberGender']");
+const $genderCheckImg = $(".genderCheckImg");
+let phoneNumberCheck;
+
+let joinBlurMessages = ["이메일을 입력하세요.", "비밀번호를 입력하세요.",
+	"비밀번호 확인을 위해 한번 더 입력하세요.", "이름을 입력하세요.", "휴대폰 번호를 입력하세요.",
+	"인증번호를 입력하세요", "닉네임을 입력하세요.", "생년월일을 입력하세요."];
+let joinRegexMessages = ["이메일 형식에 맞게 입력해주세요.",
+	"대/소문자, 숫자, 특수문자 중 2가지 이상의 조합으로 10자 이상",
+	"위 비밀번호와 일치하지 않습니다.", "휴대폰 번호를 확인하세요.", "영문 혹은 한글로 2자~20자", 
+    "인증번호를 확인하세요.", "영문 혹은 한글로 2자~20자", "생년월일을 확인하세요."];
+const $joinHelp = $("p.help");
+
+let joinCheck;
+let joinCheckAll = [false, false, false, false, false, false, false, false];
+
+$joinInputs.eq(4).on("focus", function() {
+	$(this).val($(this).val().replaceAll("-", ""));
+});
+
+$joinInputs.eq(7).on("focus", function() {
+	$(this).val($(this).val().replaceAll(".", ""));
+});
+
+// var code = "";
+
+/* $(".getPhoneCheck").on("click", function() {
+	if (phoneNumberCheck) {
+		$(".setPhoneCheckWrap").show();
+		$(".help").eq(6).show();
+		var phone = $("#phone").val().replaceAll("-", "");
+		console.log(phone);
+		$.ajax({
+			type: "POST",
+			url: contextPath + "/smsOk.member",
+			data: {memberPhone: phone},
+			success: function(data) {
+				console.log(data);
+				code = data;
+			}
+		});
+	}
+}); */
+
+/*$(".setPhoneCheck").on("click", function(){
+	if($("#certificationNumber").val() == code){
+		joinCheck = true;
+		return;
+	}
+	joinCheck = false;
+});*/
+
+$joinInputs.on("blur", function() {
+	let i = $joinInputs.index($(this));
+	let value = $(this).val();
+    console.log($(this));
+	$(this).next().hide();
+	$(this).next().fadeIn(500);
+    
+	if (!value) {
+        if(i==1){
+            $(".join-password-p").hide();
+        }
+		$joinHelp.eq(i).text(joinBlurMessages[i]);
+		$joinHelp.eq(i).css('color', 'red');
+		joinCheck = false;
+        $joinInputs.eq(i).css("border", "1px solid rgb(255, 64, 62)");
+		joinCheckAll[i] = joinCheck;
+		return;
+	}
+
+	switch (i) {
+		case 0:
+			joinCheck = emailRegex.test(value);
+			break;
+		case 1:
+			let numberCheck = value.search(passwordNumberRegex);
+			let englishCheck = value.search(passwordEnglishRegex);
+			let specialCharacterCheck = value
+				.search(passwordSpecialCharacterRegex);
+
+			var condition1 = (numberCheck >= 0 && englishCheck >= 0)
+				&& (englishCheck >= 0 && specialCharacterCheck >= 0)
+				&& (specialCharacterCheck >= 0 && numberCheck >= 0)
+			var condition2 = value.length > 9 && value.length < 21;
+			var condition3 = value.search(/\s/) < 0;
+
+			joinCheck = condition1 && condition2 && condition3;
+			break;
+		case 2:
+			joinCheck = $joinInputs.eq(i - 1).val() == value;
+			break;
+		case 3:
+			joinCheck = value.length > 1 && value.length < 21
+				&& nameRegex.test(value)
+				&& !specialCharacterRegex.test(value);
+			break;
+        case 4:
+            joinCheck = phoneRegex.test(value);
+            if (joinCheck) {
+                $(this).val(value.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`));
+            }
+             break;
+        case 5:
+            /* joinCheck = value == JSON.parse(code).code;
+            console.log(JSON.parse(code).code); */
+            joinCheck = value.length == 6;
+            break;
+		case 6:
+			joinCheck = value.length > 1 && value.length < 21
+				&& nameRegex.test(value)
+				&& !specialCharacterRegex.test(value);
+			break;
+		case 7:
+			joinCheck = birthRegex.test(value)
+			if (joinCheck) {
+				$(this).val(value.replace(/^(\d{4})(\d{2})(\d{2})$/, `$1.$2.$3`));
+			}
+			break;
+	}
+
+	joinCheckAll[i] = joinCheck;
+
+	if (!joinCheck) {
+        if(i==1){
+            $(".join-password-p").hide();
+        }
+		$joinHelp.eq(i).text(joinRegexMessages[i]);
+		$joinHelp.eq(i).css('color', 'red')
+		return;
+	}
+
+    if(i==4){
+        $(".join-phone-btn").attr("disabled", false);
+    }
+    
+    if(i==5){
+        $(".join-check-btn").attr("disabled", false);
+    }
+
+    $joinInputs.eq(i).css("border", "1px solid #05AE68");
+    $(".join-password-p").show();
+    $joinHelp.hide();
+
+    $(".join-btn").attr("disabled", false);
+
+/* 	if (i != 0 && i != 3 && i != 5) {
+		$joinHelp.eq(i).text("");
+		showHelp($(this), contextPath + "/static/images/pass.png");
+	} else if (i == 0) {
+		$.ajax({
+			type: "POST",
+			url: contextPath + "/checkIdOk.member",
+			data: { memberIdentification: value },
+			success: function(result) {
+				let message, icon;
+				result = JSON.parse(result);
+				if (result.check) {
+					message = "중복된 아이디입니다.";
+					icon = contextPath + "/static/images/error.png";
+					$joinHelp.eq(i).css('color', 'red');
+					joinCheckAll[i] = !result.check;
+				} else {
+					message = "사용 가능한 아이디입니다.";
+					$joinHelp.eq(i).css('color', '#2bb673')
+					icon = contextPath + "/static/images/pass.png";
+					joinCheckAll[i] = true;
+				}
+				$joinHelp.eq(i).text(message);
+				showHelp($joinInputs.eq(i), icon);
+				console.log("asda" + i);
+				console.log(joinCheckAll[i]);
+			}
+		});
+	} else if (i == 3) {
+		$.ajax({
+			url: contextPath + "/checkNicknameOk.member",
+			data: { memberNickname: value },
+			success: function(result) {
+				let message, icon;
+				result = JSON.parse(result);
+				if (result.check) {
+					message = "중복된 닉네임입니다.";
+					icon = contextPath + "/static/images/error.png";
+					$joinHelp.eq(i).css('color', 'red')
+				} else {
+					message = "사용 가능한 닉네임입니다.";
+					$joinHelp.eq(i).css('color', '#2bb673')
+					icon = contextPath + "/static/images/pass.png";
+				}
+				$joinHelp.eq(i).text(message);
+				showHelp($joinInputs.eq(i), icon);
+				joinCheckAll[i] = !result.check
+			}
+		});
+	} else if (i == 5) {
+		$(".getPhoneCheck").click(function() {
+			$.ajax({
+				url: contextPath + "/checkPhoneOk.member",
+				data: { memberPhone: value.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`) },
+				success: function(result) {
+					let message, icon;
+					result = JSON.parse(result);
+					if (result.check) {
+						phoneNumberCheck = false;
+						message = "중복된 휴대폰 번호입니다.";
+						icon = contextPath + "/static/images/error.png";
+						$joinHelp.eq(i).css('color', 'red')
+					} else {
+						phoneNumberCheck = true;
+						$(".setPhoneCheckWrap").show();
+						$(".help").eq(6).show();
+						message = "사용 가능한 휴대폰 번호입니다.";
+						$joinHelp.eq(i).css('color', '#2bb673')
+						icon = contextPath + "/static/images/pass.png";
+						
+					}
+					$joinHelp.eq(i).text(message);
+					showHelp($joinInputs.eq(i), icon);
+					joinCheckAll[i] = !result.check
+				}
+			});
+		});
+	 }*/
+});
+
+/* 성별 선택 */
+$checks.on("change", function() {
+	if ($checks.eq(0).prop("checked") == true) {
+		$genderCheckImg.eq(0).attr("src", "../../static/images/check_all.png")
+		$genderCheckImg.eq(1).attr("src", "../../static/images/check.png")
+	} else {
+		$genderCheckImg.eq(0).attr("src", "../../static/images/check.png")
+		$genderCheckImg.eq(1).attr("src", "../../static/images/check_all.png")
+	}
+});
+
+$joinInputs.on('blur', function () {
+    if (joinCheckAll.filter(check => check).length == $joinInputs.length) {
+		$(".join-btn").attr("disabled", false);
+		return;
+	}
+    $(".join-btn").attr('disabled', true);
+  });
+
+/* function send() {
+	$joinInputs.trigger("blur");
+	if (joinCheckAll.filter(check => check).length != $joinInputs.length) {
+		let modalMessage = "<span>모든 정보를 정확히 입력하셔야</span><span>가입이 완료됩니다.</span>";
+		showWarnModal(modalMessage);
+		return;
+	}
+
+	$("input[name='memberPassword']").val(btoa($("input[name='memberPassword']").val()));
+	$("#passwordCheck").val(btoa($("#passwordCheck").val()));
+
+	$("input[type=radio][name=memberGender]:checked").val();
+	document.join.submit();
+
+} */
+
+/* let modalCheck;
+function showWarnModal(modalMessage) {
+	modalCheck = false;
+	$("div#contentWrap").html(modalMessage)
+	$("div.warnModal").css("animation", "popUp 0.5s");
+	$("div.modal").css("display", "flex").hide().fadeIn(500);
+	setTimeout(function() { modalCheck = true; }, 500);
+}
+
+$("div.modal").on("click", function() {
+	if (modalCheck) {
+		$("div.warnModal").css("animation", "popDown 0.5s");
+		$("div.modal").fadeOut(500);
+	}
+}); */
+
+
+
