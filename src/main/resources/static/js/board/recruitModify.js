@@ -55,11 +55,10 @@ const $InputGroupName = $('input[name="groupName"]');
 const $InputGroupTitle = $('input[name="groupTitle"]');
 const $InputGroupMaxValue = $('input[name="groupMaxValue"]');
 
-const NumberRegex =/[0-9?/]+$/;
+const NumberRegex =/^[0-9 ]+$/;
 const wordRegex = /[^ㄱ-ㅎ가-힣a-zA-Z`~!@@#$%^&*|₩₩₩'₩";:₩/? ]+$/;
 const nameRegex = /^[0-9ㄱ-ㅎ가-힣a-zA-Z ]+$/;
 
-const SpecialCharacterRegex = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/g;
 const $warnMessage = $(".warnMessage");
 
 let nameCheck = true;
@@ -152,7 +151,6 @@ $Category.each((i, e) => {
         
         switch(i) {
             case 0: case 1: case 2: case 3:
-                console.log($Categoryradio.eq(i).val())
                 radioCheck = categoryvalue != $Categoryradio.eq(i).val() ? true : false;
                 break;
         }
@@ -182,7 +180,7 @@ console.log($locationInput);
 
 
 let modifyCheck;
-let modifyCheckAll = [false, false, false, false, false, false, false, false, false]
+let modifyCheckAll = [false, false, false, false, false, false, false]
 
 /* 수정 폼 수정시 */
 
@@ -218,11 +216,11 @@ $ModifyInput.on("blur", function(){
             modifyCheck = condition1 && condition2;
             break;
 
-        case 4: case 5: case 6: case 7:
+        case 4: case 5:
             modifyCheck = value;
             break;
 
-        case 8:
+        case 7:
             modifyCheck = value.length > 0;
             break;
     }

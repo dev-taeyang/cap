@@ -5,12 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/main/common.css">
+    <link rel="stylesheet" href="../../static/css/board/boardModal.css">
     <link rel="stylesheet" href="../../static/css/board/boardDetail.css">
     <link rel="icon" href="../../static/images/favicon.png" />
     <title>탐험대 상세페이지</title>
 </head>
 <body>
     <div id="header"></div>
+    <div class="modal-container" style="display: none;">
+        <div class="modal">
+          <div class="warn-modal">
+            <div class="modal-content"></div>
+          </div>
+          <div class="modal-button-wrap">
+            <button class="delete-button">삭제</button>
+            <button class="cancel-button">취소</button>
+          </div>
+        </div>
+    </div>
     <div class="boardDetailPage-wrapper">
         <div class="boardDetailPage-contentWrapper">
             <!-- 원정대에 관한 상세정보 -->
@@ -35,11 +47,9 @@
                                     <h1 class="infoSection-Title">[오싹/공포]흉가체험</h1>
                                     <div class="infoSection-actionWrapper">
                                         <a href="">
-                                            <span class="actionSection-title firstActionSection">수정</span>
+                                            <span class="actionSection-title">수정</span>
                                         </a>
-                                        <a href="">
-                                            <span class="actionSection-title">삭제</span>
-                                        </a>
+                                        <span class="actionSection-title deleteButton">삭제</span>
                                     </div>
                                 </hgroup>
                             </div>
@@ -214,8 +224,9 @@
     <div id="footer"></div>
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e010e1c47083a81e5873ca2682380a56&libraries=services"></script>
-<script type="text/javascript" src="../../static/js/board/boardDetail.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../../static/js/board/boardDetail.js"></script>
+<script type="text/javascript" src="../../static/js/board/modalRelate.js"></script>
 <script>
     $("#header").load("/src/main/resources/templates/main/header.html")
     $("#footer").load("/src/main/resources/templates/main/footer.html")

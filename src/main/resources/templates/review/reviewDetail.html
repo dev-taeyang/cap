@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/css/board/boardModal.css">
     <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
     <link rel="stylesheet" href="/src/main/resources/static/css/board/boardDetail.css">
     <link rel="icon" href="/src/main/resources/static/images/favicon.png" />
-    <title>리뷰 상세페이지</title>
+    <title>보고서 상세페이지</title>
 </head>
 <body>
     <div id="header"></div>
+    <div class="modal-container" style="display: none;">
+        <div class="modal">
+          <div class="warn-modal">
+            <div class="modal-content"></div>
+          </div>
+          <div class="modal-button-wrap">
+            <button class="delete-button">삭제</button>
+            <button class="cancel-button">취소</button>
+          </div>
+        </div>
+    </div>
     <div class="boardDetailPage-wrapper">
         <div class="reviewHeader">
             <!-- 리뷰 작성 날짜가 들어갈 곳 -->
@@ -48,11 +60,9 @@
                 </div>
                 <div class="infoSection-actionWrapper">
                     <a href="">
-                        <span class="actionSection-title firstActionSection">수정</span>
+                        <span class="actionSection-title">수정</span>
                     </a>
-                    <a href="">
-                        <span class="actionSection-title">삭제</span>
-                    </a>
+                    <span class="actionSection-title deleteButton">삭제</span>
                 </div>
             </div>
         </div>
@@ -167,6 +177,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="../../static/js/board/reviewDetail.js"></script>
+<script src="../../static/js/board/modalRelate.js"></script>
 <script>
     $("#header").load("/src/main/resources/templates/main/header.html")
     $("#footer").load("/src/main/resources/templates/main/footer.html")
