@@ -26,7 +26,6 @@ firstImage.setAttribute('src', `../../static/images/main-header-banner0${images.
 function autoSlide() {
     banner.style.transition = 'transform 0.7s';
     banner.style.transform = `translate(${-768 * ++count}px)`;
-    console.log(count);
     pages.innerHTML = count == 6 ? 1 : count;
     if (count == 6) {
         count = 1;
@@ -63,6 +62,7 @@ prev.addEventListener("click", function(){
     }
     auto = setInterval(autoSlide, 3000);
     setTimeout(()=>{checkArrow = false}, 700);
+    console.log("큰배너 왼쪽으로 이동 : " + count);
 });
 
 next.addEventListener("click", function(){
@@ -91,6 +91,7 @@ next.addEventListener("click", function(){
     }
     auto = setInterval(autoSlide, 3000);
     setTimeout(()=>{checkArrow = false}, 700);
+    console.log("큰배너 오른쪽으로 이동 : " + count);
 });
 
 
