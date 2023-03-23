@@ -25,8 +25,9 @@
                                     <legend class="formTitle-legend">
                                         <span>탐험대 명</span>
                                     </legend>
-                                    <input class="formInputBox" type="text" placeholder="탐험대 명을 입력해주세요">
+                                    <input name="groupName" class="formInputBox" type="text" placeholder="탐험대 명을 입력해주세요">
                                 </div>
+                                <p class="warnMessage"></p>
                             </div>
                         </div>
                         <hr class="space">
@@ -36,8 +37,9 @@
                                     <legend class="formTitle-legend">
                                         <span>제목</span>
                                     </legend>
-                                    <input class="formInputBox" type="text" placeholder="제목을 입력해주세요">
+                                    <input name="groupTitle" class="formInputBox" type="text" placeholder="제목을 입력해주세요">
                                 </div>
+                                <p class="warnMessage"></p>
                             </div>
                         </div>
                         <hr class="space">
@@ -47,7 +49,7 @@
                                     <legend class="formTitle-legend">
                                         <span>장소</span>
                                     </legend>
-                                    <input id="address-kakao" class="formInputBox" type="text" placeholder="상세 주소">
+                                    <input name="groupLocation" id="address-kakao" class="formInputBox" type="text" placeholder="상세 주소">
                                 </div>
                             </div>
                         </div>
@@ -59,19 +61,19 @@
                                         <span>카테고리</span>
                                     </legend>
                                     <div class="ButtonItem-list">
-                                        <input type="radio" name="category" id="adventure" value="adventure" style="display: none;">
+                                        <input type="radio" name="groupCategory" id="adventure" value="adventure" style="display: none;">
                                         <button type="button" class="CategoryItem category-Adventure">
                                             <span>모험</span>
                                         </button>
-                                        <input type="radio" name="category" id="horror" value="horror" style="display: none;">
+                                        <input type="radio" name="groupCategory" id="horror" value="horror" style="display: none;">
                                         <button type="button" class="CategoryItem category-Horror" value="공포">
                                             <div>공포</div>
                                         </button>
-                                        <input type="radio" name="category" id="tour" value="tour" style="display: none;">
+                                        <input type="radio" name="groupCategory" id="tour" value="tour" style="display: none;">
                                         <button type="button" class="CategoryItem category-Tour">
                                             <div>관광</div>
                                         </button>
-                                        <input type="radio" name="category" id="leisure" value="leisure" style="display: none;">
+                                        <input type="radio" name="groupCategory" id="leisure" value="leisure" style="display: none;">
                                         <button type="button" class="CategoryItem category-Leisure">
                                             <div>레저</div>
                                         </button>
@@ -86,8 +88,9 @@
                                     <legend class="formTitle-legend">
                                         <span>모집 인원</span>
                                     </legend>
-                                    <input class="formInputBox" type="text" placeholder="모집 인원을 적어주세요. 예) 7">
+                                    <input name="groupMaxValue" class="formInputBox" type="text" placeholder="모집 인원을 적어주세요. 예) 7">
                                 </div>
+                                <p class="warnMessage"></p>
                             </div>
                         </div>
                         <hr class="space">
@@ -97,13 +100,13 @@
                                     <legend class="formTitle-legend">
                                         <span>모집 마감</span>
                                     </legend>
-                                        <input class="formTime" type="date">
-                                        <input class="formTime" type="time">
+                                        <input name="groupEndDate" class="formTime" type="date">
+                                        <input name="groupEndDate" class="formTime" type="time">
                                     <legend class="formTitle-legend form-meetEndTime">
                                         <span>만남 시간</span>
                                     </legend>
-                                        <input class="formTime" type="date">
-                                        <input class="formTime" type="time">
+                                        <input name="groupMeetDate" class="formTime" type="date">
+                                        <input name="groupMeetDate" class="formTime" type="time">
                                 </div>
                             </div>
                         </div>
@@ -125,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </label>
-                                        <input type="file" id="attach" style="display: none;">
+                                        <input name="groupFile" type="file" id="attach" style="display: none;">
                                         <div class="showThumbnail-section">
                                             <span class="cancelImage">X</span>
                                         </div>
@@ -142,7 +145,7 @@
                                     <legend class="formTitle-legend">
                                         <span>탐험대 소개</span>
                                     </legend>
-                                    <textarea id="editor" class="detailText-text" placeholder="상세 내용을 적어주세요"></textarea>
+                                    <textarea name="groupContent" class="detailText-text" placeholder="상세 내용을 적어주세요"></textarea>
                                 </div>
                             </div>
                         </div>
