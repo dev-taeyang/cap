@@ -7,6 +7,12 @@ body {
 }
 
 /* 헤더 배너 */
+
+.header-section {
+    border-bottom: 1px solid #80808052;
+    margin-bottom: 15px;
+}
+
 .header-banner-wrap {
     background-color: #42861F;
     height: 56px;
@@ -26,8 +32,13 @@ body {
     position: relative;
 }
 
+.header-banner a {
+    cursor: none;
+}
+
 .header-banner img {
     width: 100%;
+    cursor: pointer;
 }
 
 .header-banner-btn {
@@ -64,7 +75,7 @@ body {
     -webkit-box-align: center;
     align-items: center;
     height: 32px;
-    background-color: rgb(244, 244, 244);
+    background-color: #80808038;
 }
 
 .header-navi-wrap {

@@ -9,7 +9,7 @@ const middleBefore = document.querySelector(".before-button");
 const middleFollow = document.querySelector(".follow-button");
 let middleCheckArrow = false;
 let middleCount = 1;
-let middleAuto = setInterval(autoSlide, 3000);
+let middleAuto = setInterval(middleAutoSlide, 3000);
 
 HTMLCollection.prototype.forEach = Array.prototype.forEach;
 middleImage.forEach((img, i) => img.setAttribute('src', `../../static/images/middle-banner0${i+1}.png`));
@@ -22,10 +22,9 @@ middleLastImage.setAttribute('src', `../../static/images/middle-banner01.png`);
 middleBanners.insertBefore(middleFirstImage, document.querySelector(".middle-header-banner img"));
 middleFirstImage.setAttribute('src', `../../static/images/middle-banner0${middleImage.length}.png`);
 
-function autoSlide() {
+function middleAutoSlide() {
     middleBanners.style.transition = 'transform 0.7s';
     middleBanners.style.transform = `translate(${-768 * ++middleCount}px)`;
-    console.log(middleCount);
     if (middleCount == 6) {
         middleCount = 1;
        setTimeout(function(){
@@ -38,7 +37,7 @@ function autoSlide() {
  middleBefore.addEventListener("click", function(){
     if(middleCheckArrow){return;}
     middleCheckArrow = true;
-    clearInterval(middleCount);
+    clearInterval(middleAuto);
     middleBanners.style.transition = "transform 0.7s";
     middleBanners.style.transform = `translate(${-768 * --middleCount}px)`;
    
@@ -49,8 +48,9 @@ function autoSlide() {
             middleBanners.style.transform = `translate(${-768 * (middleImage.length)}px)`;
         }, 700);
     }
-    middleAuto = setInterval(autoSlide, 3000);
+    middleAuto = setInterval(middleAutoSlide, 3000);
     setTimeout(()=>{middleCheckArrow = false}, 700);
+    console.log("작은배너 왼쪽으로 이동: " + middleCount);
 });
 
 middleFollow.addEventListener("click", function(){
@@ -67,8 +67,9 @@ middleFollow.addEventListener("click", function(){
             middleBanners.style.transform = "translate(-768px)";
         }, 700);
     }
-    middleAuto = setInterval(autoSlide, 3000);
+    middleAuto = setInterval(middleAutoSlide, 3000);
     setTimeout(()=>{middleCheckArrow = false}, 700);
+    console.log("작은배너 오른쪽으로 이동 : " + middleCount);
 });
 
 

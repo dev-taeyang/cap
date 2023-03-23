@@ -43,6 +43,7 @@ const clock = document.querySelector('.clock h1');
 /* 파일 썸네일교체 */
 const $storageFile = $("input[name='file']");
 const $thumbnail = $(".content__img img");
+const $closeButton = $('.closeImgButton');
 
 /* 페이징 */
 const $pageNumber = $(".page-number ");
@@ -50,4 +51,5 @@ const $pageNumber = $(".page-number ");
 /* input[type=text] 효과 */
 
 const $input = $('.content__intput');
+
 

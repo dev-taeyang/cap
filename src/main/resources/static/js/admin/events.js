@@ -121,7 +121,6 @@ $('#completeBtn').on('click', function (e) {
     e.preventDefault();
     return new Promise(
         function () {
-            console.log('으으아');
             $modalStage.fadeOut(500);
         },
         () => {
@@ -135,16 +134,13 @@ $('#completeBtn').on('click', function (e) {
 /* 창고 썸네일변경 */
 $storageFile.on('change', function (e) {
     let i = $storageFile.index($(this));
-    console.log(i);
     var reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
-    console.log(e.target);
     reader.onload = function (e) {
-        console.log(e.target);
         let url = e.target.result;
         if (url.includes('image')) {
-            $('label.attach').eq(i).find('h6').hide();
-            $('div.x').eq(i).show();
+            /* $('label.attach').eq(i).find('h6').hide();
+            $('div.x').eq(i).show(); */
             $thumbnail.eq(i).show();
             $thumbnail.eq(i).attr('src', url);
         } else {
