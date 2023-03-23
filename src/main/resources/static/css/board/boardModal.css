@@ -1,0 +1,84 @@
+
+/* 모달창 css */
+
+.modal-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+  }
+  
+  .modal {
+    margin: 0px 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4px;
+    background-color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .warn-modal {
+    padding: 20px;
+    font-size: 13px;
+    word-break: keep-all;
+    line-height: 22px;
+  }
+  
+  .modal-content {
+    font-size: 13px;
+    text-align: center;
+    line-height: 22px;
+  }
+  
+  .modal-button-wrap {
+    display: flex;
+    border-top: 1px solid rgb(230, 230, 230);
+  }
+
+  .delete-button {
+    width: 100%;
+    height: auto;
+    line-height: normal;
+    padding: 16px 32px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0px;
+    color: rgb(255, 102, 102);
+    font-size: 14px;
+    font-weight: bold;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+  }
+  
+  .cancel-button {
+    width: 100%;
+    height: auto;
+    line-height: normal;
+    padding: 16px 32px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    border-left: 1px solid rgb(230, 230, 230);
+  }
+  
+  .delete-button:hover,
+  .cancel-button:hover {
+    background-color: rgb(245, 250, 255);
+  }
+  

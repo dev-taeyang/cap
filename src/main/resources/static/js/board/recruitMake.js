@@ -4,11 +4,10 @@ const $InputGroupName = $('input[name="groupName"]');
 const $InputGroupTitle = $('input[name="groupTitle"]');
 const $InputGroupMaxValue = $('input[name="groupMaxValue"]');
 
-const NumberRegex =/[0-9?/]+$/;
+const NumberRegex =/^[0-9 ]+$/;
 const wordRegex = /[^ㄱ-ㅎ가-힣a-zA-Z`~!@@#$%^&*|₩₩₩'₩";:₩/? ]+$/;
 const nameRegex = /^[0-9ㄱ-ㅎ가-힣a-zA-Z ]+$/;
 
-const SpecialCharacterRegex = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/g;
 const $warnMessage = $(".warnMessage");
 
 let nameCheck = true;
@@ -156,10 +155,11 @@ let CheckText = false;
 const $Time = $(".formTime");
 
 let timeCheck;
-let timeCheckAll = [false, false, false, false];
+let timeCheckAll = [false, false];
 let CheckTime = false;
 
 const $MakeInput = $("input[type='text'], .CategoryItem, .formTime, .detailText-text")
+console.log($MakeInput);
 
 
 $Category.each((i, e) => {
@@ -216,7 +216,7 @@ $TextBox.each((i, e) => {
                 textCheck = condition1 && condition2;
                 break;
             case 1:
-                var condition = value.length > 0 && value.length <= 30;
+                var condition = value.length > 0 ;
                 textCheck = condition;
                 break;
             case 2:
@@ -257,19 +257,13 @@ $TextBox.each((i, e) => {
             case 1:
                 timeCheck = value;
                 break;
-            case 2:
-                timeCheck = value;
-                break;
-            case 3:
-                timeCheck = value;
-                break;
             }
 
             timeCheckAll[i] = timeCheck;
 
-            if(timeCheckAll[0] && timeCheckAll[1] && timeCheckAll[2] && timeCheckAll[3]) {
+            if(timeCheckAll[0] && timeCheckAll[1]) {
                 CheckTime = true;
-            } else if(!(timeCheckAll[0] && timeCheckAll[1] && timeCheckAll[2] && timeCheckAll[3])) {
+            } else if(!(timeCheckAll[0] && timeCheckAll[1])) {
                 CheckTime = false;
             }
         })
