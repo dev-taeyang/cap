@@ -9,7 +9,7 @@
     max-width: 808px;
     width: 100%;
     padding: 0px;
-    min-height: 653px;
+    min-height: 410px;
 }
 
 .id-change-title {
@@ -49,19 +49,27 @@
     border: 1px solid rgb(238, 238, 238);
     margin: 4px 0px 8px;
 }
+
+.join-phone-btn:disabled {
+    cursor: not-allowed;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #80808042;
+    color: rgb(170, 170, 170);
+}
+
 .join-phone-btn {
     width: 130px;
     height: 50px;
     line-height: 20px;
     padding: 0px 13px;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 128, 0, 0.51);
     text-align: center;
-    cursor: not-allowed;
+    cursor: pointer;
     border-radius: 8px;
-    color: rgb(170, 170, 170);
+    color: rgb(5, 174, 104);
     font-size: 14px;
     margin: 4px 0px 8px;
-    border: none;
 }
 
 .join-check-wrap {
@@ -83,17 +91,24 @@
     margin: 4px 0px 8px;
 }
 
+.join-check-btn:disabled {
+    cursor: not-allowed;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #80808042;
+    color: rgb(170, 170, 170);
+}
+
 .join-check-btn {
     width: 130px;
     height: 50px;
     line-height: 20px;
     padding: 0px 13px;
     background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 128, 0, 0.51);
     text-align: center;
-    cursor: not-allowed;
-    border: 1px solid rgb(181, 197, 214);
+    cursor: pointer;
     border-radius: 8px;
-    color: rgb(181, 197, 214);
+    color: rgb(5, 174, 104);
     font-size: 14px;
     margin: 4px 0px 8px;
 }
