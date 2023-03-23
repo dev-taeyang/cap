@@ -59,16 +59,29 @@
             </div>
             <button type="button" class="join-check-btn" disabled>인증하기</button>
           </div>
-          <!-- 인증했을 때 아이디 띄우는곳 -->
-          <div style="display: none">
-            <input type="text" name="email" placeholder="" class="change-password" />
-          </div>
+          <button type="button" class="check-id-btn" disabled>아이디 확인</button>
         </form>
+      </div>
+      <div class="check-id-wrap">
+        <div class="check-id-title"><h3>아이디 확인하기</h3></div>
+        <div class="check-id-content-wrap">
+          <div>
+            <div class="content-title">
+              <p>본인의 아이디를 확인하세요.</p>
+            </div>
+            <div class="content-main">
+              <p class="no-id-text">가입하신 아이디가 존재하지 않습니다.</p>
+              <p></p>
+            </div>
+          </div>
+          <a class="login-button" href="/login">로그인하러 가기</a>
+        </div>
       </div>
     </section>
     <div id="footer"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="/src/main/resources/static/js/member/findId.js"></script>
   <script>
     $('#header').load('/src/main/resources/templates/main/header.html');
     $('#footer').load('/src/main/resources/templates/main/footer.html');
