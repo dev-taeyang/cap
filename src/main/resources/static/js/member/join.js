@@ -2,7 +2,7 @@
  * join.jsp
  */
 
-const $joinInputs = $(".inputbox-wrap input[type='text'], input[type='password']");
+const $joinInputs = $(".inputbox-wrap input[type='text'], input[type='password'], input[type='number']");
 const nameRegex = /^[가-힣|a-z|A-Z|]+$/;
 const specialCharacterRegex = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gim;
 const birthRegex = /^(19[0-9][0-9]|20\d{2}).?(0[0-9]|1[0-2]).?(0[1-9]|[1-2][0-9]|3[0-1])$/;
@@ -23,8 +23,8 @@ let joinBlurMessages = ["아이디를 입력하세요.", "비밀번호를 입력
 let joinRegexMessages = ["영문 혹은 영문과 숫자를 조합하여 4자~20자로 입력해주세요.",
 "공백 제외 영어 및 숫자, 특수문자 모두 포함하여 10~20자로 입력해주세요.",
 "위 비밀번호와 일치하지 않습니다. 다시 입력해주세요.", "영문 혹은 한글로 2자~20자로 입력해주세요.",
-"영문 혹은 한글로 2자~20자로 입력해주세요.", "휴대폰 번호를 확인하세요.", "인증번호를 확인하세요.", 
-"이메일 주소를 확인해주세요.", "생년월일을 확인하세요."];
+ "휴대폰 번호를 확인하세요.", "인증번호를 확인하세요.", "닉네임을 확인하세요.", 
+"이메일 주소를 확인하세요.", "생년월일을 확인하세요."];
 const $joinHelp = $("p.help");
 
 let joinCheck;
