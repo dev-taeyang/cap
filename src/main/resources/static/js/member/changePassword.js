@@ -1,4 +1,4 @@
-/* mypageUpdatePassword.html */
+/* changePassword.html */
 
 /* 비밀번호 정규식 */
 const passwordNumberRegex = /[0-9]/g;
@@ -7,34 +7,22 @@ const passwordSpecialCharacterRegex = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi;
 const $warnText = $('p.warn-text');
 const $regexText = $('p.password-regex');
 const $inputs = $('input[type="password"]');
-/* 기존 비밀번호 입력칸 */
-const $originalPassword = $('.original-password');
 /* 새로운 비밀번호 입력칸 */
 const $passwordInput = $('.new-password');
 /* 새로운 비밀번호 한번더 입력칸 */
 const $checkInput = $('.new-password-check');
 /* 변경하기 버튼 */
 const $changeButton = $('.change-button');
-
+/* keyup 이벤트용 */
+const newPassword = document.querySelector('.new-password');
+const newPasswordCheck = document.querySelector('.new-password-check');
+const changeButton = document.querySelector('.change-button');
 
 let regexMessage = '위 비밀번호와 일치하지 않습니다. 다시 입력해주세요.';
 let passwordCheck;
-let passwordCheckAll = [false, false, false];
+let passwordCheckAll = [false, false];
 
 $('.modal').hide();
-
-/* 기존 비밀번호 검사 */
-$originalPassword.on('blur', function () {
-  let value = $(this).val();
-
-  if (!value) {
-    passwordCheck = false;
-    passwordCheckAll[0] = passwordCheck;
-    return;
-  }
-
-  passwordCheckAll[0] = true;
-});
 
 /* 새로운 비밀번호 검사 */
 $passwordInput.on('blur', function () {
@@ -44,7 +32,7 @@ $passwordInput.on('blur', function () {
     $regexText.css('color', 'rgb(153, 153, 153)');
     $passwordInput.css('border', '1px solid rgb(238, 238, 238)');
     passwordCheck = false;
-    passwordCheckAll[1] = passwordCheck;
+    passwordCheckAll[0] = passwordCheck;
     return;
   }
 
@@ -66,12 +54,12 @@ $passwordInput.on('blur', function () {
   /* 정규식 검사 통과하면 true */
   passwordCheck = condition1 && condition2 && condition3;
 
-  passwordCheckAll[1] = passwordCheck;
+  passwordCheckAll[0] = passwordCheck;
 
   if (!passwordCheck) {
     $regexText.css('color', 'rgb(222, 28, 34)');
     $passwordInput.css('border', '1px solid rgb(222, 28, 34)');
-    passwordCheckAll[1] = passwordCheck;
+    passwordCheckAll[0] = passwordCheck;
   } else {
     $regexText.css('color', 'rgb(153, 153, 153)');
     $passwordInput.css('border', '1px solid rgb(238, 238, 238)');
@@ -87,20 +75,20 @@ $checkInput.on('blur', function () {
     $warnText.text(regexMessage);
     $checkInput.css('border', '1px solid rgb(222, 28, 34)');
     passwordCheck = false;
-    passwordCheckAll[2] = passwordCheck;
+    passwordCheckAll[1] = passwordCheck;
   } else {
     $warnText.hide();
     passwordCheck = true;
-    passwordCheckAll[2] = passwordCheck;
+    passwordCheckAll[1] = passwordCheck;
   }
 
-  passwordCheckAll[2] = passwordCheck;
+  passwordCheckAll[1] = passwordCheck;
 
   if (!passwordCheck) {
     $warnText.show();
     $warnText.text(regexMessage);
     $checkInput.css('border', '1px solid rgb(222, 28, 34)');
-    passwordCheckAll[2] = passwordCheck;
+    passwordCheckAll[1] = passwordCheck;
   } else {
     $warnText.hide();
     $checkInput.css('border', '1px solid rgb(238, 238, 238)');
@@ -108,22 +96,29 @@ $checkInput.on('blur', function () {
 });
 
 /* 입력한 값들이 모두 true라면 변경하기 버튼 활성화 */
-$inputs.on('blur', function () {
-  if (passwordCheckAll.filter((check) => check).length == 3) {
-    $changeButton.attr('disabled', false);
-    return;
+newPassword.addEventListener('keyup', activeEvent);
+newPasswordCheck.addEventListener('keyup', activeEvent);
+
+function activeEvent() {
+  switch ($(newPassword).val() == $(newPasswordCheck).val()) {
+    case true:
+      changeButton.disabled = false;
+      break;
+    case false:
+      changeButton.disabled = true;
+      break;
   }
-  $changeButton.attr('disabled', true);
-});
+}
 
 $changeButton.on('click', function () {
   let modalMessage = '';
-  /* 기존 비밀번호 검사 후 false일 때 모달창 */
-  modalMessage = '기존 비밀번호가 일치하지 않습니다.';
+  if (passwordCheckAll.filter((check) => check).length == 2) {
+    modalMessage = '변경되었습니다.';
+    showWarnModal(modalMessage);
+    return;
+  }
+  modalMessage = '비밀번호를 다시 입력해주세요.';
   showWarnModal(modalMessage);
-  /* 기존 비밀번호 검사 후 true일 때 모달창 */
-  /* modalMessage = "변경되었습니다.";
-    showWarnModal(modalMessage); */
 });
 
 /* 모달창 */
