@@ -38,7 +38,6 @@ const $MakeInput = $('input[type="text"], .CategoryItem, .ButtonItem, .detailTex
 // 카테고리 체크
     $Category.each((i, e) => {
     $(e).click(function(){
-        console.log($Category);
         $Category.removeClass("CategoryActive");
         $(e).addClass("CategoryActive");
         $Categoryradio[i].checked = true;
@@ -146,7 +145,6 @@ $Button.each((i, e) => {
 
     /* 모든 조건 만족시 버튼 활성화 */
 $MakeInput.on('blur', function(){
-    console.log($MakeInput);
 
     let allCheck = [CheckCategory, CheckButton, CheckText];
 
@@ -208,7 +206,6 @@ $cancel.on('click', function(e){
 /* 파일인풋 */
 const file = document.querySelector('input[type=file]');
 const imgButton = document.querySelector(".imgButton");
-console.log(imgButton);
 
 function handleFiles(files) {
     /* 썸네일 담을 div의 부모 */
