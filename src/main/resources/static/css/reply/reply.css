@@ -108,6 +108,30 @@
     padding: 0px;
 }
 
+
+.ModifySection-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ReplyModify-action {
+    font-size: 12px;
+    letter-spacing: -0.43px;
+    color: rgb(198, 202, 208);
+    margin-bottom: 3px;
+}
+
+.modifyReply-area {
+    font-weight: 600;
+    width: 722px;
+    height: 74px;
+    border-radius: 21.5px;
+    resize: none;
+    padding: 10px 13px;
+    background-color: rgb(242, 243, 246);
+}
+
 .TextAreaSection-wrapper {
     display: flex;
     -webkit-box-pack: center;

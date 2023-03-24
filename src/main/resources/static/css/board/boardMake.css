@@ -96,6 +96,10 @@ body {
     padding-right: 32px;
 }
 
+.reviewImages {
+    width: 97px;
+}
+
 .formInputBox {
     border: 1px solid #ddd;
     padding-left: 13px;

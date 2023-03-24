@@ -26,7 +26,6 @@ $InputGroupName.on('blur', function(){
         return;
     }
 
-    console.log(nameCheck)
     nameCheck = nameRegex.test(value);
     if(nameCheck) {
         $warnMessage.eq(0).hide();
@@ -70,7 +69,7 @@ $InputGroupMaxValue.on('blur', function(){
     }
 
     valueCheck = NumberRegex.test(value);
-    if(valueCheck) {
+    if(valueCheck && value.length < 3) {
         $warnMessage.eq(2).hide();
         $InputGroupMaxValue.css('border', '1px solid #ddd');
     } else {
@@ -159,7 +158,6 @@ let timeCheckAll = [false, false];
 let CheckTime = false;
 
 const $MakeInput = $("input[type='text'], .CategoryItem, .formTime, .detailText-text")
-console.log($MakeInput);
 
 
 $Category.each((i, e) => {
