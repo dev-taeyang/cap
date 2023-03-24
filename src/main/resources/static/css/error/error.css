@@ -1,0 +1,26 @@
+/* error CSS */
+
+.error-wrap {
+    margin: 0 auto;
+    width: 768px;
+    text-align: center;
+}
+
+.login-button {
+    text-align: center;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 13px;
+    border: 1px solid rgb(238, 238, 238);
+    width: 40%;
+    height: 56px;
+    color: white;
+    background-color: #05AE68;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 30px auto 30px;
+}
