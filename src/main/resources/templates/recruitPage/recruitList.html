@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css">
-    <link rel="stylesheet" href="/src/main/resources/static/css/board/boardList.css">
-    <link rel="icon" href="/src/main/resources/static/images/favicon.png" />
+    <link rel="stylesheet" href="/css/main/common.css">
+    <link rel="stylesheet" href="/css/board/boardList.css">
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="icon" href="/images/favicon.png" />
     <title>탐험대 모집</title>
 </head>
 <body>
-    <div id="header"></div>
+<div th:insert="~{/main/header :: header}"></div>
     <div class="boardPage-wrapper">
         <!-- 게시판 제목이 적혀있는 곳 -->
         <div class="boardPage-header">
@@ -269,13 +271,10 @@
             </a>
         </div>
     </div>
-    <div id="footer"></div>
+<div th:insert="~{/main/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="../../static/js/board/boardButton.js"></script>
-<script src="../../static/js/board/boardList.js"></script>
-<script>
-    $("#header").load("/src/main/resources/templates/main/header.html")
-    $("#footer").load("/src/main/resources/templates/main/footer.html")
-</script>
+<script src="/js/board/boardButton.js"></script>
+<script src="/js/board/boardList.js"></script>
+<script src="/js/main/header.js"></script>
 </html>

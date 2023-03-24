@@ -7,11 +7,13 @@
     <title>마이페이지 댓글 모음</title>
     <link
       rel="shortcut icon"
-      href="../../static/images/favicon.png"
+      href="/images/favicon.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../../static/css/mypage/mypageReply.css" />
-    <link rel="stylesheet" href="../../static/css/main/common.css" />
+    <link rel="stylesheet" href="/css/mypage/mypageReply.css" />
+    <link rel="stylesheet" href="/css/main/common.css" />
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link
       href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
       rel="stylesheet"
@@ -23,7 +25,7 @@
     }
   </style>
   <body>
-    <div id="header"></div>
+  <div th:insert="~{/main/header :: header}"></div>
     <main id="mypage-reply">
       <div class="mypage-reply-container">
         <header class="mypage-reply-header">
@@ -47,7 +49,7 @@
                     <img
                       alt="프로필"
                       class="user-image"
-                      src="../../static/images/jiwook.jpg"
+                      src="/images/jiwook.jpg"
                     />
                   </div>
                 </div>
@@ -72,7 +74,7 @@
                     <img
                       alt="프로필"
                       class="user-image"
-                      src="../../static/images/jiwook.jpg"
+                      src="/images/jiwook.jpg"
                     />
                   </div>
                 </div>
@@ -97,7 +99,7 @@
                     <img
                       alt="프로필"
                       class="user-image"
-                      src="../../static/images/jiwook.jpg"
+                      src="/images/jiwook.jpg"
                     />
                   </div>
                 </div>
@@ -150,12 +152,9 @@
         </footer>
       </div>
     </main>
-    <div id="footer"></div>
+  <div th:insert="~{/main/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="../../static/js/mypage/mypageReply.js"></script>
-  <script>
-    $('#header').load('../../templates/main/header.html');
-    $('#footer').load('../../templates/main/footer.html');
-  </script>
+  <script src="/js/mypage/mypageReply.js"></script>
+  <script src="/js/main/header.js"></script>
 </html>
