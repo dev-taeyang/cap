@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +19,7 @@
         </style>
     </head>
     <body>
-        <footer class="footer-whole-container">
+        <footer th:fragment="footer" class="footer-whole-container">
             <div class="footer-wrap">
                 <div class="top-wrap">
                     <a href="">탐험대 모집</a>
