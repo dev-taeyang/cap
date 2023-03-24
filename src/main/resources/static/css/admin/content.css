@@ -88,7 +88,7 @@ div.table__box .table__search__form {
 table.table {
     border-collapse: collapse;
     width: 100%;
-    height: 400px;
+    height: 200px;
 }
 
 .table tr:not(:first-child) {
