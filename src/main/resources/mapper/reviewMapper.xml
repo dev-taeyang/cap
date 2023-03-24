@@ -4,13 +4,29 @@
     <insert id="insert">
         insert into tbl_review
         (review_title, review_content, review_category, review_grade, group_id)
-        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{groupId});
+        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{groupId})
     </insert>
 
     <update id="update">
-        UPDATE tbl_review
-        SET review_title= #{reviewTitle}, review_content = #{reviewContent} , review_category='', review_register_date=CURRENT_TIMESTAMP, review_update_date=CURRENT_TIMESTAMP, review_grade=5, group_id=0
-        WHERE review_id=0;
+        update tbl_review
+        set review_title= #{reviewTitle}, review_content = #{reviewContent} , review_category = #{reviewCategory}, review_grade= #{reviewGrade}
+        where review_id= #{reviewId}
     </update>
+
+    <select id="select" resultType="reviewVO">
+        select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, group_id
+        from tbl_review
+        where review_id = #{reviewId}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_review
+        where review_id = #{reviewId}
+    </delete>
+
+    <select id="selectAll" resultType="reviewVO">
+        select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, group_id
+        from tbl_review
+    </select>
 
 </mapper>
