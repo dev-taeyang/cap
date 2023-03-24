@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.ReviewMapper">
+    <insert id="insert">
+        insert into tbl_review
+        (review_title, review_content, review_category, review_grade, group_id)
+        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{groupId});
+    </insert>
+
+    <update id="update">
+        UPDATE tbl_review
+        SET review_title= #{reviewTitle}, review_content = #{reviewContent} , review_category='', review_register_date=CURRENT_TIMESTAMP, review_update_date=CURRENT_TIMESTAMP, review_grade=5, group_id=0
+        WHERE review_id=0;
+    </update>
 
 </mapper>
