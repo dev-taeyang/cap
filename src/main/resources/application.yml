@@ -11,7 +11,7 @@ spring:
   datasource:
     hikari:
       driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/spring?serverTimezone=Asia/Seoul
+      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/captain?serverTimezone=Asia/Seoul
       username: root
       password: 1234
 
