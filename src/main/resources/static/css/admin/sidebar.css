@@ -1,6 +1,6 @@
 .sidebar {
   display: flex;
-  height: 100vh;
+  height: 1000px;
 }
 
 .sidebar__main {
@@ -14,7 +14,7 @@
 
 .sidebar__wrapper {
   width: 45px;
-  height: 100vh;
+  height: 1000px;
   background-color: #59bb66b8;
 }
 
