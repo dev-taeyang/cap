@@ -1,6 +1,6 @@
 /* bot-banner.html */
 
-.main-whole-container {
+.bot-banner-container {
     display: flex;
     flex-flow: column nowrap;
     align-content: flex-start;

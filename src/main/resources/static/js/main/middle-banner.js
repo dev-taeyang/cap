@@ -12,15 +12,15 @@ let middleCount = 1;
 let middleAuto = setInterval(middleAutoSlide, 3000);
 
 HTMLCollection.prototype.forEach = Array.prototype.forEach;
-middleImage.forEach((img, i) => img.setAttribute('src', `../../static/images/middle-banner0${i+1}.png`));
+middleImage.forEach((img, i) => img.setAttribute('src', `/images/middle-banner0${i+1}.png`));
 
 middleBanners.style.transform = `translate(-768px)`;
 
 middleBanners.appendChild(middleLastImage);
-middleLastImage.setAttribute('src', `../../static/images/middle-banner01.png`);
+middleLastImage.setAttribute('src', `/images/middle-banner01.png`);
 
 middleBanners.insertBefore(middleFirstImage, document.querySelector(".middle-header-banner img"));
-middleFirstImage.setAttribute('src', `../../static/images/middle-banner0${middleImage.length}.png`);
+middleFirstImage.setAttribute('src', `/images/middle-banner0${middleImage.length}.png`);
 
 function middleAutoSlide() {
     middleBanners.style.transition = 'transform 0.7s';

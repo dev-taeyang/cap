@@ -298,11 +298,11 @@ function activeCode() {
 /* 성별 선택 */
 $checks.on('change', function () {
   if ($checks.eq(0).prop('checked') == true) {
-    $genderCheckImg.eq(0).attr('src', '../../static/images/check_all.png');
-    $genderCheckImg.eq(1).attr('src', '../../static/images/check.png');
+    $genderCheckImg.eq(0).attr('src', '/images/check_all.png');
+    $genderCheckImg.eq(1).attr('src', '/images/check.png');
   } else {
-    $genderCheckImg.eq(0).attr('src', '../../static/images/check.png');
-    $genderCheckImg.eq(1).attr('src', '../../static/images/check_all.png');
+    $genderCheckImg.eq(0).attr('src', '/images/check.png');
+    $genderCheckImg.eq(1).attr('src', '/images/check_all.png');
   }
 });
 
