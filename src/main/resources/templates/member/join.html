@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/main/common.css" />
-    <link rel="stylesheet" href="/src/main/resources/static/css/member/join.css" />
+    <link rel="stylesheet" href="/css/main/common.css" />
+    <link rel="stylesheet" href="/css/member/join.css" />
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link
       rel="shortcut icon"
-      href="/src/main/resources/static/images/favicon.png"
+      href="/images/favicon.png"
       type="image/x-icon"
     />
     <link
@@ -24,7 +26,7 @@
   </head>
   <style></style>
   <body>
-    <div id="header"></div>
+  <div th:insert="~{/main/header :: header}"></div>
     <section>
       <!-- 전체 DIV -->
       <div class="join-container">
@@ -119,14 +121,14 @@
                   <label class="checkLabel"> <input type="radio"
                     name="memberGender" value="m" class="manCheck"
                     checked="checked"> <span class="genderCheckbox">
-                      <img src="../../static/images/check_all.png" width="15px" class="genderCheckImg">
+                      <img src="/images/check_all.png" width="15px" class="genderCheckImg">
                   </span>
                     <p class="pText">남자</p>
                   </label>
                   <div class="checkLabelMargin"></div>
                   <label class="checkLabel"> <input type="radio"
                     name="memberGender" value="w" class="womanCheck">
-                    <span class="genderCheckbox"> <img src="../../static/images/check.png"
+                    <span class="genderCheckbox"> <img src="/images/check.png"
                       width="15px" class="genderCheckImg">
                   </span>
                     <p class="pText">여자</p>
@@ -138,12 +140,8 @@
         </div>
       </div>
     </section>
-    <div id="footer"></div>
+  <div th:insert="~{/main/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script>
-    $('#header').load('/src/main/resources/templates/main/header.html');
-    $('#footer').load('/src/main/resources/templates/main/footer.html');
-  </script>
-  <script src="/src/main/resources/static/js/member/join.js"></script>
+  <script src="/js/member/join.js"></script>
 </html>
