@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>공지사항</title>
-    <link rel="stylesheet" href="../../static/css/main/common.css" />
+    <link rel="stylesheet" href="/css/main/common.css" />
     <link
       rel="shortcut icon"
-      href="/src/main/resources/static/images/favicon.png"
+      href="/images/favicon.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../../static/css/notice/notice.css" />
+    <link rel="stylesheet" href="/css/notice/notice.css" />
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link
       href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
       rel="stylesheet"
@@ -23,7 +25,7 @@
     }
   </style>
   <body>
-    <div id="header"></div>
+  <div th:insert="~{/main/header :: header}"></div>
     <div class="all-wrap">
       <div class="all-wrap-container">
         <div id="header"></div>
@@ -208,12 +210,9 @@
         </div>
       </div>
     </div>
-    <div id="footer"></div>
+  <div th:insert="~{/main/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="../../static/js/notice/notice.js"></script>
-  <script>
-    $('#header').load('/src/main/resources/templates/main/header.html');
-    $('#footer').load('/src/main/resources/templates/main/footer.html');
-  </script>
+  <script src="/js/notice/notice.js"></script>
+  <script src="/js/main/header.js"></script>
 </html>

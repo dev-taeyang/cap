@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>내가 개설한 탐험대</title>
-    <link rel="shortcut icon" href="../../static/images/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="../../static/css/board/boardList.css" />
-    <link rel="stylesheet" href="../../static/css/mypage/mypageRecruitList.css" />
-    <link rel="stylesheet" href="../../static/css/main/common.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/board/boardList.css" />
+    <link rel="stylesheet" href="/css/mypage/mypageRecruitList.css" />
+    <link rel="stylesheet" href="/css/main/common.css" />
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link
       href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
       rel="stylesheet"
@@ -20,7 +22,7 @@
     }
   </style>
   <body>
-    <div id="header"></div>
+  <div th:insert="~{/main/header :: header}"></div>
     <main id="mypageMyRecruitList">
       <header class="my-recruit-list-header">
         <div class="my-recruit-list-header-title">
@@ -305,13 +307,10 @@
         </div>
       </footer>
     </main>
-    <div id="footer"></div>
+  <div th:insert="~{/main/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="../../static/js/board/boardButton.js"></script>
-  <script src="../../static/js/board/boardList.js"></script>
-  <script>
-    $('#header').load('../../templates/main/header.html');
-    $('#footer').load('../../templates/main/footer.html');
-  </script>
+  <script src="/js/board/boardButton.js"></script>
+  <script src="/js/board/boardList.js"></script>
+  <script src="/js/main/header.js"></script>
 </html>

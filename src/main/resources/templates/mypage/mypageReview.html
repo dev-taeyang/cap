@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이페이지 보고서 모음</title>
-    <link rel="shortcut icon" href="../../static/images/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/src/main/resources/static/css/mypage/mypageReview.css" />
-    <link rel="stylesheet" href="../../static/css/main/common.css" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/mypage/mypageReview.css" />
+    <link rel="stylesheet" href="/css/main/common.css" />
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
     <link
       href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
       rel="stylesheet"
@@ -19,7 +21,7 @@
     }
   </style>
   <body>
-    <div id="header"></div>
+  <div th:insert="~{/main/header :: header}"></div>
     <main id="mypage-review">
       <header class="mypage-review-header">
         <h1>보고서</h1>
@@ -129,12 +131,9 @@
         </footer>
       </section>
     </main>
-    <div id="footer"></div>
+  <div th:insert="~{/main/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script src="../../static/js/mypage/mypageReview.js"></script>
-  <script>
-    $('#header').load('../../templates/main/header.html');
-    $('#footer').load('../../templates/main/footer.html');
-  </script>
+  <script src="/js/mypage/mypageReview.js"></script>
+  <script src="/js/main/header.js"></script>
 </html>
