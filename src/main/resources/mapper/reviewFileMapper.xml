@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.ReviewFileMapper">
+    <insert id="insert">
+        insert into tbl_review_file(review_file_original_name, review_file_uuid, review_file_path, review_file_size, review_file_type, review_id)
+        values(#{reviewFileOriginalName}, #{reviewFileUuid}, #{reviewFilePath}, #{reviewFileSize}, #{reviewFileType}, #{reviewId})
+    </insert>
 
+    <select id="select" resultType="reviewFileVO">
+        select review_file_id, review_file_original_name, review_file_uuid, review_file_path, review_file_size, review_file_type, review_id
+        from tbl_review_file where review_id = #{reviewId}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_review_file where review_id = #{reviewId}
+    </delete>
+
+    <select id="selectAll" resultType="reviewFileVO">
+        select review_file_id, review_file_original_name, review_file_uuid, review_file_path, review_file_size, review_file_type, review_id
+        from tbl_review_file
+    </select>
+
+    <select id="selectYesterday" resultType="reviewFileVO">
+        select review_file_id, review_file_original_name, review_file_uuid, review_file_path, review_file_size, review_file_type, review_id
+        from tbl_review_file where review_file_path = date_format(current_timestamp() - interval 1 day, '%Y/%m/%d')
+    </select>
 </mapper>

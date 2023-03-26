@@ -116,22 +116,22 @@ public class TestController {
 
     @GetMapping("/reviewDetail")
     public String test22() {
-        return "/review/reviewDetail.html";
+        return "/reviews/reviewDetail.html";
     }
 
-    @GetMapping("/reviewList")
+    /*@GetMapping("/reviewList")
     public String test23() {
         return "/review/reviewList.html";
-    }
+    }*/
 
     @GetMapping("/reviewMake")
     public String test24() {
-        return "/review/reviewMake.html";
+        return "/reviews/reviewMake.html";
     }
 
     @GetMapping("/reviewModify")
     public String test25() {
-        return "/review/reviewModify.html";
+        return "/reviews/reviewModify.html";
     }
 
     @GetMapping("/admin-member")

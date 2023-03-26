@@ -1,6 +1,7 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.ReviewDAO;
+import com.app.captain.domain.dto.ReviewDTO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ public class ReviewService {
     private final ReviewDAO reviewDAO;
 
 //    게시물 작성
-    public void write(ReviewVO reviewVO){
-        reviewDAO.save(reviewVO);
+    public void write(ReviewDTO reviewDTO){
+        reviewDAO.save(reviewDTO);
     }
 
 //    게시물 수정
