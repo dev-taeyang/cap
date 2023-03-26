@@ -15,7 +15,6 @@ const idForm = document.querySelector('.login-id');
 const pwForm = document.querySelector('.login-password');
 const loginButton = document.querySelector('.login-btn');
 
-
 $checkAutoLogin.on('click', function () {
     let isChecked = $(this).prop('checked');
     console.log($(this));
@@ -32,24 +31,12 @@ function notCheckedAutoLogin() {
     $('.stayLoginCheckbox').css('background-color', '');
 }
 
-// function send(){
-//     if(!$id.val()){
-//         showWarnModal("아이디를 입력해주세요!");
-//         showHelp($id,  contextPath + "/static/images/error.png");
-//         $id.next().fadeIn(500);
-//         return;
-//     }
-//     if(!$password.val()){
-//         showWarnModal("비밀번호를 입력해주세요!");
-//         showHelp($password, contextPath + "/static/images/error.png");
-//         $password.next().fadeIn(500);
-//         return;
-//     }
-// 	/*비밀번호 암호화*/
-// 	$password.val(btoa($password.val()));
+function send(){
+	/*비밀번호 암호화*/
+	/*$password.val(btoa($password.val()));*/
 
-//     document.login.submit();
-// }
+    document.login.submit();
+}
 
 $id.on("blur", function(){
     $id.next().hide();
@@ -92,18 +79,20 @@ function activeEvent() {
 };
 
 
-// let modalCheck;
-// function showWarnModal(modalMessage){
-//     modalCheck = false;
-//     $("#contentWrap").html(modalMessage)
-//     $(".warnModal").css("animation", "popUp 0.5s");
-//     $(".modal").css("display", "flex").hide().fadeIn(500);
-//     setTimeout(function(){modalCheck = true;}, 500);
-// }
+let modalCheck;
+function showWarnModal(modalMessage) {
+    modalCheck = false;
+    $('div.modal-content').html(modalMessage);
+    $('div.warn-modal').css('animation', 'popUp 0.5s');
+    $('div.modal').css('display', 'flex').hide().fadeIn(500);
+    setTimeout(function () {
+        modalCheck = true;
+    }, 500);
+}
 
-// $(".modal").on("click", function(){
-//     if(modalCheck){
-//         $(".warnModal").css("animation", "popDown 0.5s");
-//         $(".modal").fadeOut(500);
-//     }
-// });
+$('.login-container').on('click', function () {
+    if (modalCheck) {
+        $('div.warn-modal').css('animation', 'popDown 0.5s');
+        $('div.modal').fadeOut(500);
+    }
+});
