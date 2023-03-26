@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.MypageMapper">
+    <select id="select" resultType="mypageDTO">
+        select m.member_id, member_identification, member_password, member_email, member_name,
+			member_nickname, member_phone, member_birth, member_gender, member_status,
+			member_file_original_name, member_file_uuid, member_file_path, member_file_size,
+			member_file_type,  group_reply_id, group_reply_content, group_reply_register_date,
+			group_reply_update_date, gr.group_id
+		from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id
+		where m.member_id = #{memberId}
+    </select>
 
+    <update id="update">
+        update tbl_member
+        SET member_password=#{memberPassword}, member_nickname=#{memberNickName}, member_birth=#{memberBirth}, member_file_original_name=#{memberFileOriginalName}, member_file_uuid=#{memberFileUuid}, member_file_path=#{memberFilePath}, member_file_size=#{memberFileSize}, member_file_type=#{memberFileType}
+        where member_id=#{memberId}
+    </update>
+
+    <delete id="delete">
+        delete from tbl_member
+        where member_id = #{memberId}
+    </delete>
 </mapper>
