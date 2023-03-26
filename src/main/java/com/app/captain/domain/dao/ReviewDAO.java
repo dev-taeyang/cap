@@ -1,5 +1,6 @@
 package com.app.captain.domain.dao;
 
+import com.app.captain.domain.dto.ReviewDTO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +14,8 @@ public class ReviewDAO {
     private final ReviewMapper reviewMapper;
 
     //    리뷰 추가
-    public void save(ReviewVO reviewVO){
-        reviewMapper.insert(reviewVO);
+    public void save(ReviewDTO reviewDTO){
+        reviewMapper.insert(reviewDTO);
     };
 
     //    리뷰 수정

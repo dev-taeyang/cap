@@ -1,10 +1,14 @@
 package com.app.captain.controller;
 
+import com.app.captain.domain.dto.ReviewDTO;
+import com.app.captain.domain.vo.ReviewFileVO;
 import com.app.captain.domain.vo.ReviewVO;
+import com.app.captain.service.ReviewFileService;
 import com.app.captain.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +20,7 @@ import java.util.List;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final ReviewFileService reviewFileService;
 
 //    리뷰 상세보기
     @GetMapping("detail")
@@ -24,21 +29,18 @@ public class ReviewController {
     }
 
 //    리뷰 리스트
-    @GetMapping("list")
-    public List<ReviewVO> getList(){
-        log.info(reviewService.getList().toString());
-        return reviewService.getList();
+    @GetMapping("reviewlist")
+    public void getList(Model model){
+        List<ReviewVO> reviewList = reviewService.getList();
+        model.addAttribute("reviews", reviewList);
+
     }
 //    리뷰 작성
-    @GetMapping("register")
-    public void register(ReviewVO reviewVO){
-        reviewVO.setReviewCategory("여행");
-        reviewVO.setReviewContent("여행을 떠나요");
-        reviewVO.setReviewTitle("즉흥여행");
-        reviewVO.setGroupId(1L);
-        reviewVO.setReviewGrade(5D);
-        log.info(reviewVO.toString());
-        reviewService.write(reviewVO);
+    @PostMapping("reviewMake")
+    @ResponseBody
+    public void write(@RequestBody ReviewDTO reviewDTO){
+        reviewService.write(reviewDTO);
+        log.info("인설트 됨");
     }
 
 //    리뷰 삭제
