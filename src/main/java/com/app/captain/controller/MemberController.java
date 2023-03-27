@@ -33,9 +33,17 @@ public class MemberController {
     }
 
     @PostMapping("login")
-    public String login(MemberVO member, HttpSession session, RedirectAttributes redirectAttributes) {
+    public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
         MemberVO memberVO = memberService.getMember(member);
+        HttpSession session = request.getSession();
+        boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
         if (memberVO != null && member.getMemberPassword().equals(memberVO.getMemberPassword())) {
+            if (autoLogin){
+                Cookie cookie = new Cookie("loginCookie", session.getId());
+                cookie.setPath("/");
+                cookie.setMaxAge(60*60*24*7);
+                response.addCookie(cookie);
+            }
             session.setAttribute("member", memberVO);
             return "redirect:/main";
         }
@@ -45,9 +53,16 @@ public class MemberController {
     }
 
     @GetMapping("logout")
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.invalidate();
+        if(request.getHeader("Cookie") != null) {
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0); //초단위
+                response.addCookie(cookie);
+            }
+        }
         return "redirect:/main";
     }
 
