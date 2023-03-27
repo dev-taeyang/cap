@@ -1,9 +1,11 @@
 package com.app.captain.controller;
 
+import com.app.captain.domain.vo.MailTO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -155,7 +157,31 @@ public class MemberController {
     @GetMapping("findPassword")
     public void findPassword(){;}
 
+    @PostMapping("send")
+    @ResponseBody
+    public boolean sendTestMail(String memberEmail) {
+        if(memberService.checkEmail(memberEmail) == 1){
+
+            MailTO mailTO = new MailTO();
+
+            mailTO.setAddress(memberEmail);
+            mailTO.setTitle("탐험대장 이메일 링크 전송");
+            mailTO.setMessage("http://localhost:10000/member/changePassword?memberEmail=" + memberEmail);
+
+            memberService.sendMail(mailTO);
+            return true;
+        }
+            return false;
+    }
+
     @GetMapping("changePassword")
     public void changePassword(){;}
 
+    @PostMapping("changePassword")
+    public String changePassword(String memberEmail, String memberPassword){
+        log.info(memberEmail);
+        log.info(memberPassword);
+        memberService.changePassword(memberEmail, memberPassword);
+        return "redirect:/login";
+    }
 }

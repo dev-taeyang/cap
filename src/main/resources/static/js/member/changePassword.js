@@ -115,6 +115,8 @@ $changeButton.on('click', function () {
   if (passwordCheckAll.filter((check) => check).length == 2) {
     modalMessage = '변경되었습니다.';
     showWarnModal(modalMessage);
+    $(newPassword).val(btoa($(newPassword).val()));
+    document.changePassword.submit();
     return;
   }
   modalMessage = '비밀번호를 다시 입력해주세요.';
