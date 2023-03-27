@@ -19,7 +19,7 @@ public class ReviewDTO {
     private Double reviewGrade;
     private Long groupId;
     private Long memberId;
-    private ReviewFileVO files;
+    private List<ReviewFileVO> files;
 
     public ReviewDTO toDTO(ReviewVO reviewVO) {
         this.reviewId = reviewVO.getReviewId();

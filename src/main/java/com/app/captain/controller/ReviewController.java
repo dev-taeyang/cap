@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -24,23 +25,30 @@ public class ReviewController {
 
 //    리뷰 상세보기
     @GetMapping("detail")
-    public ReviewVO getReview(@PathVariable("reviewId") Long reviewId){
+    public ReviewDTO getReview(@PathVariable("reviewId") Long reviewId){
         return reviewService.getReveiw(reviewId);
     }
 
 //    리뷰 리스트
-    @GetMapping("reviewlist")
+    @GetMapping("list")
     public void getList(Model model){
         List<ReviewVO> reviewList = reviewService.getList();
         model.addAttribute("reviews", reviewList);
 
     }
 //    리뷰 작성
-    @PostMapping("reviewMake")
+    @PostMapping("write")
     @ResponseBody
-    public void write(@RequestBody ReviewDTO reviewDTO){
-        reviewService.write(reviewDTO);
-        log.info("인설트 됨");
+    public RedirectView write(@RequestBody ReviewVO reviewVO){
+        reviewService.write(reviewVO);
+        return new RedirectView("/reviews/list");
+    }
+
+//    파일 저장
+    @PostMapping("write")
+    @ResponseBody
+    public void save(@RequestBody List<ReviewFileVO> files){
+        reviewFileService.write(files);
     }
 
 //    리뷰 삭제
@@ -53,12 +61,5 @@ public class ReviewController {
 //    리뷰 수정
     @GetMapping("modify/{reviewId}")
     public void modify(@PathVariable("reviewId") Long reviewId){
-        ReviewVO reviewVO = reviewService.getReveiw(reviewId);
-        reviewVO.setReviewGrade(4.0D);
-        reviewVO.setReviewTitle("정지욱 바보");
-        reviewVO.setReviewContent("그만좀아파라");
-        reviewVO.setReviewCategory("원숭이");
-        log.info(reviewVO.toString());
-        reviewService.modify(reviewVO);
     }
 }

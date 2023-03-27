@@ -8,6 +8,7 @@
         <typeAlias type="com.app.captain.domain.vo.MemberGroupVO" alias="memberGroupVO"/>
         <typeAlias type="com.app.captain.domain.vo.NoticeVO" alias="noticeVO"/>
         <typeAlias type="com.app.captain.domain.vo.ReviewVO" alias="reviewVO"/>
+        <typeAlias type="com.app.captain.domain.dto.ReviewDTO" alias="reviewDTO"/>
         <typeAlias type="com.app.captain.domain.vo.ReviewFileVO" alias="reviewFileVO"/>
         <typeAlias type="com.app.captain.domain.dto.MypageDTO" alias="mypageDTO"/>
     </typeAliases>

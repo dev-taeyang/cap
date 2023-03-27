@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ReviewMapper {
 //    리뷰 추가
-    public void insert(ReviewDTO reviewDTO);
+    public void insert(ReviewVO reviewVO);
 
 //    리뷰 수정
     public void update(ReviewVO reviewVO);

@@ -20,7 +20,7 @@
             </div>
             <div class="SectionMaker-Wrapper">
                 <div class="SectionMaker-contentWrapper">
-                    <form th:action="@{/reviewList.html}" method="post">
+                    <form th:action="@{/reviews/detail/{reviewId}" method="post">
                         <div class="formSection-contentContainer">
                             <div class="formTitle-wrapper">
                                 <div class="formTitle">
@@ -109,7 +109,7 @@
                                                             <div class="imgButton" >
                                                                 <span class="cameraIconImg"></span>
                                                             </div>
-                                                            <input name="reviewFile" class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp"/>
+                                                            <input name="files" th:  class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp"/>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -149,5 +149,6 @@
     console.log(review);
 </script>
 <script src="/js/board/reviewMake.js"></script>
+<script src="/js/reviews/reviewInsert.js"></script>
 <script src="/js/main/header.js"></script>
 </html>

@@ -14,8 +14,8 @@ public class ReviewDAO {
     private final ReviewMapper reviewMapper;
 
     //    리뷰 추가
-    public void save(ReviewDTO reviewDTO){
-        reviewMapper.insert(reviewDTO);
+    public void save(ReviewVO reviewVO){
+        reviewMapper.insert(reviewVO);
     };
 
     //    리뷰 수정

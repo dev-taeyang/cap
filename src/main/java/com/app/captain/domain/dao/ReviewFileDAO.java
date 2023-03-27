@@ -18,14 +18,9 @@ public class ReviewFileDAO {
         reviewFileMapper.insert(reviewFileVO);
     };
 
-    //    파일 조회
-    public ReviewFileVO findById(Long reviewFileId){
-        return reviewFileMapper.select(reviewFileId);
-    };
-
     //    파일 전체 조회
-    public List<ReviewFileVO> findAll(){
-        return reviewFileMapper.selectAll();
+    public List<ReviewFileVO> findAll(Long reviewId){
+        return reviewFileMapper.selectAll(reviewId);
     };
 
     //    전일 등록된 파일 조회
