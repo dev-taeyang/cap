@@ -1,6 +1,7 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.ReviewDAO;
+import com.app.captain.domain.dao.ReviewFileDAO;
 import com.app.captain.domain.dto.ReviewDTO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.mapper.ReviewMapper;
@@ -14,10 +15,11 @@ import java.util.List;
 public class ReviewService {
 
     private final ReviewDAO reviewDAO;
+    private final ReviewFileDAO reviewFileDAO;
 
 //    게시물 작성
-    public void write(ReviewDTO reviewDTO){
-        reviewDAO.save(reviewDTO);
+    public void write(ReviewVO reviewVO){
+        reviewDAO.save(reviewVO);
     }
 
 //    게시물 수정
@@ -31,8 +33,10 @@ public class ReviewService {
     }
 
 //    게시물 조회
-    public ReviewVO getReveiw(Long reviewId){
-        return reviewDAO.findById(reviewId);
+    public ReviewDTO getReveiw(Long reviewId){
+        ReviewDTO reviewDTO = new ReviewDTO().toDTO(reviewDAO.findById(reviewId));
+        reviewDTO.setFiles(reviewFileDAO.findAll(reviewId));
+        return reviewDTO;
     }
 
 //    게시물 전체 조회

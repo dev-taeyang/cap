@@ -15,18 +15,13 @@ public class ReviewFileService {
     private final ReviewFileDAO reviewFileDAO;
 
     //    파일 추가
-    public void write(ReviewFileVO reviewFileVO){
-       reviewFileDAO.save(reviewFileVO);
-    };
-
-    //    파일 조회
-    public ReviewFileVO getFile(Long reviewFileId){
-        return reviewFileDAO.findById(reviewFileId);
+    public void write(List<ReviewFileVO> files){
+       files.forEach(file -> reviewFileDAO.save(file));
     };
 
     //    파일 전체 조회
-    public List<ReviewFileVO> getList(){
-        return reviewFileDAO.findAll();
+    public List<ReviewFileVO> getList(Long reviewId){
+        return reviewFileDAO.findAll(reviewId);
     };
 
     //    전일 등록된 파일 조회
