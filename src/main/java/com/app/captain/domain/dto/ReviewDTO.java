@@ -1,7 +1,6 @@
 package com.app.captain.domain.dto;
 
 import com.app.captain.domain.vo.ReviewFileVO;
-import com.app.captain.domain.vo.ReviewVO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -18,18 +17,19 @@ public class ReviewDTO {
     private String reviewUpdateDate;
     private Double reviewGrade;
     private Long groupId;
-    private Long memberId;
-    private List<ReviewFileVO> files;
-
-    public ReviewDTO toDTO(ReviewVO reviewVO) {
-        this.reviewId = reviewVO.getReviewId();
-        this.reviewTitle = reviewVO.getReviewTitle();
-        this.reviewContent = reviewVO.getReviewContent();
-        this.reviewCategory = reviewVO.getReviewCategory();
-        this.reviewRegisterDate = reviewVO.getReviewRegisterDate();
-        this.reviewUpdateDate = reviewVO.getReviewUpdateDate();
-        this.reviewGrade = reviewVO.getReviewGrade();
-        this.groupId = reviewVO.getGroupId();
-        return this;
-    }
+    private String groupName;
+    private Long groupMaxValue;
+    private String groupCategory;
+    private String groupTitle;
+    private String groupContent;
+    private String groupLocation;
+    private String groupRegisterDate;
+    private String groupEndDate;
+    private String groupMeetDate;
+    private String groupFileOriginalName;
+    private String groupFileUuid;
+    private String groupFilePath;
+    private String groupFileSize;
+    private String groupFileType;
+    private Long groupCaptain;
 }

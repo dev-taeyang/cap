@@ -91,3 +91,15 @@ $cancelButton.on('click', function () {
 $deleteButton.on('click', function () {
     location.href = '';
   });
+
+
+/*===================================================================================*/
+/*화면 뿌리는 곳*/
+//
+// const $header = $(".reviewHeader");
+// let text = "";
+// function showDetail() {
+//
+// }
+
+

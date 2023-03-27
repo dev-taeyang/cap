@@ -3,6 +3,7 @@ package com.app.captain.service;
 import com.app.captain.domain.dao.ReviewDAO;
 import com.app.captain.domain.dao.ReviewFileDAO;
 import com.app.captain.domain.dto.ReviewDTO;
+import com.app.captain.domain.dto.ReviewFileDTO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -33,10 +34,10 @@ public class ReviewService {
     }
 
 //    게시물 조회
-    public ReviewDTO getReveiw(Long reviewId){
-        ReviewDTO reviewDTO = new ReviewDTO().toDTO(reviewDAO.findById(reviewId));
-        reviewDTO.setFiles(reviewFileDAO.findAll(reviewId));
-        return reviewDTO;
+    public ReviewFileDTO getReveiw(Long reviewId){
+        ReviewFileDTO reviewFileDTO = new ReviewFileDTO().toDTO(reviewDAO.findById(reviewId));
+        reviewFileDTO.setFiles(reviewFileDAO.findAll(reviewId));
+        return reviewFileDTO;
     }
 
 //    게시물 전체 조회
@@ -44,5 +45,9 @@ public class ReviewService {
         return reviewDAO.findAll();
     }
 
+    //    리뷰랑 그룹 조인한거 조회
+    public ReviewDTO getDTO(Long reviewId){
+        return reviewDAO.findDTO(reviewId);
+    };
 
 }

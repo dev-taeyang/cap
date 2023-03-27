@@ -23,32 +23,37 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewFileService reviewFileService;
 
-//    리뷰 상세보기
-//    @GetMapping("detail")
-//    public ReviewDTO getReview(@PathVariable("reviewId") Long reviewId){
-//        return reviewService.getReveiw(reviewId);
-//    }
+    //    리뷰 상세보기
+    @GetMapping("reviewdetail/{reviewId}")
+    public String getReview(@PathVariable("reviewId") Long reviewId, Model model) {
+        log.info(reviewService.getDTO(reviewId).toString());
+        model.addAttribute("review",reviewService.getDTO(reviewId));
+        return "reviews/reviewDetail";
+    }
 
-//    리뷰 리스트
-    @GetMapping("/list")
-    public void getList(Model model){
+    //    리뷰 리스트
+
+    @GetMapping("reviewlist")
+    public void getList(Model model) {
         List<ReviewVO> reviewList = reviewService.getList();
         model.addAttribute("reviews", reviewList);
-
     }
-//   리뷰 작성 페이지 이동
-    @GetMapping("/write")
-    public String write(Model model, ReviewVO reviewVO){
-        model.addAttribute("reviewVO",reviewVO);
+
+    //  리뷰작성 폼
+    @GetMapping("write")
+    public String getWrite(Model model) {
+        model.addAttribute("review", new ReviewVO());
         return "reviews/reviewMake";
     }
 
-//    리뷰 작성 완료
-//    @PostMapping("/write")
-//    @ResponseBody
-//    public void save(@RequestBody ReviewVO reviewVO){
-//        reviewService.write(reviewVO);
-//    }
+    //    리뷰 작성
+    @PostMapping("write")
+    public RedirectView save(@ModelAttribute ReviewVO reviewVO) {
+        reviewVO.setGroupId(1L);
+        log.info(reviewVO.toString());
+        reviewService.write(reviewVO);
+        return new RedirectView("/reviews/reviewlist");
+    }
 
 ////    파일 저장
 //    @PostMapping("write")
