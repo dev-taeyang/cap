@@ -30,7 +30,7 @@ public class ReviewController {
     }
 
 //    리뷰 리스트
-    @GetMapping("list")
+    @GetMapping("/list")
     public void getList(Model model){
         List<ReviewVO> reviewList = reviewService.getList();
         model.addAttribute("reviews", reviewList);
@@ -39,17 +39,17 @@ public class ReviewController {
 //    리뷰 작성
     @PostMapping("write")
     @ResponseBody
-    public RedirectView write(@RequestBody ReviewVO reviewVO){
+    public String write(@RequestBody ReviewVO reviewVO){
         reviewService.write(reviewVO);
-        return new RedirectView("/reviews/list");
+        return "/reviews/reviewMake";
     }
 
-//    파일 저장
-    @PostMapping("write")
-    @ResponseBody
-    public void save(@RequestBody List<ReviewFileVO> files){
-        reviewFileService.write(files);
-    }
+////    파일 저장
+//    @PostMapping("write")
+//    @ResponseBody
+//    public void save(@RequestBody List<ReviewFileVO> files){
+//        reviewFileService.write(files);
+//    }
 
 //    리뷰 삭제
     @PutMapping("delete/{reviewId}")
