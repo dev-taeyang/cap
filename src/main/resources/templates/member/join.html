@@ -7,6 +7,7 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="/css/main/common.css" />
     <link rel="stylesheet" href="/css/member/join.css" />
+    <link rel="stylesheet" href="/css/mypage/modal.css"/>
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
     <link
@@ -27,15 +28,20 @@
   <style></style>
   <body>
   <div th:insert="~{/main/header :: header}"></div>
-    <section>
+    <section id="member-join">
       <!-- 전체 DIV -->
       <div class="join-container">
+        <div class="modal">
+          <div class="warn-modal">
+            <div class="modal-content"></div>
+          </div>
+        </div>
         <div class="join-wrap">
           <div class="join-title">
             <h3>회원가입</h3>
           </div>
           <!-- 입력 받는곳 -->
-          <form autocomplete="off" class="join-form">
+          <form action="/members/join" method="post" name="join" autocomplete="off" class="join-form">
             <div class="inputbox-wrap">
               <!-- 아이디 -->
               <input type="text" name="memberIdentification" placeholder="아이디" class="join-id" />
@@ -61,7 +67,7 @@
                 type="password"
                 name="passwordConfirm"
                 placeholder="비밀번호 한번 더"
-                class="join-password"
+                class="join-password check-password"
               />
               <p class="help"></p>
             </div>
@@ -107,7 +113,7 @@
             </div>
             <div class="inputbox-wrap">
               <!-- 이메일 -->
-              <input type="text" name="memberIdentification" placeholder="이메일" class="join-id" />
+              <input type="text" name="memberEmail" placeholder="이메일" class="join-id" />
               <p class="help"></p>
             </div>
             <div class="inputbox-wrap">
@@ -120,8 +126,8 @@
                   <legend class="genderText">성별</legend>
                   <label class="checkLabel"> <input type="radio"
                     name="memberGender" value="m" class="manCheck"
-                    checked="checked"> <span class="genderCheckbox">
-                      <img src="/images/check_all.png" width="15px" class="genderCheckImg">
+                    > <span class="genderCheckbox">
+                      <img src="/images/check.png" width="15px" class="genderCheckImg">
                   </span>
                     <p class="pText">남자</p>
                   </label>
@@ -135,7 +141,7 @@
                   </label>
                 </div>
             </label>
-            <button type="submit" class="join-btn" disabled>가입하기</button>
+            <button type="button" class="join-btn" onclick="send()" disabled>가입하기</button>
           </form>
         </div>
       </div>

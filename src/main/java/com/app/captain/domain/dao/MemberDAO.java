@@ -11,7 +11,25 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
     private final MemberMapper memberMapper;
 
-    public MemberVO findById(Long memberId){
-        return memberMapper.select(memberId);
+    /* 로그인 */
+    public MemberVO findById(MemberVO memberVO) {
+        return memberMapper.select(memberVO);
+    }
+
+    /* 회원 가입 */
+    public void save(MemberVO memberVO) {
+        memberMapper.insert(memberVO);
+    }
+
+    public int checkId(String memberIdentification) {
+        return memberMapper.checkId(memberIdentification);
+    }
+
+    public int checkPhone(String memberPhone) {
+        return memberMapper.checkPhone(memberPhone);
+    }
+
+    public int checkNickname(String memberNickname) {
+        return memberMapper.checkNickname(memberNickname);
     }
 }
