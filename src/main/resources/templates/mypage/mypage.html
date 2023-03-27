@@ -51,7 +51,7 @@
           <div class="user-review-count">1</div></a
         ><a href=""
           ><div class="user-reply">댓글</div>
-          <div class="user-reply-count">3</div></a
+          <div th:text="${replyCount}" class="user-reply-count"></div></a
         >
       </div>
       <hr class="mypage-head-hr" />
@@ -59,7 +59,7 @@
       <div class="mypage-user-info">
         <header class="mypage-user-info-header">
           <div>내 정보</div>
-          <button>수정</button>
+          <button class="update-user-button">수정</button>
         </header>
         <div class="mypage-user-container">
           <div class="mypage-user-wrapper">
@@ -129,7 +129,7 @@
               type="text"
               class="mypage-user-value"
               name="memberGender"
-              th:value="${mypageDTO.memberGender}"
+              th:value="${mypageDTO.memberGender == 'm'? '남자' : '여자'}"
             />
           </div>
         </div>
@@ -174,7 +174,7 @@
       <div class="mypage-user-group">
         <header>설정</header>
         <div class="setting-list">
-          <a href="javascript:void(0)">
+          <a href="/mypage/remove">
             <div class="mypage-user-container">
               <div class="mypage-user-wrapper">
                 <div class="user-leave">회원탈퇴</div>

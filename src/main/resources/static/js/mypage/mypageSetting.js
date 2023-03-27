@@ -2,6 +2,7 @@
 const $logout = $('.logout-wrap');
 const $cancelButton = $('.cancel-button');
 const $logoutButton = $('.logout-button');
+const $goUpdate = $('.update-user-button');
 
 $('.modal-container').hide();
 
@@ -31,5 +32,10 @@ $cancelButton.on('click', function () {
 
 /* 로그아웃 컨트롤러 타고 메인페이지로 이동해야함 */
 $logoutButton.on('click', function () {
-    location.href = '';
+    location.href = '/member/logout';
   });
+
+/* 수정 버튼 눌렀을때 수정 페이지로 이동 */
+$goUpdate.on('click', function () {
+  location.href = '/mypage/mypageUpdate';
+})

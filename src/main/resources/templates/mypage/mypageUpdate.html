@@ -67,7 +67,7 @@
                   disabled=""
                   name="memberNickname"
                   class="update-user-value change-value"
-                  value="정지욱97"
+                  th:value="${mypageDTO.memberNickname}"
                 />
                 <p class="warn-text"></p>
               </div>
@@ -84,7 +84,7 @@
                   disabled=""
                   name="memberPhone"
                   class="update-user-value"
-                  value="01041998127"
+                  th:value="${mypageDTO.memberPhone}"
                 />
               </div>
             </div>
@@ -97,7 +97,7 @@
                   disabled=""
                   name="memberEmail"
                   class="update-user-value"
-                  value="jiwook6273@naver.com"
+                  th:value="${mypageDTO.memberEmail}"
                 />
               </div>
             </div>
@@ -127,7 +127,7 @@
                   disabled=""
                   name="memberBirth"
                   class="update-user-value change-value"
-                  value="2000.01.01"
+                  th:value="${mypageDTO.memberBirth}"
                 />
                 <p class="warn-text"></p>
               </div>
@@ -140,7 +140,7 @@
             <div>
               <label class="update-user-text">성별</label>
               <div class="update-user">
-                <input disabled="" name="memberGender" class="update-user-value" value="남자" />
+                <input disabled="" name="memberGender" class="update-user-value" th:value="${mypageDTO.memberGender == 'm'? '남자' : '여자'}" />
               </div>
             </div>
           </div>

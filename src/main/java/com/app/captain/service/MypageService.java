@@ -14,6 +14,9 @@ public class MypageService {
     //    내 정보들 가져오기
     public MypageDTO getMember(Long memberId) { return mypageDAO.findById(memberId); }
 
+    //    내 댓글 갯수 가져오기
+    public Long getReplyCount(Long memberId) { return mypageDAO.findReplyById(memberId); }
+
     //    내 정보 수정하기
     public void modify(MemberVO memberVO) { mypageDAO.setMemberVO(memberVO); }
 
