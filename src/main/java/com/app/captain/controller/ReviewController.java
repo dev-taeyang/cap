@@ -24,10 +24,10 @@ public class ReviewController {
     private final ReviewFileService reviewFileService;
 
 //    리뷰 상세보기
-    @GetMapping("detail")
-    public ReviewDTO getReview(@PathVariable("reviewId") Long reviewId){
-        return reviewService.getReveiw(reviewId);
-    }
+//    @GetMapping("detail")
+//    public ReviewDTO getReview(@PathVariable("reviewId") Long reviewId){
+//        return reviewService.getReveiw(reviewId);
+//    }
 
 //    리뷰 리스트
     @GetMapping("/list")
@@ -36,13 +36,19 @@ public class ReviewController {
         model.addAttribute("reviews", reviewList);
 
     }
-//    리뷰 작성
-    @PostMapping("write")
-    @ResponseBody
-    public String write(@RequestBody ReviewVO reviewVO){
-        reviewService.write(reviewVO);
-        return "/reviews/reviewMake";
+//   리뷰 작성 페이지 이동
+    @GetMapping("/write")
+    public String write(Model model, ReviewVO reviewVO){
+        model.addAttribute("reviewVO",reviewVO);
+        return "reviews/reviewMake";
     }
+
+//    리뷰 작성 완료
+//    @PostMapping("/write")
+//    @ResponseBody
+//    public void save(@RequestBody ReviewVO reviewVO){
+//        reviewService.write(reviewVO);
+//    }
 
 ////    파일 저장
 //    @PostMapping("write")
@@ -51,15 +57,15 @@ public class ReviewController {
 //        reviewFileService.write(files);
 //    }
 
-//    리뷰 삭제
-    @PutMapping("delete/{reviewId}")
-    public void delete(@PathVariable("reviewId")Long reviewId){
-        log.info(reviewService.getReveiw(reviewId).toString());
-        reviewService.remove(reviewId);
-    }
-
-//    리뷰 수정
-    @GetMapping("modify/{reviewId}")
-    public void modify(@PathVariable("reviewId") Long reviewId){
-    }
+////    리뷰 삭제
+//    @PutMapping("delete/{reviewId}")
+//    public void delete(@PathVariable("reviewId")Long reviewId){
+//        log.info(reviewService.getReveiw(reviewId).toString());
+//        reviewService.remove(reviewId);
+//    }
+//
+////    리뷰 수정
+//    @GetMapping("modify/{reviewId}")
+//    public void modify(@PathVariable("reviewId") Long reviewId){
+//    }
 }
