@@ -33,7 +33,7 @@ function notCheckedAutoLogin() {
 
 function send(){
 	/*비밀번호 암호화*/
-	/*$password.val(btoa($password.val()));*/
+	$password.val(btoa($password.val()));
 
     document.login.submit();
 }

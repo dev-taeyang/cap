@@ -62,26 +62,6 @@ $joinInputs.eq(8).on('focus', function () {
     $(this).val($(this).val().replaceAll('.', ''));
 });
 
-let code = "";
-
-/*$(".join-phone-btn").on("click", function() {
-	if (phoneNumberCheck) {
-		$(".setPhoneCheckWrap").show();
-		$(".help").eq(6).show();
-		var phone = $("#phone").val().replaceAll("-", "");
-		console.log(phone);
-		$.ajax({
-			type: "POST",
-			url: contextPath + "/smsOk.member",
-			data: {memberPhone: phone},
-			success: function(data) {
-				console.log(data);
-				code = data;
-			}
-		});
-	}
-});*/
-
 $(".join-check-btn").on("click", function(){
 	if($(".join-check").val() == code){
         let modalMessage = "인증이 완료되었습니다.";
