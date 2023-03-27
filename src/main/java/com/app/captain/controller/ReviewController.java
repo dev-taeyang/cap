@@ -1,6 +1,7 @@
 package com.app.captain.controller;
 
 import com.app.captain.domain.dto.ReviewDTO;
+import com.app.captain.domain.dto.ReviewFileDTO;
 import com.app.captain.domain.vo.ReviewFileVO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.service.ReviewFileService;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.File;
@@ -36,22 +38,6 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewFileService reviewFileService;
 
-    //    리뷰 상세보기
-    @GetMapping("reviewdetail/{reviewId}")
-    public String getReview(@PathVariable("reviewId") Long reviewId, Model model) {
-        log.info(reviewService.getDTO(reviewId).toString());
-        model.addAttribute("review", reviewService.getDTO(reviewId));
-        model.addAttribute("files", reviewFileService.getList(reviewId));
-        return "reviews/reviewDetail";
-    }
-
-    //    리뷰 리스트
-
-    @GetMapping("reviewlist")
-    public void getList(Model model) {
-        List<ReviewVO> reviewList = reviewService.getList();
-        model.addAttribute("reviews", reviewList);
-    }
 
     //  리뷰작성 폼
     @GetMapping("write")
@@ -63,13 +49,51 @@ public class ReviewController {
 
     //    리뷰 작성
     @PostMapping("write")
-    public RedirectView save(@ModelAttribute ReviewVO reviewVO, List<ReviewFileVO> files) {
+    public String save(@ModelAttribute ReviewVO reviewVO, RedirectAttributes redirectAttributes) {
         reviewVO.setGroupId(1L);
         log.info(reviewVO.toString());
         reviewService.write(reviewVO);
-        reviewFileService.write(files);
-        return new RedirectView("/reviews/reviewlist");
+        redirectAttributes.addFlashAttribute("review", reviewVO);
+        return "redirect:list";
     }
+
+//    리뷰 수정 페이지
+    @GetMapping("{reviewId}/modify")
+    public String getModify(@PathVariable("reviewId")Long reviewId, Model model){
+        ReviewFileDTO reviewFileDTO = reviewService.getReveiw(reviewId);
+        model.addAttribute("review", reviewFileDTO);
+        return "reviews/reviewModify";
+    }
+
+//    리뷰 수정 완료 페이지
+    @PostMapping("{reviewId}/modify")
+    public String modify(@PathVariable("reviewId") Long reviewId, @ModelAttribute("review") ReviewVO reviewVO, RedirectAttributes redirectAttributes){
+        reviewVO.setReviewId(reviewId);
+        reviewService.modify(reviewVO);
+        redirectAttributes.addFlashAttribute("review", reviewVO);
+        return "redirect:list";
+    }
+
+//    리뷰 수정 처리 페이지
+
+    //    리뷰 상세보기
+    @GetMapping("detail/{reviewId}")
+    public String getReview(@PathVariable("reviewId") Long reviewId, Model model) {
+        model.addAttribute("review", reviewService.getDTO(reviewId));
+        model.addAttribute("files", reviewFileService.getList(reviewId));
+        return "reviews/reviewDetail";
+    }
+
+    //    리뷰 리스트
+
+    @GetMapping("list")
+    public String getList(Model model) {
+        List<ReviewVO> reviewList = reviewService.getList();
+        model.addAttribute("reviews", reviewList);
+        return "reviews/reviewList";
+    }
+
+
 
   /*  //    파일 저장
     @PostMapping("save")
