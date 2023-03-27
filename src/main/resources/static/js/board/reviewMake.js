@@ -156,56 +156,12 @@ $MakeInput.on('blur', function(){
 
 });
 
-const $file = $('input[type=file]');
-const $imgButton = $('.container-imageInput');
-const $cancel = $(".cancelImage");
-const $imgDiv = $('label[for=attach] div');
-const $TextContainer = $('.imgText-container');
-const $input = $('#attach');
-
-
-
-$file.on('change', function(e){
-    let reader = new FileReader();
-    $cancel.css('display', 'block');
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = function(e) {
-        let result = e.target.result;
-        if(result.includes('image')) {
-           $imgDiv.css('backgroundImage', `url('${result}')`)
-           $TextContainer.css('display', 'none');
-        }
-    }
-
-});
-
-function handleFiles(files) {
-    const ThumbnailList = document.querySelector('.MainImage-wrapper');
-
-    for(let i = 0; i < files.length; i++) {
-        if($imgButton.length > 7) {
-            $imgButton.hide();
-        }
-    }
-
-    
-}
-
-/* x버튼 누르면 이미지 올린거 취소 */
-$cancel.on('click', function(e){
-    e.preventDefault();
-    $input.val("");
-    $cancel.css('display', 'none');
-    $imgDiv.css('backgroundImage', 'none');
-    $TextContainer.css('display', 'block');
-})
-
-
 
 /* 파일 썸네일 */
 /* 파일인풋 */
 const file = document.querySelector('input[type=file]');
 const imgButton = document.querySelector(".imgButton");
+console.log(imgButton);
 
 function handleFiles(files) {
     /* 썸네일 담을 div의 부모 */
