@@ -13,7 +13,7 @@
 
     <update id="update">
         update tbl_member
-        SET member_password=#{memberPassword}, member_nickname=#{memberNickName}, member_birth=#{memberBirth}, member_file_original_name=#{memberFileOriginalName}, member_file_uuid=#{memberFileUuid}, member_file_path=#{memberFilePath}, member_file_size=#{memberFileSize}, member_file_type=#{memberFileType}
+        SET member_password=#{memberPassword}, member_nickname=#{memberNickname}, member_birth=#{memberBirth}, member_file_original_name=#{memberFileOriginalName}, member_file_uuid=#{memberFileUuid}, member_file_path=#{memberFilePath}, member_file_size=#{memberFileSize}, member_file_type=#{memberFileType}
         where member_id=#{memberId}
     </update>
 

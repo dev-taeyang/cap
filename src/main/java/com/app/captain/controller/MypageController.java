@@ -21,7 +21,7 @@ public class MypageController {
     private final MypageService mypageService;
 
 //    테스트로 컨트롤러 태워보기
-    //    내 정보들 가져오기
+//    내 정보들 가져오기
 //    @GetMapping("mypage")
 //    public void GoControllerMember(){}
 
@@ -31,7 +31,6 @@ public class MypageController {
         MypageDTO mypageDTO = mypageService.getMember(1L);
         model.addAttribute("mypageDTO", mypageDTO);
 
-        log.info("타고감");
         return "/mypage/mypage";
     }
 
@@ -52,7 +51,7 @@ public class MypageController {
         memberVO.setMemberPassword("asd1234");
         memberVO.setMemberEmail("jjw123@gmail.com");
         memberVO.setMemberName("정지욱");
-        memberVO.setMemberNickName("지욱22");
+        memberVO.setMemberNickname("지욱22");
         memberVO.setMemberPhone("01012341234");
         memberVO.setMemberBirth("20000202");
         memberVO.setMemberGender("여");
