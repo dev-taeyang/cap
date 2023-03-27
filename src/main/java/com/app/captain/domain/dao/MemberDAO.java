@@ -44,4 +44,9 @@ public class MemberDAO {
     public String findId(String memberPhone) {
         return memberMapper.findId(memberPhone);
     }
+    
+    /* 비밀번호 변경 */
+    public void changePassword(String memberEmail, String memberPassword){
+        memberMapper.changePassword(memberEmail, memberPassword);
+    }
 }

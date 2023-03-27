@@ -1,12 +1,16 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.MemberDAO;
+import com.app.captain.domain.vo.MailTO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -74,5 +78,23 @@ public class MemberService {
     /* 아이디 찾기 */
     public String findId(String memberPhone) {
         return memberDAO.findId(memberPhone);
+    }
+
+    /* 이메일 전송 */
+    @Autowired
+    private JavaMailSender mailSender;
+
+    public void sendMail(MailTO mail) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(mail.getAddress());
+        message.setSubject(mail.getTitle());
+        message.setText(mail.getMessage());
+
+        mailSender.send(message);
+    }
+
+    /* 비밀번호 변경 */
+    public void changePassword(String memberEmail, String memberPassword){
+        memberDAO.changePassword(memberEmail, memberPassword);
     }
 }

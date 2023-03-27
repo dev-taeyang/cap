@@ -20,4 +20,6 @@ public interface MemberMapper {
     public int checkEmail(String memberEmail);
     /* 아이디 찾기 */
     public String findId(String memberPhone);
+    /* 비밀번호 변경 */
+    public void changePassword(String memberEmail, String memberPassword);
 }
