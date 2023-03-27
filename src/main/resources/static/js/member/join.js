@@ -24,6 +24,7 @@ const phoneButton = document.querySelector('.join-phone-btn');
 const codeButton = document.querySelector('.join-check-btn');
 /* =============================================== */
 let phoneNumberCheck;
+let code;
 
 let joinBlurMessages = [
     '아이디를 입력하세요.',
@@ -173,16 +174,10 @@ $joinInputs.on('blur', function () {
         return;
     }
 
-    /*$joinInputs.eq(i).css('border', '1px solid #05AE68');
-    $('.join-password-p').show();
-    $joinHelp.hide();
-
-    $('.join-btn').attr('disabled', false);
-*/
     if (i == 0) {
         $.ajax({
             type: "POST",
-            url: "/members/checkId",
+            url: "/member/checkId",
             data: {memberIdentification: value},
             success: function (result) {
                 let message;
@@ -202,7 +197,7 @@ $joinInputs.on('blur', function () {
         $(".join-phone-btn").click(function () {
             $.ajax({
                 type: "POST",
-                url: "/members/checkPhone",
+                url: "/member/checkPhone",
                 data: {memberPhone: value.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`)},
                 success: function (result) {
                     let message;
@@ -224,7 +219,7 @@ $joinInputs.on('blur', function () {
                         console.log(phone);
                         $.ajax({
                             type: "POST",
-                            url: "/members/checkSms",
+                            url: "/member/checkSms",
                             data: {memberPhone: phone},
                             success: function(data) {
                                 console.log(data);
@@ -239,12 +234,31 @@ $joinInputs.on('blur', function () {
     } else if (i == 6) {
         $.ajax({
             type: "POST",
-            url: "/members/checkNickname",
+            url: "/member/checkNickname",
             data: {memberNickname: value},
             success: function (result) {
                 let message;
                 if (result != "success") {
                     message = "중복된 닉네임입니다.";
+                    $joinHelp.eq(i).show();
+                    $joinHelp.eq(i).css('color', 'red')
+                    $joinInputs.eq(i).css('border', '1px solid rgb(255, 64, 62)');
+                    joinCheckAll[i] = false;
+                } else {
+                    joinCheckAll[i] = true;
+                }
+                $joinHelp.eq(i).text(message);
+            }
+        });
+    }   else if (i == 7) {
+        $.ajax({
+            type: "POST",
+            url: "/member/checkEmail",
+            data: {memberEmail: value},
+            success: function (result) {
+                let message;
+                if (result != "success") {
+                    message = "중복된 이메일입니다.";
                     $joinHelp.eq(i).show();
                     $joinHelp.eq(i).css('color', 'red')
                     $joinInputs.eq(i).css('border', '1px solid rgb(255, 64, 62)');

@@ -46,7 +46,7 @@
                     </a>
                 </div>
                 <div class="header-navi-right">
-                    <a th:if="${session.member == null}" href="">
+                    <a th:if="${session.member == null}" href="/member/join">
                         <div class="left-title">회원가입</div>
                     </a>
                     <a th:if="${session.member != null}" href="">
@@ -54,10 +54,10 @@
                              class="left-title" style="font-weight: 900;">님
                         </div>
                     </a>
-                    <a th:if="${session.member == null}" href="login">
+                    <a th:if="${session.member == null}" href="/member/login">
                         <div class="left-title">로그인</div>
                     </a>
-                    <a th:if="${session.member != null}" href="/members/logout">
+                    <a th:if="${session.member != null}" href="/member/logout">
                         <div class="left-title">로그아웃</div>
                     </a>
                     <a href="">

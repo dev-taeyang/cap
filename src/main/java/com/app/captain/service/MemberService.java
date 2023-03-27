@@ -26,18 +26,27 @@ public class MemberService {
         memberDAO.save(memberVO);
     }
 
+    /* 아이디 중복 검사 */
     public int checkId(String memberIdentification) {
         return memberDAO.checkId(memberIdentification);
     }
 
+    /* 휴대폰 중복 검사 */
     public int checkPhone(String memberPhone) {
         return memberDAO.checkPhone(memberPhone);
     }
 
+    /* 닉네임 중복 검사 */
     public int checkNickname(String memberNickname) {
         return memberDAO.checkNickname(memberNickname);
     }
 
+    /* 이메일 중복 검사 */
+    public int checkEmail(String memberEmail) {
+        return memberDAO.checkEmail(memberEmail);
+    }
+
+    /* 인증 번호 발급 */
     public void checkSms(String memberPhone, String code) {
 
         String api_key = "NCSF8LRG4LDF323M";
@@ -60,5 +69,10 @@ public class MemberService {
             System.out.println(e.getCode());
         }
 
+    }
+
+    /* 아이디 찾기 */
+    public String findId(String memberPhone) {
+        return memberDAO.findId(memberPhone);
     }
 }
