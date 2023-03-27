@@ -6,6 +6,10 @@ import com.app.captain.mapper.ReviewFileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,10 +18,10 @@ public class ReviewFileService {
 
     private final ReviewFileDAO reviewFileDAO;
 
-    //    파일 추가
+    //    파일 업로드
     public void write(List<ReviewFileVO> files){
-       files.forEach(file -> reviewFileDAO.save(file));
-    };
+        files.forEach(file -> reviewFileDAO.save(file));
+    }
 
     //    파일 전체 조회
     public List<ReviewFileVO> getList(Long reviewId){
@@ -33,4 +37,8 @@ public class ReviewFileService {
     public void remove(Long reviewFileId){
         reviewFileDAO.deleteById(reviewFileId);
     };
+
+    public String getPath(){
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    }
 }

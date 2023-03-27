@@ -110,7 +110,7 @@
                                                         <div class="imgButton" >
                                                             <span class="cameraIconImg"></span>
                                                         </div>
-                                                        <input name="reviewFile" class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp"/>
+                                                        <input name="file" class="imageFileInput" id="photo-picker" type="file" multiple/>
                                                     </label>
                                                 </div>
                                             </div>
@@ -144,6 +144,11 @@
 <div th:insert="~{/main/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script th:inline = "javascript">
+    let files = [[${files}]];
+    console.log(files);
+</script>
 <script src="/js/board/reviewMake.js"></script>
+<script src="/js/reviews/reviewInsert.js"></script>
 <script src="/js/main/header.js"></script>
 </html>
