@@ -14,6 +14,9 @@ public class MypageDAO {
     //    내 정보들 가져오기
     public MypageDTO findById(Long memberId) { return mypageMapper.select(memberId); }
 
+    //    내 댓글 갯수 가져오기
+    public Long findReplyById(Long memberId) { return mypageMapper.replyCount(memberId); }
+
     //    내 정보 수정하기
     public void setMemberVO(MemberVO memberVO) { mypageMapper.update(memberVO); }
 

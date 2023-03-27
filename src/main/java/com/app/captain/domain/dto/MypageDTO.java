@@ -21,10 +21,5 @@ public class MypageDTO {
     private String memberFilePath;
     private String memberFileSize;
     private boolean memberFileType;
-    private Long groupReplyId;
-    private String groupReplyContent;
-    private String groupReplyRegisterDate;
-    private String groupReplyUpdateDate;
-    private Long groupId;
 
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.logging.Logger;
 
 @Controller
@@ -22,16 +23,40 @@ public class MypageController {
 
 //    테스트로 컨트롤러 태워보기
 //    내 정보들 가져오기
-//    @GetMapping("mypage")
-//    public void GoControllerMember(){}
 
-
-    @GetMapping("mypage")
-    public String getMember(Model model) {
-        MypageDTO mypageDTO = mypageService.getMember(1L);
+/*    @GetMapping("me/{memberId}")
+    public String getMember(Model model, @PathVariable("memberId") Long memberId) {
+        Long replyCount = mypageService.getReplyCount(memberId);
+        MypageDTO mypageDTO = mypageService.getMember(memberId);
         model.addAttribute("mypageDTO", mypageDTO);
+        model.addAttribute("replyCount", replyCount);
 
         return "/mypage/mypage";
+    }*/
+
+//    @GetMapping("mypage")
+//    public void getMember(Model model, HttpSession session) {
+//        Long replyCount = mypageService.getReplyCount((Long)session.getAttribute("memberId"));
+//        model.addAttribute("mypageDTO", mypageService.getMember((Long)session.getAttribute("memberId")));
+//        model.addAttribute("replyCount", replyCount);
+////        log.info(sessionId);
+//        log.info("들어옴");
+//    }
+
+    @GetMapping("mypage")
+    public String getMember(Model model, HttpSession session) {
+        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+        /* 세션에 값이 담겨 있다면 마이페이지로 이동*/
+        if(memberVO != null) {
+            Long replyCount = mypageService.getReplyCount(memberVO.getMemberId());
+            model.addAttribute("mypageDTO", mypageService.getMember(memberVO.getMemberId()));
+            model.addAttribute("replyCount", replyCount);
+
+            return "mypage/mypage";
+        }
+
+        /* 없다면 로그인 페이지 */
+        return "member/login";
     }
 
 //      내 정보들 가져오기
@@ -42,8 +67,17 @@ public class MypageController {
         return mypageService.getMember(memberId);
     }*/
 
+
+//    수정 폼으로 가기
+    @GetMapping("mypageUpdate")
+    public void moveToUpdate(HttpSession session, Model model){
+        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+
+        model.addAttribute("mypageDTO", mypageService.getMember(memberVO.getMemberId()));
+    };
+
     //    내 정보 수정하기
-    @PatchMapping("modify/{memberId}")
+    @PatchMapping("mypageUpdate")
     public void modify(@PathVariable("memberId") Long memberId) {
         MemberVO memberVO = new MemberVO();
         memberVO.setMemberId(memberId);
@@ -57,11 +91,22 @@ public class MypageController {
         memberVO.setMemberGender("여");
         mypageService.modify(memberVO);
         log.info(mypageService.getMember(memberId).toString());
-         }
+    }
 
-    //    회원탈퇴하기
-    @PostMapping("remove/{memberId}")
-    public void remove(@PathVariable("memberId") Long memberId) {
-        log.info(mypageService.getMember(memberId).toString());
-        mypageService.remove(memberId); }
+    /* 회원탈퇴하기 */
+    @GetMapping("remove")
+    public String remove(HttpSession session) {
+        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+        /* 세션에 담긴 값 없애기 */
+        session.invalidate();
+
+        mypageService.remove(memberVO.getMemberId());
+
+        return "redirect:/main";
+    }
+
+//    내가 개설한 탐험대 정보
+
+
+//    내가 참가한 탐험대 정보
 }

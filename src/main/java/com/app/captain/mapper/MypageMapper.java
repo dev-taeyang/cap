@@ -9,6 +9,9 @@ public interface MypageMapper {
 //    내 정보들 가져오기
     public MypageDTO select(Long memberId);
 
+//    내 댓글 갯수 가져오기
+    public Long replyCount(Long memberId);
+
 //    내 정보 수정하기
     public void update(MemberVO memberVO);
 
