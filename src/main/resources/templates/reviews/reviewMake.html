@@ -8,147 +8,149 @@
     <link rel="stylesheet" href="/css/board/boardMake.css">
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
-    <link rel="icon" href="/images/favicon.png" />
+    <link rel="icon" href="/images/favicon.png"/>
     <title>보고서 작성</title>
 </head>
 <body>
 <div th:insert="~{/main/header :: header}"></div>
-    <div class="SectionWrapper">
-        <div class="makeSection-wrapper">
-            <div class="makeSection-header">
-                <span style="font-weight: 700;">보고서 작성</span>
-            </div>
-            <div class="SectionMaker-Wrapper">
-                <div class="SectionMaker-contentWrapper">
-                    <form th:action="@{/reviews/detail/{reviewId}" method="post">
-                        <div class="formSection-contentContainer">
-                            <div class="formTitle-wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle-legend">
-                                        <span>보고서 명</span>
-                                    </legend>
-                                    <input name="reviewTitle" th:value=${review.reviewTitle} class="formInputBox" type="text" placeholder="보고서 명을 입력해주세요">
+<div class="SectionWrapper">
+    <div class="makeSection-wrapper">
+        <div class="makeSection-header">
+            <span style="font-weight: 700;">보고서 작성</span>
+        </div>
+        <div class="SectionMaker-Wrapper">
+            <div class="SectionMaker-contentWrapper">
+                <form action="" method="post">
+                    <div class="formSection-contentContainer">
+                        <div class="formTitle-wrapper">
+                            <div class="formTitle">
+                                <legend class="formTitle-legend">
+                                    <span>보고서 명</span>
+                                </legend>
+                                <input name="reviewTitle" class="formInputBox" type="text" placeholder="보고서 명을 입력해주세요">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="space">
+                    <div class="formSection-contentContainer">
+                        <div class="formTitle-wrapper">
+                            <div class="formTitle">
+                                <legend class="formTitle-legend">
+                                    <span>카테고리</span>
+                                </legend>
+                                <div class="ButtonItem-list">
+                                    <input type="radio" name="reviewCategory" id="adventure" value="모험"
+                                           style="display: none;">
+                                    <button type="button" class="CategoryItem category-Adventure">
+                                        <span>모험</span>
+                                    </button>
+                                    <input type="radio" name="reviewCategory" id="horror" value="공포"
+                                           style="display: none;">
+                                    <button type="button" class="CategoryItem category-Horror">
+                                        <div>공포</div>
+                                    </button>
+                                    <input type="radio" name="reviewCategory" id="tour" value="관광"
+                                           style="display: none;">
+                                    <button type="button" class="CategoryItem category-Tour">
+                                        <div>관광</div>
+                                    </button>
+                                    <input type="radio" name="reviewCategory" id="leisure" value="레저"
+                                           style="display: none;">
+                                    <button type="button" class="CategoryItem category-Leisure">
+                                        <div>레저</div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <hr class="space">
-                        <div class="formSection-contentContainer">
-                            <div class="formTitle-wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle-legend">
-                                        <span>카테고리</span>
-                                    </legend>
-                                    <div class="ButtonItem-list">
-                                        <input type="radio" name="reviewCategory" th:value=${review.reviewCategory} id="adventure" value="모험" style="display: none;">
-                                        <button type="button" class="CategoryItem category-Adventure">
-                                            <span>모험</span>
-                                        </button>
-                                        <input type="radio" name="reviewCategory" th:value=${review.reviewCategory} id="horror" value="공포" style="display: none;">
-                                        <button type="button" class="CategoryItem category-Horror">
-                                            <div>공포</div>
-                                        </button>
-                                        <input type="radio" name="reviewCategory" th:value=${review.reviewCategory} id="tour" value="관광" style="display: none;">
-                                        <button type="button" class="CategoryItem category-Tour">
-                                            <div>관광</div>
-                                        </button>
-                                        <input type="radio" name="reviewCategory" th:value=${review.reviewCategory} id="leisure" value="레저" style="display: none;">
-                                        <button type="button" class="CategoryItem category-Leisure">
-                                            <div>레저</div>
-                                        </button>
-                                    </div>
+                    </div>
+                    <hr class="space">
+                    <div class="formSection-contentContainer">
+                        <div class="formTitle-wrapper">
+                            <div class="formTitle">
+                                <legend class="formTitle-legend">
+                                    <span>평점</span>
+                                </legend>
+                                <div class="ButtonItem-list">
+                                    <input type="radio" name="reviewGrade" id="one" value="1" style="display: none;">
+                                    <button type="button" class="ButtonItem summaryButtton">
+                                        <div>1개★</div>
+                                    </button>
+                                    <input type="radio" name="reviewGrade" id="two" value="2" style="display: none;">
+                                    <button type="button" class="ButtonItem summaryButtton">
+                                        <div>2개★</div>
+                                    </button>
+                                    <input type="radio" name="reviewGrade" id="three" value="3" style="display: none;">
+                                    <button type="button" class="ButtonItem summaryButtton">
+                                        <div>3개★</div>
+                                    </button>
+                                    <input type="radio" name="reviewGrade" id="four" value="4" style="display: none;">
+                                    <button type="button" class="ButtonItem summaryButtton">
+                                        <div>4개★</div>
+                                    </button>
+                                    <input type="radio" name="reviewGrade" id="five" value="5" style="display: none;">
+                                    <button type="button" class="ButtonItem summaryButtton">
+                                        <div>5개★</div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <hr class="space">
-                        <div class="formSection-contentContainer">
-                            <div class="formTitle-wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle-legend">
-                                        <span>평점</span>
-                                    </legend>
-                                    <div class="ButtonItem-list">
-                                        <input type="radio" name="reviewGrade" th:value=${review.reviewGrade} id="one" value="1" style="display: none;">
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>1개★</div>
-                                        </button>
-                                        <input type="radio" name="reviewGrade" th:value=${review.reviewGrade} id="two" value="2" style="display: none;">
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>2개★</div>
-                                        </button>
-                                        <input type="radio" name="reviewGrade" th:value=${review.reviewGrade} id="three" value="3" style="display: none;">
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>3개★</div>
-                                        </button>
-                                        <input type="radio" name="reviewGrade" th:value=${review.reviewGrade} id="four" value="4" style="display: none;">
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>4개★</div>
-                                        </button>
-                                        <input type="radio" name="reviewGrade" th:value=${review.reviewGrade} id="five" value="5" style="display: none;">
-                                        <button type="button" class="ButtonItem summaryButtton">
-                                            <div>5개★</div>
-                                        </button>
-                                    </div>
-                                </div>
+                    </div>
+                    <hr class="space">
+                    <div class="formSection-contentContainer">
+                        <div class="formTitle-wrapper form-image">
+                            <div class="formTitle">
+                                <legend class="formTitle-legend image-legend reviewImages">
+                                    <span>이미지</span>
+                                </legend>
                             </div>
-                        </div>
-                        <hr class="space">
-                        <div class="formSection-contentContainer">
-                            <div class="formTitle-wrapper form-image">
-                                <div class="formTitle">
-                                    <legend class="formTitle-legend image-legend reviewImages">
-                                        <span>이미지</span>
-                                    </legend>
-                                </div>
-                                <div class="addMainImage-wrapper">
-                                    <div class="imageContainer">
-                                        <div class="imageWrapperPadding">
-                                            <div class="imageWrapper">
-                                                <div id="thumbnail-list" class="imageDiv">
-                                                    <div class="imgButtonWrap">
-                                                        <label for="photo-picker">
-                                                            <div class="imgButton" >
-                                                                <span class="cameraIconImg"></span>
-                                                            </div>
-                                                            <input name="files" th:  class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp"/>
-                                                        </label>
-                                                    </div>
+                            <div class="addMainImage-wrapper">
+                                <div class="imageContainer">
+                                    <div class="imageWrapperPadding">
+                                        <div class="imageWrapper">
+                                            <div id="thumbnail-list" class="imageDiv">
+                                                <div class="imgButtonWrap">
+                                                    <label for="photo-picker">
+                                                        <div class="imgButton">
+                                                            <span class="cameraIconImg"></span>
+                                                        </div>
+                                                        <input name="reviewFile" th: class="imageFileInput" id="photo-picker"
+                                                               type="file"
+                                                               accept="image/jpg, image/jpeg, image/png, image/bmp"/>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-detail"> 최소 사이즈: 가로 600px * 세로 600px </div>
-                                    <div class="text-detail"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF - 최대 8장까지 가능 </div>
                                 </div>
+                                <div class="text-detail"> 최소 사이즈: 가로 600px * 세로 600px</div>
+                                <div class="text-detail"> 용량: 10MB 이하, 파일유형: JPG, PNG, GIF - 최대 8장까지 가능</div>
                             </div>
                         </div>
-                        <hr class="space">
-                        <div class="formSection-contentContainer">
-                            <div class="formTitle-wrapper">
-                                <div class="formTitle">
-                                    <legend class="formTitle-legend">
-                                        <span>결과 소개</span>
-                                    </legend>
-                                    <textarea name="reviewContent" id="editor" th:text=${review.reviewContent} class="detailText-text" placeholder="상세 내용을 적어주세요"></textarea>
-                                </div>
+                    </div>
+                    <hr class="space">
+                    <div class="formSection-contentContainer">
+                        <div class="formTitle-wrapper">
+                            <div class="formTitle">
+                                <legend class="formTitle-legend">
+                                    <span>결과 소개</span>
+                                </legend>
+                                <textarea name="reviewContent" id="editor" class="detailText-text"
+                                          placeholder="상세 내용을 적어주세요"></textarea>
                             </div>
                         </div>
-                        <div class="bottomButton-wrapper">
-                            <p class="registMessage">* 모든 내용을 작성하셔야 등록이 가능합니다</p>
-                            <button class="registButton-button" disabled type="submit">등록하기</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="bottomButton-wrapper">
+                        <p class="registMessage">* 모든 내용을 작성하셔야 등록이 가능합니다</p>
+                        <button class="registButton-button" disabled>등록하기</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 <div th:insert="~{/main/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script th:inline = "javascript">
-    let review = [[${review}]];
-    console.log(review);
-</script>
 <script src="/js/board/reviewMake.js"></script>
-<script src="/js/reviews/reviewInsert.js"></script>
 <script src="/js/main/header.js"></script>
 </html>
