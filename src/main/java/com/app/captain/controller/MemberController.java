@@ -21,16 +21,14 @@ import java.util.Date;
 import java.util.Random;
 
 @Controller
-@RequestMapping("/members/*")
+@RequestMapping("/member/*")
 @Slf4j
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("login")
-    public void login() {
-        ;
-    }
+    public void login() {;}
 
     @PostMapping("login")
     public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
@@ -56,12 +54,13 @@ public class MemberController {
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.invalidate();
-        if(request.getHeader("Cookie") != null) {
+       /* Cookie cookie = new Cookie("loginCookie", null);
+        cookie.setMaxAge(0); //초단위
+        response.addCookie(cookie);*/
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 cookie.setMaxAge(0); //초단위
                 response.addCookie(cookie);
-            }
         }
         return "redirect:/main";
     }
@@ -111,6 +110,18 @@ public class MemberController {
         }
     }
 
+    @PostMapping("checkEmail")
+    @ResponseBody
+    public String checkEmail(String memberEmail){
+        int check = memberService.checkEmail(memberEmail);
+
+        if(check != 0){
+            return "fail";
+        }else{
+            return "success";
+        }
+    }
+
     @PostMapping("checkSms")
     @ResponseBody
     public String checkSms(String memberPhone){
@@ -125,4 +136,26 @@ public class MemberController {
         memberService.checkSms(memberPhone,code);
         return code;
     }
+
+    @GetMapping("findId")
+    public void findId(){;}
+
+    @PostMapping("findId")
+    @ResponseBody
+    public String findId(String memberPhone){
+        String identification = memberService.findId(memberPhone);
+
+        if(identification == ""){
+            return null;
+        }else{
+            return identification;
+        }
+    }
+
+    @GetMapping("findPassword")
+    public void findPassword(){;}
+
+    @GetMapping("changePassword")
+    public void changePassword(){;}
+
 }

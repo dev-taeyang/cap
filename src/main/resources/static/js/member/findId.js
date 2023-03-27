@@ -10,6 +10,7 @@ const codeButton = document.querySelector('.join-check-btn');
 const checkIdButton = document.querySelector('.check-id-btn');
 /* 휴대폰 번호 정규식 */
 const phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+let code;
 
 $(inputPhone).on('blur', function () {
   let value = $(this).val();
@@ -37,7 +38,7 @@ function activePhone() {
 inputCode.addEventListener('keyup', activeCode);
 
 function activeCode() {
-    switch ($(inputCode).val().length == 6) {
+    switch ($(inputCode).val() == code) {
       case true:
         codeButton.disabled = false;
         break;
@@ -51,19 +52,41 @@ $(codeButton).on('click', function(){
     checkIdButton.disabled = false;
 });
 
-$(checkIdButton).on('click', function () {
-   /* var phone = $(".findFormInput").val().replaceAll("-", "");
+$(phoneButton).on('click', function () {
+    let phone = $(".join-phone").val().replaceAll("-", "");
     console.log(phone);
     $.ajax({
       type: "POST",
-      url: contextPath + "/smsOk.member",
+      url: "/member/checkSms",
       data: { memberPhone: phone },
       success: function(data) {
         console.log(data);
         code = data;
       }
-    }); */
-  goCheck();
+    });
+});
+
+let noId = "가입하신 아이디가 존재하지 않습니다.";
+let identification = "";
+$(".check-id-btn").on("click", function() {
+    let phone = $(".join-phone").val();
+    $.ajax({
+        type: "POST",
+        url: "/member/findId",
+        data: { memberPhone: phone },
+        success: function(data) {
+            identification = data;
+            console.log(data);
+            if(data == ""){
+                $(".no-id-text").html(noId);
+                $(".id-text").css('display', 'none');
+            }else{
+                $(".id-text").html(identification);
+                $(".no-id-text").css('display', 'none');
+            }
+        }
+
+    });
 });
 
 function goCheck() {

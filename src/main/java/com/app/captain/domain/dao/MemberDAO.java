@@ -20,16 +20,28 @@ public class MemberDAO {
     public void save(MemberVO memberVO) {
         memberMapper.insert(memberVO);
     }
-
+    /* 아이디 중복 검사 */
     public int checkId(String memberIdentification) {
         return memberMapper.checkId(memberIdentification);
     }
 
+    /* 휴대폰 중복 검사 */
     public int checkPhone(String memberPhone) {
         return memberMapper.checkPhone(memberPhone);
     }
 
+    /* 닉네임 중복 검사 */
     public int checkNickname(String memberNickname) {
         return memberMapper.checkNickname(memberNickname);
+    }
+
+    /* 이메일 중복 검사 */
+    public int checkEmail(String memberEmail) {
+        return memberMapper.checkEmail(memberEmail);
+    }
+
+    /* 아이디 찾기 */
+    public String findId(String memberPhone) {
+        return memberMapper.findId(memberPhone);
     }
 }

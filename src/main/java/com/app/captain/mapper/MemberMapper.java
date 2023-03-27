@@ -10,9 +10,14 @@ public interface MemberMapper {
     public MemberVO select(MemberVO memberVO);
     /* 회원 가입 */
     public void insert(MemberVO memberVO);
-    /* 중복 검사 */
+    /* 아이디 중복 검사 */
     public int checkId(String memberIdentification);
+    /* 휴대폰 중복 검사 */
     public int checkPhone(String memberPhone);
+    /* 닉네임 중복 검사 */
     public int checkNickname(String memberNickname);
-    public Long selectPhone(String memberPhone);
+    /* 아이디 중복 검사 */
+    public int checkEmail(String memberEmail);
+    /* 아이디 찾기 */
+    public String findId(String memberPhone);
 }
