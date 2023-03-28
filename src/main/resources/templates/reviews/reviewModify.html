@@ -19,8 +19,8 @@
                 <span style="font-weight: 700;">보고서 수정</span>
             </div>
             <div class="SectionMaker-Wrapper">
-                <div class="SectionMaker-contentWrapper">
-                    <form action="">
+                <div class="SectionMaker-contentWrapper" th:object="${review}">
+                    <form th:action="'/reviews/'+ *{reviewId} + '/modify'" method="post">
                         <div class="formSection-contentContainer">
                             <div class="formTitle-wrapper">
                                 <div class="formTitle">
@@ -144,6 +144,10 @@
 <div th:insert="~{/main/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script th:inline="javascript">
+    let review = [[${review}]];
+    console.log(review);
+</script>
 <script src="/js/board/reviewModify.js"></script>
 <script src="/js/main/header.js"></script>
 </html>
