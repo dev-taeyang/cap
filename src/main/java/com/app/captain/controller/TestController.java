@@ -19,10 +19,10 @@ public class TestController {
         return "/error/404.html";
     }
 
-    @GetMapping("/main")
+   /* @GetMapping("/main")
     public String test3() {
         return "/main/main.html";
-    }
+    }*/
 
     @GetMapping("/findId")
     public String test4() {

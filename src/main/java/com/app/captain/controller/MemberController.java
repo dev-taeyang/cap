@@ -2,6 +2,7 @@ package com.app.captain.controller;
 
 import com.app.captain.domain.vo.MailTO;
 import com.app.captain.domain.vo.MemberVO;
+import com.app.captain.service.KakaoService;
 import com.app.captain.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
+    private final KakaoService kakaoService;
 
     @GetMapping("login")
     public void login() {;}
@@ -56,9 +58,6 @@ public class MemberController {
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.invalidate();
-       /* Cookie cookie = new Cookie("loginCookie", null);
-        cookie.setMaxAge(0); //초단위
-        response.addCookie(cookie);*/
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 cookie.setMaxAge(0); //초단위
