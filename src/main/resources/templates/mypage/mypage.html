@@ -39,7 +39,7 @@
         <a class="head-user-info" href="javascript:void(0)">
           <img src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png" class="user-profile-image" />
           <div class="head-userinfo-textwrapper">
-            <div th:text="${mypageDTO.memberNickname}" class="head-userinfo-nickname" ></div>
+            <div th:text="${members.memberNickname}" class="head-userinfo-nickname" ></div>
             <div class="head-userinfo-email">이메일 계정</div>
           </div>
         </a>
@@ -69,7 +69,7 @@
               class="mypage-user-value"
               type="text"
               name="memberNickname"
-              th:value="${mypageDTO.memberNickname}"
+              th:value="${members.memberNickname}"
             />
           </div>
         </div>
@@ -81,7 +81,7 @@
               class="mypage-user-value"
               type="text"
               name="memberPhone"
-              th:value="${mypageDTO.memberPhone}"
+              th:value="${members.memberPhone}"
             />
           </div>
         </div>
@@ -93,7 +93,7 @@
               class="mypage-user-value"
               type="text"
               name="memberEmail"
-              th:value="${mypageDTO.memberEmail}"
+              th:value="${members.memberEmail}"
             />
           </div>
         </div>
@@ -117,7 +117,7 @@
               type="text"
               class="mypage-user-value"
               name="memberBirth"
-              th:value="${mypageDTO.memberBirth}"
+              th:value="${members.memberBirth}"
             />
           </div>
         </div>
@@ -129,7 +129,7 @@
               type="text"
               class="mypage-user-value"
               name="memberGender"
-              th:value="${mypageDTO.memberGender == 'm'? '남자' : '여자'}"
+              th:value="${members.memberGender == 'm'? '남자' : '여자'}"
             />
           </div>
         </div>

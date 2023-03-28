@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @RequestMapping("/mypage/*")
 public class MypageController {
-    private final MemberService memberService;
+    private final MypageService mypageService;
     private final GroupReplyService groupReplyService;
 
 //    테스트로 컨트롤러 태워보기
@@ -49,7 +49,7 @@ public class MypageController {
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
         /* 세션에 값이 담겨 있다면 마이페이지로 이동*/
         if(memberVO != null) {
-            model.addAttribute("members", memberService.getMemberById(memberVO.getMemberId()));
+            model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
             model.addAttribute("replyCount", groupReplyService.getReplyCount(memberVO.getMemberId()));
 
             return "mypage/mypage";
@@ -96,7 +96,7 @@ public class MypageController {
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
         /* 세션에 담긴 값 없애기 */
         session.invalidate();
-
+        mypageService.remove(memberVO.getMemberId());
 
         return "redirect:/main";
     }
