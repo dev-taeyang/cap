@@ -49,7 +49,7 @@
                     <a th:if="${session.member == null}" href="/member/join">
                         <div class="left-title">회원가입</div>
                     </a>
-                    <a th:if="${session.member != null}" href="/mypage/mypage">
+                    <a th:if="${session.member != null}" href="/mypage/me">
                         <div th:text="${session.member.getMemberNickname()}"
                              class="left-title" style="font-weight: 900;">님
                         </div>
@@ -131,7 +131,7 @@
                             <span class="header-ad-title">Review</span>
                         </div>
                     </a>
-                    <a href="/mypage/mypage">
+                    <a href="/mypage/me">
                         <div class="header-ad-icon-wrap">
                             <div class="header-ad-icon">
                                 <img

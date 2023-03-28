@@ -7,6 +7,13 @@
         where member_identification = #{memberIdentification} and member_password = #{memberPassword}
     </select>
 
+    <!-- 회원 검색하기 -->
+    <select id="selectMember" resultType="memberVO">
+        select member_id, member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender, member_status, member_file_original_name, member_file_uuid, member_file_path, member_file_size, member_file_type
+        from tbl_member
+        where member_id = #{memberId}
+    </select>
+
     <insert id="insert">
         insert into tbl_member (member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender)
         values (#{memberIdentification}, #{memberPassword}, #{memberEmail}, #{memberName}, #{memberNickname}, #{memberPhone}, date_format(#{memberBirth}, '%Y-%m-%d'), #{memberGender})
@@ -47,4 +54,10 @@
         set member_password = #{memberPassword}
         where member_email = #{memberEmail}
     </update>
+
+    <!-- 회원 삭제 -->
+    <delete id="delete">
+        delete from tbl_member where member_id = ${memberId}
+    </delete>
+
 </mapper>

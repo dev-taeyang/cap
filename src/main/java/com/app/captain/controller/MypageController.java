@@ -1,7 +1,7 @@
 package com.app.captain.controller;
 
-import com.app.captain.domain.dto.MypageDTO;
 import com.app.captain.domain.vo.MemberVO;
+import com.app.captain.service.GroupReplyService;
 import com.app.captain.service.MemberService;
 import com.app.captain.service.MypageService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,8 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @RequestMapping("/mypage/*")
 public class MypageController {
-    private final MypageService mypageService;
+    private final MemberService memberService;
+    private final GroupReplyService groupReplyService;
 
 //    테스트로 컨트롤러 태워보기
 //    내 정보들 가져오기
@@ -43,14 +44,13 @@ public class MypageController {
 //        log.info("들어옴");
 //    }
 
-    @GetMapping("mypage")
+    @GetMapping("me")
     public String getMember(Model model, HttpSession session) {
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
         /* 세션에 값이 담겨 있다면 마이페이지로 이동*/
         if(memberVO != null) {
-            Long replyCount = mypageService.getReplyCount(memberVO.getMemberId());
-            model.addAttribute("mypageDTO", mypageService.getMember(memberVO.getMemberId()));
-            model.addAttribute("replyCount", replyCount);
+            model.addAttribute("members", memberService.getMemberById(memberVO.getMemberId()));
+            model.addAttribute("replyCount", groupReplyService.getReplyCount(memberVO.getMemberId()));
 
             return "mypage/mypage";
         }
@@ -73,7 +73,6 @@ public class MypageController {
     public void moveToUpdate(HttpSession session, Model model){
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
 
-        model.addAttribute("mypageDTO", mypageService.getMember(memberVO.getMemberId()));
     };
 
     //    내 정보 수정하기
@@ -89,8 +88,6 @@ public class MypageController {
         memberVO.setMemberPhone("01012341234");
         memberVO.setMemberBirth("20000202");
         memberVO.setMemberGender("여");
-        mypageService.modify(memberVO);
-        log.info(mypageService.getMember(memberId).toString());
     }
 
     /* 회원탈퇴하기 */
@@ -100,7 +97,6 @@ public class MypageController {
         /* 세션에 담긴 값 없애기 */
         session.invalidate();
 
-        mypageService.remove(memberVO.getMemberId());
 
         return "redirect:/main";
     }

@@ -15,7 +15,8 @@ public class MemberDAO {
     public MemberVO findById(MemberVO memberVO) {
         return memberMapper.select(memberVO);
     }
-
+    /* 회원 찾기 */
+    public MemberVO findMemberById(Long memberId) { return memberMapper.selectMember(memberId); }
     /* 회원 가입 */
     public void save(MemberVO memberVO) {
         memberMapper.insert(memberVO);
@@ -49,4 +50,7 @@ public class MemberDAO {
     public void changePassword(String memberEmail, String memberPassword){
         memberMapper.changePassword(memberEmail, memberPassword);
     }
+
+    /* 회원탈퇴 */
+    public void delete(Long memberId) { memberMapper.delete(memberId); }
 }
