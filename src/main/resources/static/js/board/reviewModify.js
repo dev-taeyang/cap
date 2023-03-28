@@ -184,3 +184,5 @@ const fileInput = document.getElementById("photo-picker");
 fileInput.addEventListener("change", function(event) {
     handleFiles(event.target.files);
 });
+
+//* DB에서 카테고리, 별점을 가져와서 Radio 체크해주는부분

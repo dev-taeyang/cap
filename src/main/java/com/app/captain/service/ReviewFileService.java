@@ -18,7 +18,7 @@ public class ReviewFileService {
 
     private final ReviewFileDAO reviewFileDAO;
 
-    //    파일 업로드
+    //    파일 저장
     public void write(List<ReviewFileVO> files){
         files.forEach(file -> reviewFileDAO.save(file));
     }

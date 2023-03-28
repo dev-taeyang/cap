@@ -49,18 +49,14 @@
             <!-- 작성자의 정보가 나오는 곳 -->
             <div class="ProfileInfo-profileContent">
                 <div class="Profile-MemberNameWrapper">
-                    <a href="">
+                    <a href="/mypage/mypage">
                             <span class="Profile-Nickname">
-                                <span>댕댕쓰</span>
+                                <span th:text="${memberVO.memberNickname}"></span>
                             </span>
                     </a>
                 </div>
-                <span class="Profile-MemberStat">
-                        <!-- 작성자가 소유한 원정대 갯수 받는 곳 -->
-                        보유 탐험대 2
-                        <span>|</span>
-                    <!-- 작성자가 작성한 리뷰의 갯수 받는 곳 -->
-                        탐사 보고서 3
+                <!--멤버 이름 받는곳 -->
+                <span class="Profile-MemberStat" th:text="${groupName}">
                     </span>
             </div>
             <div class="infoSection-actionWrapper">

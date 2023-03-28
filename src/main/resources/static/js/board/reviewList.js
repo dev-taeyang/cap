@@ -29,6 +29,7 @@ function showList() {
                             <!-- 보고서의 카테고리 내용이 들어갈 곳 -->
                             <div class="review-category-name">${review.reviewCategory}</div>
                             <!-- 보고서의 제목이 들어가는 곳 -->
+                            <div class="review-image-title">${review.reviewTitle}</div>
                             <div class="review-image-content">${review.reviewContent}</div>
                             <div class="review-point-wrapper">
                               <div>
