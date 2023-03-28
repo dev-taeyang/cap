@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberMapper {
     /* 로그인 */
     public MemberVO select(MemberVO memberVO);
+    /* 회원 찾기*/
+    public MemberVO selectMember(Long memberId);
     /* 회원 가입 */
     public void insert(MemberVO memberVO);
     /* 아이디 중복 검사 */
@@ -22,4 +24,6 @@ public interface MemberMapper {
     public String findId(String memberPhone);
     /* 비밀번호 변경 */
     public void changePassword(String memberEmail, String memberPassword);
+    /* 회원탈퇴 */
+    public void delete(Long memberId);
 }
