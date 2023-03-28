@@ -113,19 +113,20 @@ public class KakaoService {
                 email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
             String gender = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("gender").getAsString();
+            gender = gender == "male" ? "남" : "여";
             String birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
 
 //            log.info("id : " + id);
 //            log.info("email : " + email);
             kakaoInfo.put("id", id);
             kakaoInfo.put("identification", email.substring(0, email.indexOf("@")));
-            kakaoInfo.put("password", "어떻게 넣지");
+            kakaoInfo.put("password", "**********");
             kakaoInfo.put("phone", "어떻게 넣지");
             kakaoInfo.put("nickname", nickname);
             kakaoInfo.put("name", nickname);
             kakaoInfo.put("email", email);
             kakaoInfo.put("gender", gender);
-            kakaoInfo.put("birthday", "출생년도" + birthday);
+            kakaoInfo.put("birthday", 1997 + birthday);
 
             br.close();
 

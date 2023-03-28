@@ -214,16 +214,26 @@ public class MemberController {
     @ResponseBody
     @GetMapping("/kakao")
     public String login(@RequestParam("code") String code, HttpSession session) throws Exception{
-        String access_Token = kakaoService.getKaKaoAccessToken(code);
-        HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(access_Token);
+        String token = kakaoService.getKaKaoAccessToken(code);
+        HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(token);
         log.info("login Controller : " + kakaoInfo);
-
+        log.info((String)kakaoInfo.get("nickname"));
+        MemberVO memberVO = new MemberVO();
+        memberVO.setMemberIdentification((String)kakaoInfo.get("email"));
+        memberVO.setMemberPassword((String)kakaoInfo.get("password"));
+        memberVO.setMemberPhone((String)kakaoInfo.get("phone"));
+        memberVO.setMemberNickname((String)kakaoInfo.get("nickname"));
+        memberVO.setMemberNickname((String)kakaoInfo.get("name"));
+        memberVO.setMemberEmail((String)kakaoInfo.get("email"));
+        memberVO.setMemberBirth((String)kakaoInfo.get("birthday"));
+        memberVO.setMemberGender((String)kakaoInfo.get("gender"));
+        memberService.setMember(memberVO);
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        if (kakaoInfo.get("email") != null) {
+        /*if (kakaoInfo.get("email") != null) {
             session.setAttribute("userId", kakaoInfo.get("email"));
-            session.setAttribute("access_Token", access_Token);
-        }
-        return "/index";
+            session.setAttribute("token", token);
+        }*/
+        return "redirect:/main";
     }
 
 }
