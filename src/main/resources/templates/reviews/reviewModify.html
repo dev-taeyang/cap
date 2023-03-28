@@ -40,19 +40,19 @@
                                         <span>카테고리</span>
                                     </legend>
                                     <div class="ButtonItem-list">
-                                        <input type="radio" name="reviewCategory" id="adventure" value="모험" style="display: none;">
+                                        <input type="radio" name="reviewCategory" id="adventure" value="모험" style="display: none;" th:checked="${review.reviewCategory == '모험' or category == '모험'}" >
                                         <button type="button" class="CategoryItem category-Adventure">
                                             <span>모험</span>
                                         </button>
-                                        <input type="radio" name="reviewCategory" id="horror" value="공포" style="display: none;" checked>
-                                        <button type="button" class="CategoryItem category-Horror CategoryActive">
+                                        <input type="radio" name="reviewCategory" id="horror" value="공포" style="display: none;" th:checked="${review.reviewCategory == '공포' or category == '공포'}">
+                                        <button type="button" class="CategoryItem category-Horror">
                                             <div>공포</div>
                                         </button>
-                                        <input type="radio" name="reviewCategory" id="tour" value="관광" style="display: none;">
+                                        <input type="radio" name="reviewCategory" id="tour" value="관광" style="display: none;" th:checked="${review.reviewCategory == '관광' or category == '관광'}">
                                         <button type="button" class="CategoryItem category-Tour">
                                             <div>관광</div>
                                         </button>
-                                        <input type="radio" name="reviewCategory" id="leisure" value="레저" style="display: none;">
+                                        <input type="radio" name="reviewCategory" id="leisure" value="레저" style="display: none;" th:checked="${review.reviewCategory == '레저' or category == '레저'}">
                                         <button type="button" class="CategoryItem category-Leisure">
                                             <div>레저</div>
                                         </button>
@@ -68,24 +68,24 @@
                                         <span>평점</span>
                                     </legend>
                                     <div class="ButtonItem-list">
-                                        <input type="radio" name="reviewGrade" id="one" value="1" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="one" value="1" style="display: none;" th:checked="${review.reviewGrade == 1 or grade == 1}">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>1개★</div>
                                         </button>
-                                        <input type="radio" name="reviewGrade" id="two" value="2" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="two" value="2" style="display: none;" th:checked="${review.reviewGrade == 2 or grade == 2}">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>2개★</div>
                                         </button>
-                                        <input type="radio" name="reviewGrade" id="three" value="3" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="three" value="3" style="display: none;" th:checked="${review.reviewGrade == 3 or grade == 3}">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>3개★</div>
                                         </button>
-                                        <input type="radio" name="reviewGrade" id="four" value="4" style="display: none;">
+                                        <input type="radio" name="reviewGrade" id="four" value="4" style="display: none;" th:checked="${review.reviewGrade == 4 or grade == 4}">
                                         <button type="button" class="ButtonItem summaryButtton">
                                             <div>4개★</div>
                                         </button>
-                                        <input type="radio" name="reviewGrade" id="five" value="5" style="display: none;" checked>
-                                        <button type="button" class="ButtonItem summaryButtton ButtonActive">
+                                        <input type="radio" name="reviewGrade" id="five" value="5" style="display: none;" th:checked="${review.reviewGrade == 5 or grade == 5}" >
+                                        <button type="button" class="ButtonItem summaryButtton">
                                             <div>5개★</div>
                                         </button>
                                     </div>
@@ -146,7 +146,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script th:inline="javascript">
     let review = [[${review}]];
+    let category = [[${category}]];
+    let grade = [[${grade}]];
     console.log(review);
+    console.log(category);
+    console.log(grade);
 </script>
 <script src="/js/board/reviewModify.js"></script>
 <script src="/js/main/header.js"></script>
