@@ -34,7 +34,7 @@ public class ReviewService {
     }
 
 //    게시물 조회
-    public ReviewFileDTO getReveiw(Long reviewId){
+    public ReviewFileDTO getReview(Long reviewId){
         ReviewFileDTO reviewFileDTO = new ReviewFileDTO().toDTO(reviewDAO.findById(reviewId));
         reviewFileDTO.setFiles(reviewFileDAO.findAll(reviewId));
         return reviewFileDTO;

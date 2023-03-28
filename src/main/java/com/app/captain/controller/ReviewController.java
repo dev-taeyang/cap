@@ -60,7 +60,7 @@ public class ReviewController {
 //    리뷰 수정 페이지
     @GetMapping("{reviewId}/modify")
     public String getModify(@PathVariable("reviewId")Long reviewId, Model model){
-        ReviewFileDTO reviewFileDTO = reviewService.getReveiw(reviewId);
+        ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId);
         model.addAttribute("review", reviewFileDTO);
         return "reviews/reviewModify";
     }
@@ -81,6 +81,7 @@ public class ReviewController {
     public String getReview(@PathVariable("reviewId") Long reviewId, Model model) {
         model.addAttribute("review", reviewService.getDTO(reviewId));
         model.addAttribute("files", reviewFileService.getList(reviewId));
+        model.addAttribute("reviewId", reviewId);
         return "reviews/reviewDetail";
     }
 
@@ -93,7 +94,13 @@ public class ReviewController {
         return "reviews/reviewList";
     }
 
-
+//    리뷰 삭제
+    @GetMapping("{reviewId}/remove")
+    public String remove(@PathVariable("reviewId")Long reviewId, RedirectAttributes redirectAttributes){
+        reviewService.remove(reviewId);
+        redirectAttributes.addFlashAttribute("reviewId","삭제완료");
+        return "redirect:/reviews/list";
+    }
 
   /*  //    파일 저장
     @PostMapping("save")
