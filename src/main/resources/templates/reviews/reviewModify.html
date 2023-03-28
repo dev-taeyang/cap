@@ -28,7 +28,7 @@
                                         <span>보고서 명</span>
                                     </legend>
                                     <!-- 입력한 타이틀이 들어올 곳 -->
-                                    <input name="reviewTitle" class="formInputBox" type="text" placeholder="보고서 명을 입력해주세요" value="흉가에 다녀왔습니다!">
+                                    <input name="reviewTitle" class="formInputBox" type="text" th:value="${review.reviewTitle}">
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     <legend class="formTitle-legend">
                                         <span>결과 소개</span>
                                     </legend>
-                                    <textarea name="reviewContent" class="detailText-text" placeholder="상세 내용을 적어주세요">테스트 내용입니다</textarea>
+                                    <textarea name="reviewContent" class="detailText-text" placeholder="상세 내용을 적어주세요" th:text="${review.reviewContent}"></textarea>
                                 </div>
                             </div>
                         </div>

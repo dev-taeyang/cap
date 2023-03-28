@@ -2,7 +2,7 @@
 /* 이미지 모달창 가져오기 */
 
 const $modal = $(".modal-Image");
-const $close = $(".close-modal");
+const $closeModal = $(".close-modal");
 const $Image = $(".plusImages");
 const $modalImage = $(".image-in-modal");
 const $imageCount = $(".footer-count");
@@ -49,7 +49,7 @@ $rightButton.on('click', function(){
     if(currentIndex != 0) {$leftButton.show()};
 })
 
-$close.on('click', function(){
+$closeModal.on('click', function(){
     $modal.hide();
 })
 
@@ -89,7 +89,7 @@ $cancelButton.on('click', function () {
 
 /* 삭제 컨트롤러 타고 이동해야함 */
 $deleteButton.on('click', function () {
-    location.href = '';
+    location.href = `/reviews/${review.reviewId}/remove`;
   });
 
 
