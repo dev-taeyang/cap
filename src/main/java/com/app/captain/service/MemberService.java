@@ -24,8 +24,6 @@ public class MemberService {
     public MemberVO getMember(MemberVO memberVO) {
         return memberDAO.findById(memberVO);
     }
-    /* 회원 찾기 */
-    public MemberVO getMemberById(Long memberId) {return memberDAO.findMemberById(memberId); }
 
     /* 회원 가입 */
     public void setMember(MemberVO memberVO) {
@@ -99,6 +97,4 @@ public class MemberService {
     public void changePassword(String memberEmail, String memberPassword){
         memberDAO.changePassword(memberEmail, memberPassword);
     }
-    /* 회원탈퇴 */
-    public void remove(Long memberId) { memberDAO.delete(memberId); }
 }
