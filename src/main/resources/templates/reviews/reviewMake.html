@@ -20,7 +20,7 @@
         </div>
         <div class="SectionMaker-Wrapper">
             <div class="SectionMaker-contentWrapper">
-                <form action="/reviews/write" method="post">
+                <form action="/reviews/write" name="review" method="post">
                     <div class="formSection-contentContainer">
                         <div class="formTitle-wrapper">
                             <div class="formTitle">
@@ -104,11 +104,12 @@
                                 <div class="imageContainer">
                                     <div class="imageWrapperPadding">
                                         <div class="imageWrapper">
-                                            <div id="thumbnail-list" class="imageDiv">
+                                            <div id="thumbnail" class="imageDiv">
                                                 <div class="imgButtonWrap">
                                                     <label for="photo-picker">
-                                                        <div class="imgButton" >
-                                                            <span class="cameraIconImg"></span>
+                                                        <div class="imgButton"  >
+                                                            <span class="cameraIconImg" >
+                                                            </span>
                                                         </div>
                                                         <input name="file" class="imageFileInput" id="photo-picker" type="file" multiple/>
                                                     </label>
@@ -134,7 +135,7 @@
                         </div>
                     </div>
                     <div class="bottomButton-wrapper">
-                        <button class="registButton-button" disabled>작성하기</button>
+                        <button class="registButton-button" disabled >작성하기</button>
                     </div>
                 </form>
             </div>
