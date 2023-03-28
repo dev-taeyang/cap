@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.HttpSessionRequiredException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,18 +50,19 @@ public class ReviewController {
     @GetMapping("write")
     public String getWrite(Model model) {
         model.addAttribute("review", new ReviewVO());
-        model.addAttribute("files", new ReviewFileVO());
+        model.addAttribute("files", new ReviewFileDTO().getFiles());
         return "reviews/reviewMake";
     }
 
     //    리뷰 작성
     @PostMapping("write")
-    public RedirectView save(@ModelAttribute ReviewVO reviewVO, @ModelAttribute List<ReviewFileVO> files, RedirectAttributes redirectAttributes) {
+    @ResponseBody
+    public RedirectView save(@ModelAttribute ReviewVO reviewVO, RedirectAttributes redirectAttributes) {
         reviewVO.setGroupId(1L);
         log.info(reviewVO.toString());
         reviewService.write(reviewVO);
-        reviewFileService.write(files);
         redirectAttributes.addFlashAttribute("review", reviewVO);
+
         return new RedirectView("/reviews/list");
     }
 
@@ -118,6 +120,13 @@ public class ReviewController {
         return new RedirectView("/reviews/list");
     }
 
+//    파일 저장
+    @PostMapping("save")
+    @ResponseBody
+    public void save(@RequestBody List<ReviewFileVO> files) {
+        reviewFileService.write(files);
+    }
+
     //    파일 업로드
     @PostMapping("upload")
     @ResponseBody
@@ -139,6 +148,13 @@ public class ReviewController {
             }
         }
         return uuids;
+    }
+
+//    파일 불러오기
+    @GetMapping("display")
+    @ResponseBody
+    public byte[] display(String fileName) throws IOException{
+        return FileCopyUtils.copyToByteArray(new File("C:/upload",fileName));
     }
 
 }
