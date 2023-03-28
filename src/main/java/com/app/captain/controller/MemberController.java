@@ -6,6 +6,8 @@ import com.app.captain.service.KakaoService;
 import com.app.captain.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -35,7 +37,9 @@ public class MemberController {
     private final KakaoService kakaoService;
 
     @GetMapping("login")
-    public void login() {;}
+    public void login() {
+        ;
+    }
 
     @PostMapping("login")
     public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
@@ -43,13 +47,14 @@ public class MemberController {
         HttpSession session = request.getSession();
         boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
         if (memberVO != null && member.getMemberPassword().equals(memberVO.getMemberPassword())) {
-            if (autoLogin){
+            if (autoLogin) {
                 Cookie cookie = new Cookie("loginCookie", session.getId());
                 cookie.setPath("/");
-                cookie.setMaxAge(60*60*24*7);
+                cookie.setMaxAge(60 * 60 * 24 * 7);
                 response.addCookie(cookie);
             }
             session.setAttribute("member", memberVO);
+            session.setAttribute("memberId", memberVO.getMemberId());
             return "redirect:/main";
         }
         int result = 0;
@@ -60,109 +65,121 @@ public class MemberController {
     @GetMapping("logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        session.invalidate();
-            Cookie[] cookies = request.getCookies();
+        Long memberId = (Long) session.getAttribute("memberId");
+            /*Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 cookie.setMaxAge(0); //초단위
                 response.addCookie(cookie);
+        }*/
+        if (memberService.checkStatus(memberId) != null) {
+            kakaoService.logoutKakao((String) session.getAttribute("token"));
+            session.invalidate();
+            return "redirect:/main";
         }
+        session.invalidate();
         return "redirect:/main";
     }
 
     @GetMapping("join")
-    public void join(){;}
+    public void join() {
+        ;
+    }
 
     @PostMapping("join")
-    public String join(MemberVO member){
+    public String join(MemberVO member) {
         memberService.setMember(member);
         return "redirect:/login";
     }
 
     @PostMapping("checkId")
     @ResponseBody
-    public String checkId(String memberIdentification){
+    public String checkId(String memberIdentification) {
         int check = memberService.checkId(memberIdentification);
 
-        if(check != 0){
+        if (check != 0) {
             return "fail";
-        }else{
+        } else {
             return "success";
         }
     }
 
     @PostMapping("checkPhone")
     @ResponseBody
-    public String checkPhone(String memberPhone){
+    public String checkPhone(String memberPhone) {
         int check = memberService.checkPhone(memberPhone);
 
-        if(check != 0){
+        if (check != 0) {
             return "fail";
-        }else{
+        } else {
             return "success";
         }
     }
 
     @PostMapping("checkNickname")
     @ResponseBody
-    public String checkNickname(String memberNickname){
+    public String checkNickname(String memberNickname) {
         int check = memberService.checkNickname(memberNickname);
 
-        if(check != 0){
+        if (check != 0) {
             return "fail";
-        }else{
+        } else {
             return "success";
         }
     }
 
     @PostMapping("checkEmail")
     @ResponseBody
-    public String checkEmail(String memberEmail){
+    public String checkEmail(String memberEmail) {
         int check = memberService.checkEmail(memberEmail);
 
-        if(check != 0){
+        if (check != 0) {
             return "fail";
-        }else{
+        } else {
             return "success";
         }
     }
 
     @PostMapping("checkSms")
     @ResponseBody
-    public String checkSms(String memberPhone){
+    public String checkSms(String memberPhone) {
         Random random = new Random();
 
         String code = "";
-        for(int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             String number = Integer.toString(random.nextInt(10));
             code += number;
         }
 
-        memberService.checkSms(memberPhone,code);
+        memberService.checkSms(memberPhone, code);
         return code;
     }
 
     @GetMapping("findId")
-    public void findId(){;}
+    public void findId() {
+        ;
+    }
 
     @PostMapping("findId")
     @ResponseBody
-    public String findId(String memberPhone){
+    public String findId(String memberPhone) {
         String identification = memberService.findId(memberPhone);
 
-        if(identification == ""){
+        if (identification == "") {
             return null;
-        }else{
+        } else {
             return identification;
         }
     }
 
     @GetMapping("findPassword")
-    public void findPassword(){;}
+    public void findPassword() {
+        ;
+    }
 
     @PostMapping("send")
     @ResponseBody
     public boolean sendTestMail(String memberEmail) {
-        if(memberService.checkEmail(memberEmail) == 1){
+        if (memberService.checkEmail(memberEmail) == 1) {
 
             MailTO mailTO = new MailTO();
 
@@ -173,14 +190,16 @@ public class MemberController {
             memberService.sendMail(mailTO);
             return true;
         }
-            return false;
+        return false;
     }
 
     @GetMapping("changePassword")
-    public void changePassword(){;}
+    public void changePassword() {
+        ;
+    }
 
     @PostMapping("changePassword")
-    public String changePassword(String memberEmail, String memberPassword){
+    public String changePassword(String memberEmail, String memberPassword) {
         log.info(memberEmail);
         log.info(memberPassword);
         memberService.changePassword(memberEmail, memberPassword);
@@ -198,9 +217,9 @@ public class MemberController {
     }*/
 
     @GetMapping("/kakao/logout")
-    public String kakaoLogout(HttpSession session){
+    public String kakaoLogout(HttpSession session) {
         log.info("logout");
-        kakaoService.logoutKakao((String)session.getAttribute("token"));
+        kakaoService.logoutKakao((String) session.getAttribute("token"));
         session.invalidate();
         return "redirect:/login";
     }
@@ -211,28 +230,37 @@ public class MemberController {
         String token = kakaoService.getKaKaoAccessToken(code);
         session.setAttribute("token", token);
     }*/
-    @ResponseBody
+
+    /*@ResponseBody*/
     @GetMapping("/kakao")
-    public String login(@RequestParam("code") String code, HttpSession session) throws Exception{
+    public String login(/*@RequestParam("code")*/MemberVO member, String code, HttpSession session) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
-        HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(token);
-        log.info("login Controller : " + kakaoInfo);
-        log.info((String)kakaoInfo.get("nickname"));
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberIdentification((String)kakaoInfo.get("email"));
-        memberVO.setMemberPassword((String)kakaoInfo.get("password"));
-        memberVO.setMemberPhone((String)kakaoInfo.get("phone"));
-        memberVO.setMemberNickname((String)kakaoInfo.get("nickname"));
-        memberVO.setMemberNickname((String)kakaoInfo.get("name"));
-        memberVO.setMemberEmail((String)kakaoInfo.get("email"));
-        memberVO.setMemberBirth((String)kakaoInfo.get("birthday"));
-        memberVO.setMemberGender((String)kakaoInfo.get("gender"));
-        memberService.setMember(memberVO);
+        int number = 0;
+        number++;
+        MemberVO kakaoInfo = kakaoService.getKakaoInfo(token);
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        /*if (kakaoInfo.get("email") != null) {
-            session.setAttribute("userId", kakaoInfo.get("email"));
-            session.setAttribute("token", token);
-        }*/
+        if(memberService.checkEmail(kakaoInfo.getMemberEmail()) == 0){
+            MemberVO memberVO = new MemberVO();
+            if(memberService.checkNickname(kakaoInfo.getMemberNickname()) != 0){
+                memberVO.setMemberNickname(kakaoInfo.getMemberNickname() + number);
+            } else{
+                memberVO.setMemberNickname(kakaoInfo.getMemberNickname());
+            }
+            memberVO.setMemberIdentification(kakaoInfo.getMemberIdentification());
+            memberVO.setMemberPassword(kakaoInfo.getMemberPassword());
+            memberVO.setMemberName(kakaoInfo.getMemberName());
+            memberVO.setMemberEmail(kakaoInfo.getMemberEmail());
+            memberVO.setMemberGender(kakaoInfo.getMemberGender());
+            memberVO.setMemberStatus(1);
+            memberService.setMember(memberVO);
+            member = memberService.getMember(memberVO);
+            session.setAttribute("member", member);
+            log.info(session.getAttribute("member").toString());
+        }else {
+            member = memberService.getMember(kakaoInfo);
+            session.setAttribute("member", member);
+            log.info(member.toString());
+        }
         return "redirect:/main";
     }
 
