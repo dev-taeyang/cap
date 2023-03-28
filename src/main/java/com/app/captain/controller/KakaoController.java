@@ -22,7 +22,7 @@ public class KakaoController {
 
     /* 카카오 로그인 */
     @ResponseBody
-    @GetMapping("/kakao/login")
+    @GetMapping("/kakao/login/{token}")
     public String kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
         log.info(code);
         String token = kakaoService.getKaKaoAccessToken(code);
