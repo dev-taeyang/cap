@@ -12,7 +12,7 @@ function showList() {
         text +=
             `
             <li class="mypage-review-list">
-                      <a class="go-review-detail" href=""
+                      <a class="go-review-detail" href="/reviews/detail/${review.reviewId}"
                         ><div class="review-detail">
                           <div class="review-image-container">
                             <div class="review-image-wrap">
