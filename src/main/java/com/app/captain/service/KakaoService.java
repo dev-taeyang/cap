@@ -1,6 +1,7 @@
 package com.app.captain.service;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 @Service
 @Slf4j
@@ -68,8 +70,9 @@ public class KakaoService {
         return access_Token;
     }
 
-    public void getKakaoInfo(String token) throws Exception {
+    public HashMap<String, Object> getKakaoInfo(String token) throws Exception {
 
+        HashMap<String, Object> kakaoInfo = new HashMap<>();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
 
         //access_token을 이용하여 사용자 정보 조회
@@ -99,21 +102,37 @@ public class KakaoService {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 
+            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+            JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
             int id = element.getAsJsonObject().get("id").getAsInt();
             boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
             String email = "";
             if(hasEmail){
                 email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
+            String gender = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("gender").getAsString();
+            String birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
 
-            log.info("id : " + id);
-            log.info("email : " + email);
+//            log.info("id : " + id);
+//            log.info("email : " + email);
+            kakaoInfo.put("id", id);
+            kakaoInfo.put("identification", email.substring(0, email.indexOf("@")));
+            kakaoInfo.put("password", "어떻게 넣지");
+            kakaoInfo.put("phone", "어떻게 넣지");
+            kakaoInfo.put("nickname", nickname);
+            kakaoInfo.put("name", nickname);
+            kakaoInfo.put("email", email);
+            kakaoInfo.put("gender", gender);
+            kakaoInfo.put("birthday", "출생년도" + birthday);
 
             br.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return kakaoInfo;
     }
 
     public void logoutKakao(String token){

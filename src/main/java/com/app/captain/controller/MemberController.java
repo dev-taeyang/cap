@@ -19,8 +19,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Controller
@@ -183,4 +186,44 @@ public class MemberController {
         memberService.changePassword(memberEmail, memberPassword);
         return "redirect:/login";
     }
+
+    /* 카카오 로그인 */
+    /*@ResponseBody
+    @GetMapping("/kakao")
+    public void kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
+        log.info(code);
+        String token = kakaoService.getKaKaoAccessToken(code);
+        session.setAttribute("token", token);
+        kakaoService.getKakaoInfo(token);
+    }*/
+
+    @GetMapping("/kakao/logout")
+    public String kakaoLogout(HttpSession session){
+        log.info("logout");
+        kakaoService.logoutKakao((String)session.getAttribute("token"));
+        session.invalidate();
+        return "redirect:/login";
+    }
+
+    /*@ResponseBody
+    @GetMapping("/kakao")
+    public void  kakaoCallback(@RequestParam String code, HttpSession session) throws Exception{
+        String token = kakaoService.getKaKaoAccessToken(code);
+        session.setAttribute("token", token);
+    }*/
+    @ResponseBody
+    @GetMapping("/kakao")
+    public String login(@RequestParam("code") String code, HttpSession session) throws Exception{
+        String access_Token = kakaoService.getKaKaoAccessToken(code);
+        HashMap<String, Object> kakaoInfo = kakaoService.getKakaoInfo(access_Token);
+        log.info("login Controller : " + kakaoInfo);
+
+        //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+        if (kakaoInfo.get("email") != null) {
+            session.setAttribute("userId", kakaoInfo.get("email"));
+            session.setAttribute("access_Token", access_Token);
+        }
+        return "/index";
+    }
+
 }
