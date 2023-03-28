@@ -55,7 +55,7 @@
               />
             </div>
             <!-- 숨겨 놓은 파일 선택 버튼 -->
-            <input accept="image/*" type="file" class="profile-upload-button" />
+            <input name="memberFile" accept="image/*" type="file" class="profile-upload-button" />
           </label>
         </article>
         <form action="" class="update-user-info" autocomplete="off">
@@ -65,6 +65,7 @@
               <div class="update-user-nickname">
                 <input
                   disabled=""
+                  id="memberNickname"
                   name="memberNickname"
                   class="update-user-value change-value"
                   th:value="${members.memberNickname}"
@@ -95,6 +96,7 @@
               <div class="update-user">
                 <input
                   disabled=""
+                  id="memberEmail"
                   name="memberEmail"
                   class="update-user-value"
                   th:value="${members.memberEmail}"
@@ -111,7 +113,7 @@
                   disabled=""
                   name="memberPassword"
                   class="update-user-value"
-                  value="0000000"
+                  th:value="${members.memberPassword}"
                 />
               </div>
             </div>
@@ -125,9 +127,10 @@
               <div class="update-user">
                 <input
                   disabled=""
+                  id="memberBirth"
                   name="memberBirth"
                   class="update-user-value change-value"
-                  th:value="${#dates.format(members.memberBirth, 'yyyyMMdd')}"
+                  th:value="${members.memberBirth}"
                 />
                 <p class="warn-text"></p>
               </div>
@@ -150,6 +153,9 @@
   <div th:insert="~{/main/footer :: footer}"></div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script th:inline="javascript">
+    let members = [[${members}]]
+  </script>
   <script src="/js/mypage/mypageUpdate.js"></script>
   <script src="/js/main/header.js"></script>
 </html>

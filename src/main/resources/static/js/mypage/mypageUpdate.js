@@ -70,7 +70,7 @@ $inputNickname.on('blur', function () {
   let value = $(this).val();
   /* 닉네임 비어있으면 입력하라는 경고 문구 */
   if (!value) {
-    $warnText.show();
+    $warnText.eq(0).show();
     $warnText.eq(0).text('닉네임을 입력하세요.');
     $inputNickname.css('border', '1px solid rgb(222, 28, 34)');
     nicknameCheck = false;
@@ -82,7 +82,7 @@ $inputNickname.on('blur', function () {
     $warnText.hide();
     $inputNickname.css('border', '1px solid rgb(238, 238, 238)');
   } else {
-    $warnText.show();
+    $warnText.eq(0).show();
     $warnText.eq(0).text('영문 혹은 영문과 숫자를 조합하여 4자~20자로 입력해주세요.');
     $inputNickname.css('border', '1px solid rgb(222, 28, 34)');
   }
@@ -93,7 +93,7 @@ $inputBirth.on('blur', function () {
   let value = $(this).val();
   /* 생년월일 비어있으면 입력하라는 경고 문구 */
   if (!value) {
-    $warnText.show();
+    $warnText.eq(1).show();
     $warnText.eq(1).text('생년월일을 입력하세요.');
     $inputBirth.css('border', '1px solid rgb(222, 28, 34)');
     birthCheck = false;
@@ -111,7 +111,7 @@ $inputBirth.on('blur', function () {
     );
     $inputBirth.css('border', '1px solid rgb(238, 238, 238)');
   } else {
-    $warnText.show();
+    $warnText.eq(1).show();
     $warnText.eq(1).text('생년월일을 확인하세요.');
     $inputBirth.css('border', '1px solid rgb(222, 28, 34)');
   }
@@ -139,6 +139,26 @@ $saveButton.on('click', function () {
     showWarnModal(modalMessage);
     return;
   }
+
+  let memberVO = {
+    memberId : members.memberId,
+    memberNickname: $("#memberNickname").val(),
+    memberBirth: $("#memberBirth").val()
+  }
+
+  console.log(memberVO);
+
+  $.ajax({
+    type: "POST",
+    url: "/mypage/Update",
+    data: {memberVO: memberVO},
+    dataType: "json",
+    success : function() {
+        alert("성공");
+    }
+
+  })
+  console.log("들어옴");
   /* 닉네임, 생일check 둘 다 true면 저장되었다는 모달창 */
   modalMessage = '저장되었습니다.';
   showWarnModal(modalMessage);
@@ -161,4 +181,7 @@ $('#mypageUpdate').on('click', function () {
     $('div.warn-modal').css('animation', 'popDown 0.5s');
     $('div.modal').fadeOut(500);
   }
+
+
+
 });

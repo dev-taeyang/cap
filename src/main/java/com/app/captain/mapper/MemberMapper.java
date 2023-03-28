@@ -24,6 +24,8 @@ public interface MemberMapper {
     public String findId(String memberPhone);
     /* 비밀번호 변경 */
     public void changePassword(String memberEmail, String memberPassword);
+    /* 회원정보 업데이트 */
+    public void memberUpdate(MemberVO memberVO);
     /* 회원탈퇴 */
     public void delete(Long memberId);
 }

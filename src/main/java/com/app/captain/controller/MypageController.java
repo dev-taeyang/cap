@@ -69,25 +69,20 @@ public class MypageController {
 
 
 //    수정 폼으로 가기
-    @GetMapping("mypageUpdate")
-    public void moveToUpdate(HttpSession session, Model model){
+    @GetMapping("Update")
+    public String moveToUpdate(HttpSession session, Model model){
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
 
-    };
+        model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
+        return "/mypage/mypageUpdate";
+    }
 
     //    내 정보 수정하기
-    @PatchMapping("mypageUpdate")
-    public void modify(@PathVariable("memberId") Long memberId) {
-        MemberVO memberVO = new MemberVO();
-        memberVO.setMemberId(memberId);
-        memberVO.setMemberIdentification("jjw123");
-        memberVO.setMemberPassword("asd1234");
-        memberVO.setMemberEmail("jjw123@gmail.com");
-        memberVO.setMemberName("정지욱");
-        memberVO.setMemberNickname("지욱22");
-        memberVO.setMemberPhone("01012341234");
-        memberVO.setMemberBirth("20000202");
-        memberVO.setMemberGender("여");
+    @PostMapping("Update")
+    public String modify(MemberVO memberVO) {
+        mypageService.modify(memberVO);
+
+        return "/mypage/mypageUpdate";
     }
 
     /* 회원탈퇴하기 */
