@@ -21,6 +21,8 @@ const file = document.querySelector('input[type=file]');
 const img = document.querySelector('.user-profile-image');
 const closeSpan = document.querySelector('.close-image');
 
+
+/* 내 정보 수정하기 */
 let nicknameCheck = true;
 let birthCheck = true;
 let saveChecks = [false, false];
@@ -125,9 +127,32 @@ $changeButtons.on('click', function () {
   $inputUsers.eq(i).focus();
 });
 
+let ajaxCheck = false;
+
 /* 저장 버튼 클릭 이벤트 */
 $saveButton.on('click', function () {
   let modalMessage = '';
+
+  $.ajax({
+    type: "POST",
+    url: "/member/checkNickname",
+    data: {memberNickname: $inputNickname.val()},
+    success: function (result) {
+      let message;
+      if (result != "success") {
+        message = "중복된 닉네임입니다.";
+        ajaxCheck = false;
+        $warnText.eq(0).show();
+        $inputNickname.css('border', '1px solid rgb(255, 64, 62)');
+        console.log(ajaxCheck)
+      } else {
+        ajaxCheck = true;
+        console.log(ajaxCheck)
+      }
+      $warnText.eq(0).text(message);
+    }
+  })
+    console.log(ajaxCheck)
   /* 닉네임check false면 다시 입력하라는 모달창 */
   if (!nicknameCheck) {
     modalMessage = '닉네임을 다시 입력하세요.';
@@ -139,30 +164,21 @@ $saveButton.on('click', function () {
     showWarnModal(modalMessage);
     return;
   }
-
-  let memberVO = {
-    memberId : members.memberId,
-    memberNickname: $("#memberNickname").val(),
-    memberBirth: $("#memberBirth").val()
+  /* 닉네임 중복 값이 있다면 모달창 */
+  else if(!ajaxCheck) {
+    modalMessage = '닉네임이 중복되었습니다.';
+    showWarnModal(modalMessage);
+    return;
   }
 
-  console.log(memberVO);
-
-  $.ajax({
-    type: "POST",
-    url: "/mypage/Update",
-    data: {memberVO: memberVO},
-    dataType: "json",
-    success : function() {
-        alert("성공");
-    }
-
-  })
-  console.log("들어옴");
   /* 닉네임, 생일check 둘 다 true면 저장되었다는 모달창 */
   modalMessage = '저장되었습니다.';
   showWarnModal(modalMessage);
-});
+
+  $inputNickname.attr('disabled', false);
+  $inputBirth.attr('disabled', false);
+  document.memberUpdate.submit()
+})
 
 /* 모달창 */
 let modalCheck;
@@ -181,7 +197,5 @@ $('#mypageUpdate').on('click', function () {
     $('div.warn-modal').css('animation', 'popDown 0.5s');
     $('div.modal').fadeOut(500);
   }
-
-
 
 });
