@@ -68,7 +68,11 @@ public class ReviewController {
     @GetMapping("{reviewId}/modify")
     public String getModify(@PathVariable("reviewId")Long reviewId, Model model){
         ReviewVO reviewVO = reviewService.getReview(reviewId);
+        String category = reviewVO.getReviewCategory();
+        Double grade = reviewVO.getReviewGrade();
         model.addAttribute("review", reviewVO);
+        model.addAttribute("category", category);
+        model.addAttribute("grade", grade);
         return "reviews/reviewModify";
     }
 

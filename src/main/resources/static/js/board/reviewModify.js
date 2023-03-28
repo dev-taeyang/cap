@@ -39,9 +39,19 @@ const $Buttons = $('button[type=button]');
 const $Radio = $('input[type=radio]');
 
 
+
+
 let gradevalue = $('input[name="reviewGrade"]:checked').val();
 let categoryvalue = $('input[name="reviewCategory"]:checked').val();
 
+
+/*check 된것 JS로 표시 해주기*/
+let gradeInput = document.querySelector('input[name="reviewGrade"]:checked');
+let categoryInput = document.querySelector('input[name="reviewCategory"]:checked');
+let grade1 = gradeInput.nextElementSibling;
+let category1 = categoryInput.nextElementSibling;
+$(grade1).addClass("ButtonActive");
+$(category1).addClass("CategoryActive");
 
 $Buttons.each((i, e) => {
     let radiosCheck;
