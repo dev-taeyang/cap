@@ -55,6 +55,13 @@
         where member_email = #{memberEmail}
     </update>
 
+    <!-- 회원정보 업데이트 -->
+    <update id="memberUpdate">
+        update tbl_member
+        set member_nickname=#{memberNickname}, member_birth=#{memberBirth}, member_file_original_name=#{memberFileOriginalName}, member_file_uuid=#{memberFileUuid}, member_file_path=#{memberFilePath}, member_file_size=#{memberFileSize}, member_file_type=#{memberFileType}
+        where member_id = #{memberId}
+    </update>
+
     <!-- 회원 삭제 -->
     <delete id="delete">
         delete from tbl_member where member_id = ${memberId}

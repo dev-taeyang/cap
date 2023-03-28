@@ -51,6 +51,9 @@ public class MemberDAO {
         memberMapper.changePassword(memberEmail, memberPassword);
     }
 
+    /* 회원정보 업데이트 */
+    public void setMemberVO(MemberVO memberVO) { memberMapper.memberUpdate(memberVO);}
+
     /* 회원탈퇴 */
     public void delete(Long memberId) { memberMapper.delete(memberId); }
 }

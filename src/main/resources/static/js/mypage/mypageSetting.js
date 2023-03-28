@@ -37,5 +37,5 @@ $logoutButton.on('click', function () {
 
 /* 수정 버튼 눌렀을때 수정 페이지로 이동 */
 $goUpdate.on('click', function () {
-  location.href = '/mypage/mypageUpdate';
+  location.href = '/mypage/Update';
 })

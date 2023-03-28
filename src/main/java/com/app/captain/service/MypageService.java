@@ -17,4 +17,7 @@ public class MypageService {
     /* 회원탈퇴 */
     public void remove(Long memberId) { memberDAO.delete(memberId); }
 
+    /* 정보 수정 */
+    public void modify(MemberVO memberVO) { memberDAO.setMemberVO(memberVO);}
+
 }
