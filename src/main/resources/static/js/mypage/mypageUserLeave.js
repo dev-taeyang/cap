@@ -32,5 +32,5 @@ $cancelButton.on('click', function () {
 
 /* 회원탈퇴 컨트롤러 타고 메인페이지로 이동해야함 */
 $leaveButton.on('click', function () {
-    location.href = '';
+    document.leave.submit();
   });

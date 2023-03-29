@@ -32,7 +32,7 @@
       <section class="mypageUpdate-header-wrap">
         <article class="mypageUpdate-header">
           <h1 class="mypageUpdate-header-text">내 정보</h1>
-          <button class="save-button">저장</button>
+          <button type="button" class="save-button">저장</button>
         </article>
       </section>
       <section class="mypageUpdate-main-wrap">
@@ -58,9 +58,10 @@
             <input name="memberFile" accept="image/*" type="file" class="profile-upload-button" />
           </label>
         </article>
-        <form action="" class="update-user-info" autocomplete="off">
+        <form name="memberUpdate" action="/mypage/Update" class="update-user-info" autocomplete="off" method="post">
           <div class="update-user-wrap">
             <div>
+              <input type="hidden" name="memberId" th:value="${members.memberId}">
               <label class="update-user-text">닉네임</label>
               <div class="update-user-nickname">
                 <input

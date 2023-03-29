@@ -72,7 +72,6 @@ public class MypageController {
     @GetMapping("Update")
     public String moveToUpdate(HttpSession session, Model model){
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
-
         model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
         return "/mypage/mypageUpdate";
     }
@@ -81,23 +80,61 @@ public class MypageController {
     @PostMapping("Update")
     public String modify(MemberVO memberVO) {
         mypageService.modify(memberVO);
-
-        return "/mypage/mypageUpdate";
+        log.info(memberVO.toString());
+        return "redirect:/mypage/me";
     }
-
     /* 회원탈퇴하기 */
     @GetMapping("remove")
-    public String remove(HttpSession session) {
+    public String getRemove() {
+        return "mypage/mypageUserLeave";
+    }
+
+    @PostMapping("remove")
+    public String memberRemove(HttpSession session) {
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
-        /* 세션에 담긴 값 없애기 */
-        session.invalidate();
         mypageService.remove(memberVO.getMemberId());
+        session.invalidate();
 
         return "redirect:/main";
     }
 
+//    @GetMapping("remove")
+//    public String remove(HttpSession session) {
+//        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+//        /* 세션에 담긴 값 없애기 */
+//        session.invalidate();
+//        mypageService.remove(memberVO.getMemberId());
+//
+//        return "redirect:/main";
+//    }
+
+//    내가 작성한 보고서
+    @GetMapping("myReview")
+    public String myReview() {
+
+        return "mypage/mypageReview";
+    }
+
+//    내가 작성한 댓글
+    @GetMapping("myReply")
+    public String myReply() {
+
+        return "mypage/mypageReply";
+    }
+
+
 //    내가 개설한 탐험대 정보
+    @GetMapping("myRecruit")
+    public String myRecruit() {
+
+        return "mypage/mypageMyRecruitList";
+    }
 
 
 //    내가 참가한 탐험대 정보
+    @GetMapping("partInRecruit")
+    public String myPartInRecruit() {
+
+        return "mypage/mypageParticipateRecruitList";
+    }
 }
