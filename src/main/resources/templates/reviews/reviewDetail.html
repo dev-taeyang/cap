@@ -74,11 +74,11 @@
             <section class="boardDetail-headSectionWrapper boardDetail-reviewSection">
                 <div class="presentationImage-wrapper">
                     <div class="presentationImage-content">
-                        <div class="introduceImage-wrapper">
+                        <div class="introduceImage-wrapper" >
                             <!-- 메인 이미지가 들어갈 곳 -->
-                            <img style="height: 500px;"
-                                 src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                                 alt="">
+                            <img style="height: 500px; "
+                                 src="/reviews/display?fileName=${review.files[0].reviewFilePath}/${review.files[0].reviewFileUuid}_${review.files[0].reviewFileOriginalName}"
+                            >
                         </div>
                     </div>
                 </div>
@@ -118,31 +118,32 @@
                         <!-- 리스트로 사용자가 등록한 사진들이 들어올 곳 -->
                         <div class="Images-wrapper">
                             <img class="plusImages"
-                                 src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg"
-                                 alt="test">
-                        </div>
-                        <div class="Images-wrapper">
-                            <img class="plusImages" src="https://img.lovepik.com/photo/40036/7051.jpg_wh860.jpg"
+                                 src="/reviews/display?fileName=${review.files[1].reviewFilePath}/${review.files[1].reviewFileUuid}_${review.files[1].reviewFileOriginalName}"
                                  alt="test">
                         </div>
                         <div class="Images-wrapper">
                             <img class="plusImages"
-                                 src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F117A8433516D5BF70E"
+                                 src="/reviews/display?fileName=${review.files[2].reviewFilePath}/${review.files[2].reviewFileUuid}_${review.files[2].reviewFileOriginalName}"
                                  alt="test">
                         </div>
                         <div class="Images-wrapper">
                             <img class="plusImages"
-                                 src="https://png.pngtree.com/background/20210714/original/pngtree-cool-background-material-picture-image_1215741.jpg"
+                                 src="/reviews/display?fileName=${review.files[3].reviewFilePath}/${review.files[3].reviewFileUuid}_${review.files[3].reviewFileOriginalName}"
                                  alt="test">
                         </div>
                         <div class="Images-wrapper">
                             <img class="plusImages"
-                                 src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F257E7D33516D5BFE0D"
+                                 src="/reviews/display?fileName=${review.files[4].reviewFilePath}/${review.files[4].reviewFileUuid}_${review.files[4].reviewFileOriginalName}"
                                  alt="test">
                         </div>
                         <div class="Images-wrapper">
                             <img class="plusImages"
-                                 src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F25272433516D5C032E"
+                                 src="/reviews/display?fileName=${review.files[5].reviewFilePath}/${review.files[5].reviewFileUuid}_${review.files[5].reviewFileOriginalName}"
+                                 alt="test">
+                        </div>
+                        <div class="Images-wrapper">
+                            <img class="plusImages"
+                                 src="/reviews/display?fileName=${review.files[6].reviewFilePath}/${review.files[6].reviewFileUuid}_${review.files[6].reviewFileOriginalName}"
                                  alt="test">
                         </div>
                     </div>
@@ -199,7 +200,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script th:inline="javascript">
     let review = [[${review}]];
-    console.log(review);
 </script>
 <script src="/js/board/reviewDetail.js"></script>
 <script src="/js/main/header.js"></script>
