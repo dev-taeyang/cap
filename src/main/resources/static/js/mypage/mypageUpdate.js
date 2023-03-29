@@ -1,5 +1,8 @@
 /* mypageUpdate.html */
 
+/* 모델로 넘어온 멤버의 정보 */
+
+
 /* 변경하기 버튼 */
 const $changeButtons = $('.change-button');
 /* 저장 버튼 */
@@ -137,6 +140,7 @@ $saveButton.on('click', function () {
     type: "POST",
     url: "/member/checkNickname",
     data: {memberNickname: $inputNickname.val()},
+    async: false,
     success: function (result) {
       let message;
       if (result != "success") {
@@ -144,15 +148,12 @@ $saveButton.on('click', function () {
         ajaxCheck = false;
         $warnText.eq(0).show();
         $inputNickname.css('border', '1px solid rgb(255, 64, 62)');
-        console.log(ajaxCheck)
       } else {
         ajaxCheck = true;
-        console.log(ajaxCheck)
       }
       $warnText.eq(0).text(message);
     }
   })
-    console.log(ajaxCheck)
   /* 닉네임check false면 다시 입력하라는 모달창 */
   if (!nicknameCheck) {
     modalMessage = '닉네임을 다시 입력하세요.';
@@ -175,9 +176,10 @@ $saveButton.on('click', function () {
   modalMessage = '저장되었습니다.';
   showWarnModal(modalMessage);
 
-  $inputNickname.attr('disabled', false);
+  /*$inputNickname.attr('disabled', false);
   $inputBirth.attr('disabled', false);
-  document.memberUpdate.submit()
+  document.memberUpdate.submit()*/
+
 })
 
 /* 모달창 */
@@ -197,5 +199,72 @@ $('#mypageUpdate').on('click', function () {
     $('div.warn-modal').css('animation', 'popDown 0.5s');
     $('div.modal').fadeOut(500);
   }
-
 });
+
+    globalThis.uuids;
+
+    $("input[name=memberFile]").on("change", function () {
+      const $file = $("input[name=memberFile]")[0].files[0]
+      let formData = new FormData();
+      formData.append("memberFile", $file)
+
+      $.ajax({
+        url: "/mypage/upload",
+        type: "post",
+        data: formData,
+        async: false,
+        contentType: false,
+        processData: false,
+        success: function(uuids) {
+          globalThis.uuids = uuids;
+        }
+      });
+
+      const $Nickname = $("input[name=memberNickname]").val();
+      const $birth = $("input[name=memberBirth]").val();
+
+      let memberVO = new Object();
+      memberVO.memberNickname = $Nickname;
+      memberVO.memberBirth = $birth;
+      memberVO.memberFileOriginalName = $file.name;
+      memberVO.memberFileUuid = globalThis.uuids;
+      memberVO.memberFilePath = toStringByFormatting(new Date());
+      memberVO.memberFileSize = $file.size;
+      memberVO.memberFileType = $file.type.startsWith("image");
+      memberVO.memberId = members.memberId;
+
+      console.log(memberVO)
+
+      $.ajax({
+        url: "/mypage/Update",
+        type: "post",
+        data: JSON.stringify(memberVO),
+        contentType: "application/json; charset=utf-8",
+        success: function(){
+        }
+      });
+
+    })
+
+
+    $(".save-button").on('click', function () {
+
+    })
+
+/*****************************************************/
+  function leftPad(value) {
+    if (value >= 10) {
+      return value;
+    }
+
+    return `0${value}`;
+  }
+
+  function toStringByFormatting(source, delimiter = '/') {
+    const year = source.getFullYear();
+    const month = leftPad(source.getMonth() + 1);
+    const day = leftPad(source.getDate());
+
+    return [year, month, day].join(delimiter);
+  }
+/*****************************************************/
