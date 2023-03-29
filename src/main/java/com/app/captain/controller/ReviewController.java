@@ -101,10 +101,11 @@ public class ReviewController {
         Long memberId = reviewService.getDTO(reviewId).getGroupCaptain();
         String groupName = reviewService.getDTO(reviewId).getGroupName();
         MemberVO memberVO = mypageService.getMemberById(memberId);
+        ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId).toDTO();
+        reviewFileDTO.setFiles(reviewFileService.getList(reviewId));
         model.addAttribute("groupName", groupName);
         model.addAttribute("memberVO",memberVO);
-        model.addAttribute("review", reviewService.getDTO(reviewId));
-        model.addAttribute("files", reviewFileService.getList(reviewId));
+        model.addAttribute("review", reviewFileDTO);
         model.addAttribute("reviewId", reviewId);
         return "reviews/reviewDetail";
     }
