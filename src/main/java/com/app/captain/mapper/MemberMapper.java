@@ -20,6 +20,8 @@ public interface MemberMapper {
     public int checkNickname(String memberNickname);
     /* 아이디 중복 검사 */
     public int checkEmail(String memberEmail);
+    /* 카카오 계정 검사 */
+    public Integer checkStatus(Long memberId);
     /* 아이디 찾기 */
     public String findId(String memberPhone);
     /* 비밀번호 변경 */

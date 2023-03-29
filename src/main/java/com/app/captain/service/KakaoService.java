@@ -1,5 +1,6 @@
 package com.app.captain.service;
 
+import com.app.captain.domain.vo.MemberVO;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -70,9 +71,9 @@ public class KakaoService {
         return access_Token;
     }
 
-    public HashMap<String, Object> getKakaoInfo(String token) throws Exception {
+    public MemberVO getKakaoInfo(String token) throws Exception {
 
-        HashMap<String, Object> kakaoInfo = new HashMap<>();
+        MemberVO kakaoInfo = new MemberVO();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
 
         //access_token을 이용하여 사용자 정보 조회
@@ -105,28 +106,26 @@ public class KakaoService {
             JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
-            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+            String MemberNickname = properties.getAsJsonObject().get("nickname").getAsString();
             int id = element.getAsJsonObject().get("id").getAsInt();
             boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
-            String email = "";
+            String memberEmail = "";
             if(hasEmail){
-                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
+                memberEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
-            String gender = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("gender").getAsString();
-            gender = gender == "male" ? "남" : "여";
-            String birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
+            String memberGender = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("gender").getAsString();
+            memberGender = memberGender.contains("male") ? "남" : "여";
+            String memberBirth = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
 
 //            log.info("id : " + id);
 //            log.info("email : " + email);
-            kakaoInfo.put("id", id);
-            kakaoInfo.put("identification", email.substring(0, email.indexOf("@")));
-            kakaoInfo.put("password", "**********");
-            kakaoInfo.put("phone", "어떻게 넣지");
-            kakaoInfo.put("nickname", nickname);
-            kakaoInfo.put("name", nickname);
-            kakaoInfo.put("email", email);
-            kakaoInfo.put("gender", gender);
-            kakaoInfo.put("birthday", 1997 + birthday);
+            log.info(memberGender);
+            kakaoInfo.setMemberIdentification(memberEmail.substring(0, memberEmail.indexOf("@")));
+            kakaoInfo.setMemberPassword("*******");
+            kakaoInfo.setMemberName(MemberNickname);
+            kakaoInfo.setMemberNickname(MemberNickname);
+            kakaoInfo.setMemberEmail(memberEmail);
+            kakaoInfo.setMemberGender(memberGender);
 
             br.close();
 
