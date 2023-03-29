@@ -20,12 +20,13 @@ public class ReviewFileService {
 
     //    파일 저장
     public void write(List<ReviewFileVO> files){
-        files.forEach(file -> reviewFileDAO.save(file));
+
+        files.forEach((file) -> reviewFileDAO.save(file));
     }
 
-    //    파일 전체 조회
+    //    reviewId로 파일 전체 조회
     public List<ReviewFileVO> getList(Long reviewId){
-        return reviewFileDAO.findAll(reviewId);
+        return reviewFileDAO.findById(reviewId);
     };
 
     //    전일 등록된 파일 조회
@@ -38,6 +39,7 @@ public class ReviewFileService {
         reviewFileDAO.deleteById(reviewFileId);
     };
 
+//    path 구하는 메소드
     public String getPath(){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }

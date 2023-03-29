@@ -8,8 +8,9 @@ $("input[name='file']").on("change", function () {
 
     Array.from($files).forEach(file => globalThis.arrayFile.push(file));
 
-    console.log(globalThis.arrayFile);
+    console.log("globalthis.arrayFile:" + globalThis.arrayFile);
 
+    console.log("파일맞냐?:" + $files);
     $files.forEach(file => {
         formData.append("file", file)
     });
@@ -39,21 +40,25 @@ $("input[name='file']").on("change", function () {
             const dataTransfer = new DataTransfer();
             globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
             $("input[name='file']")[0].files = dataTransfer.files;
-            console.log(dataTransfer.files);
+            console.log("datatransfer.files:" + dataTransfer.files);
             let text = "";
             $files.forEach(file => {
+                console.log("들어왔냐?" + file);
                 text +=
                     `
-                    <input type="hidden" name="files[${i}].fileName" value="${file.name}">
-                    <input type="hidden" name="files[${i}].fileUuid" value="${globalThis.uuids[i]}">
-                    <input type="hidden" name="files[${i}].filePath" value="${toStringByFormatting(new Date())}">
-                    <input type="hidden" name="files[${i}].fileSize" value="${file.size}">
-                    <input type="hidden" name="files[${i}].fileType" value="${file.type.startsWith("image")}">
+                    <input type="hidden" name="files[${i}].reviewFileOriginalName" value="${file.name}">
+                    <input type="hidden" name="files[${i}].reviewFileUuid" value="${globalThis.uuids[i]}">
+                    <input type="hidden" name="files[${i}].reviewFilePath" value="${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="files[${i}].reviewFileSize" value="${file.size}">
+                    <input type="hidden" name="files[${i}].reviewFileType" value="${file.type.startsWith("image")}">
                     `
                 i++;
             });
-            $("form[name='reveiw']").append(text);
-            console.log("filse:" + files);
+            $("form[name='review']").append(text);
+            $files.forEach((file) => {
+                files.push(file);
+            })
+            console.log("파일이름:" + files[0].name);
         }
     });
 });
