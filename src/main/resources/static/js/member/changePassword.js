@@ -116,6 +116,7 @@ $changeButton.on('click', function () {
     modalMessage = '변경되었습니다.';
     showWarnModal(modalMessage);
     $(newPassword).val(btoa($(newPassword).val()));
+    $(newPasswordCheck).val(btoa($(newPasswordCheck).val()));
     document.changePassword.submit();
     return;
   }

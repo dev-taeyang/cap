@@ -56,6 +56,12 @@ public class MemberDAO {
         memberMapper.changePassword(memberEmail, memberPassword);
     }
 
+    /* 랜덤키 가져오기 */
+    public String selectKey(String memberEmail) { return memberMapper.selectKey(memberEmail); }
+
+    /* 랜덤키 업데이트 */
+    public void updateKey(String memberEmail, String memberRandomKey) { memberMapper.updateKey(memberEmail, memberRandomKey); }
+
     /* 회원정보 업데이트 */
     public void setMemberVO(MemberVO memberVO) { memberMapper.memberUpdate(memberVO);}
 

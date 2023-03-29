@@ -16,6 +16,7 @@ public class MemberVO {
     private String memberBirth;
     private String memberGender;
     private int memberStatus;
+    private String memberRandomKey;
     private String memberFileOriginalName;
     private String memberFileUuid;
     private String memberFilePath;

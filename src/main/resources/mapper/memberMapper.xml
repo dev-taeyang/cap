@@ -68,6 +68,18 @@
         where member_email = #{memberEmail}
     </update>
 
+    <select id="selectKey" resultType="string">
+        select member_random_key
+        from tbl_member
+        where member_email = #{memberEmail}
+    </select>
+
+    <update id="updateKey">
+        update tbl_member
+        set member_random_key = #{memberRandomKey}
+        where member_email = #{memberEmail}
+    </update>
+
     <!-- 회원정보 업데이트 -->
     <update id="memberUpdate">
         update tbl_member

@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -97,6 +98,25 @@ public class MemberService {
         message.setText(mail.getMessage());
 
         mailSender.send(message);
+    }
+
+    /* 랜덤키 가져오기 */
+    public String selectKey(String memberEmail) { return memberDAO.selectKey(memberEmail); }
+
+    /* 랜덤키 업데이트 */
+    public void updateKey(String memberEmail, String memberRandomKey) { memberDAO.updateKey(memberEmail, memberRandomKey); }
+
+    /* 랜덤키 뽑기 */
+    public String randomKey() {
+        Random random = new Random();
+        String randomNum = "";
+
+        for(int i = 0; i < 6; i++) {
+            String number = Integer.toString(random.nextInt(10));
+            randomNum += number;
+        }
+
+        return randomNum;
     }
 
     /* 비밀번호 변경 */

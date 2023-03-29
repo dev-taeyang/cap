@@ -7,7 +7,6 @@ import com.app.captain.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -183,11 +182,15 @@ public class MemberController {
     public boolean sendTestMail(String memberEmail) {
         if (memberService.checkEmail(memberEmail) == 1) {
 
+            String randomKey = memberService.randomKey();
+
+            memberService.updateKey(memberEmail, randomKey);
+
             MailTO mailTO = new MailTO();
 
             mailTO.setAddress(memberEmail);
             mailTO.setTitle("탐험대장 이메일 링크 전송");
-            mailTO.setMessage("http://localhost:10000/member/changePassword?memberEmail=" + memberEmail);
+            mailTO.setMessage("http://localhost:10000/member/changePassword?memberEmail=" + memberEmail + "&memberRandomKey=" + randomKey);
 
             memberService.sendMail(mailTO);
             return true;
@@ -196,12 +199,16 @@ public class MemberController {
     }
 
     @GetMapping("changePassword")
-    public void changePassword() {
-        ;
+    public String changePassword(String memberEmail, String memberRandomKey) {
+        if(!memberService.selectKey(memberEmail).equals(memberRandomKey)){
+            return "/";
+        }
+        memberService.updateKey(memberEmail, null);
+        return "/member/changePassword";
     }
 
     @PostMapping("changePassword")
-    public String changePassword(String memberEmail, String memberPassword) {
+    public String changePasswordOK(String memberEmail, String memberPassword) {
         log.info(memberEmail);
         log.info(memberPassword);
         memberService.changePassword(memberEmail, memberPassword);
