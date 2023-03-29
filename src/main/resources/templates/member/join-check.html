@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/css/main/common.css"/>
+    <link rel="stylesheet" href="/css/member/logIn.css"/>
+    <link rel="stylesheet" href="/css/mypage/modal.css"/>
+    <link rel="stylesheet" href="/css/main/header.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+    <link
+            rel="shortcut icon"
+            href="/images/favicon.png"
+            type="image/x-icon"
+    />
+    <link
+            href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+            rel="stylesheet"
+    />
+    <style>
+        body {
+            font-family: 'SUIT Variable', sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="~{/main/header :: header}"></div>
+<section class="login-container">
+    <!-- 전체 DIV -->
+    <div class="join-wrap">
+        <br/>
+        <div class="login-title">
+            <h3>회원가입</h3>
+        </div>
+        <!-- 입력 받는 곳 -->
+        <form action="/member/join" class="login-form" name="login" autocomplete="off">
+            <button type="submit" class="login-btn">회원가입</button>
+        </form>
+        <div class="snsLoginSection">
+            <a class="kakaoButton" href="https://kauth.kakao.com/oauth/authorize?client_id=f181c492a9905256703765a748348ac1&redirect_uri=http://localhost:10000/member/kakao&response_type=code">
+                <div class="kakaoButtonDiv">
+                    <div class="kakaoButtonDivDiv"></div>
+                    <span class="kakaoButtonDivSpan">
+                <svg viewBox="0 0 24 24" class="kakaoButtonDivSpanSvg">
+                  <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M11.9997 2.5C6.24348 2.5 1 6.32322 1 11.0393c0 2.9316 1.90428 5.5179 4.80469 7.0555l-1.22042 4.4795c-.10756.3967.34284.7126.68935.4828l5.34918-3.5482c.4516.044.9106.0691 1.3769.0691C18.0755 19.578 23 15.7548 23 11.0393 23 6.32322 18.0755 2.5 11.9997 2.5Z"
+                          class="kakaoLogoPath"
+                  ></path>
+                </svg>
+              </span>
+                    <div class="kakaoButtonDivDiv2"></div>
+                    <div class="kakaoButtonDivDiv3"></div>
+                    <div class="kakaoButtonDivDiv4"></div>
+                    <span class="kakaoButtonDivDivSpan">
+                <p class="kakaoButtonDivDiv5P">카카오로 회원가입</p>
+              </span>
+                    <div class="kakaoButtonDivDiv6"></div>
+                </div>
+            </a>
+            <div class="kakaoNaverbetween"></div>
+            <button
+                    class="naverButton"
+            >
+                <div class="naverButtonDiv">
+                    <div class="naverButtonDivDiv"></div>
+                    <span class="naverButtonDivSpan">
+                <svg viewBox="0 0 24 24" class="naverButtonDivSpanSvg">
+                  <path
+                          d="M15.3858 12.67L8.34138 2.57471H2.5V21.4259H8.61423V11.3306L15.6586 21.4259H21.5V2.57471H15.3858V12.67Z"
+                          class="naverLogoPath"
+                  ></path>
+                </svg>
+              </span>
+                    <div class="naverButtonDivDiv2"></div>
+                    <div class="naverButtonDivDiv3"></div>
+                    <div class="naverButtonDivDiv4"></div>
+                    <span class="naverButtonDivDivSpan">
+                <p class="naverButtonDivDiv5P">네이버로 회원가입</p>
+              </span>
+                    <div class="naverButtonDivDiv6"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+</section>
+<div th:insert="~{/main/footer :: footer}"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/main/header.js"></script>
+<script>
+    showWarnModal("아이디 및 비밀번호를 확인하세요.");
+</script>
+</html>

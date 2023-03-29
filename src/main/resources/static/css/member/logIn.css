@@ -12,6 +12,18 @@
     min-height: 653px;
 }
 
+/* join-check.html */
+.join-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px;
+    min-height: 432px;
+}
+
 .login-title {
     width: 100%;
     display: flex;

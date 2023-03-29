@@ -71,7 +71,12 @@
               />
               <p class="help"></p>
             </div>
-            <div class="inputbox-wrap">
+            <div class="inputbox-wrap" th:if="${session.kakaoInfo != null}">
+              <!-- 이름 -->
+              <input type="text" name="memberName" th:value="${session.kakaoInfo.memberNickname}" class="join-name" />
+              <p class="help"></p>
+            </div>
+            <div class="inputbox-wrap" th:if="${session.kakaoInfo == null}">
               <!-- 이름 -->
               <input type="text" name="memberName" placeholder="이름" class="join-name" />
               <p class="help"></p>
@@ -111,7 +116,11 @@
               <input type="text" name="memberNickname" placeholder="닉네임" class="join-nickname" />
               <p class="help"></p>
             </div>
-            <div class="inputbox-wrap">
+            <div class="inputbox-wrap" th:if="${session.kakaoInfo != null}">
+              <!-- 이메일 -->
+              <input type="text" name="memberEmail" th:value="${session.kakaoInfo.memberEmail}" class="join-id" />
+            </div>
+            <div class="inputbox-wrap" th:if="${session.kakaoInfo == null}">
               <!-- 이메일 -->
               <input type="text" name="memberEmail" placeholder="이메일" class="join-id" />
               <p class="help"></p>
@@ -139,9 +148,10 @@
                   </span>
                     <p class="pText">여자</p>
                   </label>
-                </div>
+              </div>
+              <p class="help gender-help"></p>
             </label>
-            <button type="button" class="join-btn" onclick="send()" disabled>가입하기</button>
+            <button type="button" class="join-btn" onclick="send()">가입하기</button>
           </form>
         </div>
       </div>

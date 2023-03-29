@@ -17,6 +17,8 @@ public class MemberDAO {
     }
     /* 회원 찾기 */
     public MemberVO findMemberById(Long memberId) { return memberMapper.selectMember(memberId); }
+    /* 카카오 회원 찾기 */
+    public MemberVO findMemberByEmail(String memberEmail) { return memberMapper.selectKakaoMember(memberEmail); };
     /* 회원 가입 */
     public void save(MemberVO memberVO) {
         memberMapper.insert(memberVO);

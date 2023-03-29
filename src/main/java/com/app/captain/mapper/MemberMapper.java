@@ -10,6 +10,8 @@ public interface MemberMapper {
     public MemberVO select(MemberVO memberVO);
     /* 회원 찾기*/
     public MemberVO selectMember(Long memberId);
+    /* 카카오 회원 찾기 */
+    public MemberVO selectKakaoMember(String memberEmail);
     /* 회원 가입 */
     public void insert(MemberVO memberVO);
     /* 아이디 중복 검사 */
