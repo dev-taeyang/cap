@@ -2,13 +2,8 @@
 
 const $reviewWrap = $(".mypage-review-list-wrap");
 let text = "";
-
 function showList() {
-    reviews.forEach(review => {
-        console.log(review.toString());
-        console.log(review.reviewCategory);
-        console.log(review.reviewContent);
-        console.log(review.reviewGrade);
+    reviews.forEach((review,i) => {
         text +=
             `
             <li class="mypage-review-list">
@@ -21,7 +16,7 @@ function showList() {
                                 alt="2월 말고 두 번째 1월! 썸네일"
                                 class="review-image"
                                 width="256"
-                                src="https://res.cloudinary.com/frientrip/image/upload/ar_101:80,c_fill,dpr_2,f_auto,q_auto,w_310/product_banner_1676286117596_662715"
+                                src="/reviews/display?fileName=${review.files[0].reviewFilePath}/${review.files[0].reviewFileUuid}_${review.files[0].reviewFileOriginalName}"
                               />
                             </div>
                           </div>

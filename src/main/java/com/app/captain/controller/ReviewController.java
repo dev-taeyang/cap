@@ -12,6 +12,9 @@ import com.app.captain.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -49,20 +52,25 @@ public class ReviewController {
     //  리뷰작성 폼
     @GetMapping("write")
     public String getWrite(Model model) {
-        model.addAttribute("review", new ReviewVO());
-        model.addAttribute("files", new ReviewFileDTO().getFiles());
+        ReviewVO reviewVO = new ReviewVO();
+        List<ReviewFileVO> files = new ArrayList<>();
+        model.addAttribute("review", reviewVO);
+        model.addAttribute("files", files);
         return "reviews/reviewMake";
     }
 
     //    리뷰 작성
     @PostMapping("write")
-    @ResponseBody
-    public RedirectView save(@ModelAttribute ReviewVO reviewVO, RedirectAttributes redirectAttributes) {
+    public RedirectView save(ReviewFileDTO reviewFileDTO, RedirectAttributes redirectAttributes) {
+        ReviewVO reviewVO = reviewFileDTO.toVO();
         reviewVO.setGroupId(1L);
-        log.info(reviewVO.toString());
         reviewService.write(reviewVO);
-        redirectAttributes.addFlashAttribute("review", reviewVO);
-
+        List<ReviewFileVO> files = reviewFileDTO.getFiles();
+        files.forEach(file -> file.setReviewId(reviewVO.getReviewId()));
+        log.info(files.toString());
+        log.info(reviewVO.toString());
+        reviewFileService.write(files);
+        redirectAttributes.addFlashAttribute("작성완료");
         return new RedirectView("/reviews/list");
     }
 
@@ -87,8 +95,6 @@ public class ReviewController {
         return new RedirectView("/reviews/list");
     }
 
-//    리뷰 수정 처리 페이지
-
     //    리뷰 상세보기
     @GetMapping("detail/{reviewId}")
     public String getReview(@PathVariable("reviewId") Long reviewId, Model model) {
@@ -107,8 +113,17 @@ public class ReviewController {
 
     @GetMapping("list")
     public String getList(Model model) {
-        List<ReviewVO> reviewList = reviewService.getList();
-        model.addAttribute("reviews", reviewList);
+        List<ReviewFileDTO> reviewFileDTOS = new ArrayList<>();
+        List<ReviewVO> reviewVOS = reviewService.getList();
+        reviewVOS.forEach(reviewVO -> {
+            reviewFileDTOS.add(reviewVO.toDTO());
+            Long reviewId = reviewVO.getReviewId();
+        });
+        reviewFileDTOS.forEach(reviewFileDTO -> {
+            log.info(reviewFileService.getList(reviewFileDTO.getReviewId()).toString());
+            reviewFileDTO.setFiles(reviewFileService.getList(reviewFileDTO.getReviewId()));
+        });
+        model.addAttribute("reviews", reviewFileDTOS);
         return "reviews/reviewList";
     }
 
@@ -118,13 +133,6 @@ public class ReviewController {
         reviewService.remove(reviewId);
         redirectAttributes.addFlashAttribute("reviewId","삭제완료");
         return new RedirectView("/reviews/list");
-    }
-
-//    파일 저장
-    @PostMapping("save")
-    @ResponseBody
-    public void save(@RequestBody List<ReviewFileVO> files) {
-        reviewFileService.write(files);
     }
 
     //    파일 업로드

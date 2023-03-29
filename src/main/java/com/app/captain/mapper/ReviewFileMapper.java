@@ -10,8 +10,8 @@ public interface ReviewFileMapper {
 //    파일 추가
     public void insert(ReviewFileVO reviewFileVO);
 
-//    파일 전체 조회
-    public List<ReviewFileVO> selectAll(Long reviewId);
+//    reviewId로 파일 전체 조회
+    public List<ReviewFileVO> select(Long reviewId);
 
 //    전일 등록된 파일 조회
     public List<ReviewFileVO> selectYesterday();

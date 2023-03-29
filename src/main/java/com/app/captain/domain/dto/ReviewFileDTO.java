@@ -20,15 +20,16 @@ public class ReviewFileDTO {
     private Long groupId;
     private List<ReviewFileVO> files;
 
-    public ReviewFileDTO toDTO(ReviewVO reviewVO){
-        this.reviewId = reviewVO.getReviewId();
-        this.reviewTitle = reviewVO.getReviewTitle();
-        this.reviewContent = reviewVO.getReviewContent();
-        this.reviewCategory = reviewVO.getReviewCategory();
-        this.reviewRegisterDate = reviewVO.getReviewRegisterDate();
-        this.reviewUpdateDate = reviewVO.getReviewUpdateDate();
-        this.reviewGrade = reviewVO.getReviewGrade();
-        this.groupId = reviewVO.getGroupId();
-        return this;
+    public ReviewVO toVO(){
+        ReviewVO reviewVO = new ReviewVO();
+        reviewVO.setReviewCategory(this.reviewCategory);
+        reviewVO.setReviewContent(this.reviewContent);
+        reviewVO.setReviewGrade(this.reviewGrade);
+        reviewVO.setReviewTitle(this.reviewTitle);
+        reviewVO.setGroupId(this.groupId);
+        reviewVO.setReviewId(this.reviewId);
+        reviewVO.setReviewUpdateDate(this.reviewUpdateDate);
+        reviewVO.setReviewRegisterDate(this.reviewRegisterDate);
+        return reviewVO;
     }
 }

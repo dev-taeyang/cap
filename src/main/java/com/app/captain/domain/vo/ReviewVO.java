@@ -1,5 +1,7 @@
 package com.app.captain.domain.vo;
 
+import com.app.captain.domain.dto.ReviewDTO;
+import com.app.captain.domain.dto.ReviewFileDTO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -14,4 +16,15 @@ public class ReviewVO {
     private String reviewUpdateDate;
     private Double reviewGrade;
     private Long groupId;
+
+    public ReviewFileDTO toDTO(){
+        ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
+        reviewFileDTO.setReviewCategory(this.reviewCategory);
+        reviewFileDTO.setReviewContent(this.reviewContent);
+        reviewFileDTO.setReviewGrade(this.reviewGrade);
+        reviewFileDTO.setReviewTitle(this.reviewTitle);
+        reviewFileDTO.setGroupId(this.groupId);
+        reviewFileDTO.setReviewId(this.reviewId);
+        return reviewFileDTO;
+    }
 }
