@@ -6,26 +6,15 @@ import com.app.captain.service.KakaoService;
 import com.app.captain.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 @Controller
@@ -80,16 +69,29 @@ public class MemberController {
         return "redirect:/main";
     }
 
+    @GetMapping("join-check")
+    public void joinCheck(){;}
+
     @GetMapping("join")
-    public void join() {
-        ;
+    public String join(HttpSession session) throws Exception{
+        MemberVO kakaoMember = (MemberVO) session.getAttribute("kakaoInfo");
+        session.setAttribute("kakaoInfo", kakaoMember);
+        return "redirect:/join";
     }
 
     @PostMapping("join")
-    public String join(MemberVO member) {
+    public String join(MemberVO member, String code, HttpSession session) throws Exception{
+        if(kakaoService.getKaKaoAccessToken(code) != null){
+            member.setMemberStatus(1);
+            kakaoService.logoutKakao((String) session.getAttribute("token"));
+            session.invalidate();
+        }
         memberService.setMember(member);
         return "redirect:/login";
     }
+
+    @GetMapping("no-info")
+    public void noInfo(){;}
 
     @PostMapping("checkId")
     @ResponseBody
@@ -235,12 +237,11 @@ public class MemberController {
     @GetMapping("/kakao")
     public String login(/*@RequestParam("code")*/MemberVO member, String code, HttpSession session) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
-        int number = 0;
-        number++;
         MemberVO kakaoInfo = kakaoService.getKakaoInfo(token);
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
         if(memberService.checkEmail(kakaoInfo.getMemberEmail()) == 0){
-            MemberVO memberVO = new MemberVO();
+            session.setAttribute("kakaoInfo", kakaoInfo);
+            /*MemberVO memberVO = new MemberVO();
             if(memberService.checkNickname(kakaoInfo.getMemberNickname()) != 0){
                 memberVO.setMemberNickname(kakaoInfo.getMemberNickname() + number);
             } else{
@@ -255,9 +256,11 @@ public class MemberController {
             memberService.setMember(memberVO);
             member = memberService.getMember(memberVO);
             session.setAttribute("member", member);
-            log.info(session.getAttribute("member").toString());
+            log.info(session.getAttribute("member").toString());*/
+            return "redirect:no-info";
         }else {
-            member = memberService.getMember(kakaoInfo);
+            member = memberService.getKakaoMember(kakaoInfo.getMemberEmail());
+            member.setMemberStatus(1);
             session.setAttribute("member", member);
             log.info(member.toString());
         }

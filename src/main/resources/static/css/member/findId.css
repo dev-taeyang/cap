@@ -180,6 +180,13 @@
     color: rgb(170, 170, 170);
 }
 
+.content-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(51, 51, 51);
+    height: 37px;
+}
+
 .id-text {
     font-size: 16px;
     font-weight: 700;
@@ -221,5 +228,24 @@ border-radius: 10px;
 font-size: 16px;
 line-height: 24px;
 margin-top: 86px;
+}
+
+.join-button {
+    text-align: center;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 13px;
+    border: 1px solid rgb(238, 238, 238);
+    width: 100%;
+    height: 56px;
+    color: white;
+    background-color: #05AE68;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 45px;
 }
 

@@ -14,6 +14,13 @@
         where member_id = #{memberId}
     </select>
 
+    <!-- 카카오 회원 검색 -->
+    <select id="selectKakaoMember" resultType="memberVO">
+        select member_id, member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender, member_status, member_file_original_name, member_file_uuid, member_file_path, member_file_size, member_file_type
+        from tbl_member
+        where member_email = #{memberEmail}
+    </select>
+
     <insert id="insert">
         insert into tbl_member (member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender, member_status)
         values (#{memberIdentification}, #{memberPassword}, #{memberEmail}, #{memberName}, #{memberNickname}, #{memberPhone}, date_format(#{memberBirth}, '%Y-%m-%d'), #{memberGender}, #{memberStatus})

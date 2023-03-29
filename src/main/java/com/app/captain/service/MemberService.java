@@ -30,6 +30,9 @@ public class MemberService {
         memberDAO.save(memberVO);
     }
 
+    /* 카카오 회원 조회 */
+    public MemberVO getKakaoMember(String memberEmail) { return memberDAO.findMemberByEmail(memberEmail); }
+
     /* 아이디 중복 검사 */
     public int checkId(String memberIdentification) {
         return memberDAO.checkId(memberIdentification);

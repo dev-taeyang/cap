@@ -5,6 +5,8 @@
 const $joinInputs = $(
     ".inputbox-wrap input[type='text'], input[type='password'], input[type='number']"
 );
+const $genderInput = $(".checkWrap");
+const $emailInput = $("input[name='memberEmail']");
 const nameRegex = /^[가-힣|a-z|A-Z|]+$/;
 const nicknameRegex = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
 const specialCharacterRegex = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gim;
@@ -36,6 +38,7 @@ let joinBlurMessages = [
     '닉네임을 입력하세요.',
     '이메일을 입력하세요.',
     '생년월일을 입력하세요.',
+    '성별을 선택하세요.'
 ];
 let joinRegexMessages = [
     '영문 혹은 영문과 숫자를 조합하여 4자~20자로 입력해주세요.',
@@ -63,6 +66,7 @@ $joinInputs.eq(8).on('focus', function () {
     $(this).val($(this).val().replaceAll('.', ''));
 });
 
+/* 인증번호 입력 버튼 */
 $(".join-check-btn").on("click", function(){
 	if($(".join-check").val() == code){
         let modalMessage = "인증이 완료되었습니다.";
@@ -89,6 +93,7 @@ $joinInputs.on('blur', function () {
         $joinHelp.eq(i).css('color', 'red');
         joinCheck = false;
         $joinInputs.eq(i).css('border', '1px solid rgb(255, 64, 62)');
+        $genderInput.css('border', '1px solid rgb(255, 64, 62)');
         joinCheckAll[i] = joinCheck;
         return;
     }
@@ -154,12 +159,6 @@ $joinInputs.on('blur', function () {
                 $(this).val(value.replace(/^(\d{4})(\d{2})(\d{2})$/, `$1.$2.$3`));
             }
             break;
-        case 9:
-            if(!value){
-                joinCheck = false;
-                return;
-            }
-            joinCheck = true;
     }
 
     joinCheckAll[i] = joinCheck;
@@ -271,6 +270,7 @@ $joinInputs.on('blur', function () {
         });
     }
     $joinInputs.eq(i).css('border', '1px solid #05AE68');
+    $genderInput.css('border', '1px solid #05AE68');
     $('.join-password-p').show();
     $joinHelp.hide();
 
