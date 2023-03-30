@@ -58,15 +58,6 @@ $password.on("blur", function(){
     $password.css("border", "1px solid rgb(255, 64, 62)");
 });
 
-/* $inputs.on('blur', function () {
-    if (checks.filter(check => check).length == $inputs.length) {
-		$(".login-btn").attr("disabled", false);
-		return;
-	}
-    $(".login-btn").attr('disabled', true);
-  });
- */
-/* ============================================================= */
 /* 아이디, 비밀번호 입력 시 로그인 버튼 활성화  */
 idForm.addEventListener('keyup', activeEvent);
 pwForm.addEventListener('keyup', activeEvent);

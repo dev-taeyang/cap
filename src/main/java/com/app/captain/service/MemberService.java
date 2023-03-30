@@ -31,26 +31,26 @@ public class MemberService {
         memberDAO.save(memberVO);
     }
 
-    /* 카카오 회원 조회 */
-    public MemberVO getKakaoMember(String memberEmail) { return memberDAO.findMemberByEmail(memberEmail); }
+    /* 이메일로 회원 조회 */
+    public MemberVO getMemberByEmail(String memberEmail) { return memberDAO.findMemberByEmail(memberEmail); }
 
     /* 아이디 중복 검사 */
-    public int checkId(String memberIdentification) {
+    public Integer checkId(String memberIdentification) {
         return memberDAO.checkId(memberIdentification);
     }
 
     /* 휴대폰 중복 검사 */
-    public int checkPhone(String memberPhone) {
+    public Integer checkPhone(String memberPhone) {
         return memberDAO.checkPhone(memberPhone);
     }
 
     /* 닉네임 중복 검사 */
-    public int checkNickname(String memberNickname) {
+    public Integer checkNickname(String memberNickname) {
         return memberDAO.checkNickname(memberNickname);
     }
 
     /* 이메일 중복 검사 */
-    public int checkEmail(String memberEmail) {
+    public Integer checkEmail(String memberEmail) {
         return memberDAO.checkEmail(memberEmail);
     }
 
