@@ -65,6 +65,9 @@ public class MemberDAO {
     /* 회원정보 업데이트 */
     public void setMemberVO(MemberVO memberVO) { memberMapper.memberUpdate(memberVO);}
 
+    /* 회원 프로필 사진 업데이트 */
+    public void setMemberFileVO(MemberVO memberVO) { memberMapper.memberFileUpdate(memberVO);}
+
     /* 회원탈퇴 */
     public void delete(Long memberId) { memberMapper.delete(memberId); }
 }
