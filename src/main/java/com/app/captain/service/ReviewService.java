@@ -44,9 +44,14 @@ public class ReviewService {
         return reviewDAO.findAll();
     }
 
-    //    리뷰랑 그룹 조인한거 조회
+    //    리뷰랑 멤버 조인한거 조회
     public ReviewDTO getDTO(Long reviewId){
         return reviewDAO.findDTO(reviewId);
     };
+
+//    리뷰랑 멤버 조인한거 memberId로 조회
+    public ReviewDTO getDTObyMemberId(Long memberId){
+        return reviewDAO.findByMemberId(memberId);
+    }
 
 }
