@@ -2,10 +2,12 @@
 /*===================================================================================*/
 /*화면 뿌리는 곳*/
 const $files = review.files;
-const $header = $(".reviewHeader");
+const $header = $(".date");
 const $mainImg = $(".boardDetail-reviewSection");
 const $info = $(".reviewInfo");
 const $images = $(".plusImages-wrapper");
+const $modify = $(".infoSection-actionWrapper");
+const $profile = $(".ProfileInfo-wrapper");
 let text = "";
 
 /*리뷰 윗부분 뿌리는 함수*/
@@ -17,13 +19,19 @@ function showTop() {
             <!-- 리뷰 제목이 들어갈 곳 -->
                <span class="reviewSection-title">${review.reviewTitle}</span>
             </div>
-            <div class="ProfileInfo-wrapper ProfileInfo-Review">
+            `
+    $header.append(text);
+    text = "";
+}
+function showProfile() {
+    text =
+            `
             <!-- 작성자의 프로필 이미지 나오는 곳 -->
               <div class="ProfileInfo-profileImage reviewSection-profile">
                   <a href="">
                       <div class="Image-wrapper">
                       <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                      <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                      <img class="Image-style" src="/reviews/display?fileName=${memberVO.memberFilePath}/${memberVO.memberFileUuid}_${memberVO.memberFileOriginalName}">
                       </div>
                   </a>
               </div>
@@ -32,22 +40,34 @@ function showTop() {
                 <div class="Profile-MemberNameWrapper">
                     <a href="/mypage/mypage">
                         <span class="Profile-Nickname">
-                            <span>${memberVO.memberNickname}</span>
+                        <!--member 닉네임 뿌리는 곳-->
+                            <span>${memberVO.memberName}</span>
                         </span>
                     </a>
                 </div>
-                 <!--멤버 이름 받는곳 -->
-                <span class="Profile-MemberStat">${groupName}</span>
+                 <!--멤버 성별 받는곳 -->
+                <span class="Profile-MemberStat">${memberVO.memberNickname}</span>
               </div>
-              <div class="infoSection-actionWrapper">
+            `
+    $profile.append(text)
+    text = "";
+}
+/*수정 삭제 뿌리는 함수*/
+function showModify() {
+    console.log("여기에 들어왔냐??");
+    if(review.memberId == sessionId){
+        console.log("여기들어오면 session이랑 같은거임");
+        text =
+            `
+              <!--수정 삭제 부분-->
                 <a href = "/reviews/${review.reviewId}/modify">
                     <span class="actionSection-title">수정</span>
                 </a>
                 <span class="actionSection-title deleteButton">삭제</span>
-              </div>
-            </div>
-        `
-    $header.append(text);
+            `
+        console.log(text);
+        $modify.append(text);
+    }
     text = "";
 }
 
@@ -114,6 +134,8 @@ function images() {
 
 /*화면 뿌리는 함수 사용 쪽*/
 showTop();
+showProfile();
+showModify();
 showMiddle();
 showInfo();
 images();

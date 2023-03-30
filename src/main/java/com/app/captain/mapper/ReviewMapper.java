@@ -23,6 +23,6 @@ public interface ReviewMapper {
 //    리뷰 삭제
     public void delete(Long reviewId);
 
-//    리뷰랑 그룹 조인한거 조회
+//    리뷰랑 멤버 조인한거 조회
     public ReviewDTO selectDTO(Long reviewId);
 }

@@ -47,6 +47,7 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewFileService reviewFileService;
     private final MypageService mypageService;
+    private final MemberService memberService;
 
 
     //  리뷰작성 폼
@@ -61,9 +62,10 @@ public class ReviewController {
 
     //    리뷰 작성
     @PostMapping("write")
-    public RedirectView save(ReviewFileDTO reviewFileDTO, RedirectAttributes redirectAttributes) {
+    public RedirectView save(ReviewFileDTO reviewFileDTO, HttpSession session ,RedirectAttributes redirectAttributes) {
+        Long memberId = (Long)session.getAttribute("memberId");
         ReviewVO reviewVO = reviewFileDTO.toVO();
-        reviewVO.setGroupId(1L);
+        reviewVO.setMemberId(memberId);
         reviewService.write(reviewVO);
         List<ReviewFileVO> files = reviewFileDTO.getFiles();
         files.forEach(file -> file.setReviewId(reviewVO.getReviewId()));
@@ -92,7 +94,6 @@ public class ReviewController {
     @PostMapping("{reviewId}/modify")
     public RedirectView modify(ReviewFileDTO reviewFileDTO, @PathVariable("reviewId") Long reviewId, RedirectAttributes redirectAttributes){
         ReviewVO reviewVO = reviewFileDTO.toVO();
-        reviewVO.setGroupId(1L);
         reviewVO.setReviewId(reviewId);
         reviewService.modify(reviewVO);
         reviewFileService.remove(reviewId);
@@ -105,16 +106,16 @@ public class ReviewController {
 
     //    리뷰 상세보기
     @GetMapping("detail/{reviewId}")
-    public String getReview(@PathVariable("reviewId") Long reviewId, Model model) {
-        Long memberId = reviewService.getDTO(reviewId).getGroupCaptain();
-        String groupName = reviewService.getDTO(reviewId).getGroupName();
-        MemberVO memberVO = mypageService.getMemberById(memberId);
+    public String getReview(@PathVariable("reviewId") Long reviewId, Model model, HttpSession session) {
+        Long sessionId = (Long)session.getAttribute("memberId");
         ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId).toDTO();
+        Long memberId = reviewFileDTO.getMemberId();
         reviewFileDTO.setFiles(reviewFileService.getList(reviewId));
-        model.addAttribute("groupName", groupName);
+        MemberVO memberVO = mypageService.getMemberById(memberId);
         model.addAttribute("memberVO",memberVO);
         model.addAttribute("review", reviewFileDTO);
         model.addAttribute("reviewId", reviewId);
+        model.addAttribute("sessionId",sessionId);
         return "reviews/reviewDetail";
     }
 

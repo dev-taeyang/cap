@@ -4,7 +4,7 @@
     <insert id="insert" useGeneratedKeys="true" keyProperty="reviewId">
         insert into tbl_review
         (review_title, review_content, review_category, review_grade, member_id, review_id)
-        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{memberId}, #{reviewID})
+        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{memberId}, #{reviewId})
     </insert>
 
     <update id="update">
@@ -25,7 +25,7 @@
     </delete>
 
     <select id="selectAll" resultType="reviewVO">
-        select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, group_id
+        select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, member_id
         from tbl_review
     </select>
 

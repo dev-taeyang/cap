@@ -29,7 +29,14 @@
 </div>
 <div class="boardDetailPage-wrapper">
     <div class="reviewHeader">
-    <!--        위쪽 뿌리는 곳-->
+        <div class="date"></div>
+        <!-- 위쪽 뿌리는 곳-->
+        <div class="ProfileInfo-wrapper ProfileInfo-Review">
+            <!--정보 푸리는곳-->
+        </div>
+        <div class="infoSection-actionWrapper" style="justify-content: flex-end;" >
+            <!--수정삭제 뿌리는 곳-->
+        </div>
     </div>
     <div class="boardDetailPage-contentWrapper">
         <!-- 원정대에 관한 상세정보 -->
@@ -106,7 +113,7 @@
 <script th:inline="javascript">
     let review = [[${review}]];
     let memberVO = [[${memberVO}]];
-    let groupName = [[${groupName}]];
+    let sessionId = [[${sessionId}]];
 </script>
 <script src="/js/board/reviewDetail.js"></script>
 <script src="/js/main/header.js"></script>
