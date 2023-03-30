@@ -1,5 +1,47 @@
 /* mypageReply.html */
 
+console.log(memberReplys)
+/* 댓글 리스트로 추가할 곳*/
+const $myReplyWrap = $(".mypage-reply-list");
+let text = "";
+
+function showMyReply() {
+    memberReplys.forEach((memberReply, i) => {
+        text += `
+                <li>
+                    <div class="my-reply-container">
+                      <div class="my-reply-wrap">
+                        <div class="my-reply-user-info">
+                          <div class="user-image-wrap">
+                            <img
+                              alt="프로필"
+                              class="user-image"
+                              src="/mypage/display?fileName=${members.memberFilePath}/${members.memberFileUuid}_${members.memberFileOriginalName}"
+                            />
+                          </div>
+                        </div>
+                        <div class="user-nickname-register">
+                          <div class="user-nickname">${members.memberNickname}</div>
+                          <div class="user-register-date-wrap">
+                            <div class="user-register-date">${memberReply.groupReplyRegisterDate} 작성</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="reply-content">${memberReply.groupReplyContent}</div>
+                      <div class="reply-board-wrap">
+                        <div class="reply-board">${memberReply.groupTitle}</div>
+                      </div>
+                    </div>
+                  </li>
+                `
+        })
+    $myReplyWrap.append(text);
+}
+showMyReply();
+
+
+
+
 const $pageNumber = $(".page-number");
 const $prevButton = $(".prev-button img");
 const $prevPrevButton = $(".prev-prev-button img");

@@ -10,6 +10,5 @@ import org.springframework.stereotype.Service;
 public class GroupReplyService {
     private final GroupReplyDAO groupReplyDAO;
 
-    /* 댓글 개수 찾기 */
-    public Long getReplyCount(Long memberId) { return groupReplyDAO.findReplyCount(memberId); }
+
 }
