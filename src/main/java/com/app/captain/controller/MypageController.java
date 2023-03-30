@@ -163,7 +163,8 @@ public class MypageController {
 
 //    내가 개설한 탐험대 정보
     @GetMapping("myRecruit")
-    public String myRecruit() {
+    public String myRecruit(Model model, HttpSession session) {
+
 
         return "mypage/mypageMyRecruitList";
     }
