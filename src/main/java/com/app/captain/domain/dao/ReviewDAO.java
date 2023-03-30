@@ -38,7 +38,7 @@ public class ReviewDAO {
         reviewMapper.delete(reviewId);
     };
 
-    //    리뷰랑 그룹 조인한거 조회
+    //    리뷰랑 멤버 조인한거 조회
     public ReviewDTO findDTO(Long reviewId){
         return reviewMapper.selectDTO(reviewId);
     };

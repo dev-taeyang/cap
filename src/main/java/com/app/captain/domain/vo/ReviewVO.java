@@ -15,7 +15,7 @@ public class ReviewVO {
     private String reviewRegisterDate;
     private String reviewUpdateDate;
     private Double reviewGrade;
-    private Long groupId;
+    private Long memberId;
 
     public ReviewFileDTO toDTO(){
         ReviewFileDTO reviewFileDTO = new ReviewFileDTO();
@@ -23,7 +23,7 @@ public class ReviewVO {
         reviewFileDTO.setReviewContent(this.reviewContent);
         reviewFileDTO.setReviewGrade(this.reviewGrade);
         reviewFileDTO.setReviewTitle(this.reviewTitle);
-        reviewFileDTO.setGroupId(this.groupId);
+        reviewFileDTO.setMemberId(this.memberId);
         reviewFileDTO.setReviewId(this.reviewId);
         reviewFileDTO.setReviewRegisterDate(this.reviewRegisterDate);
         reviewFileDTO.setReviewUpdateDate(this.reviewUpdateDate);
