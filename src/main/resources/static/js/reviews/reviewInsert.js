@@ -7,10 +7,6 @@ $("input[name='file']").on("change", function () {
     let formData = new FormData();
 
     Array.from($files).forEach(file => globalThis.arrayFile.push(file));
-
-    console.log("globalthis.arrayFile:" + globalThis.arrayFile);
-
-    console.log("파일맞냐?:" + $files);
     $files.forEach(file => {
         formData.append("file", file)
     });
@@ -40,10 +36,8 @@ $("input[name='file']").on("change", function () {
             const dataTransfer = new DataTransfer();
             globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
             $("input[name='file']")[0].files = dataTransfer.files;
-            console.log("datatransfer.files:" + dataTransfer.files);
             let text = "";
             $files.forEach(file => {
-                console.log("들어왔냐?" + file);
                 text +=
                     `
                     <input type="hidden" name="files[${i}].reviewFileOriginalName" value="${file.name}">
@@ -58,7 +52,6 @@ $("input[name='file']").on("change", function () {
             $files.forEach((file) => {
                 files.push(file);
             })
-            console.log("파일이름:" + files[0].name);
         }
     });
 });
@@ -78,3 +71,4 @@ function toStringByFormatting(source, delimiter = '/') {
 
     return [year, month, day].join(delimiter);
 }
+

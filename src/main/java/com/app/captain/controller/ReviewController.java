@@ -133,9 +133,10 @@ public class ReviewController {
     }
 
     //    리뷰 리스트
-
     @GetMapping("list")
-    public String getList(Model model) {
+    public String getList(Model model, HttpSession session) {
+        /*세션아이디 가져와서 보내주기*/
+        Long memberId = (Long)session.getAttribute("memberId");
         /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/
         List<ReviewFileDTO> reviewFileDTOS = new ArrayList<>();
         /*리뷰 전체 리스트들을 담음*/
@@ -152,6 +153,7 @@ public class ReviewController {
         });
         /*model 객체를 통해 reviewFileDTOS를 reviews라는 키 name으로 view에 전달해줌*/
         model.addAttribute("reviews", reviewFileDTOS);
+        model.addAttribute("memberId",memberId);
         return "reviews/reviewList";
     }
 

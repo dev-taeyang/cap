@@ -47,4 +47,9 @@ public class ReviewDAO {
     public ReviewDTO findByMemberId(Long memberId){
         return reviewMapper.selectByMemberId(memberId);
     };
+
+    //    리뷰 수 조회
+    public Long getCountByMemberId(Long memberId){
+        return reviewMapper.getCount(memberId);
+    };
 }

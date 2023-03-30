@@ -46,4 +46,8 @@
         where m.member_id = #{memberId}
     </select>
 
+    <select id="getCount" resultType="long">
+        select count(review_id) from tbl_review where member_id = #{memberId}
+    </select>
+
 </mapper>
