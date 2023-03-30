@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <div class="FloatingButton-wrapper">
+    <div class="FloatingButton-wrapper" th:if="${memberId} == null" style="display:none">
         <div class="FloatingButton-layoutWrapper">
           <a href="/reviews/write">
             <button class="plusLink-icon">
@@ -79,7 +79,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script th:inline = "javascript">
     let reviews = [[${reviews}]];
-    console.log("reviews 출력:" + reviews);
+    let memberId = [[${memberId}]];
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/board/reviewList.js"></script>

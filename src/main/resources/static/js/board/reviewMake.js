@@ -156,6 +156,12 @@ $MakeInput.on('blur', function(){
 
 });
 
+/* 썸네일 눌렀을때 삭제*/
+$(".thumbnail").on("click", function () {
+    console.log("앙 눌러띠");
+    $(this).remove();
+});
+
 
 /* 파일 썸네일 */
 /* 파일인풋 */
