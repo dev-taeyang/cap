@@ -118,9 +118,13 @@
             </div>
             <div class="inputbox-wrap" th:if="${session.kakaoInfo != null}">
               <!-- 이메일 -->
-              <input type="text" name="memberEmail" th:value="${session.kakaoInfo.memberEmail}" class="join-id" />
+              <input type="text" name="memberEmail" th:value="${session.kakaoInfo.memberEmail}" class="join-id" readonly />
             </div>
-            <div class="inputbox-wrap" th:if="${session.kakaoInfo == null}">
+            <div class="inputbox-wrap" th:if="${session.naverEmail != null}">
+              <!-- 이메일 -->
+              <input type="text" name="memberEmail" th:value="${session.naverEmail}" class="join-id" readonly />
+            </div>
+            <div class="inputbox-wrap" th:if="${session.kakaoInfo == null && session.naverEmail == null}">
               <!-- 이메일 -->
               <input type="text" name="memberEmail" placeholder="이메일" class="join-id" />
               <p class="help"></p>
@@ -161,4 +165,16 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script src="/js/member/join.js"></script>
   <script src="/js/main/header.js"></script>
+  <script type="text/javascript">
+    var naver_id_login = new naver_id_login("t03Fi_ktyRapQcvRBW3t", "http://localhost:10000/member/naver");
+    // 접근 토큰 값 출력
+    naver_id_login.oauthParams.access_token;
+    // 네이버 사용자 프로필 조회
+    naver_id_login.get_naver_userprofile("naverSignInCallback()");
+    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    function naverSignInCallback() {
+      let naverName = naver_id_login.getProfileData('name');
+      let naberEmail = naver_id_login.getProfileData('email');
+    }
+  </script>
 </html>

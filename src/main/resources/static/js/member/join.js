@@ -274,7 +274,6 @@ $joinInputs.on('blur', function () {
     $('.join-password-p').show();
     $joinHelp.hide();
 
-    $('.join-btn').attr('disabled', false);
 
 });
 
@@ -317,13 +316,13 @@ $checks.on('change', function () {
 });
 
 /* 모든 회원가입 정보 맞게 입력했는지 검사 */
-$joinInputs.on('blur', function () {
+/*$joinInputs.on('blur', function () {
     if (joinCheckAll.filter((check) => check).length == $joinInputs.length) {
         $('.join-btn').attr('disabled', false);
         return;
     }
     $('.join-btn').attr('disabled', true);
-});
+});*/
 
  function send() {
 	$joinInputs.trigger("blur");
