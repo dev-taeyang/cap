@@ -3,8 +3,8 @@
 <mapper namespace="com.app.captain.mapper.ReviewMapper">
     <insert id="insert" useGeneratedKeys="true" keyProperty="reviewId">
         insert into tbl_review
-        (review_title, review_content, review_category, review_grade, group_id, review_id)
-        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{groupId}, #{reviewId})
+        (review_title, review_content, review_category, review_grade, member_id, review_id)
+        values(#{reviewTitle}, #{reviewContent}, #{reviewCategory}, #{reviewGrade}, #{memberId}, #{reviewID})
     </insert>
 
     <update id="update">
@@ -14,7 +14,7 @@
     </update>
 
     <select id="select" resultType="reviewVO">
-        select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, group_id
+        select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, member_id
         from tbl_review
         where review_id = #{reviewId}
     </select>
@@ -31,11 +31,10 @@
 
     <select id="selectDTO" resultType="reviewDTO">
         select r.review_id, review_title, review_content, review_category, review_register_date, review_update_date,
-        review_grade, g.group_id, group_name, group_max_value, group_category, group_title, group_content, group_location,
-        group_register_date, group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path,
-        group_file_size, group_file_type, group_captain
-        from tbl_review r right join tbl_group g
-        on r.group_id = g.group_id
+        review_grade, m.member_id, member_name, member_nickname, member_file_original_name, member_file_uuid,
+        member_file_path, member_file_size, member_file_type
+        from tbl_review r right join tbl_member m
+        on r.member_id = m.member_id
         where review_id = #{reviewId}
     </select>
 
