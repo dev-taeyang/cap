@@ -16,7 +16,7 @@
         select g.group_id, group_name, group_max_value, group_category,
                 group_title, group_content, group_location, group_register_date, group_end_date,
                 group_meet_date, group_file_original_name, group_file_uuid, group_file_path,
-                group_file_size, group_file_type, group_captain, member_group_id
+                group_file_size, group_file_type, group_captain
         from tbl_member m join tbl_member_group mg on m.member_id = mg.member_id
         join tbl_group g on g.group_id = mg.group_id
         where m.member_id = #{memberId}

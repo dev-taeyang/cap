@@ -7,6 +7,7 @@ import com.app.captain.service.MypageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -164,7 +165,10 @@ public class MypageController {
 //    내가 개설한 탐험대 정보
     @GetMapping("myRecruit")
     public String myRecruit(Model model, HttpSession session) {
+        MemberVO memberVO = (MemberVO) session.getAttribute("member");
 
+        model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
+        model.addAttribute("myRecruits", mypageService.getMyRecruit(memberVO.getMemberId()));
 
         return "mypage/mypageMyRecruitList";
     }
@@ -172,7 +176,11 @@ public class MypageController {
 
 //    내가 참가한 탐험대 정보
     @GetMapping("partInRecruit")
-    public String myPartInRecruit() {
+    public String myPartInRecruit(Model model, HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+
+        model.addAttribute("members", mypageService.getMemberById(memberId));
+        model.addAttribute("myParticipateRecruits", mypageService.getMyParticipateRecruit(memberId));
 
         return "mypage/mypageParticipateRecruitList";
     }
