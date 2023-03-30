@@ -41,7 +41,7 @@
       <div class="user-content-wrap">
         <a href="/mypage/myReview"
           ><div class="user-review">보고서</div>
-          <div class="user-review-count">1</div></a
+          <div th:text="${myreviewCount}" class="user-review-count"></div></a
         ><a href="/mypage/myReply"
           ><div class="user-reply">댓글</div>
           <div th:text="${replyCount}" class="user-reply-count"></div></a
@@ -155,7 +155,7 @@
             </div>
           </div>
         </a>
-        <a href="javascript:void(0)">
+        <a href="/faq">
           <div class="mypage-user-container">
             <div class="mypage-user-wrapper">
               <div class="mypage-user-FAQ">FAQ</div>

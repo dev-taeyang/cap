@@ -45,7 +45,6 @@ li {
 }
 
 .mypage-review-empty {
-  display: none;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;

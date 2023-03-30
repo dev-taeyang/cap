@@ -1,11 +1,11 @@
 package com.app.captain.service;
 
-import com.app.captain.domain.dao.GroupDAO;
-import com.app.captain.domain.dao.GroupReplyDAO;
-import com.app.captain.domain.dao.MemberDAO;
+import com.app.captain.domain.dao.*;
 import com.app.captain.domain.dto.GroupReplyDTO;
 import com.app.captain.domain.vo.GroupVO;
 import com.app.captain.domain.vo.MemberVO;
+import com.app.captain.domain.vo.ReviewFileVO;
+import com.app.captain.domain.vo.ReviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,8 @@ public class MypageService {
     private final MemberDAO memberDAO;
     private final GroupReplyDAO groupReplyDAO;
     private final GroupDAO groupDAO;
+    private final ReviewDAO reviewDAO;
+    private final ReviewFileDAO reviewFileDAO;
 
     /* 회원 찾기 */
     public MemberVO getMemberById(Long memberId) {return memberDAO.findMemberById(memberId); }
@@ -41,5 +43,21 @@ public class MypageService {
 
     /* 멤버가 가입한 탐험대 가져오기 */
     public List<GroupVO> getMyParticipateRecruit(Long memberId) { return groupDAO.findMyParticipateRecruit(memberId); }
+
+    //    게시물 전체 조회
+    public List<ReviewVO> getReviewList(){
+        return reviewDAO.findAll();
+    }
+
+    //    reviewId로 파일 전체 조회
+    public List<ReviewFileVO> getReviewFileList(Long reviewId){
+        return reviewFileDAO.findById(reviewId);
+    }
+
+    //    리뷰 수 조회
+    public Long getMyReviewCount(Long memberId){
+        return reviewDAO.getCountByMemberId(memberId);
+    };
+
 
 }

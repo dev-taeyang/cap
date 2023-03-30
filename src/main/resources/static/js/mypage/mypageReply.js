@@ -7,7 +7,36 @@ let text = "";
 
 function showMyReply() {
     memberReplys.forEach((memberReply, i) => {
-        text += `
+        if(members.memberFilePath == null) {
+            text += `
+                <li>
+                    <div class="my-reply-container">
+                      <div class="my-reply-wrap">
+                        <div class="my-reply-user-info">
+                          <div class="user-image-wrap">
+                            <img
+                              alt="프로필"
+                              class="user-image"
+                              src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png"
+                            />
+                          </div>
+                        </div>
+                        <div class="user-nickname-register">
+                          <div class="user-nickname">${members.memberNickname}</div>
+                          <div class="user-register-date-wrap">
+                            <div class="user-register-date">${memberReply.groupReplyRegisterDate} 작성</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="reply-content">${memberReply.groupReplyContent}</div>
+                      <div class="reply-board-wrap">
+                        <div class="reply-board">${memberReply.groupTitle}</div>
+                      </div>
+                    </div>
+                  </li>
+                `
+        } else {
+            text += `
                 <li>
                     <div class="my-reply-container">
                       <div class="my-reply-wrap">
@@ -34,7 +63,8 @@ function showMyReply() {
                     </div>
                   </li>
                 `
-        })
+            }
+    })
     $myReplyWrap.append(text);
 }
 showMyReply();
