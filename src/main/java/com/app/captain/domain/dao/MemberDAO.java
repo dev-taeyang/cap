@@ -48,8 +48,8 @@ public class MemberDAO {
         return memberMapper.findId(memberPhone);
     }
 
-    /* 카카오 계정 검사 */
-    public Integer checkStatus(Long memberId){return memberMapper.checkStatus(memberId);}
+    /* 계정 검사 */
+    public Integer checkStatus(String memberEmail){return memberMapper.checkStatus(memberEmail);}
 
     /* 비밀번호 변경 */
     public void changePassword(String memberEmail, String memberPassword){
