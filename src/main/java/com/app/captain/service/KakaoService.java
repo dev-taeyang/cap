@@ -118,6 +118,7 @@ public class KakaoService {
 //            log.info("email : " + email);
             kakaoInfo.setMemberName(memberNickname);
             kakaoInfo.setMemberEmail(memberEmail);
+            log.info(memberNickname);
 
             br.close();
 

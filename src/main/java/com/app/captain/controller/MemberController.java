@@ -32,17 +32,9 @@ public class MemberController {
     }
 
     @PostMapping("login")
-    public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
+    public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpSession session) {
         MemberVO memberVO = memberService.getMember(member);
-        HttpSession session = request.getSession();
-        boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
         if (memberVO != null && member.getMemberPassword().equals(memberVO.getMemberPassword())) {
-            if (autoLogin) {
-                Cookie cookie = new Cookie("loginCookie", session.getId());
-                cookie.setPath("/");
-                cookie.setMaxAge(60 * 60 * 24 * 7);
-                response.addCookie(cookie);
-            }
             session.setAttribute("member", memberVO);
             session.setAttribute("memberId", memberVO.getMemberId());
             return "redirect:/main";
@@ -53,19 +45,7 @@ public class MemberController {
     }
 
     @GetMapping("logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        String memberEmail = (String) session.getAttribute("memberEmail");
-            /*Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                cookie.setMaxAge(0); //초단위
-                response.addCookie(cookie);
-        }*/
-        if (memberService.checkStatus(memberEmail) != null) {
-            kakaoService.logoutKakao((String) session.getAttribute("token"));
-            session.invalidate();
-            return "redirect:/main";
-        }
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/main";
     }
@@ -224,16 +204,6 @@ public class MemberController {
         return "redirect:/login";
     }
 
-    /* 카카오 로그인 */
-    /*@ResponseBody
-    @GetMapping("/kakao")
-    public void kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
-        log.info(code);
-        String token = kakaoService.getKaKaoAccessToken(code);
-        session.setAttribute("token", token);
-        kakaoService.getKakaoInfo(token);
-    }*/
-
     @GetMapping("/kakao/logout")
     public String kakaoLogout(HttpSession session) {
         log.info("logout");
@@ -241,13 +211,6 @@ public class MemberController {
         session.invalidate();
         return "redirect:/login";
     }
-
-    /*@ResponseBody
-    @GetMapping("/kakao")
-    public void  kakaoCallback(@RequestParam String code, HttpSession session) throws Exception{
-        String token = kakaoService.getKaKaoAccessToken(code);
-        session.setAttribute("token", token);
-    }*/
 
     @GetMapping("/kakao")
     public String kakaoLogin(MemberVO member, String code, HttpSession session) throws Exception {
