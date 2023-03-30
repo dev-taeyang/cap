@@ -249,7 +249,6 @@ public class MemberController {
         session.setAttribute("token", token);
     }*/
 
-    /*@ResponseBody*/
     @GetMapping("/kakao")
     public String kakaoLogin(MemberVO member, String code, HttpSession session) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
