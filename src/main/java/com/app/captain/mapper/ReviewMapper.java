@@ -25,4 +25,6 @@ public interface ReviewMapper {
 
 //    리뷰랑 멤버 조인한거 조회
     public ReviewDTO selectDTO(Long reviewId);
+//    리뷰 멤버 조인한거 memberId로 조회
+    public ReviewDTO selectByMemberId(Long memberId);
 }

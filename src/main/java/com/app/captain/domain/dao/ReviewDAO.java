@@ -43,4 +43,8 @@ public class ReviewDAO {
         return reviewMapper.selectDTO(reviewId);
     };
 
+    //    리뷰 멤버 조인한거 memberId로 조회
+    public ReviewDTO findByMemberId(Long memberId){
+        return reviewMapper.selectByMemberId(memberId);
+    };
 }
