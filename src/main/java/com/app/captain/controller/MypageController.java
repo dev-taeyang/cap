@@ -85,11 +85,18 @@ public class MypageController {
         return "/mypage/mypageUpdate";
     }
 
-    //    내 정보 수정하기
+    // 내 정보 수정하기
     @PostMapping("Update")
     @ResponseBody
     public void modify(@RequestBody MemberVO memberVO) {
         mypageService.modify(memberVO);
+    }
+
+    //    내 프로필 사진 수정하기
+    @PostMapping("UpdateFile")
+    @ResponseBody
+    public void modifyFile(@RequestBody MemberVO memberVO) {
+        mypageService.modifyProfileFile(memberVO);
     }
 
     //    파일 업로드

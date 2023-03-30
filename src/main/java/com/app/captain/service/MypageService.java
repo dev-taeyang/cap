@@ -20,4 +20,7 @@ public class MypageService {
     /* 정보 수정 */
     public void modify(MemberVO memberVO) { memberDAO.setMemberVO(memberVO);}
 
+    /* 프로필 사진 수정 */
+    public void modifyProfileFile(MemberVO memberVO) {memberDAO.setMemberFileVO(memberVO);}
+
 }

@@ -211,3 +211,8 @@
 .warn-text {
   color: rgb(222, 28, 34);
 }
+
+.button-set {
+  position: relative;
+  top: -20px;
+}
