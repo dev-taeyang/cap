@@ -29,7 +29,7 @@ public class ReviewFileDAO {
     };
 
     //    파일 삭제
-    public void deleteById(Long reviewFileId){
-        reviewFileMapper.delete(reviewFileId);
+    public void deleteById(Long reviewId){
+        reviewFileMapper.delete(reviewId);
     };
 }

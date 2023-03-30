@@ -25,6 +25,8 @@ public class ReviewVO {
         reviewFileDTO.setReviewTitle(this.reviewTitle);
         reviewFileDTO.setGroupId(this.groupId);
         reviewFileDTO.setReviewId(this.reviewId);
+        reviewFileDTO.setReviewRegisterDate(this.reviewRegisterDate);
+        reviewFileDTO.setReviewUpdateDate(this.reviewUpdateDate);
         return reviewFileDTO;
     }
 }

@@ -20,7 +20,7 @@
             </div>
             <div class="SectionMaker-Wrapper">
                 <div class="SectionMaker-contentWrapper" th:object="${review}">
-                    <form th:action="'/reviews/'+ *{reviewId} + '/modify'" method="post">
+                    <form name="review" th:action="'/reviews/'+ *{reviewId} + '/modify'" method="post">
                         <div class="formSection-contentContainer">
                             <div class="formTitle-wrapper">
                                 <div class="formTitle">
@@ -104,13 +104,13 @@
                                     <div class="imageContainer">
                                         <div class="imageWrapperPadding">
                                             <div class="imageWrapper">
-                                                <div id="thumbnail-list" class="imageDiv">
+                                                <div id="thumbnail" class="imageDiv">
                                                     <div class="imgButtonWrap">
                                                         <label for="photo-picker">
                                                             <div class="imgButton" >
                                                                 <span class="cameraIconImg"></span>
                                                             </div>
-                                                            <input name="reviewFile" class="imageFileInput" id="photo-picker" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp"/>
+                                                            <input name="file" class="imageFileInput" id="photo-picker" type="file" multiple/>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -148,10 +148,13 @@
     let review = [[${review}]];
     let category = [[${category}]];
     let grade = [[${grade}]];
+    let files = [[${files}]];
     console.log(review);
     console.log(category);
     console.log(grade);
+    console.log(files);
 </script>
 <script src="/js/board/reviewModify.js"></script>
+<script src="/js/reviews/reviewInsert.js"></script>
 <script src="/js/main/header.js"></script>
 </html>

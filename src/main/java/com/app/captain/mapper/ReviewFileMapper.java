@@ -17,5 +17,5 @@ public interface ReviewFileMapper {
     public List<ReviewFileVO> selectYesterday();
 
 //    파일 삭제
-    public void delete(Long reviewFileId);
+    public void delete(Long reviewId);
 }
