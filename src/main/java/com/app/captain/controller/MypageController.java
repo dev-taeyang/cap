@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +30,6 @@ import java.util.logging.Logger;
 @RequestMapping("/mypage/*")
 public class MypageController {
     private final MypageService mypageService;
-    private final GroupReplyService groupReplyService;
 
 //    테스트로 컨트롤러 태워보기
 //    내 정보들 가져오기
@@ -59,7 +59,7 @@ public class MypageController {
         /* 세션에 값이 담겨 있다면 마이페이지로 이동*/
         if(memberVO != null) {
             model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
-            model.addAttribute("replyCount", groupReplyService.getReplyCount(memberVO.getMemberId()));
+            model.addAttribute("replyCount", mypageService.getReplyCount(memberVO.getMemberId()));
 
             return "mypage/mypage";
         }
@@ -67,14 +67,6 @@ public class MypageController {
         /* 없다면 로그인 페이지 */
         return "member/login";
     }
-
-//      내 정보들 가져오기
-//      post맨으로 잘 가져와짐
-/*    @GetMapping("mypage/{memberId}")
-    public MypageDTO getMemberPost(@PathVariable("memberId") Long memberId) {
-        log.info(mypageService.getMember(memberId).toString());
-        return mypageService.getMember(memberId);
-    }*/
 
 
 //    수정 폼으로 가기
@@ -88,8 +80,10 @@ public class MypageController {
     // 내 정보 수정하기
     @PostMapping("Update")
     @ResponseBody
-    public void modify(@RequestBody MemberVO memberVO) {
+    public void modify(@RequestBody MemberVO memberVO, HttpServletRequest request) {
         mypageService.modify(memberVO);
+        HttpSession session = request.getSession();
+        session.setAttribute("member", memberVO);
     }
 
     //    내 프로필 사진 수정하기
@@ -147,16 +141,6 @@ public class MypageController {
         return "redirect:/main";
     }
 
-//    @GetMapping("remove")
-//    public String remove(HttpSession session) {
-//        MemberVO memberVO = (MemberVO) session.getAttribute("member");
-//        /* 세션에 담긴 값 없애기 */
-//        session.invalidate();
-//        mypageService.remove(memberVO.getMemberId());
-//
-//        return "redirect:/main";
-//    }
-
 //    내가 작성한 보고서
     @GetMapping("myReview")
     public String myReview() {
@@ -166,7 +150,12 @@ public class MypageController {
 
 //    내가 작성한 댓글
     @GetMapping("myReply")
-    public String myReply() {
+    public String myReply(Model model, HttpSession session) {
+        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+
+        model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
+        model.addAttribute("memberReplys", mypageService.getMemberReply(memberVO.getMemberId()));
+        model.addAttribute("replyCount", mypageService.getReplyCount(memberVO.getMemberId()));
 
         return "mypage/mypageReply";
     }

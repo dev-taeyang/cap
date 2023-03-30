@@ -11,5 +11,6 @@
         <typeAlias type="com.app.captain.domain.dto.ReviewDTO" alias="reviewDTO"/>
         <typeAlias type="com.app.captain.domain.dto.ReviewFileDTO" alias="reviewFileDTO"/>
         <typeAlias type="com.app.captain.domain.vo.ReviewFileVO" alias="reviewFileVO"/>
+        <typeAlias type="com.app.captain.domain.dto.GroupReplyDTO" alias="groupReplyDTO"/>
     </typeAliases>
 </configuration>

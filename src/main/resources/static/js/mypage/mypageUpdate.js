@@ -181,6 +181,24 @@ $saveButton.on('click', function () {
     return;
   }
 
+  // 닉네임과 생일 value값 가져오기
+  const $Nickname = $("input[name=memberNickname]").val();
+  const $birth = $("input[name=memberBirth]").val();
+
+  let memberVO = new Object();
+      memberVO.memberNickname = $Nickname;
+      memberVO.memberBirth = $birth;
+      memberVO.memberId = members.memberId;
+
+  $.ajax({
+    url: "/mypage/Update",
+    type: "post",
+    data: JSON.stringify(memberVO),
+    contentType: "application/json; charset=utf-8",
+    success: function(){
+    }
+  });
+
   /* 닉네임, 생일check 둘 다 true면 저장되었다는 모달창 */
   modalMessage = '저장되었습니다.';
   showWarnModal(modalMessage);
@@ -231,12 +249,7 @@ $('#mypageUpdate').on('click', function () {
         }
       });
 
-      const $Nickname = $("input[name=memberNickname]").val();
-      const $birth = $("input[name=memberBirth]").val();
-
       let memberVO = new Object();
-      memberVO.memberNickname = $Nickname;
-      memberVO.memberBirth = $birth;
       memberVO.memberFileOriginalName = $file.name;
       memberVO.memberFileUuid = globalThis.uuids;
       memberVO.memberFilePath = toStringByFormatting(new Date());
@@ -244,10 +257,8 @@ $('#mypageUpdate').on('click', function () {
       memberVO.memberFileType = $file.type.startsWith("image");
       memberVO.memberId = members.memberId;
 
-      console.log(memberVO)
-
       $.ajax({
-        url: "/mypage/Update",
+        url: "/mypage/UpdateFile",
         type: "post",
         data: JSON.stringify(memberVO),
         contentType: "application/json; charset=utf-8",
@@ -255,7 +266,7 @@ $('#mypageUpdate').on('click', function () {
         }
       });
 
-      modalMessage = '저장되었습니다.';
+      modalMessage = '프로필 사진이 변경되었습니다.';
       showWarnModal(modalMessage);
     })
 
