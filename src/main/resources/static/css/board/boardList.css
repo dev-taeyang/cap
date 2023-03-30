@@ -446,6 +446,22 @@ button {
     color: #5f5f5f;
 }
 
+/*아무것도 없을때 띄울것*/
+.mypage-reply-empty {
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+.mypage-reply-empty-text {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 18px;
+    text-align: center;
+    color: rgb(155, 155, 155);
+    margin-top: 10px;
+}
 
 /* 지욱이형 페이징 버튼 */
 
