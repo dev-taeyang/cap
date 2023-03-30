@@ -78,19 +78,27 @@ public class ReviewController {
     @GetMapping("{reviewId}/modify")
     public String getModify(@PathVariable("reviewId")Long reviewId, Model model){
         ReviewVO reviewVO = reviewService.getReview(reviewId);
+        List<ReviewFileVO> files = new ArrayList<>();
         String category = reviewVO.getReviewCategory();
         Double grade = reviewVO.getReviewGrade();
         model.addAttribute("review", reviewVO);
         model.addAttribute("category", category);
         model.addAttribute("grade", grade);
+        model.addAttribute("files", files);
         return "reviews/reviewModify";
     }
 
 //    리뷰 수정 완료 페이지
     @PostMapping("{reviewId}/modify")
-    public RedirectView modify(ReviewVO reviewVO, @PathVariable("reviewId") Long reviewId, RedirectAttributes redirectAttributes){
+    public RedirectView modify(ReviewFileDTO reviewFileDTO, @PathVariable("reviewId") Long reviewId, RedirectAttributes redirectAttributes){
+        ReviewVO reviewVO = reviewFileDTO.toVO();
+        reviewVO.setGroupId(1L);
         reviewVO.setReviewId(reviewId);
         reviewService.modify(reviewVO);
+        reviewFileService.remove(reviewId);
+        List<ReviewFileVO> files = reviewFileDTO.getFiles();
+        files.forEach(file -> file.setReviewId(reviewVO.getReviewId()));
+        reviewFileService.write(files);
         redirectAttributes.addFlashAttribute("review", "수정완료");
         return new RedirectView("/reviews/list");
     }

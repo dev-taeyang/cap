@@ -35,8 +35,8 @@ public class ReviewFileService {
     };
 
     //    파일 삭제
-    public void remove(Long reviewFileId){
-        reviewFileDAO.deleteById(reviewFileId);
+    public void remove(Long reviewId){
+        reviewFileDAO.deleteById(reviewId);
     };
 
 //    path 구하는 메소드
