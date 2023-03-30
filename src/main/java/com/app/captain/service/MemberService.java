@@ -84,8 +84,8 @@ public class MemberService {
         return memberDAO.findId(memberPhone);
     }
 
-    /* 카카오 계정 검사 */
-    public Integer checkStatus(Long memberId){return memberDAO.checkStatus(memberId);}
+    /* 계정 검사 */
+    public Integer checkStatus(String memberEmail){return memberDAO.checkStatus(memberEmail);}
 
     /* 이메일 전송 */
     @Autowired

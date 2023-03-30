@@ -53,7 +53,7 @@
     <select id="checkStatus" resultType="integer">
         select member_status
         from tbl_member
-        where member_id = #{memberId}
+        where member_email = #{memberEmail}
     </select>
 
     <select id="findId" resultType="string">

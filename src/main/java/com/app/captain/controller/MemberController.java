@@ -55,13 +55,13 @@ public class MemberController {
     @GetMapping("logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        Long memberId = (Long) session.getAttribute("memberId");
+        String memberEmail = (String) session.getAttribute("memberEmail");
             /*Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 cookie.setMaxAge(0); //초단위
                 response.addCookie(cookie);
         }*/
-        if (memberService.checkStatus(memberId) != null) {
+        if (memberService.checkStatus(memberEmail) != null) {
             kakaoService.logoutKakao((String) session.getAttribute("token"));
             session.invalidate();
             return "redirect:/main";
@@ -251,35 +251,20 @@ public class MemberController {
 
     /*@ResponseBody*/
     @GetMapping("/kakao")
-    public String kakaoLogin(/*@RequestParam("code")*/MemberVO member, String code, HttpSession session) throws Exception {
+    public String kakaoLogin(MemberVO member, String code, HttpSession session) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
         MemberVO kakaoInfo = kakaoService.getKakaoInfo(token);
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
         if (memberService.checkEmail(kakaoInfo.getMemberEmail()) == 0) {
             session.setAttribute("kakaoInfo", kakaoInfo);
-            /*MemberVO memberVO = new MemberVO();
-            if(memberService.checkNickname(kakaoInfo.getMemberNickname()) != 0){
-                memberVO.setMemberNickname(kakaoInfo.getMemberNickname() + number);
-            } else{
-                memberVO.setMemberNickname(kakaoInfo.getMemberNickname());
-            }
-            memberVO.setMemberIdentification(kakaoInfo.getMemberIdentification());
-            memberVO.setMemberPassword(kakaoInfo.getMemberPassword());
-            memberVO.setMemberName(kakaoInfo.getMemberName());
-            memberVO.setMemberEmail(kakaoInfo.getMemberEmail());
-            memberVO.setMemberGender(kakaoInfo.getMemberGender());
-            memberVO.setMemberStatus(1);
-            memberService.setMember(memberVO);
-            member = memberService.getMember(memberVO);
-            session.setAttribute("member", member);
-            log.info(session.getAttribute("member").toString());*/
             return "redirect:no-info";
-        } else {
-            member = memberService.getKakaoMember(kakaoInfo.getMemberEmail());
-            member.setMemberStatus(1);
-            session.setAttribute("member", member);
-            log.info(member.toString());
+        } else if(memberService.checkStatus(kakaoInfo.getMemberEmail()) != 1){
+            return "redirect:login";
         }
+        member = memberService.getKakaoMember(kakaoInfo.getMemberEmail());
+        member.setMemberStatus(1);
+        session.setAttribute("member", member);
+        log.info(member.toString());
         return "redirect:/main";
     }
 
