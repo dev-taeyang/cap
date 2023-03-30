@@ -39,3 +39,20 @@ $logoutButton.on('click', function () {
 $goUpdate.on('click', function () {
   location.href = '/mypage/Update';
 })
+
+/* 프로필 사진 보여주기 */
+const $memberProfile = $(".head-user-info-wrap");
+let text = "";
+function showProfile() {
+    text += `
+          <a class="head-user-info" href="javascript:void(0)">
+            <img src="/mypage/display?fileName=${members.memberFilePath}/${members.memberFileUuid}_${members.memberFileOriginalName}" class="user-profile-image" />
+            <div class="head-userinfo-textwrapper">
+              <div class="head-userinfo-nickname">${members.memberNickname}</div>
+              <div class="head-userinfo-email">이메일 계정</div>
+            </div>
+        </a>
+    `
+  $memberProfile.append(text)
+};
+showProfile();

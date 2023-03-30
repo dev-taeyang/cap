@@ -22,8 +22,9 @@ const $warnText = $('.warn-text');
 /* 프로필 파일첨부 */
 const file = document.querySelector('input[type=file]');
 const img = document.querySelector('.user-profile-image');
-const closeSpan = document.querySelector('.close-image');
+// const closeSpan = document.querySelector('.close-image');
 
+// let imgsrc = img.src;
 
 /* 내 정보 수정하기 */
 let nicknameCheck = true;
@@ -32,14 +33,14 @@ let saveChecks = [false, false];
 
 $('.modal').hide();
 
-closeSpan.addEventListener('click', function (e) {
-  e.preventDefault();
-  this.style.display = 'none';
-  img.setAttribute('src', "https://t1.kakaocdn.net/together_image/common/avatar/avatar.png");
-});
+// closeSpan.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   this.style.display = 'none';
+//   img.setAttribute('src', imgsrc);
+// });
 
 file.addEventListener('change', function (e) {
-  closeSpan.style.display = "inline-block";
+  // closeSpan.style.display = "inline-block";
   this.style.display = 'none';
   // 기존의 이미지 숨김 처리
   let reader = new FileReader();
@@ -78,6 +79,7 @@ $inputNickname.on('blur', function () {
     $warnText.eq(0).show();
     $warnText.eq(0).text('닉네임을 입력하세요.');
     $inputNickname.css('border', '1px solid rgb(222, 28, 34)');
+    $changeButtons.eq(0).addClass("button-set")
     nicknameCheck = false;
     return;
   }
@@ -86,10 +88,12 @@ $inputNickname.on('blur', function () {
   if (nicknameCheck) {
     $warnText.hide();
     $inputNickname.css('border', '1px solid rgb(238, 238, 238)');
+    $changeButtons.eq(0).removeClass("button-set")
   } else {
     $warnText.eq(0).show();
     $warnText.eq(0).text('영문 혹은 영문과 숫자를 조합하여 4자~20자로 입력해주세요.');
     $inputNickname.css('border', '1px solid rgb(222, 28, 34)');
+    $changeButtons.eq(0).addClass("button-set")
   }
 });
 
@@ -101,6 +105,7 @@ $inputBirth.on('blur', function () {
     $warnText.eq(1).show();
     $warnText.eq(1).text('생년월일을 입력하세요.');
     $inputBirth.css('border', '1px solid rgb(222, 28, 34)');
+    $changeButtons.eq(1).addClass("button-set")
     birthCheck = false;
     return;
   }
@@ -109,6 +114,7 @@ $inputBirth.on('blur', function () {
   birthCheck = birthRegex.test($(this).val());
   if (birthCheck) {
     $warnText.hide();
+    $changeButtons.eq(1).removeClass("button-set")
     $(this).val(
       $(this)
         .val()
@@ -119,6 +125,7 @@ $inputBirth.on('blur', function () {
     $warnText.eq(1).show();
     $warnText.eq(1).text('생년월일을 확인하세요.');
     $inputBirth.css('border', '1px solid rgb(222, 28, 34)');
+    $changeButtons.eq(1).addClass("button-set")
   }
 });
 
@@ -150,8 +157,10 @@ $saveButton.on('click', function () {
         $inputNickname.css('border', '1px solid rgb(255, 64, 62)');
       } else {
         ajaxCheck = true;
+        $changeButtons.eq(0).removeClass("button-set")
       }
       $warnText.eq(0).text(message);
+      $changeButtons.eq(0).addClass("button-set")
     }
   })
   /* 닉네임check false면 다시 입력하라는 모달창 */
@@ -175,6 +184,7 @@ $saveButton.on('click', function () {
   /* 닉네임, 생일check 둘 다 true면 저장되었다는 모달창 */
   modalMessage = '저장되었습니다.';
   showWarnModal(modalMessage);
+  $changeButtons.eq(0).removeClass("button-set")
 
   /*$inputNickname.attr('disabled', false);
   $inputBirth.attr('disabled', false);
@@ -203,6 +213,7 @@ $('#mypageUpdate').on('click', function () {
 
     globalThis.uuids;
 
+    /* 이미지 사진을 바꾸면 바로 바뀜 */
     $("input[name=memberFile]").on("change", function () {
       const $file = $("input[name=memberFile]")[0].files[0]
       let formData = new FormData();
@@ -244,12 +255,10 @@ $('#mypageUpdate').on('click', function () {
         }
       });
 
+      modalMessage = '저장되었습니다.';
+      showWarnModal(modalMessage);
     })
 
-
-    $(".save-button").on('click', function () {
-
-    })
 
 /*****************************************************/
   function leftPad(value) {
@@ -268,3 +277,4 @@ $('#mypageUpdate').on('click', function () {
     return [year, month, day].join(delimiter);
   }
 /*****************************************************/
+
