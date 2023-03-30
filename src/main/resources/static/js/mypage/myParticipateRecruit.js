@@ -78,8 +78,8 @@ function showMyParticipateList() {
                         </div>
                     </div>
             `
-            $MyParticipateList.append(text)
-        })
+            })
+        $MyParticipateList.append(text)
     }
 }
 showMyParticipateList();
