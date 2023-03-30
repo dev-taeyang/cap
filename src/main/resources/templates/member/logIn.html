@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>로그인</title>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+            charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/css/main/common.css"/>
     <link rel="stylesheet" href="/css/member/logIn.css"/>
     <link rel="stylesheet" href="/css/mypage/modal.css"/>
@@ -72,7 +75,8 @@
             <button type="button" class="login-btn" onclick="send()" disabled>로그인</button>
         </form>
         <div class="snsLoginSection">
-            <a class="kakaoButton" href="https://kauth.kakao.com/oauth/authorize?client_id=f181c492a9905256703765a748348ac1&redirect_uri=http://localhost:10000/member/kakao&response_type=code">
+            <a class="kakaoButton"
+               href="https://kauth.kakao.com/oauth/authorize?client_id=f181c492a9905256703765a748348ac1&redirect_uri=http://localhost:10000/member/kakao&response_type=code">
                 <div class="kakaoButtonDiv">
                     <div class="kakaoButtonDivDiv"></div>
                     <span class="kakaoButtonDivSpan">
@@ -95,8 +99,9 @@
                 </div>
             </a>
             <div class="kakaoNaverbetween"></div>
-            <button
-                    class="naverButton"
+            <a id="naver_id_login"
+               class="naverButton"
+               href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=t03Fi_ktyRapQcvRBW3t&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fnaver&amp;state=63c8e52f-0401-413a-b76e-42fd2880394b"
             >
                 <div class="naverButtonDiv">
                     <div class="naverButtonDivDiv"></div>
@@ -116,7 +121,7 @@
               </span>
                     <div class="naverButtonDivDiv6"></div>
                 </div>
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -125,6 +130,15 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/member/login.js"></script>
 <script src="/js/main/header.js"></script>
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("t03Fi_ktyRapQcvRBW3t", "http://localhost:10000/member/naver");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("white", 2, 40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
+    // naver_id_login.setPopup();
+    // naver_id_login.init_naver_id_login();
+</script>
 <script>
     showWarnModal("아이디 및 비밀번호를 확인하세요.");
 </script>

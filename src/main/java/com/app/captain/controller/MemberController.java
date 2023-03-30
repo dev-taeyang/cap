@@ -7,6 +7,7 @@ import com.app.captain.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -25,8 +26,9 @@ public class MemberController {
     private final KakaoService kakaoService;
 
     @GetMapping("login")
-    public void login() {
-        ;
+    public void login(Model model, HttpSession session) {
+//        String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
+//        model.addAttribute("naverUrl", naverAuthUrl);
     }
 
     @PostMapping("login")
@@ -69,20 +71,25 @@ public class MemberController {
     }
 
     @GetMapping("join-check")
-    public void joinCheck(){;}
+    public void joinCheck() {
+        ;
+    }
 
     @GetMapping("join")
-    public String join(HttpSession session) throws Exception{
+    public String join(HttpSession session) throws Exception {
         MemberVO kakaoMember = (MemberVO) session.getAttribute("kakaoInfo");
         session.setAttribute("kakaoInfo", kakaoMember);
         return "redirect:/join";
     }
 
     @PostMapping("join")
-    public String join(MemberVO member, String code, HttpSession session) throws Exception{
-        if(kakaoService.getKaKaoAccessToken(code) != null){
+    public String join(MemberVO member, String code, HttpSession session) throws Exception {
+        if (session.getAttribute("kakaoInfo") != null) {
             member.setMemberStatus(1);
             kakaoService.logoutKakao((String) session.getAttribute("token"));
+        }
+        if(session.getAttribute("naverEmail") != null){
+            member.setMemberStatus(2);
             session.invalidate();
         }
         memberService.setMember(member);
@@ -90,7 +97,9 @@ public class MemberController {
     }
 
     @GetMapping("no-info")
-    public void noInfo(){;}
+    public void noInfo() {
+        ;
+    }
 
     @PostMapping("checkId")
     @ResponseBody
@@ -200,7 +209,7 @@ public class MemberController {
 
     @GetMapping("changePassword")
     public String changePassword(String memberEmail, String memberRandomKey) {
-        if(!memberService.selectKey(memberEmail).equals(memberRandomKey)){
+        if (!memberService.selectKey(memberEmail).equals(memberRandomKey)) {
             return "/";
         }
         memberService.updateKey(memberEmail, null);
@@ -242,11 +251,11 @@ public class MemberController {
 
     /*@ResponseBody*/
     @GetMapping("/kakao")
-    public String login(/*@RequestParam("code")*/MemberVO member, String code, HttpSession session) throws Exception {
+    public String kakaoLogin(/*@RequestParam("code")*/MemberVO member, String code, HttpSession session) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
         MemberVO kakaoInfo = kakaoService.getKakaoInfo(token);
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-        if(memberService.checkEmail(kakaoInfo.getMemberEmail()) == 0){
+        if (memberService.checkEmail(kakaoInfo.getMemberEmail()) == 0) {
             session.setAttribute("kakaoInfo", kakaoInfo);
             /*MemberVO memberVO = new MemberVO();
             if(memberService.checkNickname(kakaoInfo.getMemberNickname()) != 0){
@@ -265,13 +274,31 @@ public class MemberController {
             session.setAttribute("member", member);
             log.info(session.getAttribute("member").toString());*/
             return "redirect:no-info";
-        }else {
+        } else {
             member = memberService.getKakaoMember(kakaoInfo.getMemberEmail());
             member.setMemberStatus(1);
             session.setAttribute("member", member);
             log.info(member.toString());
         }
         return "redirect:/main";
+    }
+
+    @GetMapping("naver")
+    public String naverLogin(HttpSession session) {
+        return "/member/callback";
+    }
+
+    @PostMapping("naver")
+    @ResponseBody
+    public boolean naverLogin(MemberVO member, String memberEmail, HttpSession session) {
+        log.info(memberEmail);
+        member = memberService.getKakaoMember(memberEmail);
+        if (member == null) {
+            session.setAttribute("naverEmail", memberEmail);
+            return false;
+        }
+        session.setAttribute("member", member);
+        return true;
     }
 
 }
