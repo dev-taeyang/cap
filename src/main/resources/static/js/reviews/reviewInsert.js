@@ -72,3 +72,14 @@ function toStringByFormatting(source, delimiter = '/') {
     return [year, month, day].join(delimiter);
 }
 
+/* 썸네일 눌렀을때 삭제*/
+$(document).on("click", ".thumbnail", function () {
+    $(this).remove();
+    let i = $(this).index();
+    $("input[name='files[${i}].reviewFileOriginalName']").remove();
+    $("input[name='files[${i}].reviewFileUuid']").remove();
+    $("input[name='files[${i}].reviewFilePath']").remove();
+    $("input[name='files[${i}].reviewFileSize']").remove();
+    $("input[name='files[${i}].reviewFileType']").remove();
+    console.log("앙 눌러띠");
+});
