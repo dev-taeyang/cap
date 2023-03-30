@@ -25,12 +25,12 @@ public class MemberController {
     private final MemberService memberService;
     private final KakaoService kakaoService;
 
+    /* 로그인 페이지 */
     @GetMapping("login")
-    public void login(Model model, HttpSession session) {
-//        String naverAuthUrl = naverloginbo.getAuthorizationUrl(session);
-//        model.addAttribute("naverUrl", naverAuthUrl);
+    public void login() {
     }
 
+    /* 로그인 실행 */
     @PostMapping("login")
     public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpSession session) {
         MemberVO memberVO = memberService.getMember(member);
@@ -39,31 +39,35 @@ public class MemberController {
             session.setAttribute("memberId", memberVO.getMemberId());
             return "redirect:/main";
         }
-        int result = 0;
+        Integer result = 0;
         redirectAttributes.addFlashAttribute("result", result);
         return "redirect:/login";
     }
 
+    /* 로그아웃 실행 */
     @GetMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/main";
     }
 
+    /* 회원가입 선택 페이지 */
     @GetMapping("join-check")
     public void joinCheck() {
         ;
     }
 
+    /* 회원가입 페이지 */
     @GetMapping("join")
-    public String join(HttpSession session) throws Exception {
+    public String join(HttpSession session) {
         MemberVO kakaoMember = (MemberVO) session.getAttribute("kakaoInfo");
         session.setAttribute("kakaoInfo", kakaoMember);
         return "redirect:/join";
     }
 
+    /* 회원가입 실행 */
     @PostMapping("join")
-    public String join(MemberVO member, String code, HttpSession session) throws Exception {
+    public String join(MemberVO member, HttpSession session) {
         if (session.getAttribute("kakaoInfo") != null) {
             member.setMemberStatus(1);
             kakaoService.logoutKakao((String) session.getAttribute("token"));
@@ -76,15 +80,23 @@ public class MemberController {
         return "redirect:/login";
     }
 
+    /* 가입내역 없을 때 페이지 */
     @GetMapping("no-info")
     public void noInfo() {
         ;
     }
 
+    /* 가입내역 이미 존재할 때 페이지 */
+    @GetMapping("already-info")
+    public void alreadyInfo() {
+        ;
+    }
+
+    /* 아이디 중복 체크 */
     @PostMapping("checkId")
     @ResponseBody
     public String checkId(String memberIdentification) {
-        int check = memberService.checkId(memberIdentification);
+        Integer check = memberService.checkId(memberIdentification);
 
         if (check != 0) {
             return "fail";
@@ -93,10 +105,11 @@ public class MemberController {
         }
     }
 
+    /* 휴대폰 번호 중복 체크 */
     @PostMapping("checkPhone")
     @ResponseBody
     public String checkPhone(String memberPhone) {
-        int check = memberService.checkPhone(memberPhone);
+        Integer check = memberService.checkPhone(memberPhone);
 
         if (check != 0) {
             return "fail";
@@ -105,10 +118,11 @@ public class MemberController {
         }
     }
 
+    /* 닉네임 중복 체크 */
     @PostMapping("checkNickname")
     @ResponseBody
     public String checkNickname(String memberNickname) {
-        int check = memberService.checkNickname(memberNickname);
+        Integer check = memberService.checkNickname(memberNickname);
 
         if (check != 0) {
             return "fail";
@@ -117,10 +131,11 @@ public class MemberController {
         }
     }
 
+    /* 이메일 중복 체크 */
     @PostMapping("checkEmail")
     @ResponseBody
     public String checkEmail(String memberEmail) {
-        int check = memberService.checkEmail(memberEmail);
+        Integer check = memberService.checkEmail(memberEmail);
 
         if (check != 0) {
             return "fail";
@@ -129,6 +144,7 @@ public class MemberController {
         }
     }
 
+    /* 인증번호 체크 */
     @PostMapping("checkSms")
     @ResponseBody
     public String checkSms(String memberPhone) {
@@ -144,11 +160,13 @@ public class MemberController {
         return code;
     }
 
+    /* 아이디 찾기 페이지 */
     @GetMapping("findId")
     public void findId() {
         ;
     }
 
+    /* 아이디 찾기 실행 */
     @PostMapping("findId")
     @ResponseBody
     public String findId(String memberPhone) {
@@ -161,11 +179,13 @@ public class MemberController {
         }
     }
 
+    /* 비밀번호 찾기 페이지 */
     @GetMapping("findPassword")
     public void findPassword() {
         ;
     }
 
+    /* 비밀번호 찾기 이메일 인증 코드 전송 */
     @PostMapping("send")
     @ResponseBody
     public boolean sendTestMail(String memberEmail) {
@@ -187,6 +207,7 @@ public class MemberController {
         return false;
     }
 
+    /* 비밀번호 변경 페이지 */
     @GetMapping("changePassword")
     public String changePassword(String memberEmail, String memberRandomKey) {
         if (!memberService.selectKey(memberEmail).equals(memberRandomKey)) {
@@ -196,6 +217,7 @@ public class MemberController {
         return "/member/changePassword";
     }
 
+    /* 비밀번호 변경 실행 */
     @PostMapping("changePassword")
     public String changePasswordOK(String memberEmail, String memberPassword) {
         log.info(memberEmail);
@@ -204,14 +226,7 @@ public class MemberController {
         return "redirect:/login";
     }
 
-    @GetMapping("/kakao/logout")
-    public String kakaoLogout(HttpSession session) {
-        log.info("logout");
-        kakaoService.logoutKakao((String) session.getAttribute("token"));
-        session.invalidate();
-        return "redirect:/login";
-    }
-
+    /* 카카오 로그인 페이지*/
     @GetMapping("/kakao")
     public String kakaoLogin(MemberVO member, String code, HttpSession session) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
@@ -221,31 +236,45 @@ public class MemberController {
             session.setAttribute("kakaoInfo", kakaoInfo);
             return "redirect:no-info";
         } else if(memberService.checkStatus(kakaoInfo.getMemberEmail()) != 1){
-            return "redirect:login";
+            return "redirect:already-info";
         }
-        member = memberService.getKakaoMember(kakaoInfo.getMemberEmail());
+        member = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
         member.setMemberStatus(1);
         session.setAttribute("member", member);
         log.info(member.toString());
         return "redirect:/main";
     }
 
+    /* 카카오 로그아웃 */
+    @GetMapping("/kakao/logout")
+    public String kakaoLogout(HttpSession session) {
+        log.info("logout");
+        kakaoService.logoutKakao((String) session.getAttribute("token"));
+        session.invalidate();
+        return "redirect:/login";
+    }
+
+    /* 네이버 로그인 페이지 */
     @GetMapping("naver")
-    public String naverLogin(HttpSession session) {
+    public String naverLogin() {
         return "/member/callback";
     }
 
+    /* 네이버 로그인 실행 */
     @PostMapping("naver")
     @ResponseBody
-    public boolean naverLogin(MemberVO member, String memberEmail, HttpSession session) {
+    public Integer naverLogin(MemberVO member, String memberEmail, HttpSession session) {
         log.info(memberEmail);
-        member = memberService.getKakaoMember(memberEmail);
+        member = memberService.getMemberByEmail(memberEmail);
         if (member == null) {
             session.setAttribute("naverEmail", memberEmail);
-            return false;
+            return 0;
+        }
+        if(memberService.checkStatus(memberEmail) != 2){
+            return 1;
         }
         session.setAttribute("member", member);
-        return true;
+        return 2;
     }
 
 }

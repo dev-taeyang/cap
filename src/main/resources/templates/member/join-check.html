@@ -62,8 +62,9 @@
                 </div>
             </a>
             <div class="kakaoNaverbetween"></div>
-            <button
-                    class="naverButton"
+            <a id="naver_id_login"
+               class="naverButton"
+               href="https://nid.naver.com/oauth2.0/authorize?response_type=token&amp;client_id=t03Fi_ktyRapQcvRBW3t&amp;redirect_uri=http%3A%2F%2Flocalhost%3A10000%2Fmember%2Fnaver&amp;state=63c8e52f-0401-413a-b76e-42fd2880394b"
             >
                 <div class="naverButtonDiv">
                     <div class="naverButtonDivDiv"></div>
@@ -83,7 +84,7 @@
               </span>
                     <div class="naverButtonDivDiv6"></div>
                 </div>
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -91,7 +92,11 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/main/header.js"></script>
-<script>
-    showWarnModal("아이디 및 비밀번호를 확인하세요.");
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("t03Fi_ktyRapQcvRBW3t", "http://localhost:10000/member/naver");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("white", 2, 40);
+    naver_id_login.setDomain("http://localhost:10000");
+    naver_id_login.setState(state);
 </script>
 </html>

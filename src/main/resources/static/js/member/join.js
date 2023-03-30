@@ -6,7 +6,6 @@ const $joinInputs = $(
     ".inputbox-wrap input[type='text'], input[type='password'], input[type='number']"
 );
 const $genderInput = $(".checkWrap");
-const $emailInput = $("input[name='memberEmail']");
 const nameRegex = /^[가-힣|a-z|A-Z|]+$/;
 const nicknameRegex = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
 const specialCharacterRegex = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gim;
@@ -19,12 +18,14 @@ const passwordSpecialCharacterRegex = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi;
 const emailRegex = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.[a-zA-Z]{2,4}$/;
 const $checks = $("input[name='memberGender']");
 const $genderCheckImg = $('.genderCheckImg');
+
 /* keyup 이벤트용 */
 const inputPhone = document.querySelector('.join-phone');
 const inputCode = document.querySelector('.join-check');
 const phoneButton = document.querySelector('.join-phone-btn');
 const codeButton = document.querySelector('.join-check-btn');
-/* =============================================== */
+/* ============ */
+
 let phoneNumberCheck;
 let code;
 
@@ -68,14 +69,14 @@ $joinInputs.eq(8).on('focus', function () {
 
 /* 인증번호 입력 버튼 */
 $(".join-check-btn").on("click", function(){
-	if($(".join-check").val() == code){
+    if($(".join-check").val() == code){
         let modalMessage = "인증이 완료되었습니다.";
         showWarnModal(modalMessage);
         console.log(joinCheck);
         joinCheck = true;
-		return;
-	}
-	joinCheck = false;
+        return;
+    }
+    joinCheck = false;
 });
 
 $joinInputs.on('blur', function () {
@@ -93,7 +94,6 @@ $joinInputs.on('blur', function () {
         $joinHelp.eq(i).css('color', 'red');
         joinCheck = false;
         $joinInputs.eq(i).css('border', '1px solid rgb(255, 64, 62)');
-        $genderInput.css('border', '1px solid rgb(255, 64, 62)');
         joinCheckAll[i] = joinCheck;
         return;
     }
@@ -140,9 +140,9 @@ $joinInputs.on('blur', function () {
             }
             break;
         case 5:
-             joinCheck = value == code;
-             console.log(code);
-             break;
+            joinCheck = value == code;
+            console.log(code);
+            break;
         case 6:
             joinCheck =
                 value.length > 1 &&
@@ -211,6 +211,7 @@ $joinInputs.on('blur', function () {
                         let modalMessage = "인증번호가 전송되었습니다.";
                         showWarnModal(modalMessage);
                         $joinHelp.eq(i).hide();
+                        console.log(i);
                         $joinInputs.eq(i).css('border', '1px solid #05AE68');
                         phoneNumberCheck = true;
                         joinCheckAll[i] = true;
@@ -269,6 +270,7 @@ $joinInputs.on('blur', function () {
             }
         });
     }
+
     $joinInputs.eq(i).css('border', '1px solid #05AE68');
     $('.join-password-p').show();
     $joinHelp.hide();
@@ -314,28 +316,24 @@ $checks.on('change', function () {
     }
 });
 
-/* 모든 회원가입 정보 맞게 입력했는지 검사 */
-/*$joinInputs.on('blur', function () {
-    if (joinCheckAll.filter((check) => check).length == $joinInputs.length) {
-        $('.join-btn').attr('disabled', false);
+function send() {
+    $joinInputs.trigger("blur");
+    console.log($checks.eq(0).prop('checked'));
+    if($checks.eq(0).prop('checked') == true || $checks.eq(1).prop('checked') == true){
+        $genderInput.css('border', '1px solid #05AE68');
+    }else{
+        $genderInput.css('border', '1px solid rgb(255, 64, 62)');
+    }
+    if (joinCheckAll.filter(check => check).length != $joinInputs.length || (($checks.eq(0).prop('checked') == false && $checks.eq(1).prop('checked') == false))) {
+        let modalMessage = "모든 정보를 정확히 입력하세요.";
+        showWarnModal(modalMessage);
         return;
     }
-    $('.join-btn').attr('disabled', true);
-});*/
+    $("input[name='memberPassword']").val(btoa($("input[name='memberPassword']").val()));
+    $(".check-password").val(btoa($(".check-password").val()));
 
- function send() {
-	$joinInputs.trigger("blur");
-	if (joinCheckAll.filter(check => check).length != $joinInputs.length) {
-		let modalMessage = "모든 정보를 정확히 입력하세요.";
-		showWarnModal(modalMessage);
-		return;
-	}
-
-	$("input[name='memberPassword']").val(btoa($("input[name='memberPassword']").val()));
-	$(".check-password").val(btoa($(".check-password").val()));
-
-	$("input[type=radio][name=memberGender]:checked").val();
-	document.join.submit();
+    $("input[type=radio][name=memberGender]:checked").val();
+    document.join.submit();
 
 }
 

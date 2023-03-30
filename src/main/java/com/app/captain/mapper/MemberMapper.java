@@ -11,17 +11,17 @@ public interface MemberMapper {
     /* 회원 찾기*/
     public MemberVO selectMember(Long memberId);
     /* 카카오 회원 찾기 */
-    public MemberVO selectKakaoMember(String memberEmail);
+    public MemberVO selectMemberByEmail(String memberEmail);
     /* 회원 가입 */
     public void insert(MemberVO memberVO);
     /* 아이디 중복 검사 */
-    public int checkId(String memberIdentification);
+    public Integer checkId(String memberIdentification);
     /* 휴대폰 중복 검사 */
-    public int checkPhone(String memberPhone);
+    public Integer checkPhone(String memberPhone);
     /* 닉네임 중복 검사 */
-    public int checkNickname(String memberNickname);
+    public Integer checkNickname(String memberNickname);
     /* 아이디 중복 검사 */
-    public int checkEmail(String memberEmail);
+    public Integer checkEmail(String memberEmail);
     /* 카카오 계정 검사 */
     public Integer checkStatus(String memberEmail);
     /* 아이디 찾기 */

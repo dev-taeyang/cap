@@ -17,29 +17,29 @@ public class MemberDAO {
     }
     /* 회원 찾기 */
     public MemberVO findMemberById(Long memberId) { return memberMapper.selectMember(memberId); }
-    /* 카카오 회원 찾기 */
-    public MemberVO findMemberByEmail(String memberEmail) { return memberMapper.selectKakaoMember(memberEmail); };
+    /* 이메일로 회원 찾기 */
+    public MemberVO findMemberByEmail(String memberEmail) { return memberMapper.selectMemberByEmail(memberEmail); };
     /* 회원 가입 */
     public void save(MemberVO memberVO) {
         memberMapper.insert(memberVO);
     }
     /* 아이디 중복 검사 */
-    public int checkId(String memberIdentification) {
+    public Integer checkId(String memberIdentification) {
         return memberMapper.checkId(memberIdentification);
     }
 
     /* 휴대폰 중복 검사 */
-    public int checkPhone(String memberPhone) {
+    public Integer checkPhone(String memberPhone) {
         return memberMapper.checkPhone(memberPhone);
     }
 
     /* 닉네임 중복 검사 */
-    public int checkNickname(String memberNickname) {
+    public Integer checkNickname(String memberNickname) {
         return memberMapper.checkNickname(memberNickname);
     }
 
     /* 이메일 중복 검사 */
-    public int checkEmail(String memberEmail) {
+    public Integer checkEmail(String memberEmail) {
         return memberMapper.checkEmail(memberEmail);
     }
 
