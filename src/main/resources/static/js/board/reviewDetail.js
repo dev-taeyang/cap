@@ -1,6 +1,8 @@
 
 /*===================================================================================*/
-/*화면 뿌리는 곳*/
+
+
+/*변수 선언*/
 const $files = review.files;
 const $header = $(".date");
 const $mainImg = $(".boardDetail-reviewSection");
@@ -9,6 +11,8 @@ const $images = $(".plusImages-wrapper");
 const $modify = $(".infoSection-actionWrapper");
 const $profile = $(".ProfileInfo-wrapper");
 let text = "";
+
+/*===================================================================================*/
 
 /*리뷰 윗부분 뿌리는 함수*/
 function showTop() {
@@ -23,6 +27,9 @@ function showTop() {
     $header.append(text);
     text = "";
 }
+
+        /*회원가입할때 프로필에 이미지를 저장해놨다면?*/
+if(memberVO.memberFileOriginalName != null){
 function showProfile() {
     text =
             `
@@ -51,6 +58,40 @@ function showProfile() {
             `
     $profile.append(text)
     text = "";
+}
+
+}
+        /*회원가입할때 프로필에 이미지를 저장안해놨다면?*/
+else {
+    function showProfile() {
+        text =
+            `
+            <!-- 작성자의 프로필 이미지 나오는 곳 -->
+              <div class="ProfileInfo-profileImage reviewSection-profile">
+                  <a href="">
+                      <div class="Image-wrapper">
+                      <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                      <img class="Image-style" src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
+                      </div>
+                  </a>
+              </div>
+              <!-- 작성자의 정보가 나오는 곳 -->
+              <div class="ProfileInfo-profileContent">
+                <div class="Profile-MemberNameWrapper">
+                    <a href="/mypage/mypage">
+                        <span class="Profile-Nickname">
+                        <!--member 닉네임 뿌리는 곳-->
+                            <span>${memberVO.memberName}</span>
+                        </span>
+                    </a>
+                </div>
+                 <!--멤버 성별 받는곳 -->
+                <span class="Profile-MemberStat">${memberVO.memberNickname}</span>
+              </div>
+            `
+        $profile.append(text)
+        text = "";
+    }
 }
 /*수정 삭제 뿌리는 함수*/
 function showModify() {
@@ -131,6 +172,7 @@ function images() {
     text = "";
 }
 
+/*===================================================================================*/
 
 /*화면 뿌리는 함수 사용 쪽*/
 showTop();
@@ -140,6 +182,7 @@ showMiddle();
 showInfo();
 images();
 
+/*===================================================================================*/
 
 /* 이미지 모달창 가져오기 */
 
@@ -150,9 +193,6 @@ const $modalImage = $(".image-in-modal");
 const $imageCount = $(".footer-count");
 const $leftButton = $(".left-button");
 const $rightButton = $(".right-button");
-
-
-console.log($Image);
 let currentIndex;
 
 
@@ -251,4 +291,4 @@ $deleteButton.on('click', function () {
     location.href = `/reviews/${review.reviewId}/remove`;
 });
 
-
+/*===================================================================================*/
