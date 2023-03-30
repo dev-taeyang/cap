@@ -270,7 +270,6 @@ $joinInputs.on('blur', function () {
         });
     }
     $joinInputs.eq(i).css('border', '1px solid #05AE68');
-    $genderInput.css('border', '1px solid #05AE68');
     $('.join-password-p').show();
     $joinHelp.hide();
 
