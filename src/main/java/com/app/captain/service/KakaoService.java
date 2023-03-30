@@ -106,26 +106,18 @@ public class KakaoService {
             JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
-            String MemberNickname = properties.getAsJsonObject().get("nickname").getAsString();
+            String memberNickname = properties.getAsJsonObject().get("nickname").getAsString();
             int id = element.getAsJsonObject().get("id").getAsInt();
             boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
             String memberEmail = "";
             if(hasEmail){
                 memberEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
             }
-            String memberGender = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("gender").getAsString();
-            memberGender = memberGender.contains("male") ? "남" : "여";
-            String memberBirth = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
 
 //            log.info("id : " + id);
 //            log.info("email : " + email);
-            log.info(memberGender);
-            kakaoInfo.setMemberIdentification(memberEmail.substring(0, memberEmail.indexOf("@")));
-            kakaoInfo.setMemberPassword("*******");
-            kakaoInfo.setMemberName(MemberNickname);
-            kakaoInfo.setMemberNickname(MemberNickname);
+            kakaoInfo.setMemberName(memberNickname);
             kakaoInfo.setMemberEmail(memberEmail);
-            kakaoInfo.setMemberGender(memberGender);
 
             br.close();
 
