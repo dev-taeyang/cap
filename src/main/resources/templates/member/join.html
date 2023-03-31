@@ -73,10 +73,15 @@
             </div>
             <div class="inputbox-wrap" th:if="${session.kakaoInfo != null}">
               <!-- 이름 -->
-              <input type="text" name="memberName" th:value="${session.kakaoInfo.memberName}" class="join-name" />
+              <input type="text" name="memberName" th:value="${session.kakaoInfo.memberName}" class="join-name" readonly/>
               <p class="help"></p>
             </div>
-            <div class="inputbox-wrap" th:if="${session.kakaoInfo == null}">
+            <div class="inputbox-wrap" th:if="${session.naverName != null}">
+              <!-- 이름 -->
+              <input type="text" name="memberName" th:value="${session.naverName}" class="join-name" readonly/>
+              <p class="help"></p>
+            </div>
+            <div class="inputbox-wrap" th:if="${session.kakaoInfo == null && session.naverName == null}">
               <!-- 이름 -->
               <input type="text" name="memberName" placeholder="이름" class="join-name" />
               <p class="help"></p>

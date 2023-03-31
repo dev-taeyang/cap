@@ -28,33 +28,46 @@ public class MemberController {
     /* 로그인 페이지 */
     @GetMapping("login")
     public String login(HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        String memberIdentification = null;
-        String memberPassword = null;
-        for(Cookie cookie : request.getCookies()){
-            if(cookie.getName().equals("memberIdentification")){
-                memberIdentification = cookie.getValue();
-            }
-            if(cookie.getName().equals("memberPassword")){
-                memberPassword = cookie.getValue();
+        String memberIdentification = null, memberPassword = null;
+        boolean check = false;
+
+        if(request.getHeader("Cookie") != null) {
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                if(cookie.getName().equals("memberIdentification")) {
+                    memberIdentification = cookie.getValue();
+                    check = true;
+                }else if(cookie.getName().equals("memberPassword")) {
+                    memberPassword = cookie.getValue();
+                    check = true;
+                }
             }
         }
 
-        if(memberIdentification != null){
-            redirectAttributes.addAttribute("memberIdentification", memberIdentification);
-            redirectAttributes.addAttribute("memberPassword", memberPassword);
-            return "redirect:/member/login";
+        if(check) {
+            request.setAttribute("memberIdentification", memberIdentification);
+            request.setAttribute("memberPassword", memberPassword);
+            return "redirect:/main";
         }
         return "/member/login";
     }
 
     /* 로그인 실행 */
     @PostMapping("login")
-    public String login(MemberVO member, RedirectAttributes redirectAttributes, HttpSession session) {
-        MemberVO memberVO = memberService.getMember(member);
-        if (memberVO != null && member.getMemberPassword().equals(memberVO.getMemberPassword())) {
-            session.setAttribute("member", memberVO);
-            session.setAttribute("memberId", memberVO.getMemberId());
-            return "/main/main";
+    public String login(String memberIdentification, String memberPassword, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
+        MemberVO member = memberService.getMember(memberIdentification, memberPassword);
+        HttpSession session = request.getSession();
+        boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
+        if (member.getMemberIdentification().equals(memberIdentification) && member.getMemberPassword().equals(memberPassword)) {
+            session.setAttribute("member", member);
+            session.setAttribute("memberId", member.getMemberId());
+            if(autoLogin) {
+                Cookie memberIdentificationCookie = new Cookie("memberIdentification", memberIdentification);
+                Cookie memberPasswordCookie = new Cookie("memberPassword", memberPassword);
+                response.addCookie(memberIdentificationCookie);
+                response.addCookie(memberPasswordCookie);
+            }
+            return "redirect:/main";
         }
         int result = 0;
         redirectAttributes.addFlashAttribute("result", result);
@@ -65,7 +78,7 @@ public class MemberController {
     @GetMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "/main/main";
+        return "redirect:main";
     }
 
     /* 회원가입 선택 페이지 */
@@ -282,11 +295,13 @@ public class MemberController {
     /* 네이버 로그인 실행 */
     @PostMapping("naver")
     @ResponseBody
-    public Integer naverLogin(MemberVO member, String memberEmail, HttpSession session) {
+    public Integer naverLogin(String memberName, String memberEmail, HttpSession session) {
         log.info(memberEmail);
-        member = memberService.getMemberByEmail(memberEmail);
+        log.info(memberName);
+        MemberVO member = memberService.getMemberByEmail(memberEmail);
         if (member == null) {
             session.setAttribute("naverEmail", memberEmail);
+            session.setAttribute("naverName", memberName);
             return 0;
         }
         if(memberService.checkStatus(memberEmail) != 2){
