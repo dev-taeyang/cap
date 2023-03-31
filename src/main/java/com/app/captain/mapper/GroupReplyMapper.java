@@ -13,4 +13,7 @@ public interface GroupReplyMapper {
 
     /* 멤버가 쓴 댓글 찾기 */
     public List<GroupReplyDTO> selectMemberReply(Long memberId);
+
+    /* 그룹 id로 탐험대에 작성된 댓글의 갯수 가져오기 */
+    public Long selectReplyCount(Long groupId);
 }

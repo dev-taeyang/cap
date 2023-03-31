@@ -1,5 +1,6 @@
 package com.app.captain.mapper;
 
+import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.vo.GroupVO;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,6 +14,8 @@ public interface GroupMapper {
     public List<GroupVO> selectMyRecruit(Long memberId);
 
     /* 멤버가 가입한 탐험대 가져오기 */
-    public List<GroupVO> selectParticipateRecruit(Long memberId);
+    public List<GroupDTO> selectParticipateRecruit(Long memberId);
+
+
 
 }

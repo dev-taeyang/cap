@@ -1,6 +1,7 @@
 package com.app.captain.domain.dao;
 
 
+import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.vo.GroupVO;
 import com.app.captain.mapper.GroupMapper;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class GroupDAO {
     }
 
     /* 멤버가 가입한 탐험대 가져오기 */
-    public List<GroupVO> findMyParticipateRecruit(Long memberId) {
+    public List<GroupDTO> findMyParticipateRecruit(Long memberId) {
         return groupMapper.selectParticipateRecruit(memberId);
     }
 }

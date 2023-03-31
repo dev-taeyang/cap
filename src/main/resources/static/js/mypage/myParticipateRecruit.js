@@ -29,14 +29,14 @@ function showMyParticipateList() {
                               <div class="Image-wrapper">
                                 <img
                                   class="Image-style"
-                                  src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
+                                  src="/mypage/display?fileName=${myparticipate.memberFilePath}/${myparticipate.memberFileUuid}_${myparticipate.memberFileOriginalName}"
                                 />
                               </div>
                             </div>
                             <!-- 글쓴이의 이름과 글쓴 시간 -->
                             <div class="MemberProfileText-wrapper">
-                              <p class="ProfileName">댕댕쓰</p>
-                              <div class="RegistTime">15분전</div>
+                              <p class="ProfileName">${myparticipate.memberNickname}</p>
+                              <div class="RegistTime">${myparticipate.groupRegisterDate}</div>
                             </div>
                           </div>
                         </div>
@@ -73,7 +73,7 @@ function showMyParticipateList() {
                               alt=""
                             />
                             <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>0</span>
+                            <span>${myparticipate.groupReplyCount}</span>
                           </a>
                         </div>
                     </div>
