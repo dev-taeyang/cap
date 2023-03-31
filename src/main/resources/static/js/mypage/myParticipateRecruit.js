@@ -27,57 +27,75 @@ function showMyParticipateList() {
                           <div class="MemberProfile-wrapper">
                             <div class="MemberProfileImg-wrapper">
                               <div class="Image-wrapper">
+                    `
+
+                    if(myparticipate.memberFilePath == null) {
+                        text += `
+                                
                                 <img
+                                      class="Image-style"
+                                      src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png"
+                                />
+                        `
+                    } else {
+                        text += `
+                             <img
                                   class="Image-style"
                                   src="/mypage/display?fileName=${myparticipate.memberFilePath}/${myparticipate.memberFileUuid}_${myparticipate.memberFileOriginalName}"
-                                />
+                             />
+                        
+                        `
+                    }
+                    text +=
+
+                        `          
+                                  </div>
+                                </div>
+                                <!-- 글쓴이의 이름과 글쓴 시간 -->
+                                <div class="MemberProfileText-wrapper">
+                                  <p class="ProfileName">${myparticipate.memberNickname}</p>
+                                  <div class="RegistTime">${myparticipate.groupRegisterDate}</div>
+                                </div>
                               </div>
                             </div>
-                            <!-- 글쓴이의 이름과 글쓴 시간 -->
-                            <div class="MemberProfileText-wrapper">
-                              <p class="ProfileName">${myparticipate.memberNickname}</p>
-                              <div class="RegistTime">${myparticipate.groupRegisterDate}</div>
+                            <!-- 원정대 소개 이미지 -->
+                            <div class="boardImg-wrapper">
+                              <a href="">
+                                <div class="boardSlideImg-wrapper">
+                                  <div class="introduceImage-wrapper">
+                                    <!-- 이미지가 들어갈 곳 -->
+                                    <img
+                                      src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
+                                      alt=""
+                                    />
+                                  </div>
+                                </div>
+                              </a>
                             </div>
-                          </div>
-                        </div>
-                        <!-- 원정대 소개 이미지 -->
-                        <div class="boardImg-wrapper">
-                          <a href="">
-                            <div class="boardSlideImg-wrapper">
-                              <div class="introduceImage-wrapper">
-                                <!-- 이미지가 들어갈 곳 -->
+                            <!-- 카테고리가 나타날 곳 -->
+                            <div class="boardCategory-wrapper">
+                              <!-- 작성자가 작성한 카테고리 나오기 -->
+                              <span>${myparticipate.groupCategory}</span>
+                            </div>
+                            <!-- 작성자가 작성한 글이 들어갈 곳 -->
+                            <div class="description-wrapper description-detail">
+                              <span class="TextLine-Description"
+                                >${myparticipate.groupContent}</span
+                              ><button class="Description-ExpandButton">더보기</button>
+                            </div>
+                            <!-- 댓글로 이동할 수 있는 곳 -->
+                            <div class="actionGroup-wrapper">
+                              <a class="actionGroup-reply" href="">
                                 <img
-                                  src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
+                                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
                                   alt=""
                                 />
-                              </div>
+                                <!-- 댓글의 갯수가 들어오는 곳 -->
+                                <span>${myparticipate.groupReplyCount}</span>
+                              </a>
                             </div>
-                          </a>
                         </div>
-                        <!-- 카테고리가 나타날 곳 -->
-                        <div class="boardCategory-wrapper">
-                          <!-- 작성자가 작성한 카테고리 나오기 -->
-                          <span>${myparticipate.groupCategory}</span>
-                        </div>
-                        <!-- 작성자가 작성한 글이 들어갈 곳 -->
-                        <div class="description-wrapper description-detail">
-                          <span class="TextLine-Description"
-                            >${myparticipate.groupContent}</span
-                          ><button class="Description-ExpandButton">더보기</button>
-                        </div>
-                        <!-- 댓글로 이동할 수 있는 곳 -->
-                        <div class="actionGroup-wrapper">
-                          <a class="actionGroup-reply" href="">
-                            <img
-                              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                              alt=""
-                            />
-                            <!-- 댓글의 갯수가 들어오는 곳 -->
-                            <span>${myparticipate.groupReplyCount}</span>
-                          </a>
-                        </div>
-                    </div>
-            `
+                        `
             })
         $MyParticipateList.append(text)
     }

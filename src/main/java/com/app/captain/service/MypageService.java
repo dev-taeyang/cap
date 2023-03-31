@@ -40,7 +40,7 @@ public class MypageService {
     public List<GroupReplyDTO> getMemberReply(Long memberId) { return groupReplyDAO.findMemberReply(memberId); }
 
     /* 멤버가 개설한 탐험대 가져오기 */
-    public List<GroupVO> getMyRecruit(Long memberId) { return groupDAO.findMyRecruit(memberId); }
+    public List<GroupDTO> getMyRecruit(Long memberId) { return groupDAO.findMyRecruit(memberId); }
 
     /* 멤버가 가입한 탐험대 가져오기 */
     public List<GroupDTO> getMyParticipateRecruit(Long memberId) { return groupDAO.findMyParticipateRecruit(memberId); }
