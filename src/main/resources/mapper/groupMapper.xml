@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.GroupMapper">
+
     <!-- 멤버가 개설한 탐험대 찾아보기 -->
     <select id="selectMyRecruit" resultType="groupVO">
         select g.group_id, group_name, group_max_value, group_category, group_title, group_content,
@@ -11,14 +12,17 @@
         where m.member_id = #{memberId}
     </select>
 
-    <!-- 멤버가 가입한 탐험대 찾아보기 -->
-    <select id="selectParticipateRecruit" resultType="groupVO">
-        select g.group_id, group_name, group_max_value, group_category,
-                group_title, group_content, group_location, group_register_date, group_end_date,
-                group_meet_date, group_file_original_name, group_file_uuid, group_file_path,
-                group_file_size, group_file_type, group_captain
-        from tbl_member m join tbl_member_group mg on m.member_id = mg.member_id
-        join tbl_group g on g.group_id = mg.group_id
-        where m.member_id = #{memberId}
+    <!-- 멤버가 가입한 탐험대의 게시자와 탐험대의 정보 가져오기 -->
+    <select id="selectParticipateRecruit" resultType="groupDTO">
+        select m.member_id, member_identification, member_password, member_email, member_name,
+            member_nickname, member_phone, member_birth, member_gender, member_status,
+            member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+            member_file_size, member_file_type, g.group_id, group_name, group_max_value,
+            group_category, group_title, group_content, group_location, group_register_date,
+            group_end_date,	group_meet_date, group_file_original_name, group_file_uuid,
+            group_file_path, group_file_size, group_file_type, group_captain
+        from tbl_member m join tbl_group g on m.member_id = g.group_captain
+        where g.group_id in (select group_id from tbl_member_group where member_id = #{memberId})
     </select>
+
 </mapper>

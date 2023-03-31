@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class GroupReplyDTO {
+public class GroupDTO {
 
     private Long memberId;
     private String memberIdentification;
@@ -39,9 +39,6 @@ public class GroupReplyDTO {
     private String groupFileSize;
     private String groupFileType;
     private Long groupCaptain;
-    private Long groupReplyId;
-    private String groupReplyContent;
-    private String groupReplyRegisterDate;
-    private String groupReplyUpdateDate;
+    private Long groupReplyCount;
 
 }

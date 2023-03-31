@@ -55,7 +55,8 @@ file.addEventListener('change', function (e) {
     if (result.includes('image')) {
       img.src = `${result}`;
     } else {
-      img.attr('src', "https://t1.kakaocdn.net/together_image/common/avatar/avatar.png");
+      console.log("사진 맞음?")
+      img.src = "https://t1.kakaocdn.net/together_image/common/avatar/avatar.png" ;
     }
   };
 });

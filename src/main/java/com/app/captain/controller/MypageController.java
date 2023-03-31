@@ -1,5 +1,6 @@
 package com.app.captain.controller;
 
+import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.dto.ReviewFileDTO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.domain.vo.ReviewVO;
@@ -35,28 +36,7 @@ import java.util.logging.Logger;
 @RequestMapping("/mypage/*")
 public class MypageController {
     private final MypageService mypageService;
-
-//    테스트로 컨트롤러 태워보기
-//    내 정보들 가져오기
-
-/*    @GetMapping("me/{memberId}")
-    public String getMember(Model model, @PathVariable("memberId") Long memberId) {
-        Long replyCount = mypageService.getReplyCount(memberId);
-        MypageDTO mypageDTO = mypageService.getMember(memberId);
-        model.addAttribute("mypageDTO", mypageDTO);
-        model.addAttribute("replyCount", replyCount);
-
-        return "/mypage/mypage";
-    }*/
-
-//    @GetMapping("mypage")
-//    public void getMember(Model model, HttpSession session) {
-//        Long replyCount = mypageService.getReplyCount((Long)session.getAttribute("memberId"));
-//        model.addAttribute("mypageDTO", mypageService.getMember((Long)session.getAttribute("memberId")));
-//        model.addAttribute("replyCount", replyCount);
-////        log.info(sessionId);
-//        log.info("들어옴");
-//    }
+    private final GroupReplyService groupReplyService;
 
     @GetMapping("me")
     public String getMember(Model model, HttpSession session) {
@@ -177,7 +157,6 @@ public class MypageController {
     public String myReply(Model model, HttpSession session) {
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
 
-        model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
         model.addAttribute("memberReplys", mypageService.getMemberReply(memberVO.getMemberId()));
         model.addAttribute("replyCount", mypageService.getReplyCount(memberVO.getMemberId()));
 
@@ -201,9 +180,12 @@ public class MypageController {
     @GetMapping("partInRecruit")
     public String myPartInRecruit(Model model, HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
+        List<GroupDTO> groupDTOs = mypageService.getMyParticipateRecruit(memberId);
+        /* 리스트로 선언된 groupDTO에 있는 내용들 중 각자에 있는 댓글 갯수를 댓글 갯수 세는 쿼리에서 가져와서 담아줌 */
+        groupDTOs.forEach(groupDTO -> { groupDTO.setGroupReplyCount(groupReplyService.getReplyCount(groupDTO.getGroupId())); });
 
-        model.addAttribute("members", mypageService.getMemberById(memberId));
-        model.addAttribute("myParticipateRecruits", mypageService.getMyParticipateRecruit(memberId));
+        /* 바뀐 DTO를 모델에 담아줌 */
+        model.addAttribute("myParticipateRecruits", groupDTOs);
 
         return "mypage/mypageParticipateRecruitList";
     }
