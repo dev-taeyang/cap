@@ -26,12 +26,14 @@ public class MemberController {
     private final KakaoService kakaoService;
 
     /* 로그인 페이지 */
-    @GetMapping("login")
-    public String login(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    @GetMapping("/login")
+    public String login(HttpServletRequest request) {
         String memberIdentification = null, memberPassword = null;
+        HttpSession session = request.getSession();
         boolean check = false;
 
         if(request.getHeader("Cookie") != null) {
+            log.info("들어옴");
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
                 if(cookie.getName().equals("memberIdentification")) {
@@ -47,6 +49,9 @@ public class MemberController {
         if(check) {
             request.setAttribute("memberIdentification", memberIdentification);
             request.setAttribute("memberPassword", memberPassword);
+            session.setAttribute("member", memberService.getMember(memberIdentification, memberPassword));
+            session.setAttribute("memberId", memberService.getMemberId(memberIdentification, memberPassword));
+            log.info(String.valueOf(check));
             return "redirect:/main";
         }
         return "/member/login";
@@ -54,31 +59,50 @@ public class MemberController {
 
     /* 로그인 실행 */
     @PostMapping("login")
-    public String login(String memberIdentification, String memberPassword, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
-        MemberVO member = memberService.getMember(memberIdentification, memberPassword);
+    public String login(RedirectAttributes redirectAttributes, HttpServletRequest request, HttpServletResponse response) {
+        String memberIdentification = request.getParameter("memberIdentification");
+        String memberPassword = request.getParameter("memberPassword");
+        Long memberId = memberService.getMemberId(memberIdentification, memberPassword);
         HttpSession session = request.getSession();
         boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
-        if (member.getMemberIdentification().equals(memberIdentification) && member.getMemberPassword().equals(memberPassword)) {
-            session.setAttribute("member", member);
-            session.setAttribute("memberId", member.getMemberId());
-            if(autoLogin) {
+        log.info(String.valueOf(autoLogin));
+        if (memberId == null) {
+            memberIdentification = String.valueOf(request.getAttribute("memberIdentification"));
+            memberPassword = String.valueOf(request.getAttribute("memberPassword"));
+            memberId = memberService.getMemberId(memberIdentification, memberPassword);
+        }
+        if (memberId != null) {
+            if (autoLogin) {
                 Cookie memberIdentificationCookie = new Cookie("memberIdentification", memberIdentification);
                 Cookie memberPasswordCookie = new Cookie("memberPassword", memberPassword);
+                memberIdentificationCookie.setMaxAge(60*60*24);
+                memberPasswordCookie.setMaxAge(60*60*24);
                 response.addCookie(memberIdentificationCookie);
                 response.addCookie(memberPasswordCookie);
             }
+            session.setAttribute("memberId", memberId);
+            session.setAttribute("member", memberService.getMember(memberIdentification, memberPassword));
+            log.info(String.valueOf(autoLogin));
             return "redirect:/main";
         }
         int result = 0;
         redirectAttributes.addFlashAttribute("result", result);
-        return "/member/login";
+        return "redirect:/member/login";
     }
 
     /* 로그아웃 실행 */
     @GetMapping("logout")
-    public String logout(HttpSession session) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:main";
+        if(request.getHeader("Cookie") != null) {
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0); //초단위
+                response.addCookie(cookie);
+            }
+        }
+        return "redirect:/main";
     }
 
     /* 회원가입 선택 페이지 */

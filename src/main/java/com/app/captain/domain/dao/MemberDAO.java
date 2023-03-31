@@ -15,6 +15,9 @@ public class MemberDAO {
     public MemberVO findById(String memberIdentification, String memberPassword) {
         return memberMapper.select(memberIdentification, memberPassword);
     }
+    public Long findMemberId(String memberIdentification, String memberPassword){
+        return memberMapper.selectMemberId(memberIdentification, memberPassword);
+    }
     /* 회원 찾기 */
     public MemberVO findMemberById(Long memberId) { return memberMapper.selectMember(memberId); }
     /* 이메일로 회원 찾기 */

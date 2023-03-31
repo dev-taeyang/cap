@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberMapper {
     /* 로그인 */
     public MemberVO select(String memberIdentification, String memberPassword);
+    public Long selectMemberId(String memberIdentification, String memberPassword);
     /* 회원 찾기*/
     public MemberVO selectMember(Long memberId);
     /* 카카오 회원 찾기 */
