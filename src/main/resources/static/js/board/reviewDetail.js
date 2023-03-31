@@ -113,22 +113,39 @@ function showModify() {
 }
 
 /*리뷰 메인 사진 뿌리는 함수*/
-function showMiddle() {
-    text = `
-            <div class="presentationImage-wrapper">
-                <div class="presentationImage-content">
-                    <div class="introduceImage-wrapper" >
-                    <!-- 메인 이미지가 들어갈 곳 -->
-                        <img style="height: 500px; "
-                        src="/reviews/display?fileName=${$files[0].reviewFilePath}/${$files[0].reviewFileUuid}_${$files[0].reviewFileOriginalName}">
+if($files[0].reviewFileType == 1){
+    function showMiddle() {
+        text = `
+                <div class="presentationImage-wrapper">
+                    <div class="presentationImage-content">
+                        <div class="introduceImage-wrapper" >
+                        <!-- 메인 이미지가 들어갈 곳 -->
+                            <img style="height: 500px; "
+                            src="/reviews/display?fileName=${$files[0].reviewFilePath}/${$files[0].reviewFileUuid}_${$files[0].reviewFileOriginalName}">
+                        </div>
                     </div>
                 </div>
-            </div>
-    `
-    $mainImg.append(text);
-    text="";
+        `
+        $mainImg.append(text);
+        text="";
+    }
+}else {
+    function showMiddle() {
+        text = `
+                <div class="presentationImage-wrapper">
+                    <div class="presentationImage-content">
+                        <div class="introduceImage-wrapper" >
+                        <!-- 메인 이미지가 들어갈 곳 -->
+                            <img style="height: 500px; "
+                            src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
+                        </div>
+                    </div>
+                </div>
+        `
+        $mainImg.append(text);
+        text="";
+    }
 }
-
 /*리뷰 기본 정보 뿌리는 함수*/
 function showInfo() {
     text = `
@@ -157,19 +174,36 @@ function showInfo() {
     text = "";
 }
 /*리뷰 사진들 뿌리는 곳*/
-function images() {
-    $files.forEach((file,i) => {
-        text +=
-            `
-            <div class="Images-wrapper">
-                <img class="plusImages"
-                    src="/reviews/display?fileName=${$files[i].reviewFilePath}/${$files[i].reviewFileUuid}_${$files[i].reviewFileOriginalName}"
-                    alt="test">
-            </div>
-            `
-    })
-    $images.append(text);
-    text = "";
+if($files[0].reviewFileType == 1){
+    function images() {
+        $files.forEach((file,i) => {
+            text +=
+                `
+                <div class="Images-wrapper">
+                    <img class="plusImages"
+                        src="/reviews/display?fileName=${$files[i].reviewFilePath}/${$files[i].reviewFileUuid}_${$files[i].reviewFileOriginalName}"
+                        alt="test">
+                </div>
+                `
+        })
+        $images.append(text);
+        text = "";
+    }
+}else {
+    function images() {
+        $files.forEach((file,i) => {
+            text +=
+                `
+                <div class="Images-wrapper">
+                    <img class="plusImages"
+                        src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png"
+                        alt="test">
+                </div>
+                `
+        })
+        $images.append(text);
+        text = "";
+    }
 }
 
 /*===================================================================================*/

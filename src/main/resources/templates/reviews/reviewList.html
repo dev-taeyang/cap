@@ -65,7 +65,8 @@
             </div>
         </div>
     </div>
-    <div class="FloatingButton-wrapper">
+    <!-- 타임리프로 session에 담긴 memberId가 있을때만 작성하도록 함-->
+    <div class="FloatingButton-wrapper" th:inline="text" th:style="${memberId == null ? 'display:none;' : ''}">
         <div class="FloatingButton-layoutWrapper">
           <a href="/reviews/write">
             <button class="plusLink-icon">

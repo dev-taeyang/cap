@@ -1,6 +1,5 @@
 package com.app.captain.controller;
 
-import com.app.captain.domain.dto.ReviewDTO;
 import com.app.captain.domain.dto.ReviewFileDTO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.domain.vo.ReviewFileVO;
@@ -12,18 +11,9 @@ import com.app.captain.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.HttpSessionRequiredException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,7 +23,6 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -115,15 +104,15 @@ public class ReviewController {
     //    리뷰 상세보기
     @GetMapping("detail/{reviewId}")
     public String getReview(@PathVariable("reviewId") Long reviewId, Model model, HttpSession session) {
-        /* 세션에 담겨있는 memberId를 가져와서 변수에 담아줌*/
+        /* 세션에 담겨있는 memberId를 가져와서 변수에 담아줌 */
         Long sessionId = (Long)session.getAttribute("memberId");
-        /* reviewId로 조회해온 review 정보를 reviewFIleDTO로 DTO타입으로 바꿔줌*/
+        /* reviewId로 조회해온 review 정보를 reviewFIleDTO로 DTO타입으로 바꿔줌 */
         ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId).toDTO();
-        /* detail페이지에 담길 memberId와 session의 memberId와 비교하기 위해 추가로 addAttribute해줌*/
+        /* detail페이지에 담길 memberId와 session의 memberId와 비교하기 위해 추가로 addAttribute해줌 */
         Long memberId = reviewFileDTO.getMemberId();
-        /* 파일도 뿌려주기 위해*/
+        /* 파일도 뿌려주기 위해 */
         reviewFileDTO.setFiles(reviewFileService.getList(reviewId));
-        /* 작성자의 정보를 뿌리기위해 memberVO정보를 가져옴*/
+        /* 작성자의 정보를 뿌리기위해 memberVO정보를 가져옴 */
         MemberVO memberVO = mypageService.getMemberById(memberId);
         model.addAttribute("memberVO",memberVO);
         model.addAttribute("review", reviewFileDTO);
@@ -139,11 +128,15 @@ public class ReviewController {
         Long memberId = (Long)session.getAttribute("memberId");
         /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/
         List<ReviewFileDTO> reviewFileDTOS = new ArrayList<>();
+        /* 유저 정보들을 담기위해 MemberVO타입의 ArrayList 선언*/
+        List<MemberVO> memberVOS = new ArrayList<>();
         /*리뷰 전체 리스트들을 담음*/
         List<ReviewVO> reviewVOS = reviewService.getList();
         /*forEach를 사용하여 ArrayList에 있는 reviewVO를 toDTO메소드를 사용하여 DTO로 변환 해준다음 DTO에 담아줌*/
         reviewVOS.forEach(reviewVO -> {
+            Long member = reviewVO.getMemberId();
             reviewFileDTOS.add(reviewVO.toDTO());
+            memberVOS.add(mypageService.getMemberById(member));
         });
         /*reviewFileDTO 들에 각각 reviewId로 조회해온 file들을 담아줌 */
         reviewFileDTOS.forEach(reviewFileDTO -> {
