@@ -12,12 +12,12 @@
     naver_id_login.get_naver_userprofile("naverSignInCallback()");
     // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
     function naverSignInCallback() {
-        naver_id_login.getProfileData('name');
+        let naverName = naver_id_login.getProfileData('name');
         let naverEmail = naver_id_login.getProfileData('email');
         $.ajax({
             type: "POST",
             url: "/member/naver",
-            data: { memberEmail: naverEmail },
+            data: { memberEmail: naverEmail, memberName: naverName },
             success: function(result) {
                 if(result == 0){
                     window.location.href = "/member/no-info";

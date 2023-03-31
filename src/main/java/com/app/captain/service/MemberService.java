@@ -22,8 +22,8 @@ public class MemberService {
     private final MemberDAO memberDAO;
 
     /* 로그인 */
-    public MemberVO getMember(MemberVO memberVO) {
-        return memberDAO.findById(memberVO);
+    public MemberVO getMember(String memberIdentification, String memberPassword) {
+        return memberDAO.findById(memberIdentification, memberPassword);
     }
 
     /* 회원 가입 */

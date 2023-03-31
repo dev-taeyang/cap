@@ -12,8 +12,8 @@ public class MemberDAO {
     private final MemberMapper memberMapper;
 
     /* 로그인 */
-    public MemberVO findById(MemberVO memberVO) {
-        return memberMapper.select(memberVO);
+    public MemberVO findById(String memberIdentification, String memberPassword) {
+        return memberMapper.select(memberIdentification, memberPassword);
     }
     /* 회원 찾기 */
     public MemberVO findMemberById(Long memberId) { return memberMapper.selectMember(memberId); }
