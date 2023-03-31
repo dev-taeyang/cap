@@ -28,7 +28,7 @@ $("input[name='file']").on("change", function () {
                                              </div>
                                           `);
                 } else {
-                    $("#thumbnail").append(`<div class="thumbnail"><span class="thumbnailSpan"><img src="/images/camera_icon.png" width="100"></span></div>`);
+                    $("#thumbnail").append(`<div class="thumbnail"><span class="thumbnailSpan"><img src="/images/no-image.png" width="100"></span></div>`);
                 }
             });
             /********************************************************************/
@@ -48,7 +48,7 @@ $("input[name='file']").on("change", function () {
                     `
                 i++;
             });
-            $("form[name='review']").append(text);
+            $(".thumbnail").append(text);
             $files.forEach((file) => {
                 files.push(file);
             })
@@ -72,14 +72,5 @@ function toStringByFormatting(source, delimiter = '/') {
     return [year, month, day].join(delimiter);
 }
 
-/* 썸네일 눌렀을때 삭제*/
-$(document).on("click", ".thumbnail", function () {
-    $(this).remove();
-    let i = $(this).index();
-    $("input[name='files[${i}].reviewFileOriginalName']").remove();
-    $("input[name='files[${i}].reviewFileUuid']").remove();
-    $("input[name='files[${i}].reviewFilePath']").remove();
-    $("input[name='files[${i}].reviewFileSize']").remove();
-    $("input[name='files[${i}].reviewFileType']").remove();
-    console.log("앙 눌러띠");
-});
+
+
