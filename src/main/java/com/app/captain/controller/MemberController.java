@@ -27,7 +27,24 @@ public class MemberController {
 
     /* 로그인 페이지 */
     @GetMapping("login")
-    public void login() {
+    public String login(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        String memberIdentification = null;
+        String memberPassword = null;
+        for(Cookie cookie : request.getCookies()){
+            if(cookie.getName().equals("memberIdentification")){
+                memberIdentification = cookie.getValue();
+            }
+            if(cookie.getName().equals("memberPassword")){
+                memberPassword = cookie.getValue();
+            }
+        }
+
+        if(memberIdentification != null){
+            redirectAttributes.addAttribute("memberIdentification", memberIdentification);
+            redirectAttributes.addAttribute("memberPassword", memberPassword);
+            return "redirect:/member/login";
+        }
+        return "/member/login";
     }
 
     /* 로그인 실행 */
@@ -37,18 +54,18 @@ public class MemberController {
         if (memberVO != null && member.getMemberPassword().equals(memberVO.getMemberPassword())) {
             session.setAttribute("member", memberVO);
             session.setAttribute("memberId", memberVO.getMemberId());
-            return "redirect:/main";
+            return "/main/main";
         }
-        Integer result = 0;
+        int result = 0;
         redirectAttributes.addFlashAttribute("result", result);
-        return "redirect:/login";
+        return "/member/login";
     }
 
     /* 로그아웃 실행 */
     @GetMapping("logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/main";
+        return "/main/main";
     }
 
     /* 회원가입 선택 페이지 */
@@ -62,7 +79,7 @@ public class MemberController {
     public String join(HttpSession session) {
         MemberVO kakaoMember = (MemberVO) session.getAttribute("kakaoInfo");
         session.setAttribute("kakaoInfo", kakaoMember);
-        return "redirect:/join";
+        return "/member/join";
     }
 
     /* 회원가입 실행 */
@@ -223,7 +240,7 @@ public class MemberController {
         log.info(memberEmail);
         log.info(memberPassword);
         memberService.changePassword(memberEmail, memberPassword);
-        return "redirect:/login";
+        return "/login";
     }
 
     /* 카카오 로그인 페이지*/
@@ -239,8 +256,10 @@ public class MemberController {
             return "redirect:already-info";
         }
         member = memberService.getMemberByEmail(kakaoInfo.getMemberEmail());
+        Long memberId = member.getMemberId();
         member.setMemberStatus(1);
         session.setAttribute("member", member);
+        session.setAttribute("memberId", memberId);
         log.info(member.toString());
         return "redirect:/main";
     }
@@ -273,7 +292,9 @@ public class MemberController {
         if(memberService.checkStatus(memberEmail) != 2){
             return 1;
         }
+        Long memberId = member.getMemberId();
         session.setAttribute("member", member);
+        session.setAttribute("memberId", memberId);
         return 2;
     }
 

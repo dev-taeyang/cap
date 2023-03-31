@@ -7,6 +7,7 @@
     <title>아이디 찾기</title>
     <link rel="stylesheet" href="/css/main/common.css" />
     <link rel="stylesheet" href="/css/member/findId.css" />
+    <link rel="stylesheet" href="/css/mypage/modal.css"/>
     <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/footer.css">
     <link
@@ -27,6 +28,11 @@
   <body>
   <div th:insert="~{/main/header :: header}"></div>
     <section class="find-id-container">
+      <div class="modal">
+        <div class="warn-modal">
+          <div class="modal-content"></div>
+        </div>
+      </div>
       <!-- 전체 DIV -->
       <div class="id-change-wrap">
         <br />
