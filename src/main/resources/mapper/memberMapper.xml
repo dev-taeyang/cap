@@ -7,6 +7,12 @@
         where member_identification = #{memberIdentification} and member_password = #{memberPassword}
     </select>
 
+    <select id="selectMemberId" resultType="long">
+        select member_id
+        from tbl_member
+        where member_identification = #{memberIdentification} and member_password = #{memberPassword}
+    </select>
+
     <!-- 회원 검색하기 -->
     <select id="selectMember" resultType="memberVO">
         select member_id, member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender, member_status, member_file_original_name, member_file_uuid, member_file_path, member_file_size, member_file_type

@@ -21,11 +21,13 @@ import java.util.Random;
 public class MemberService {
     private final MemberDAO memberDAO;
 
-    /* 로그인 */
+    /* 멤버 정보 가져오기 */
     public MemberVO getMember(String memberIdentification, String memberPassword) {
         return memberDAO.findById(memberIdentification, memberPassword);
     }
-
+    public Long getMemberId(String memberIdentification, String memberPassword){
+        return memberDAO.findMemberId(memberIdentification, memberPassword);
+    }
     /* 회원 가입 */
     public void setMember(MemberVO memberVO) {
         memberDAO.save(memberVO);
