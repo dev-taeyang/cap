@@ -3,11 +3,14 @@
 <mapper namespace="com.app.captain.mapper.GroupMapper">
 
     <!-- 멤버가 개설한 탐험대 찾아보기 -->
-    <select id="selectMyRecruit" resultType="groupVO">
-        select g.group_id, group_name, group_max_value, group_category, group_title, group_content,
-                group_location, group_register_date, group_end_date, group_meet_date,
-                group_file_original_name, group_file_uuid, group_file_path, group_file_size,
-                group_file_type, group_captain
+    <select id="selectMyRecruit" resultType="groupDTO">
+        select m.member_id, member_identification, member_password, member_email, member_name,
+            member_nickname, member_phone, member_birth, member_gender, member_status,
+            member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+            member_file_size, member_file_type, g.group_id, group_name, group_max_value,
+            group_category, group_title, group_content, group_location, group_register_date,
+            group_end_date,	group_meet_date, group_file_original_name, group_file_uuid,
+            group_file_path, group_file_size, group_file_type, group_captain
         from tbl_member m join tbl_group g on g.group_captain = m.member_id
         where m.member_id = #{memberId}
     </select>

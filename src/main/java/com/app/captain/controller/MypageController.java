@@ -167,10 +167,12 @@ public class MypageController {
 //    내가 개설한 탐험대 정보
     @GetMapping("myRecruit")
     public String myRecruit(Model model, HttpSession session) {
-        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+        Long memberId = (Long) session.getAttribute("memberId");
+        List<GroupDTO> myrecruits = mypageService.getMyRecruit(memberId);
+        /* 리스트로 선언된 DTO에서 각자에 있는 groupId를 이용해 각 게시글에 있는 댓글의 갯수를 replyCount에 담아주기 */
+        myrecruits.forEach(myrecruit -> { myrecruit.setGroupReplyCount(groupReplyService.getReplyCount(myrecruit.getGroupId())); });
 
-        model.addAttribute("members", mypageService.getMemberById(memberVO.getMemberId()));
-        model.addAttribute("myRecruits", mypageService.getMyRecruit(memberVO.getMemberId()));
+        model.addAttribute("myRecruits", myrecruits);
 
         return "mypage/mypageMyRecruitList";
     }

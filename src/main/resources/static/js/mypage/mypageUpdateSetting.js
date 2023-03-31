@@ -49,7 +49,7 @@ function showFormProfile() {
                 />
               </div>
                       <!-- 숨겨 놓은 파일 선택 버튼 -->
-              <input name="memberFile" accept="image/*" type="file" class="profile-upload-button" />
+              <input name="memberFile" accept="image/*" type="file"  class="profile-upload-button" />
           </label>
           `
         $formChangeProfile.append(text)
