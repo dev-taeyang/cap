@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.NoticeMapper">
+    <select id="select" resultType="noticeVO">
+        select notice_id, notice_title, notice_content, notice_register_date
+        from tbl_notice
+        where notice_id = #{noticeId}
+    </select>
 
+    <select id="selectAll" resultType="noticeVO">
+        select notice_id, notice_title, notice_content, notice_register_date
+        from tbl_notice
+    </select>
+
+    <select id="selectNoticeCount" resultType="integer">
+        select count(notice_id)
+        from tbl_notice
+    </select>
 </mapper>
