@@ -198,9 +198,9 @@ public class MypageController {
 
 //    내가 개설한 탐험대 정보
     @GetMapping("myRecruit")
-    public String myRecruit(Model model, HttpSession session) {
+    public String myRecruit(Criteria criteria, Model model, HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
-        List<GroupDTO> myrecruits = mypageService.getMyRecruit(memberId);
+        List<GroupDTO> myrecruits = mypageService.getMyRecruit(memberId, criteria);
         /* 리스트로 선언된 DTO에서 각자에 있는 groupId를 이용해 각 게시글에 있는 댓글의 갯수를 replyCount에 담아주기 */
         myrecruits.forEach(myrecruit -> { myrecruit.setGroupReplyCount(groupReplyService.getReplyCount(myrecruit.getGroupId())); });
 
@@ -212,9 +212,9 @@ public class MypageController {
 
 //    내가 참가한 탐험대 정보
     @GetMapping("partInRecruit")
-    public String myPartInRecruit(Model model, HttpSession session) {
+    public String myPartInRecruit(Criteria criteria, Model model, HttpSession session) {
         Long memberId = (Long) session.getAttribute("memberId");
-        List<GroupDTO> groupDTOs = mypageService.getMyParticipateRecruit(memberId);
+        List<GroupDTO> groupDTOs = mypageService.getMyParticipateRecruit(memberId, criteria);
         /* 리스트로 선언된 groupDTO에 있는 내용들 중 각자에 있는 댓글 갯수를 댓글 갯수 세는 쿼리에서 가져와서 담아줌 */
         groupDTOs.forEach(groupDTO -> { groupDTO.setGroupReplyCount(groupReplyService.getReplyCount(groupDTO.getGroupId())); });
 

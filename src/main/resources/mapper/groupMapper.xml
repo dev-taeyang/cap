@@ -13,6 +13,14 @@
             group_file_path, group_file_size, group_file_type, group_captain
         from tbl_member m join tbl_group g on g.group_captain = m.member_id
         where m.member_id = #{memberId}
+        limit #{cri.offset}, #{cri.rowCount}
+    </select>
+
+    <!-- 멤버가 개설한 탐험대 갯수 가져오기 -->
+    <select id="selectCountMyRecruit" resultType="_int">
+        select count(group_id)
+        from tbl_member m join tbl_group g on g.group_captain = m.member_id
+        where m.member_id = #{memberId}
     </select>
 
     <!-- 멤버가 가입한 탐험대의 게시자와 탐험대의 정보 가져오기 -->
@@ -24,6 +32,14 @@
             group_category, group_title, group_content, group_location, group_register_date,
             group_end_date,	group_meet_date, group_file_original_name, group_file_uuid,
             group_file_path, group_file_size, group_file_type, group_captain
+        from tbl_member m join tbl_group g on m.member_id = g.group_captain
+        where g.group_id in (select group_id from tbl_member_group where member_id = #{memberId})
+        limit #{cri.offset}, #{cri.rowCount}
+    </select>
+
+    <!-- 멤버가 참가한 탐험대의 갯수 가져오기 -->
+    <select id="selectCountMyParticipate" resultType="_int">
+        select count(group_id)
         from tbl_member m join tbl_group g on m.member_id = g.group_captain
         where g.group_id in (select group_id from tbl_member_group where member_id = #{memberId})
     </select>

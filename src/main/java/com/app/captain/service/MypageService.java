@@ -52,10 +52,24 @@ public class MypageService {
     }
 
     /* 멤버가 개설한 탐험대 가져오기 */
-    public List<GroupDTO> getMyRecruit(Long memberId) { return groupDAO.findMyRecruit(memberId); }
+    public List<GroupDTO> getMyRecruit(Long memberId, Criteria criteria) {
+        criteria.create(getCountMyRecruit(memberId));
+        return groupDAO.findMyRecruit(memberId, criteria);
+    }
+
+    /* 멤버가 개설한 탐험대의 갯수 가져오기 */
+    public Integer getCountMyRecruit(Long memberId) { return groupDAO.findCountMyRecruit(memberId); }
 
     /* 멤버가 가입한 탐험대 가져오기 */
-    public List<GroupDTO> getMyParticipateRecruit(Long memberId) { return groupDAO.findMyParticipateRecruit(memberId); }
+    public List<GroupDTO> getMyParticipateRecruit(Long memberId, Criteria criteria) {
+        criteria.create(getCountMyParticipate(memberId));
+        return groupDAO.findMyParticipateRecruit(memberId, criteria);
+    }
+
+    /* 멤버가 가입한 탐험대의 갯수 가져오기 */
+    public Integer getCountMyParticipate(Long memberId) {
+        return groupDAO.findCountMyParticipate(memberId);
+    }
 
     //    게시물 전체 조회
     public List<ReviewVO> getReviewList(Criteria criteria){
