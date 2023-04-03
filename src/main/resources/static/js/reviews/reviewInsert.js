@@ -5,7 +5,10 @@ globalThis.i = 0;
 $("input[name='file']").on("change", function () {
     const $files = $("input[name=file]")[0].files;
     let formData = new FormData();
+
     Array.from($files).forEach(file => globalThis.arrayFile.push(file));
+
+
     $files.forEach(file => {
         formData.append("file", file)
     });
@@ -27,7 +30,7 @@ $("input[name='file']").on("change", function () {
                                              </div>
                                           `);
                 } else {
-                    $("#thumbnail").append(`<div class="thumbnail"><span class="thumbnailSpan"><img src="/images/no-image.png" width="100"></span></div>`);
+                    $("#thumbnail").append(`<div class="thumbnail"><span class="thumbnailSpan"><img src="/images/camera_icon.png" width="100"></span></div>`);
                 }
             });
             /********************************************************************/
@@ -36,7 +39,7 @@ $("input[name='file']").on("change", function () {
             globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
             $("input[name='file']")[0].files = dataTransfer.files;
             let text = "";
-            $files.forEach((file) => {
+            $files.forEach(file => {
                 text +=
                     `
                     <input type="hidden" name="files[${i}].reviewFileOriginalName" value="${file.name}">
@@ -45,12 +48,11 @@ $("input[name='file']").on("change", function () {
                     <input type="hidden" name="files[${i}].reviewFileSize" value="${file.size}">
                     <input type="hidden" name="files[${i}].reviewFileType" value="${file.type.startsWith("image")}">
                     `
-                globalThis.i++;
+                i++;
             });
             globalThis.i = 0;
-            $(".thumbnail").append(text);
+            $("form[name='review']").append(text);
         }
-
     });
 });
 
@@ -69,6 +71,3 @@ function toStringByFormatting(source, delimiter = '/') {
 
     return [year, month, day].join(delimiter);
 }
-
-
-

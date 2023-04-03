@@ -39,7 +39,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin-review")
-    public void showReviews(Model model, Criteria criteria, Search search){
-        model.addAttribute("reviews", reviewService.getList(criteria, search));
+    public void showReviews(Model model, Criteria criteria){
+        model.addAttribute("reviews", reviewService.getList(criteria));
     }
 }
