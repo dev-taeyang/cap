@@ -21,4 +21,9 @@ public class NoticeService {
 
     /* 공지사항 개수 */
     public Integer getNoticeCount(){return noticeDAO.findNoticeCount(); }
+
+    /* 공지사항 수정 */
+    public void setNotice(NoticeVO noticeVO) {
+        noticeDAO.setNotice(noticeVO);
+    }
 }

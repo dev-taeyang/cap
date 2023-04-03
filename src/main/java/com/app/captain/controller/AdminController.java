@@ -2,6 +2,7 @@ package com.app.captain.controller;
 
 import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.dto.Search;
+import com.app.captain.domain.vo.NoticeVO;
 import com.app.captain.service.MemberService;
 import com.app.captain.service.NoticeService;
 import com.app.captain.service.ReviewFileService;
@@ -10,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -31,7 +29,6 @@ public class AdminController {
     public void showNotices(Model model, Long noticeId){
         model.addAttribute("notices", noticeService.getList());
         model.addAttribute("noticeCount", noticeService.getNoticeCount());
-        log.info("notice");
     }
 
     @GetMapping("/admin-member")
@@ -41,5 +38,29 @@ public class AdminController {
     @GetMapping("/admin-review")
     public void showReviews(Model model, Criteria criteria){
         model.addAttribute("reviews", reviewService.getList(criteria));
+    }
+
+    @ResponseBody
+    @GetMapping("/admin-detail")
+    public NoticeVO showDetail(@RequestParam("noticeId") Long noticeId) {
+        return noticeService.getNotice(noticeId);
+    }
+
+    @ResponseBody
+    @PostMapping("/admin-update")
+    public void update(@RequestParam("noticeId") Long noticeId, @RequestParam("noticeTitle") String noticeTitle, @RequestParam("noticeContent") String noticeContent) {
+        NoticeVO noticeVO = new NoticeVO();
+
+        noticeVO.setNoticeId(noticeId);
+        noticeVO.setNoticeTitle(noticeTitle);
+        noticeVO.setNoticeContent(noticeContent);
+
+        noticeService.setNotice(noticeVO);
+    }
+
+    @ResponseBody
+    @PostMapping("/admin-write")
+    public void write() {
+        
     }
 }
