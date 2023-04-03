@@ -12,5 +12,6 @@ public class ReviewFileVO {
     private String reviewFilePath;
     private String reviewFileSize;
     private boolean reviewFileType;
+    private Long reviewFileRep;
     private Long reviewId;
 }

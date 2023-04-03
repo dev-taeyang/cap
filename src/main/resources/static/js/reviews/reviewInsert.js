@@ -39,7 +39,7 @@ $("input[name='file']").on("change", function () {
             globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
             $("input[name='file']")[0].files = dataTransfer.files;
             let text = "";
-            $files.forEach(file => {
+            $files.forEach((file,i) => {
                 text +=
                     `
                     <input type="hidden" name="files[${i}].reviewFileOriginalName" value="${file.name}">
@@ -48,6 +48,9 @@ $("input[name='file']").on("change", function () {
                     <input type="hidden" name="files[${i}].reviewFileSize" value="${file.size}">
                     <input type="hidden" name="files[${i}].reviewFileType" value="${file.type.startsWith("image")}">
                     `
+                if(file[0]) {
+                    text += `<input type="hidden" name="files[${i}].reviewFileRep" value="1">`;
+                }
                 i++;
             });
             globalThis.i = 0;
