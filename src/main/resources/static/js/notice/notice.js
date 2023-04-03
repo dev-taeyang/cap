@@ -9,16 +9,6 @@ $ul.each((i, e) =>{
     let $li = $($ul[i]).find(".notice-title");
     let $content = $($($ul[i]).find(".notice-content"));
     
-    $cate.click(function(){
-        $noticeTitle.css("font-weight", "600");
-        $noticeCotentBox.css("border-bottom","1px solid rgb(230, 230, 230)");
-        $noticeContent.hide();
-        $ul.hide();
-        $cateAll.removeClass("notice-cate-active");
-        $(this).addClass("notice-cate-active");
-        $($ul[i]).show();
-    });
-
     $li.each((j, e) => {
 
         $(e).click(function(){
