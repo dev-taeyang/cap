@@ -16,6 +16,10 @@ public class Criteria {
     private int total;
     private int offset;
 
+    public Criteria() {
+        this.page = 1;
+    }
+
     public void create(int total) {
         this.rowCount = 9;
         this.total = total;
