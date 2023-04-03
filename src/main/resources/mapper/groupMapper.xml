@@ -27,5 +27,69 @@
         from tbl_member m join tbl_group g on m.member_id = g.group_captain
         where g.group_id in (select group_id from tbl_member_group where member_id = #{memberId})
     </select>
+    <!-- group 개설 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="groupId">
+        insert into tbl_group
+        (group_name, group_max_value, group_category, group_title, group_content, group_location,
+        group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path, group_file_size,
+        group_file_type, group_captain)
+        values(#{groupName}, #{groupMaxValue}, #{groupCategory}, #{groupTitle}, #{groupContent}, #{groupLocation},
+        #{groupEndDate}, #{groupMeetDate}, #{groupFileOriginalName}, #{groupFileUuid}, #{groupFilePath}, #{groupFileSize}, #{groupFileType}, #{groupCaptain})
+    </insert>
+
+    <!-- groupId로 그룹 조회 -->
+    <select id="selectByGroupId" resultType="groupVO">
+        select group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
+        group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path, group_file_size,
+        group_file_type, group_captain from tbl_group
+        where group_id = #{groupId}
+    </select>
+
+    <select id="selectAll" resultType="groupVO">
+        select group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
+        group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path, group_file_size,
+        group_file_type, group_captain from tbl_group
+    </select>
+
+    <!-- groupCaptain으로 그룹 조회 -->
+    <select id="selectByCaptain" resultType="groupVO">
+        select group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
+        group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path, group_file_size,
+        group_file_type, group_captain from tbl_group
+        where group_id = #{groupId}
+    </select>
+
+    <!-- 그룹 정보 수정 -->
+    <update id="update">
+        update tbl_group
+        set group_name= #{groupName}, group_title = #{groupTitle} , group_location = #{groupLocation}, group_category= #{groupCategory},
+        group_max_value= #{groupMaxValue}, group_end_date= #{groupEndDate}, group_meet_date= #{groupMeetDate}, group_file_original_name= #{groupFileOriginalName},
+        group_file_uuid= #{groupFileUuid}, group_file_path= #{groupFilePath}, group_file_size= #{groupFileSize}, group_file_type= #{groupFileType},
+        group_captain= #{groupCaptain}
+        where group_id= #{groupId}
+    </update>
+
+    <!-- 그룹 삭제 -->
+    <delete id="delete">
+        delete from tbl_group
+        where group_id = #{groupId}
+    </delete>
+
+    <!-- memberId로 그룹 id 조회 -->
+    <select id="selectIdByMemberId" resultType="long">
+        select group_id from tbl_group
+        where member_id = #{memberId}
+    </select>
+
+    <!-- groupCaptain으로 그룹 id 조회-->
+    <select id="selectIdByCaptain" resultType="long">
+        select group_id from tbl_group
+        where group_captain = #{groupCaptain}
+    </select>
+
+    <select id="selectCount" resultType="_int">
+        select count(group_id) from tbl_group
+        where group_id = #{groupId}
+    </select>
 
 </mapper>
