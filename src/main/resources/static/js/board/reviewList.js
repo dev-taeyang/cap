@@ -1,11 +1,8 @@
 /*review List Js*/
-
 const $reviewWrap = $(".mypage-review-list-wrap");
 let text = "";
 function showList() {
-    console.log("if안에 안들어갔음");
     if(reviews[0] == null){
-        console.log("들어왔냐?");
             text +=
                 `
                 <div class="mypage-reply-empty">
@@ -18,7 +15,9 @@ function showList() {
                 `
     }else {
         reviews.forEach((review,i) => {
-            if(review.files[0] != null){
+            console.log(review.files[0]);
+            console.log("들어왔냐 여기에");
+            if(review.files[0]){
                 text +=
                     `
                 <li class="mypage-review-list">
@@ -31,7 +30,7 @@ function showList() {
                                     alt="2월 말고 두 번째 1월! 썸네일"
                                     class="review-image"
                                     width="256"
-                                    th:src="/reviews/display?fileName=${review.files[0].reviewFilePath}/${review.files[0].reviewFileUuid}_${review.files[0].reviewFileOriginalName}"
+                                    src="/reviews/display?fileName=${review.files[0].reviewFilePath}/${review.files[0].reviewFileUuid}_${review.files[0].reviewFileOriginalName}"
                                   />
                                 </div>
                               </div>
