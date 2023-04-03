@@ -126,8 +126,6 @@ public class ReviewController {
     //    리뷰 리스트
     @GetMapping("list")
     public String getList(Model model, HttpSession session, Criteria criteria) {
-        /*페이지 보내기*/
-        criteria.setPage(1);
         /*세션아이디 가져와서 보내주기*/
         Long memberId = (Long)session.getAttribute("memberId");
         /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/

@@ -78,5 +78,6 @@ $changePageTags.each(function(i, changePageTag){
         e.preventDefault();
        criteria.page = ($(this).attr("href"));
         console.log("현재 페이지" + criteria.page);
+        window.location.href = `/reviews/list?page=${criteria.page}`;
     })
 });
