@@ -1,9 +1,12 @@
 package com.app.captain.domain.dao;
 
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.dto.ReviewDTO;
+import com.app.captain.domain.dto.Search;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,8 +32,8 @@ public class ReviewDAO {
     };
 
     //    리뷰 전체 조회
-    public List<ReviewVO> findAll(){
-        return reviewMapper.selectAll();
+    public List<ReviewVO> findAll(Criteria criteria, Search search){
+        return reviewMapper.selectAll(criteria, search);
     };
 
     //    리뷰 삭제
@@ -51,5 +54,10 @@ public class ReviewDAO {
     //    리뷰 수 조회
     public Long getCountByMemberId(Long memberId){
         return reviewMapper.getCount(memberId);
+    };
+
+    //    review 총 개수 조회
+    public int findTotal(Search search){
+        return reviewMapper.getTotal(search);
     };
 }

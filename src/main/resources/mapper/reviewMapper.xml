@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.ReviewMapper">
+
+    <sql id="search">
+        <if test="search != null">
+            <if test="search.keyword != null">
+                <trim prefix="and (" suffix=")">
+                    review_title like concat('%',#{search.keyword},'%') or review_content like concat('%',#{search.keyword},'%')
+                </trim>
+            </if>
+            <if test="search.categorys != null">
+                <trim prefix="and (" suffix=")" prefixOverrides="or">
+                    <foreach item="category" collection="search.categorys">
+                        <trim prefix="or">
+                            review_category like concat('%', #{category}, '%')
+                        </trim>
+                    </foreach>
+                </trim>
+            </if>
+        </if>
+    </sql>
+
     <insert id="insert" useGeneratedKeys="true" keyProperty="reviewId">
         insert into tbl_review
         (review_title, review_content, review_category, review_grade, member_id, review_id)
@@ -27,6 +47,14 @@
     <select id="selectAll" resultType="reviewVO">
         select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, member_id
         from tbl_review
+        <include refid="search"/>
+        order by
+        <choose>
+            <when test="search.order == 'recent'.toString()">review_id </when>
+            <otherwise>review_grade desc, review_id </otherwise>
+        </choose>
+        desc
+        limit #{cri.offset}, #{cri.rowCount}
     </select>
 
     <select id="selectDTO" resultType="reviewDTO">
@@ -48,6 +76,13 @@
 
     <select id="getCount" resultType="long">
         select count(review_id) from tbl_review where member_id = #{memberId}
+    </select>
+
+    <select id="getTotal" resultType="_int">
+        select count(review_id) from tbl_review
+        <where>
+            <include refid="search"/>
+        </where>
     </select>
 
 </mapper>

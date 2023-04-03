@@ -2,11 +2,14 @@ package com.app.captain.service;
 
 import com.app.captain.domain.dao.ReviewDAO;
 import com.app.captain.domain.dao.ReviewFileDAO;
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.dto.ReviewDTO;
 import com.app.captain.domain.dto.ReviewFileDTO;
+import com.app.captain.domain.dto.Search;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,8 +43,9 @@ public class ReviewService {
     }
 
 //    게시물 전체 조회
-    public List<ReviewVO> getList(){
-        return reviewDAO.findAll();
+    public List<ReviewVO> getList(Criteria criteria, Search search){
+        criteria.create(getTotalCount(search));
+        return reviewDAO.findAll(criteria, search);
     }
 
     //    리뷰랑 멤버 조인한거 조회
@@ -58,5 +62,10 @@ public class ReviewService {
     public Long reviewCount(Long memberId){
         return reviewDAO.getCountByMemberId(memberId);
     }
+
+    //    review 총 개수 조회
+    public int getTotalCount(Search search){
+        return reviewDAO.findTotal(search);
+    };
 
 }
