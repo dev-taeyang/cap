@@ -62,11 +62,13 @@ public class ReviewController {
         reviewVO.setMemberId(memberId);
         /* 리뷰작성*/
         reviewService.write(reviewVO);
-        List<ReviewFileVO> files = reviewFileDTO.getFiles();
-        /* 저장된 파일들의 reviewId가 null이기때문에  파일들에 각각 review를 넣어준다*/
-        files.forEach(file -> file.setReviewId(reviewVO.getReviewId()));
-        /* 파일 저장*/
-        reviewFileService.write(files);
+        if(reviewFileDTO.getFiles()!= null) {
+            List<ReviewFileVO> files = reviewFileDTO.getFiles();
+            /* 저장된 파일들의 reviewId가 null이기때문에  파일들에 각각 review를 넣어준다*/
+            files.forEach(file -> file.setReviewId(reviewVO.getReviewId()));
+            /* 파일 저장*/
+            reviewFileService.write(files);
+        }
         redirectAttributes.addFlashAttribute("작성완료");
         return new RedirectView("/reviews/list");
     }
