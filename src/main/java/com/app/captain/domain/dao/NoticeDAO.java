@@ -21,4 +21,9 @@ public class NoticeDAO {
 
     /* 공지사항 개수 */
     public Integer findNoticeCount(){ return noticeMapper.selectNoticeCount(); }
+
+    /* 공지사항 수정 */
+    public void setNotice(NoticeVO noticeVO) {
+        noticeMapper.updateNotice(noticeVO);
+    }
 }

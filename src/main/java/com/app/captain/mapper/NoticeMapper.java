@@ -16,4 +16,7 @@ public interface NoticeMapper {
 
     /* 공지사항 개수 */
     public Integer selectNoticeCount();
+
+    /* 공지사항 수정 */
+    public void updateNotice(NoticeVO noticeVO);
 }

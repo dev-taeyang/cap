@@ -16,4 +16,10 @@
         select count(notice_id)
         from tbl_notice
     </select>
+
+    <update id="updateNotice">
+        update tbl_notice
+        set notice_title=#{noticeTitle}, notice_content=#{noticeContent}
+        where notice_id=#{noticeId};
+    </update>
 </mapper>
