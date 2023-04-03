@@ -69,12 +69,31 @@ const $nextButton = $(".next-button img");
 const $nextNextButton = $(".next-next-button img");
 
 // 페이지 수가 1보다 크다면 다음 버튼 활성화
+
 if($pageNumber.length > 1){
     $nextButton.css("filter", "invert(1)");
     $nextNextButton.css("filter", "invert(1)");
     $nextButton.css("cursor", "pointer");
     $nextNextButton.css("cursor", "pointer");
 }
+
+/* 현재 페이지가 1보다 크다면 이전 버튼들 활성화 */
+if(criteria.page > 1) {
+    $prevButton.css("filter", "invert(1)");
+    $prevPrevButton.css("filter", "invert(1)");
+    $prevButton.css("cursor", "pointer");
+    $prevPrevButton.css("cursor", "pointer");
+}
+
+/* 현재 페이지가 마지막 페이지라면 다음 버튼들 비활성화 */
+if(criteria.page == criteria.realEnd) {
+    $nextButton.css("filter", "invert(0)");
+    $nextNextButton.css("filter", "invert(0)");
+    $nextButton.css("cursor", "not-allowed");
+    $nextNextButton.css("cursor", "not-allowed");
+}
+
+
 // 페이징 클릭 이벤트
 $pageNumber.each((i, e) => {
     $(e).click(function(){
