@@ -3,6 +3,8 @@
 /* 모델로 넘어온 멤버의 정보 */
 
 
+/* 비밀번호 변경폼으로 넘어가는 버튼 */
+const $updatePassword = $('.go-change-button');
 /* 변경하기 버튼 */
 const $changeButtons = $('.change-button');
 /* 저장 버튼 */
@@ -24,7 +26,7 @@ const file = document.querySelector('input[type=file]');
 const img = document.querySelector('.user-profile-image');
 // const closeSpan = document.querySelector('.close-image');
 
-// let imgsrc = img.src;
+
 
 /* 내 정보 수정하기 */
 let nicknameCheck = true;
@@ -39,7 +41,9 @@ $('.modal').hide();
 //   img.setAttribute('src', imgsrc);
 // });
 
-file.addEventListener('change', function (e) {
+
+
+file.addEventListener('change',function (e) {
   // closeSpan.style.display = "inline-block";
   this.style.display = 'none';
   // 기존의 이미지 숨김 처리
@@ -54,12 +58,13 @@ file.addEventListener('change', function (e) {
     // result가 이미지라면 result에 담긴 이미지로 설정
     if (result.includes('image')) {
       img.src = `${result}`;
+      return;
     } else {
-      console.log("사진 맞음?")
       img.src = "https://t1.kakaocdn.net/together_image/common/avatar/avatar.png" ;
     }
   };
 });
+
 
 /* 닉네임 포커스 이벤트 */
 $inputNickname.on('focus', function () {
@@ -233,8 +238,9 @@ $('#mypageUpdate').on('click', function () {
     globalThis.uuids;
 
     /* 이미지 사진을 바꾸면 바로 바뀜 */
-    $("input[name=memberFile]").on("change", function () {
-      const $file = $("input[name=memberFile]")[0].files[0]
+  $("input[name=memberFile]").on("change", function () {
+    const $file = $("input[name=memberFile]")[0].files[0]
+    if($file.type.includes('image')) {
       let formData = new FormData();
       formData.append("memberFile", $file)
 
@@ -269,7 +275,12 @@ $('#mypageUpdate').on('click', function () {
 
       modalMessage = '프로필 사진이 변경되었습니다.';
       showWarnModal(modalMessage);
-    })
+    } else {
+      modalMessage = '이미지 파일이 아닙니다.';
+      showWarnModal(modalMessage);
+    }
+  })
+
 
 
 /*****************************************************/
@@ -289,4 +300,9 @@ $('#mypageUpdate').on('click', function () {
     return [year, month, day].join(delimiter);
   }
 /*****************************************************/
+
+/* 비밀번호 변경 버튼 누르면 이동하기 */
+$updatePassword.on('click', function () {
+    location.href = "/mypage/UpdatePassword";
+})
 

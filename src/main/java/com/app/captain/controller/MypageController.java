@@ -1,7 +1,9 @@
 package com.app.captain.controller;
 
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.dto.ReviewFileDTO;
+import com.app.captain.domain.dto.Search;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.service.GroupReplyService;
@@ -111,6 +113,18 @@ public class MypageController {
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
 
+    /* 비밀번호 변경 폼으로 이동 */
+    @GetMapping("UpdatePassword")
+    public String updateform() { return "mypage/mypageUpdatePassword"; }
+
+    /* 비밀번호 변경 수행하기 */
+    @PostMapping("UpdatePassword")
+    @ResponseBody
+    public String UpdatePassword(@RequestBody MemberVO memberVO) {
+
+        return "mypage/me";
+    }
+
     /* 회원탈퇴 폼으로 이동 */
     @GetMapping("remove")
     public String getRemove() {
@@ -129,12 +143,12 @@ public class MypageController {
 
 //    내가 작성한 보고서
     @GetMapping("myReview")
-    public String getMyReviewList(Model model, HttpSession session) {
+    public String getMyReviewList(Model model, HttpSession session, Criteria criteria, Search search) {
         Long memberId = (Long) session.getAttribute("memberId");
         /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/
         List<ReviewFileDTO> reviewFileDTOS = new ArrayList<>();
         /*리뷰 전체 리스트들을 담음*/
-        List<ReviewVO> reviewVOS = mypageService.getReviewList();
+        List<ReviewVO> reviewVOS = mypageService.getReviewList(criteria, search);
         /*forEach를 사용하여 ArrayList에 있는 reviewVO를 toDTO메소드를 사용하여 DTO로 변환 해준다음 DTO에 담아줌*/
         reviewVOS.forEach(reviewVO -> {
             reviewFileDTOS.add(reviewVO.toDTO());
