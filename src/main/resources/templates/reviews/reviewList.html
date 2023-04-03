@@ -59,6 +59,10 @@
 <script th:inline = "javascript">
     let reviews = [[${reviews}]];
     let memberId = [[${memberId}]];
+    let criteria = [[${criteria}]];
+    console.log(criteria);
+    console.log(criteria.startPage);
+    console.log(criteria.page);
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/board/reviewList.js"></script>
