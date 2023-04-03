@@ -21,7 +21,7 @@ public interface ReviewMapper {
     public ReviewVO select(Long reviewId);
 
 //    리뷰 전체 조회
-    public List<ReviewVO> selectAll(@Param("cri") Criteria criteria, @Param("search") Search search);
+    public List<ReviewVO> selectAll(@Param("cri") Criteria criteria);
 
 //    리뷰 삭제
     public void delete(Long reviewId);
@@ -36,5 +36,5 @@ public interface ReviewMapper {
     public Long getCount(Long memberId);
 
 //    review 총 개수 조회
-    public int getTotal(@Param("search") Search search);
+    public int getTotal();
 }

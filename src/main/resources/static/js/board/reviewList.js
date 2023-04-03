@@ -57,3 +57,24 @@ function showList() {
     $reviewWrap.append(text);
 }
 showList();
+
+
+/*페이징 처리 및 검색 js*/
+const $changePageTags = $(".change-page");
+
+/*$selectTag.on("change", () => {
+    $("form[name='search-form']").submit();
+});*/
+
+/*$checkboxes.each(function(i, checkbox){
+    $(checkbox).on("click", () => {
+        $("form[name='search-form']").submit();
+    })
+})*/
+
+$changePageTags.each(function(i, changePageTag){
+    $(changePageTag).on("click", e => {
+        e.preventDefault();
+        $("input[name='page']").val($(this).attr("href"));
+    })
+});

@@ -32,8 +32,8 @@ public class ReviewDAO {
     };
 
     //    리뷰 전체 조회
-    public List<ReviewVO> findAll(Criteria criteria, Search search){
-        return reviewMapper.selectAll(criteria, search);
+    public List<ReviewVO> findAll(Criteria criteria){
+        return reviewMapper.selectAll(criteria);
     };
 
     //    리뷰 삭제
@@ -57,7 +57,7 @@ public class ReviewDAO {
     };
 
     //    review 총 개수 조회
-    public int findTotal(Search search){
-        return reviewMapper.getTotal(search);
+    public int findTotal(){
+        return reviewMapper.getTotal();
     };
 }

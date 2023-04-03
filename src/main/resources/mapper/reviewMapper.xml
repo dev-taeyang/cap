@@ -47,12 +47,7 @@
     <select id="selectAll" resultType="reviewVO">
         select review_id, review_title, review_content, review_category, review_register_date, review_update_date, review_grade, member_id
         from tbl_review
-        <include refid="search"/>
-        order by
-        <choose>
-            <when test="search.order == 'recent'.toString()">review_id </when>
-            <otherwise>review_grade desc, review_id </otherwise>
-        </choose>
+        order by review_id
         desc
         limit #{cri.offset}, #{cri.rowCount}
     </select>
@@ -80,9 +75,6 @@
 
     <select id="getTotal" resultType="_int">
         select count(review_id) from tbl_review
-        <where>
-            <include refid="search"/>
-        </where>
     </select>
 
 </mapper>

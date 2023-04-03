@@ -29,39 +29,17 @@
                         <!--화면뿌리는 곳-->
                     </ul>
                 </section>
-                <footer class="board-paging-wrap">
-                    <div class="prev-button-wrap">
-                      <button class="double-arrow-button prev-prev-button page-button">
-                        <img
-                          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                          class="double-arrow-button-image"
-                        />
-                      </button>
-                      <button class="arrow-button prev-button page-button">
-                        <img
-                          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                          class="arrow-button-image"
-                        />
-                      </button>
-                    </div>
-                    <button class="page-number page-button page-active">1</button>
-                    <button class="page-number page-button">2</button>
-                    <button class="page-number page-button">3</button>
-                    <div class="next-button-wrap">
-                      <button class="arrow-button next-button page-button">
-                        <img
-                          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                          class="arrow-button-image"
-                        />
-                      </button>
-                      <button class="double-arrow-button next-next-button page-button">
-                        <img
-                          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                          class="double-arrow-button-image next-next-button"
-                        />
-                      </button>
-                    </div>
-                  </footer>
+                <!-- 페이징 처리 부분 -->
+                <section>
+                    <a class="change-page" th:href="@{${criteria.startPage - 1}}" th:if="${criteria.prev}">[이전]</a>
+                    <ul id="paging">
+                        <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
+                            <a class="change-page" th:if="${criteria.page != page}" th:href="@{${page}}"><li th:text="${page}"></li></a>
+                            <li th:unless="${criteria.page != page}" th:text="${page}"></li>
+                        </th:block>
+                    </ul>
+                    <a class="change-page" th:href="@{${criteria.endPage + 1}}" th:if="${criteria.next}">[다음]</a>
+                </section>
             </div>
         </div>
     </div>

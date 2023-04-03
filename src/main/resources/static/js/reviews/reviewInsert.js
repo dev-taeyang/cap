@@ -1,7 +1,6 @@
 FileList.prototype.forEach = Array.prototype.forEach;
 globalThis.arrayFile = new Array();
 globalThis.i = 0;
-globalThis.uuids = [];
 
 $("input[name='file']").on("change", function () {
     const $files = $("input[name=file]")[0].files;
@@ -36,8 +35,6 @@ $("input[name='file']").on("change", function () {
             const dataTransfer = new DataTransfer();
             globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
             $("input[name='file']")[0].files = dataTransfer.files;
-            console.log(globalThis.uuids);
-            console.log(files.reviewFileOriginalName);
             let text = "";
             $files.forEach((file) => {
                 text +=
@@ -48,8 +45,9 @@ $("input[name='file']").on("change", function () {
                     <input type="hidden" name="files[${i}].reviewFileSize" value="${file.size}">
                     <input type="hidden" name="files[${i}].reviewFileType" value="${file.type.startsWith("image")}">
                     `
-                i++;
+                globalThis.i++;
             });
+            globalThis.i = 0;
             $(".thumbnail").append(text);
         }
 
