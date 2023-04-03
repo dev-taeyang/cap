@@ -44,6 +44,7 @@
 }
 
 .mypage-reply-empty {
+  display: flex;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
@@ -61,7 +62,8 @@
 }
 
 .mypage-reply-list {
-  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgb(238, 238, 238);
 }
 
 li {

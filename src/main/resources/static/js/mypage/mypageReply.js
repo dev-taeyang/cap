@@ -1,6 +1,5 @@
 /* mypageReply.html */
 
-console.log(memberReplys)
 /* 댓글 리스트로 추가할 곳*/
 const $myReplyWrap = $(".mypage-reply-list");
 let text = "";
@@ -77,7 +76,7 @@ if($pageNumber.length > 1){
     $nextNextButton.css("cursor", "pointer");
 }
 
-/* 현재 페이지가 1보다 크다면 이전 버튼들 활성화 */
+/* 현재 페이지가 1보다 크다면 이전 버튼들 활성화*/
 if(criteria.page > 1) {
     $prevButton.css("filter", "invert(1)");
     $prevPrevButton.css("filter", "invert(1)");
@@ -94,10 +93,15 @@ if(criteria.page == criteria.realEnd) {
 }
 
 
+const $changePage = $('.changePage');
+
 // 페이징 클릭 이벤트
-$pageNumber.each((i, e) => {
-    $(e).click(function(){
-        $pageNumber.removeClass("page-active");
-        $(e).addClass("page-active");
-    });
+$changePage.each(function (i, changePage) {
+    $(changePage).on("click", e => {
+        e.preventDefault();
+        criteria.page = ($(this).attr("href"));
+        window.location.href = `/mypage/myReply?page=${criteria.page}`;
+    })
 });
+
+

@@ -22,6 +22,7 @@ public class MypageService {
     private final GroupDAO groupDAO;
     private final ReviewDAO reviewDAO;
     private final ReviewFileDAO reviewFileDAO;
+    private final ReviewService reviewService;
 
     /* 회원 찾기 */
     public MemberVO getMemberById(Long memberId) {return memberDAO.findMemberById(memberId); }
@@ -58,6 +59,7 @@ public class MypageService {
 
     //    게시물 전체 조회
     public List<ReviewVO> getReviewList(Criteria criteria){
+        criteria.create(reviewService.getTotalCount());
         return reviewDAO.findAll(criteria);
     }
 
