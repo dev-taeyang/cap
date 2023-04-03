@@ -20,6 +20,7 @@ function showMyRecruit() {
         $noMyRecruit.append(text);
     } else {
         myRecruits.forEach((myRecruit, i) => {
+            console.log(myRecruit.groupContent.length)
                 text += `
                     <div>
                         <!-- 글쓴이의 정보가 나올 곳 -->
@@ -29,7 +30,7 @@ function showMyRecruit() {
                             <div class="MemberProfileImg-wrapper">
                               <div class="Image-wrapper">
                         `
-                    if(myRecruit.memberFilePath == null) {
+                    if(myRecruit.memberFileType == 0) {
                             text += `
                                     <img
                                           class="Image-style"
@@ -51,7 +52,7 @@ function showMyRecruit() {
                                     <!-- 글쓴이의 이름과 글쓴 시간 -->
                                     <div class="MemberProfileText-wrapper">
                                       <p class="ProfileName">${myRecruit.memberNickname}</p>
-                                      <div class="RegistTime">${myRecruit.groupRegisterDate}</div>
+                                      <div class="RegistTime">` + elapsedTime(myRecruit.groupRegisterDate) +`</div>
                                     </div>
                                   </div>
                                 </div>
@@ -60,11 +61,25 @@ function showMyRecruit() {
                                   <a href="">
                                     <div class="boardSlideImg-wrapper">
                                       <div class="introduceImage-wrapper">
+                                 `
+                                if(myRecruit.groupFileType == 0) {
+                                    text += `
+                                        <img
+                                          src="https://dahanweb.co.kr/gnuboard4/data/file/gall/2949946602_iBjAP3kv_989758.jpg"
+                                          alt="기본 이미지"
+                                        />
+                                    `
+                                } else {
+                                    text += `
                                         <!-- 이미지가 들어갈 곳 -->
                                         <img
-                                          src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
+                                          src="/mypage/display?fileName=${myRecruit.groupFilePath}/${myRecruit.groupFileUuid}_${myRecruit.groupFileOriginalName}"
                                           alt=""
                                         />
+                                    `
+                                }
+                                text +=
+                                    `
                                       </div>
                                     </div>
                                   </a>
@@ -76,10 +91,11 @@ function showMyRecruit() {
                                 </div>
                                 <!-- 작성자가 작성한 글이 들어갈 곳 -->
                                 <div class="description-wrapper description-detail">
-                                  <span class="TextLine-Description"
-                                    >${myRecruit.groupContent}</span
-                                  ><button class="Description-ExpandButton">더보기</button>
-                                </div>
+                              <span class="TextLine-Description">${myRecruit.groupContent}</span>`
+                            if(myRecruit.groupContent.length > 61) { text += `<button class="Description-ExpandButton">더보기</button>` }
+                            text +=
+                            `        
+                            </div>
                                 <!-- 댓글로 이동할 수 있는 곳 -->
                                 <div class="actionGroup-wrapper">
                                   <a class="actionGroup-reply" href="">
@@ -98,3 +114,14 @@ function showMyRecruit() {
     }
 }
 showMyRecruit();
+
+const $changePage = $('.changePage');
+
+// 페이징 클릭 이벤트
+$changePage.each(function (i, changePage) {
+    $(changePage).on("click", e => {
+        e.preventDefault();
+        criteria.page = ($(this).attr("href"));
+        window.location.href = `/mypage/myRecruit?page=${criteria.page}`;
+    })
+});

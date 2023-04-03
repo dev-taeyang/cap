@@ -42,7 +42,7 @@ function showMyReply() {
                         <div class="user-nickname-register">
                           <div class="user-nickname">${memberReply.memberNickname}</div>
                           <div class="user-register-date-wrap">
-                            <div class="user-register-date">${memberReply.groupReplyRegisterDate} 작성</div>
+                            <div class="user-register-date">` + elapsedTime(memberReply.groupReplyRegisterDate) +` 작성 </div>
                           </div>
                         </div>
                       </div>

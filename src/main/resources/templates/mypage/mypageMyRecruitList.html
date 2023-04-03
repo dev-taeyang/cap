@@ -36,35 +36,24 @@
           </div>
         </div>
       </div>
-      <footer class="board-paging-wrap">
+      <footer class="mypage-reply-paging-wrap">
         <div class="prev-button-wrap">
-          <button class="double-arrow-button prev-prev-button page-button">
+          <button class="arrow-button prev-button page-button changePage" th:href="@{${criteria.startPage - 1}}" th:if="${criteria.prev}">
             <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="double-arrow-button-image"
-            />
-          </button>
-          <button class="arrow-button prev-button page-button">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="arrow-button-image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                    class="arrow-button-image"
             />
           </button>
         </div>
-        <button class="page-number page-button page-active">1</button>
-        <button class="page-number page-button">2</button>
-        <button class="page-number page-button">3</button>
+        <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
+          <button th:if="${criteria.page != page}" th:href="@{${page}}" class="page-number page-button changePage" th:text="${page}"></button>
+          <button th:unless="${criteria.page != page}" th:text="${page}" class="page-number page-button page-active"></button>
+        </th:block>
         <div class="next-button-wrap">
-          <button class="arrow-button next-button page-button">
+          <button class="arrow-button next-button page-button changePage" th:href="@{${criteria.endPage + 1}}" th:if="${criteria.next}">
             <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="arrow-button-image"
-            />
-          </button>
-          <button class="double-arrow-button next-next-button page-button">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="double-arrow-button-image next-next-button"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                    class="arrow-button-image"
             />
           </button>
         </div>
@@ -75,7 +64,9 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script th:inline="javascript">
     let myRecruits = [[${myRecruits}]]
+    let criteria = [[${criteria}]]
   </script>
+  <script src="/js/mypage/mypageElapsedTime.js"></script>
   <script src="/js/mypage/myRecruitList.js"></script>
   <script src="/js/board/boardButton.js"></script>
   <script src="/js/board/boardList.js"></script>

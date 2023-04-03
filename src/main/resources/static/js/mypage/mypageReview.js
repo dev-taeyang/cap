@@ -105,3 +105,15 @@ $pageNumber.each((i, e) => {
         $(e).addClass("page-active");
     });
 });
+
+
+const $changePage = $('.changePage');
+
+// 페이징 클릭 이벤트
+$changePage.each(function (i, changePage) {
+    $(changePage).on("click", e => {
+        e.preventDefault();
+        criteria.page = ($(this).attr("href"));
+        window.location.href = `/mypage/myReview?page=${criteria.page}`;
+    })
+});

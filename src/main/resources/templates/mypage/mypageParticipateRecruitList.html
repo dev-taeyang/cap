@@ -40,269 +40,26 @@
         <!-- 이 안에서 리스트로 받는 곳 -->
         <div class="view-boardList-wrapper">
           <!-- 각 리스트 내용 -->
-          <!--<div>
-            &lt;!&ndash; 글쓴이의 정보가 나올 곳 &ndash;&gt;
-            <div class="profile-wrapper">
-              &lt;!&ndash; 프로필 사진 &ndash;&gt;
-              <div class="MemberProfile-wrapper">
-                <div class="MemberProfileImg-wrapper">
-                  <div class="Image-wrapper">
-                    <img
-                      class="Image-style"
-                      src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                    />
-                  </div>
-                </div>
-                &lt;!&ndash; 글쓴이의 이름과 글쓴 시간 &ndash;&gt;
-                <div class="MemberProfileText-wrapper">
-                  <p class="ProfileName">댕댕쓰</p>
-                  <div class="RegistTime">15분전</div>
-                </div>
-              </div>
-            </div>
-            &lt;!&ndash; 원정대 소개 이미지 &ndash;&gt;
-            <div class="boardImg-wrapper">
-              <a href="">
-                <div class="boardSlideImg-wrapper">
-                  <div class="introduceImage-wrapper">
-                    &lt;!&ndash; 이미지가 들어갈 곳 &ndash;&gt;
-                    <img
-                      src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-            &lt;!&ndash; 모임 장소가 나타날 곳 &ndash;&gt;
-            <div class="boardCategory-wrapper">
-              &lt;!&ndash; 작성자가 작성한 지역 나오기 &ndash;&gt;
-              <span>공포</span>
-            </div>
-            &lt;!&ndash; 작성자가 작성한 글이 들어갈 곳 &ndash;&gt;
-            <div class="description-wrapper description-detail">
-              <span class="TextLine-Description"
-                >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-              ><button class="Description-ExpandButton">더보기</button>
-            </div>
-            &lt;!&ndash; 댓글로 이동할 수 있는 곳 &ndash;&gt;
-            <div class="actionGroup-wrapper">
-              <a class="actionGroup-reply" href="">
-                <img
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                  alt=""
-                />
-                &lt;!&ndash; 댓글의 갯수가 들어오는 곳 &ndash;&gt;
-                <span>0</span>
-              </a>
-            </div>
-          </div>
-          <div>
-            &lt;!&ndash; 글쓴이의 정보가 나올 곳 &ndash;&gt;
-            <div class="profile-wrapper">
-              &lt;!&ndash; 프로필 사진 &ndash;&gt;
-              <div class="MemberProfile-wrapper">
-                <div class="MemberProfileImg-wrapper">
-                  <div class="Image-wrapper">
-                    <img
-                      class="Image-style"
-                      src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                    />
-                  </div>
-                </div>
-                &lt;!&ndash; 글쓴이의 이름과 글쓴 시간 &ndash;&gt;
-                <div class="MemberProfileText-wrapper">
-                  <p class="ProfileName">댕댕쓰</p>
-                  <div class="RegistTime">15분전</div>
-                </div>
-              </div>
-            </div>
-            &lt;!&ndash; 원정대 소개 이미지 &ndash;&gt;
-            <div class="boardImg-wrapper">
-              <a href="">
-                <div class="boardSlideImg-wrapper">
-                  <div class="introduceImage-wrapper">
-                    &lt;!&ndash; 이미지가 들어갈 곳 &ndash;&gt;
-                    <img
-                      src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-            &lt;!&ndash; 모임 장소가 나타날 곳 &ndash;&gt;
-            <div class="boardCategory-wrapper">
-              &lt;!&ndash; 작성자가 작성한 지역 나오기 &ndash;&gt;
-              <span>공포</span>
-            </div>
-            &lt;!&ndash; 작성자가 작성한 글이 들어갈 곳 &ndash;&gt;
-            <div class="description-wrapper description-detail">
-              <span class="TextLine-Description"
-                >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다.테스트용
-                내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-              ><button class="Description-ExpandButton">더보기</button>
-            </div>
-            &lt;!&ndash; 댓글로 이동할 수 있는 곳 &ndash;&gt;
-            <div class="actionGroup-wrapper">
-              <a class="actionGroup-reply" href="">
-                <img
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                  alt=""
-                />
-                &lt;!&ndash; 댓글의 갯수가 들어오는 곳 &ndash;&gt;
-                <span>0</span>
-              </a>
-            </div>
-          </div>
-          <div>
-            &lt;!&ndash; 글쓴이의 정보가 나올 곳 &ndash;&gt;
-            <div class="profile-wrapper">
-              &lt;!&ndash; 프로필 사진 &ndash;&gt;
-              <div class="MemberProfile-wrapper">
-                <div class="MemberProfileImg-wrapper">
-                  <div class="Image-wrapper">
-                    <img
-                      class="Image-style"
-                      src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                    />
-                  </div>
-                </div>
-                &lt;!&ndash; 글쓴이의 이름과 글쓴 시간 &ndash;&gt;
-                <div class="MemberProfileText-wrapper">
-                  <p class="ProfileName">댕댕쓰</p>
-                  <div class="RegistTime">15분전</div>
-                </div>
-              </div>
-            </div>
-            &lt;!&ndash; 원정대 소개 이미지 &ndash;&gt;
-            <div class="boardImg-wrapper">
-              <a href="">
-                <div class="boardSlideImg-wrapper">
-                  <div class="introduceImage-wrapper">
-                    &lt;!&ndash; 이미지가 들어갈 곳 &ndash;&gt;
-                    <img
-                      src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-            &lt;!&ndash; 모임 장소가 나타날 곳 &ndash;&gt;
-            <div class="boardCategory-wrapper">
-              &lt;!&ndash; 작성자가 작성한 지역 나오기 &ndash;&gt;
-              <span>레저</span>
-            </div>
-            &lt;!&ndash; 작성자가 작성한 글이 들어갈 곳 &ndash;&gt;
-            <div class="description-wrapper description-detail">
-              <span class="TextLine-Description"
-                >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-              ><button class="Description-ExpandButton">더보기</button>
-            </div>
-            &lt;!&ndash; 댓글로 이동할 수 있는 곳 &ndash;&gt;
-            <div class="actionGroup-wrapper">
-              <a class="actionGroup-reply" href="">
-                <img
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                  alt=""
-                />
-                &lt;!&ndash; 댓글의 갯수가 들어오는 곳 &ndash;&gt;
-                <span>0</span>
-              </a>
-            </div>
-          </div>
-          <div>
-            &lt;!&ndash; 글쓴이의 정보가 나올 곳 &ndash;&gt;
-            <div class="profile-wrapper">
-              &lt;!&ndash; 프로필 사진 &ndash;&gt;
-              <div class="MemberProfile-wrapper">
-                <div class="MemberProfileImg-wrapper">
-                  <div class="Image-wrapper">
-                    <img
-                      class="Image-style"
-                      src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg"
-                    />
-                  </div>
-                </div>
-                &lt;!&ndash; 글쓴이의 이름과 글쓴 시간 &ndash;&gt;
-                <div class="MemberProfileText-wrapper">
-                  <p class="ProfileName">댕댕쓰</p>
-                  <div class="RegistTime">15분전</div>
-                </div>
-              </div>
-            </div>
-            &lt;!&ndash; 원정대 소개 이미지 &ndash;&gt;
-            <div class="boardImg-wrapper">
-              <a href="">
-                <div class="boardSlideImg-wrapper">
-                  <div class="introduceImage-wrapper">
-                    &lt;!&ndash; 이미지가 들어갈 곳 &ndash;&gt;
-                    <img
-                      src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-            &lt;!&ndash; 모임 장소가 나타날 곳 &ndash;&gt;
-            <div class="boardCategory-wrapper">
-              &lt;!&ndash; 작성자가 작성한 지역 나오기 &ndash;&gt;
-              <span>관광</span>
-            </div>
-            &lt;!&ndash; 작성자가 작성한 글이 들어갈 곳 &ndash;&gt;
-            <div class="description-wrapper description-detail">
-              <span class="TextLine-Description"
-                >테스트용 내용입니다.테스트용 내용입니다.테스트용 내용입니다. 테스트용
-                내용입니다.테스트용 내용입니다.테스트용 내용입니다.</span
-              ><button class="Description-ExpandButton">더보기</button>
-            </div>
-            &lt;!&ndash; 댓글로 이동할 수 있는 곳 &ndash;&gt;
-            <div class="actionGroup-wrapper">
-              <a class="actionGroup-reply" href="">
-                <img
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
-                  alt=""
-                />
-                &lt;!&ndash; 댓글의 갯수가 들어오는 곳 &ndash;&gt;
-                <span>0</span>
-              </a>
-            </div>
-          </div>-->
         </div>
       </div>
-      <footer class="board-paging-wrap">
+      <footer class="mypage-reply-paging-wrap">
         <div class="prev-button-wrap">
-          <button class="double-arrow-button prev-prev-button page-button">
+          <button class="arrow-button prev-button page-button changePage" th:href="@{${criteria.startPage - 1}}" th:if="${criteria.prev}">
             <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="double-arrow-button-image"
-            />
-          </button>
-          <button class="arrow-button prev-button page-button">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="arrow-button-image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                    class="arrow-button-image"
             />
           </button>
         </div>
-        <button class="page-number page-button page-active">1</button>
-        <button class="page-number page-button">2</button>
-        <button class="page-number page-button">3</button>
+        <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
+          <button th:if="${criteria.page != page}" th:href="@{${page}}" class="page-number page-button changePage" th:text="${page}"></button>
+          <button th:unless="${criteria.page != page}" th:text="${page}" class="page-number page-button page-active"></button>
+        </th:block>
         <div class="next-button-wrap">
-          <button class="arrow-button next-button page-button">
+          <button class="arrow-button next-button page-button changePage" th:href="@{${criteria.endPage + 1}}" th:if="${criteria.next}">
             <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="arrow-button-image"
-            />
-          </button>
-          <button class="double-arrow-button next-next-button page-button">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='%23FFF' fill-opacity='0' fill-rule='nonzero' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-              class="double-arrow-button-image next-next-button"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                    class="arrow-button-image"
             />
           </button>
         </div>
@@ -314,7 +71,9 @@
   <script th:inline="javascript">
     let members = [[${members}]]
     let myParticipateRecruits = [[${myParticipateRecruits}]]
+    let criteria = [[${criteria}]]
   </script>
+  <script src="/js/mypage/mypageElapsedTime.js"></script>
   <script src="/js/mypage/myParticipateRecruit.js"></script>
   <script src="/js/board/boardButton.js"></script>
   <script src="/js/board/boardList.js"></script>
