@@ -1,8 +1,10 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.*;
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.dto.GroupReplyDTO;
+import com.app.captain.domain.dto.Search;
 import com.app.captain.domain.vo.GroupVO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.domain.vo.ReviewFileVO;
@@ -46,8 +48,8 @@ public class MypageService {
     public List<GroupDTO> getMyParticipateRecruit(Long memberId) { return groupDAO.findMyParticipateRecruit(memberId); }
 
     //    게시물 전체 조회
-    public List<ReviewVO> getReviewList(){
-        return reviewDAO.findAll();
+    public List<ReviewVO> getReviewList(Criteria criteria, Search search){
+        return reviewDAO.findAll(criteria, search);
     }
 
     //    reviewId로 파일 전체 조회
