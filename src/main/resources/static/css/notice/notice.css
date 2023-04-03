@@ -49,8 +49,7 @@ li {
 }
 
 .notice-cate-active {
-    color: rgb(51, 151, 255);
-    cursor: pointer;
+    color: #00AE68;
 }
 
 .notice{
@@ -82,7 +81,7 @@ li {
     font-weight: bold;
     color: white;
     text-align: center;
-    background-color: rgb(51, 151, 255);
+    background-color: #00AE68;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
 }
