@@ -53,7 +53,7 @@ public class MypageController {
         }
 
         /* 없다면 로그인 페이지 */
-        return "member/login";
+        return "redirect:/member/login";
     }
 
 
@@ -104,7 +104,6 @@ public class MypageController {
     @GetMapping("display")
     @ResponseBody
     public byte[] display(String fileName) throws IOException {
-        log.info(fileName.toString());
         return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 
@@ -115,14 +114,33 @@ public class MypageController {
 
     /* 비밀번호 변경 폼으로 이동 */
     @GetMapping("UpdatePassword")
-    public String updateform() { return "mypage/mypageUpdatePassword"; }
+    public String updateform(Model model, HttpSession session) {
+
+        model.addAttribute("members", session.getAttribute("member"));
+        return "mypage/mypageUpdatePassword";
+    }
 
     /* 비밀번호 변경 수행하기 */
     @PostMapping("UpdatePassword")
-    @ResponseBody
-    public String UpdatePassword(@RequestBody MemberVO memberVO) {
+    public String UpdatePassword(MemberVO memberVO, HttpServletRequest request) {
+        mypageService.modifyPassword(memberVO);
+        HttpSession session = request.getSession();
+        session.setAttribute("member", memberVO);
 
-        return "mypage/me";
+        return "redirect:/mypage/me";
+    }
+
+    /* 비밀번호가 중복되는지 체크하기 */
+    @PostMapping("checkPassword")
+    @ResponseBody
+    public String checkPassword(String memberPassword) {
+        Integer check = mypageService.checkPassword(memberPassword);
+
+        if (check != 0) {
+            return "fail";
+        } else {
+            return "success";
+        }
     }
 
     /* 회원탈퇴 폼으로 이동 */
@@ -143,12 +161,12 @@ public class MypageController {
 
 //    내가 작성한 보고서
     @GetMapping("myReview")
-    public String getMyReviewList(Model model, HttpSession session, Criteria criteria, Search search) {
+    public String getMyReviewList(Model model, HttpSession session, Criteria criteria) {
         Long memberId = (Long) session.getAttribute("memberId");
         /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/
         List<ReviewFileDTO> reviewFileDTOS = new ArrayList<>();
         /*리뷰 전체 리스트들을 담음*/
-        List<ReviewVO> reviewVOS = mypageService.getReviewList(criteria, search);
+        List<ReviewVO> reviewVOS = mypageService.getReviewList(criteria);
         /*forEach를 사용하여 ArrayList에 있는 reviewVO를 toDTO메소드를 사용하여 DTO로 변환 해준다음 DTO에 담아줌*/
         reviewVOS.forEach(reviewVO -> {
             reviewFileDTOS.add(reviewVO.toDTO());
@@ -166,12 +184,12 @@ public class MypageController {
         return "mypage/mypageReview";
     }
 
-//    내가 작성한 댓글
+    //    내가 작성한 댓글
     @GetMapping("myReply")
-    public String myReply(Model model, HttpSession session) {
+    public String myReply(Criteria criteria, Model model, HttpSession session) {
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
 
-        model.addAttribute("memberReplys", mypageService.getMemberReply(memberVO.getMemberId()));
+        model.addAttribute("memberReplys", mypageService.getMemberReply(memberVO.getMemberId(), criteria));
         model.addAttribute("replyCount", mypageService.getReplyCount(memberVO.getMemberId()));
 
         return "mypage/mypageReply";

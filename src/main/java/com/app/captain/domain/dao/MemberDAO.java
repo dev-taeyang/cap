@@ -73,4 +73,12 @@ public class MemberDAO {
 
     /* 회원탈퇴 */
     public void delete(Long memberId) { memberMapper.delete(memberId); }
+
+    /* 비밀번호 업데이트 */
+    public void setMemberPassword(MemberVO memberVO) { memberMapper.updatePassword(memberVO);}
+
+    /* 비밀번호 중복체크 */
+    public Integer checkPassword(String memberPassword) {
+        return memberMapper.checkPassword(memberPassword);
+    }
 }

@@ -39,4 +39,8 @@ public interface MemberMapper {
     public void memberFileUpdate(MemberVO memberVO);
     /* 회원탈퇴 */
     public void delete(Long memberId);
+    /* 비밀번호 업데이트 */
+    public void updatePassword(MemberVO memberVO);
+    /* 비밀번호 중복체크 */
+    public Integer checkPassword(String memberPassword);
 }
