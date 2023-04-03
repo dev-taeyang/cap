@@ -68,4 +68,7 @@ public class ReviewService {
         return reviewDAO.findTotal();
     };
 
+    //    review 메인 조회
+    public List<ReviewVO> getTotalMain() { return reviewDAO.findtTotalMain(); };
+
 }

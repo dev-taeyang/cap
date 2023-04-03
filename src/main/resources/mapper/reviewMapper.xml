@@ -52,6 +52,27 @@
         limit #{cri.offset}, #{cri.rowCount}
     </select>
 
+    <select id="selectMain" resultType="reviewDTO">
+        select
+            r.review_id,
+            any_value(r.review_title) as review_title,
+            any_value(r.review_content) as review_content,
+            any_value(r.review_category) as review_category,
+            any_value(r.review_register_date) as review_register_date,
+            any_value(r.review_grade) as review_grade,
+            any_value(r.member_id) as member_id,
+            any_value(f.review_file_id) as review_file_id,
+            any_value(f.review_file_original_name) as review_file_original_name,
+            any_value(f.review_file_uuid) as review_file_uuid,
+            any_value(f.review_file_path) as review_file_path,
+            any_value(f.review_file_size) as review_file_size,
+            any_value(f.review_file_type) as review_file_type
+        from tbl_review r
+        join tbl_review_file f on r.review_id = f.review_id
+        group by r.review_id
+        limit 0, 6
+    </select>
+
     <select id="selectDTO" resultType="reviewDTO">
         select r.review_id, review_title, review_content, review_category, review_register_date, review_update_date,
         review_grade, m.member_id, member_name, member_nickname, member_file_original_name, member_file_uuid,

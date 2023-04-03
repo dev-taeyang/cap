@@ -60,4 +60,7 @@ public class ReviewDAO {
     public int findTotal(){
         return reviewMapper.getTotal();
     };
+
+    //    review 메인 조회
+    public List<ReviewVO> findtTotalMain(){ return reviewMapper.selectMain(); };
 }

@@ -31,7 +31,7 @@ function showList() {
                                     alt="2월 말고 두 번째 1월! 썸네일"
                                     class="review-image"
                                     width="256"
-                                    src="/reviews/display?fileName=${review.files[0].reviewFilePath}/${review.files[0].reviewFileUuid}_${review.files[0].reviewFileOriginalName}"
+                                    th:src="/reviews/display?fileName=${review.files[0].reviewFilePath}/${review.files[0].reviewFileUuid}_${review.files[0].reviewFileOriginalName}"
                                   />
                                 </div>
                               </div>
