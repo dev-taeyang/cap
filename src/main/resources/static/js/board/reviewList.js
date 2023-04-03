@@ -72,9 +72,11 @@ const $changePageTags = $(".change-page");
     })
 })*/
 
+
 $changePageTags.each(function(i, changePageTag){
     $(changePageTag).on("click", e => {
         e.preventDefault();
-        $("input[name='page']").val($(this).attr("href"));
+       criteria.page = ($(this).attr("href"));
+        console.log("현재 페이지" + criteria.page);
     })
 });
