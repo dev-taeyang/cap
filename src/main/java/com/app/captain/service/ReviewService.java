@@ -43,9 +43,9 @@ public class ReviewService {
     }
 
 //    게시물 전체 조회
-    public List<ReviewVO> getList(Criteria criteria, Search search){
-        criteria.create(getTotalCount(search));
-        return reviewDAO.findAll(criteria, search);
+    public List<ReviewVO> getList(Criteria criteria){
+        criteria.create(getTotalCount());
+        return reviewDAO.findAll(criteria);
     }
 
     //    리뷰랑 멤버 조인한거 조회
@@ -64,8 +64,8 @@ public class ReviewService {
     }
 
     //    review 총 개수 조회
-    public int getTotalCount(Search search){
-        return reviewDAO.findTotal(search);
+    public int getTotalCount(){
+        return reviewDAO.findTotal();
     };
 
 }
