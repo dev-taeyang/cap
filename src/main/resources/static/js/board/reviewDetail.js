@@ -113,7 +113,7 @@ function showModify() {
 }
 
 /*리뷰 메인 사진 뿌리는 함수*/
-if($files[0].reviewFileType == 1){
+if($files[0] != null){
     function showMiddle() {
         text = `
                 <div class="presentationImage-wrapper">
@@ -174,7 +174,7 @@ function showInfo() {
     text = "";
 }
 /*리뷰 사진들 뿌리는 곳*/
-if($files[0].reviewFileType == 1){
+if($files[0] != null){
     function images() {
         $files.forEach((file,i) => {
             text +=

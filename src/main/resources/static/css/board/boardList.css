@@ -466,6 +466,15 @@ button {
 }
 
 /* 지욱이형 페이징 버튼 */
+.mypage-reply-paging-wrap {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 0;
+    width: 100%;
+    padding: 30px 0px;
+    background-color: white;
+}
 
 .board-paging-wrap {
     display: flex;
