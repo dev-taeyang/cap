@@ -42,7 +42,7 @@
         <a href="/mypage/myReview"
           ><div class="user-review">보고서</div>
           <div th:text="${myreviewCount}" class="user-review-count"></div></a
-        ><a href="/mypage/myReply?page=1"
+        ><a href="/mypage/myReply"
           ><div class="user-reply">댓글</div>
           <div th:text="${replyCount}" class="user-reply-count"></div></a
         >
@@ -187,6 +187,7 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script th:inline="javascript">
     let members = [[${members}]]
+    console.log(members)
   </script>
   <script src="/js/mypage/mypageSetting.js"></script>
   <script src="/js/main/header.js"></script>

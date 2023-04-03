@@ -45,10 +45,11 @@ li {
 }
 
 .mypage-review-empty {
+  display: flex;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 
