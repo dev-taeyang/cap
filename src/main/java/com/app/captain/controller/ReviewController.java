@@ -125,7 +125,7 @@ public class ReviewController {
 
     //    리뷰 리스트
     @GetMapping("list")
-    public String getList(Model model, HttpSession session, Criteria criteria, Search search) {
+    public String getList(Model model, HttpSession session, Criteria criteria) {
         /*세션아이디 가져와서 보내주기*/
         Long memberId = (Long)session.getAttribute("memberId");
         /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/
@@ -133,7 +133,7 @@ public class ReviewController {
         /* 유저 정보들을 담기위해 MemberVO타입의 ArrayList 선언*/
         List<MemberVO> memberVOS = new ArrayList<>();
         /*리뷰 전체 리스트들을 담음*/
-        List<ReviewVO> reviewVOS = reviewService.getList(criteria, search);
+        List<ReviewVO> reviewVOS = reviewService.getList(criteria);
         /*forEach를 사용하여 ArrayList에 있는 reviewVO를 toDTO메소드를 사용하여 DTO로 변환 해준다음 DTO에 담아줌*/
         reviewVOS.forEach(reviewVO -> {
             Long member = reviewVO.getMemberId();

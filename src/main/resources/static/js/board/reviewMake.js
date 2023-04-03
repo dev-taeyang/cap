@@ -25,7 +25,7 @@ let CheckButton = false;
 
 
 /* 텍스트 입력  */
-const $TextInput = $('input[type="text"], .detailText-text');
+const $TextInput = $('.formInputBox, .detailText-text');
 
 let textCheck;
 let textCheckAll = [false, false];
