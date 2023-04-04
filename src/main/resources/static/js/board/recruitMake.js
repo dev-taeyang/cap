@@ -143,7 +143,7 @@ let CheckCategory = false;
 
 
 /* 텍스트 입력 칸 관련 */
-const $TextBox = $("input[type='text'], .detailText-text");
+const $TextBox = $(".formInputBox, .detailText-text");
 
 let textCheck;
 let textCheckAll = [false, false, false, false, false];
@@ -157,7 +157,7 @@ let timeCheck;
 let timeCheckAll = [false, false];
 let CheckTime = false;
 
-const $MakeInput = $("input[type='text'], .CategoryItem, .formTime, .detailText-text")
+const $MakeInput = $(".formInputBox, .CategoryItem, .formTime, .detailText-text")
 
 
 $Category.each((i, e) => {
@@ -192,7 +192,6 @@ $Category.each((i, e) => {
     });
 
 });
-
 
 
 
@@ -290,11 +289,11 @@ $("input[name='file']").on("change", function () {
     const file = $("input[name=file]")[0].files[0];
     let formData = new FormData();
     formData.append("file", file);
-    console.log(file);
     $.ajax({
         url: "/groups/upload",
         type: "post",
         data: formData,
+        async: false,
         contentType: false,
         processData: false,
         success: function (uuid) {
@@ -316,24 +315,26 @@ $("input[name='file']").on("change", function () {
                     </div>
                 `);
             }
-
+            console.log(file)
             // 게시글 추가 부분
-        /*    let text = `
-                <input type="hidden" name="files[0].groupFileOriginalName" value="${file.name}">
-                <input type="hidden" name="files[0].groupFileUuid" value="${uuid}">
-                <input type="hidden" name="files[0].groupFilePath" value="${toStringByFormatting(new Date())}">
-                <input type="hidden" name="files[0].groupFileSize" value="${file.size}">
-                <input type="hidden" name="files[0].groupFileType" value="${file.type.startsWith("image")}">
+            let text = `
+                <input type="hidden" name="groupFileOriginalName" value="${file.name}">
+                <input type="hidden" name="groupFileUuid" value="${uuid}">
+                <input type="hidden" name="groupFilePath" value="${toStringByFormatting(new Date())}">
+                <input type="hidden" name="groupFileSize" value="${file.size}">
+                <input type="hidden" name="groupFileType" value="${file.type.startsWith("image")}">
             `;
 
-            $("form[name='recruit']").append(text);*/
-            group.setGroupFileOriginalName(file.name);
-            group.setGroupFilePath(toStringByFormatting(new Date()));
-            group.setGroupFileUuid(uuid);
-            group.setGroupFileSize(file.name);
-            group.setGroupFileType(file.type.startsWith("image"));
+            /* $("form[name='recruit']").append(text);*/
+            /*group.groupFileOriginalName = file.name;
+            group.groupFilePath = toStringByFormatting(new Date());
+            group.groupFileUuid = uuid;
+            group.groupFileSize = file.size;
+            group.groupFileType = file.type.startsWith("image");*/
+
         }
     });
+    $("form[name='recruit']").append(text);
 });
 
 function leftPad(value) {
