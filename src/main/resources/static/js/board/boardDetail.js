@@ -5,7 +5,7 @@
 var geocoder = new kakao.maps.services.Geocoder();
 
 /* db에 있는 group location이 들어갈 곳 */
-geocoder.addressSearch('경기도 용인시 기흥구 중부대로 940', function(result, status) {
+geocoder.addressSearch(group.groupLocation , function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
