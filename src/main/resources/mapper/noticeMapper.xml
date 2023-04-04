@@ -10,6 +10,7 @@
     <select id="selectAll" resultType="noticeVO">
         select notice_id, notice_title, notice_content, notice_register_date
         from tbl_notice
+        order by notice_id desc limit #{cri.offset}, #{cri.rowCount}
     </select>
 
     <select id="selectNoticeCount" resultType="integer">
@@ -22,4 +23,15 @@
         set notice_title=#{noticeTitle}, notice_content=#{noticeContent}
         where notice_id=#{noticeId};
     </update>
+
+    <insert id="insertNotice">
+        insert into tbl_notice
+        (notice_title, notice_content)
+        values(#{noticeTitle}, #{noticeContent})
+    </insert>
+
+    <delete id="deleteNotice">
+        delete from tbl_notice
+        where notice_id = #{noticeId};
+    </delete>
 </mapper>
