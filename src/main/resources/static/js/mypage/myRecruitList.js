@@ -91,11 +91,8 @@ function showMyRecruit() {
                                 </div>
                                 <!-- 작성자가 작성한 글이 들어갈 곳 -->
                                 <div class="description-wrapper description-detail">
-                              <span class="TextLine-Description">${myRecruit.groupContent}</span>`
-                            if(myRecruit.groupContent.length > 61) { text += `<button class="Description-ExpandButton">더보기</button>` }
-                            text +=
-                            `        
-                            </div>
+                                    <span class="TextLine-Description">${myRecruit.groupContent}</span>
+                                </div>
                                 <!-- 댓글로 이동할 수 있는 곳 -->
                                 <div class="actionGroup-wrapper">
                                   <a class="actionGroup-reply" href="">
