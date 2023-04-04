@@ -15,7 +15,7 @@ function showList() {
                 `
     }else {
         reviews.forEach((review,i) => {
-            if(review.files[0] && review.files[i].reviewFileRep == 1){
+            if(review.files[0] /*&& review.files[i].reviewFileRep == 1*/){
                 text +=
                     `
                 <li class="mypage-review-list">
