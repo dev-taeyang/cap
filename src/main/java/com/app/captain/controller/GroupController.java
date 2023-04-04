@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -120,5 +121,13 @@ public class GroupController {
             out.close();
         }
         return uuid;
+    }
+
+    //    파일 불러오기
+    @GetMapping("display")
+    @ResponseBody
+    public byte[] display(String fileName) throws IOException {
+        /* 실제 파일 경로에있는 파일을 byte 배열로 불러와줌*/
+        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
     }
 }
