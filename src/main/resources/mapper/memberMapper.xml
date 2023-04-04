@@ -10,6 +10,7 @@
     <select id="selectAll" resultType="memberVO">
         select member_id, member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender, member_status, member_file_original_name, member_file_uuid, member_file_path, member_file_size, member_file_type
         from tbl_member
+        order by member_id desc limit #{cri.offset}, #{cri.rowCount}
     </select>
 
     <select id="selectMemberCount" resultType="integer">
