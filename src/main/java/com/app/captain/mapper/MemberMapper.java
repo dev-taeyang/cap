@@ -1,14 +1,22 @@
 package com.app.captain.mapper;
 
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface MemberMapper {
     /* 로그인 */
     public MemberVO select(String memberIdentification, String memberPassword);
     public Long selectMemberId(String memberIdentification, String memberPassword);
+    /* 회원 목록 조회 */
+    public List<MemberVO> selectAll(@Param("cri") Criteria criteria);
+    /* 회원 수 조회*/
+    public Integer selectMemberCount();
     /* 회원 찾기*/
     public MemberVO selectMember(Long memberId);
     /* 카카오 회원 찾기 */
@@ -37,6 +45,8 @@ public interface MemberMapper {
     public void memberUpdate(MemberVO memberVO);
     /* 회원 프로필 사진 업데이트 */
     public void memberFileUpdate(MemberVO memberVO);
+    /* 관리자용 회원 수정 */
+    public void memberUpdateAll(MemberVO memberVO);
     /* 회원탈퇴 */
     public void delete(Long memberId);
     /* 비밀번호 업데이트 */

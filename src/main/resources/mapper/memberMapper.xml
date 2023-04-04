@@ -7,6 +7,16 @@
         where member_identification = #{memberIdentification} and member_password = #{memberPassword}
     </select>
 
+    <select id="selectAll" resultType="memberVO">
+        select member_id, member_identification, member_password, member_email, member_name, member_nickname, member_phone, member_birth, member_gender, member_status, member_file_original_name, member_file_uuid, member_file_path, member_file_size, member_file_type
+        from tbl_member
+    </select>
+
+    <select id="selectMemberCount" resultType="integer">
+        select count(member_id)
+        from tbl_member
+    </select>
+
     <select id="selectMemberId" resultType="long">
         select member_id
         from tbl_member
@@ -90,6 +100,17 @@
     <update id="memberUpdate">
         update tbl_member
         set member_nickname=#{memberNickname}, member_birth=#{memberBirth}
+        where member_id = #{memberId}
+    </update>
+
+    <!-- 관리자 페이지 회원정보 업데이트 -->
+    <update id="memberUpdateAll">
+        update tbl_member
+        set member_identification = #{memberIdentification}, member_email = #{memberEmail},
+        member_name = #{memberName} member_nickname=#{memberNickname},
+        member_birth=#{memberBirth}, member_gender = #{memberGender}, member_file_original_name=#{memberFileOriginalName},
+        member_file_uuid=#{memberFileUuid}, member_file_path=#{memberFilePath}, member_file_size=#{memberFileSize},
+        member_file_type=#{memberFileType}
         where member_id = #{memberId}
     </update>
 
