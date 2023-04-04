@@ -117,10 +117,11 @@
         group_category, group_title, group_content, group_location, group_register_date,
         group_end_date,    group_meet_date, group_file_original_name, group_file_uuid,
         group_file_path, group_file_size, group_file_type, group_captain
-        from tbl_member m join tbl_group g on m.member_id = member_id
+        from tbl_member m join tbl_group g on m.member_id = g.group_captain
         <if test="keyword!=null">
             where group_title like concat('%',#{keyword},'%')
         </if>
+        order by group_id desc
         limit #{cri.offset}, #{cri.rowCount}
     </select>
 
