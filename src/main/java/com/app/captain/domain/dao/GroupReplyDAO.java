@@ -2,6 +2,7 @@ package com.app.captain.domain.dao;
 
 import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.dto.GroupReplyDTO;
+import com.app.captain.domain.vo.GroupReplyVO;
 import com.app.captain.mapper.GroupReplyMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,4 +23,24 @@ public class GroupReplyDAO {
     /* 그룹 id로 탐험대에 작성된 댓글의 갯수 가져오기 */
     public Long findReplyCount(Long groupId) { return groupReplyMapper.selectReplyCount(groupId); }
 
+
+    /* 그룹 id로 탐험대에 작성된 댓글들의 정보 가져오기 */
+    public List<GroupReplyDTO> findGroupReply(Long groupId) {
+        return groupReplyMapper.selectGroupReply(groupId);
+    }
+
+    /* 댓글 입력하기 */
+    public void saveReply(GroupReplyVO groupReplyVO) {
+        groupReplyMapper.insertReply(groupReplyVO);
+    }
+
+    /* 댓글 삭제하기 */
+    public void deleteReply(Long groupReplyId) {
+        groupReplyMapper.deleteReply(groupReplyId);
+    }
+
+    /* 댓글 수정하기 */
+    public void setReplyVO(GroupReplyVO groupReplyVO) {
+        groupReplyMapper.updateReply(groupReplyVO);
+    }
 }
