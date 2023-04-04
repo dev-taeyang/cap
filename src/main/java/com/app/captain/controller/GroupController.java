@@ -92,8 +92,9 @@ public class GroupController {
 
     /* 탐험대 리스트 띄우기 */
     @GetMapping("list")
-    public String GroupList(Criteria criteria, Model model) {
-        List<GroupDTO> groupLists = groupService.getAllGroup(criteria);
+    public String GroupList(Criteria criteria, Model model,@RequestParam(value = "keyword",required = false)String keyword) {
+        List<GroupDTO> groupLists = groupService.getAllGroup(criteria,keyword);
+        log.info(keyword);
         groupLists.forEach(grouplist -> {grouplist.setGroupReplyCount(groupReplyService.getReplyCount(grouplist.getGroupId()));});
         model.addAttribute("groupLists", groupLists);
         return "/recruitPage/recruitList";

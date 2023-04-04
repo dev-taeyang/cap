@@ -79,11 +79,11 @@ public class GroupDAO {
     };
 
     /* 모든 탐험대 조회 */
-    public List<GroupDTO> findAllGroup(Criteria criteria) {
-        return groupMapper.selectAllGroup(criteria);
+    public List<GroupDTO> findAllGroup(Criteria criteria,String keyword) {
+        return groupMapper.selectAllGroup(criteria,keyword);
     }
     /* 모든 탐험대 수 조회 */
-    public Integer findcountAllGroup() {
-        return groupMapper.countAllGroup();
+    public Integer findcountAllGroup(String keyword) {
+        return groupMapper.countAllGroup(keyword);
     }
 }
