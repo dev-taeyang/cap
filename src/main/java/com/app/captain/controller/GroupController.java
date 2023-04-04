@@ -55,7 +55,7 @@ public class GroupController {
         groupService.write(groupVO);
         log.info(groupVO.toString());
         redirectAttributes.addFlashAttribute("작성완료");
-        return new RedirectView("/main");
+        return new RedirectView("/groups/list");
     }
 
     /* 그룹 수정 */
@@ -89,8 +89,11 @@ public class GroupController {
         Long groupCaptain = groupVO.getGroupCaptain();
         /* groupCaptain으로 memberProfile정보 가져오기 */
         MemberVO memberVO = mypageService.getMemberById(groupCaptain);
+        /* groupId 전달*/
+        Long id = groupVO.getGroupId();
         /* 화면쪽에 보내주기 */
         model.addAttribute("currentValue", currentValue);
+        model.addAttribute("groupId", id);
         model.addAttribute("maxValue", maxValue);
         model.addAttribute("sessionId", sessionId);
         model.addAttribute("group", groupVO);
@@ -101,16 +104,20 @@ public class GroupController {
 
     /* 그룹 참여하기 */
     @GetMapping("register")
-    public void registerGroup(Long groupId, HttpSession session) {
+    public RedirectView registerGroup(@RequestParam("groupId") Long groupId, HttpSession session, RedirectAttributes redirectAttributes) {
         Long sessionId = (Long) session.getAttribute("memberId");
         memberGroupService.register(groupId, sessionId);
+        return new RedirectView("groups/detail/{groupId}");
     }
 
     /* 그룹 삭제하기 */
-    @GetMapping("delete")
-    public String delete(Long groupId) {
+    @GetMapping("{groupId}/delete")
+    public RedirectView delete(@PathVariable("groupId") Long groupId, RedirectAttributes redirectAttributes) {
         groupService.delete(groupId);
-        return "groups/list";
+        log.info(String.valueOf(groupId));
+        log.info("앙 들어왔어");
+        redirectAttributes.addFlashAttribute("삭제완료");
+        return new RedirectView("/groups/list");
     }
 
     /* 탐험대 리스트 띄우기 */

@@ -55,7 +55,7 @@
 
     <!-- groupId로 그룹 조회 -->
     <select id="selectByGroupId" resultType="groupVO">
-        select group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
+        select group_id, group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
         group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path, group_file_size,
         group_file_type, group_captain from tbl_group
         where group_id = #{groupId}

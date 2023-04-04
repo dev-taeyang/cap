@@ -96,17 +96,21 @@ $cancelButton.on('click', function () {
 
 /* 삭제 컨트롤러 타고 이동해야함 */
 $deleteButton.on('click', function () {
-    location.href = '/groups/delete';
+    location.href = `/groups/${groupId}/delete`;
   });
 
-
+/*if(maxValue > currentValue){
+    location.href = '/groups/register';
+}else {
+    $JoinButton.append("<p style='color: red'>정원이 마감되었습니다.</p>")
+}*/
 /* 참여하기 버튼 눌렀을 때 참여 */
 const $JoinButton = $('.button-enterRecruit');
 
 $JoinButton.on('click', function(){
     if(maxValue > currentValue){
-        location.href = '/groups/register';
+        location.href = `/groups/register?groupId=${groupId}`;
     }else {
-        alert("인원이 초과 되었습니다.");
+        $JoinButton.append("<p style='color: red'>정원이 마감되었습니다.</p>")
     }
 })
