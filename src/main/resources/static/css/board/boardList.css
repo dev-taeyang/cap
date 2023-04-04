@@ -41,6 +41,11 @@ button {
     min-height: 1px;
 }
 
+.emptyboard-wrapper {
+    display: flex;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
 .view-boardList-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -128,7 +133,6 @@ button {
 }
 
 .description-wrapper {
-    margin-top: 10px;
     margin-bottom: 21px;
     letter-spacing: -0.4px;
 }
@@ -241,6 +245,10 @@ button {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.boardTitle-wrapper {
+    margin-top: 5px;
 }
 
 .CategoryItem:hover {

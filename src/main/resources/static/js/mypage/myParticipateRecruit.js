@@ -30,26 +30,26 @@ function showMyParticipateList() {
                               <div class="Image-wrapper">
                     `
 
-                    if(myparticipate.memberFilePath == null) {
-                        text += `
+            if(myparticipate.memberFilePath == null) {
+                text += `
                                 
                                 <img
                                       class="Image-style"
                                       src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png"
                                 />
                         `
-                    } else {
-                        text += `
+            } else {
+                text += `
                              <img
                                   class="Image-style"
                                   src="/mypage/display?fileName=${myparticipate.memberFilePath}/${myparticipate.memberFileUuid}_${myparticipate.memberFileOriginalName}"
                              />
                         
                         `
-                    }
-                    text +=
+            }
+            text +=
 
-                        `          
+                `          
                                   </div>
                                 </div>
                                 <!-- 글쓴이의 이름과 글쓴 시간 -->
@@ -61,28 +61,28 @@ function showMyParticipateList() {
                             </div>
                             <!-- 원정대 소개 이미지 -->
                             <div class="boardImg-wrapper">
-                              <a href="">
+                              <a href="/groups/detail/${myparticipate.groupId}">
                                 <div class="boardSlideImg-wrapper">
                                   <div class="introduceImage-wrapper">
                             `
-                            if(myparticipate.groupFileType == 0) {
-                                text += `
+            if(myparticipate.groupFileType == 0) {
+                text += `
                                         <img
                                           src="https://dahanweb.co.kr/gnuboard4/data/file/gall/2949946602_iBjAP3kv_989758.jpg"
                                           alt="기본 이미지"
                                         />
                                 `
-                            } else {
-                                text += `
+            } else {
+                text += `
                                     <!-- 이미지가 들어갈 곳 -->
                                     <img
                                       src="/mypage/display?fileName=${myparticipate.groupFilePath}/${myparticipate.groupFileUuid}_${myparticipate.groupFileOriginalName}"
                                       alt=""
                                     />
                                 `
-                            }
-                            text +=
-                            `
+            }
+            text +=
+                `
                                   </div>
                                 </div>
                               </a>
@@ -91,6 +91,11 @@ function showMyParticipateList() {
                             <div class="boardCategory-wrapper">
                               <!-- 작성자가 작성한 카테고리 나오기 -->
                               <span>${myparticipate.groupCategory}</span>
+                            </div>
+                            <!-- 제목이 들어갈 곳 -->
+                            <div class="boardTitle-wrapper">
+                                <!-- 작성자가 작성한 제목 나오기 -->
+                                <span>${myparticipate.groupTitle}</span>
                             </div>
                             <!-- 작성자가 작성한 글이 들어갈 곳 -->
                             <div class="description-wrapper description-detail">
@@ -109,7 +114,7 @@ function showMyParticipateList() {
                             </div>
                         </div>
                         `
-            })
+        })
         $MyParticipateList.append(text)
     }
 }
