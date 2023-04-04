@@ -86,4 +86,9 @@ public class GroupDAO {
     public Integer findcountAllGroup(String keyword) {
         return groupMapper.countAllGroup(keyword);
     }
+
+    /* 메인에 띄울 탐험대 조회 */
+    public List<GroupDTO> findMainGroup() {
+        return groupMapper.selectMainGroup();
+    }
 }

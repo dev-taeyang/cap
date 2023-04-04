@@ -1,3 +1,5 @@
+$(".text-modal").hide();
+
 
 const $ImageWrapper = $(".Image-wrapper");
 let contents = "";
@@ -200,8 +202,6 @@ $cancelButton.on('click', function () {
     $('.modal-container').fadeOut(500);
     $('body').css('overflow-y', 'scroll');
 });
-
-$(".text-modal").hide();
 
 /* 아래쪽에 뜨는 모달창 */
 let modalCheck;

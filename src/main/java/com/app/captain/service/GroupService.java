@@ -76,4 +76,9 @@ public class GroupService {
     public Integer getcountAllGroup(String keyword) {
         return groupDAO.findcountAllGroup(keyword);
     }
+
+    /* 메인에 띄울 탐험대 조회 */
+    public List<GroupDTO> getMainGroup() {
+        return groupDAO.findMainGroup();
+    }
 }

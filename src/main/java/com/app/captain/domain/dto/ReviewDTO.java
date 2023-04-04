@@ -16,6 +16,11 @@ public class ReviewDTO {
     private String reviewRegisterDate;
     private String reviewUpdateDate;
     private Double reviewGrade;
+    private String reviewFileOriginalName;
+    private String reviewFileUuid;
+    private String reviewFilePath;
+    private String reviewFileSize;
+    private String reviewFileType;
     private Long memberId;
     private String memberName;
     private String memberNickname;

@@ -70,6 +70,7 @@
         from tbl_review r
         join tbl_review_file f on r.review_id = f.review_id
         group by r.review_id
+        order by review_id desc
         limit 0, 6
     </select>
 
