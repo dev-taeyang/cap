@@ -94,10 +94,7 @@ function showMyParticipateList() {
                             </div>
                             <!-- 작성자가 작성한 글이 들어갈 곳 -->
                             <div class="description-wrapper description-detail">
-                              <span class="TextLine-Description">${myparticipate.groupContent}</span>`
-                              if(myparticipate.groupContent.length > 61) { text += `<button class="Description-ExpandButton">더보기</button>` }
-                              text +=
-                            `  
+                              <span class="TextLine-Description">${myparticipate.groupContent}</span>
                             </div>
                             <!-- 댓글로 이동할 수 있는 곳 -->
                             <div class="actionGroup-wrapper">
