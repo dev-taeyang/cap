@@ -46,7 +46,7 @@ let text = "";
 function showProfile() {
   if(members.memberFileType == 1) {
         text += `
-              <a class="head-user-info" href="javascript:void(0)">
+              <a class="head-user-info" href="/mypage/Update">
                 <img src="/mypage/display?fileName=${members.memberFilePath}/${members.memberFileUuid}_${members.memberFileOriginalName}" class="user-profile-image" />
                 <div class="head-userinfo-textwrapper">
                   <div class="head-userinfo-nickname">${members.memberNickname}</div>
@@ -57,7 +57,7 @@ function showProfile() {
         $memberProfile.append(text)
     } else {
     text += `
-              <a class="head-user-info" href="javascript:void(0)">
+              <a class="head-user-info" href="/mypage/Update">
                 <img src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png" class="user-profile-image" />
                 <div class="head-userinfo-textwrapper">
                   <div class="head-userinfo-nickname">${members.memberNickname}</div>

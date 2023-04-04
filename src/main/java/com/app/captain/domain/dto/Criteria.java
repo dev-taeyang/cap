@@ -23,7 +23,7 @@ public class Criteria {
     public void create(int total) {
         this.rowCount = 9;
         this.total = total;
-        this.pageCount = 10;
+        this.pageCount = 5;
         this.offset = (page - 1) * rowCount;
         this.endPage = (int)(Math.ceil(page / (double)pageCount)) * pageCount;
         this.startPage = endPage - pageCount + 1;

@@ -1,6 +1,7 @@
 FileList.prototype.forEach = Array.prototype.forEach;
 globalThis.arrayFile = new Array();
 globalThis.i = 0;
+const ONE = 1;
 
 $("input[name='file']").on("change", function () {
     const $files = $("input[name=file]")[0].files;
@@ -39,7 +40,7 @@ $("input[name='file']").on("change", function () {
             globalThis.arrayFile.forEach(file => dataTransfer.items.add(file));
             $("input[name='file']")[0].files = dataTransfer.files;
             let text = "";
-            $files.forEach(file => {
+            $files.forEach((file,i) => {
                 text +=
                     `
                     <input type="hidden" name="files[${i}].reviewFileOriginalName" value="${file.name}">
@@ -48,6 +49,11 @@ $("input[name='file']").on("change", function () {
                     <input type="hidden" name="files[${i}].reviewFileSize" value="${file.size}">
                     <input type="hidden" name="files[${i}].reviewFileType" value="${file.type.startsWith("image")}">
                     `
+                if(i===0) {
+                    text += `<input type="hidden" name="files[${i}].reviewFileRep" value="${ONE}">`;
+                }else {
+                    text += `<input type="hidden" name="files[${i}].reviewFileRep" value="0">`;
+                }
                 i++;
             });
             globalThis.i = 0;

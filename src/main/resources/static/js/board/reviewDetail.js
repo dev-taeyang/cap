@@ -113,6 +113,7 @@ function showModify() {
 }
 
 /*리뷰 메인 사진 뿌리는 함수*/
+/*사진이 있다면*/
 if($files[0] != null){
     function showMiddle() {
         text = `
@@ -129,6 +130,7 @@ if($files[0] != null){
         $mainImg.append(text);
         text="";
     }
+    /* 사진이 없다면 기본이미지로 넣어줌 */
 }else {
     function showMiddle() {
         text = `

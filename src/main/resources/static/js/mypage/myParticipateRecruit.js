@@ -1,5 +1,6 @@
 /* mypageParticipateRecruitList.html */
 
+
 /* 내가 참가한 탐험대 리스트 뿌려줄 곳 */
 const $MyParticipateList = $(".view-boardList-wrapper");
 /* 참가한 탐험대가 없을 때 나올 이미지를 넣을 곳 */
@@ -54,7 +55,7 @@ function showMyParticipateList() {
                                 <!-- 글쓴이의 이름과 글쓴 시간 -->
                                 <div class="MemberProfileText-wrapper">
                                   <p class="ProfileName">${myparticipate.memberNickname}</p>
-                                  <div class="RegistTime">${myparticipate.groupRegisterDate}</div>
+                                  <div class="RegistTime">` + elapsedTime(myparticipate.groupRegisterDate) +`</div>
                                 </div>
                               </div>
                             </div>
@@ -63,11 +64,25 @@ function showMyParticipateList() {
                               <a href="">
                                 <div class="boardSlideImg-wrapper">
                                   <div class="introduceImage-wrapper">
+                            `
+                            if(myparticipate.groupFileType == 0) {
+                                text += `
+                                        <img
+                                          src="https://dahanweb.co.kr/gnuboard4/data/file/gall/2949946602_iBjAP3kv_989758.jpg"
+                                          alt="기본 이미지"
+                                        />
+                                `
+                            } else {
+                                text += `
                                     <!-- 이미지가 들어갈 곳 -->
                                     <img
-                                      src="https://res.cloudinary.com/frientrip/image/upload/ios_image_1306431_20230311161025477_a3e6d7c9da6c8a0b53f3bb36d1abb1314034681576f6c523d3da0613e9307e75"
+                                      src="/mypage/display?fileName=${myparticipate.groupFilePath}/${myparticipate.groupFileUuid}_${myparticipate.groupFileOriginalName}"
                                       alt=""
                                     />
+                                `
+                            }
+                            text +=
+                            `
                                   </div>
                                 </div>
                               </a>
@@ -79,9 +94,7 @@ function showMyParticipateList() {
                             </div>
                             <!-- 작성자가 작성한 글이 들어갈 곳 -->
                             <div class="description-wrapper description-detail">
-                              <span class="TextLine-Description"
-                                >${myparticipate.groupContent}</span
-                              ><button class="Description-ExpandButton">더보기</button>
+                              <span class="TextLine-Description">${myparticipate.groupContent}</span>
                             </div>
                             <!-- 댓글로 이동할 수 있는 곳 -->
                             <div class="actionGroup-wrapper">
@@ -101,3 +114,15 @@ function showMyParticipateList() {
     }
 }
 showMyParticipateList();
+
+
+const $changePage = $('.changePage');
+
+// 페이징 클릭 이벤트
+$changePage.each(function (i, changePage) {
+    $(changePage).on("click", e => {
+        e.preventDefault();
+        criteria.page = ($(this).attr("href"));
+        window.location.href = `/mypage/partInRecruit?page=${criteria.page}`;
+    })
+});

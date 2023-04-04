@@ -2,4 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.captain.mapper.MemberGroupMapper">
 
+    <!-- 그룹 참여하기 -->
+    <insert id="join">
+        INSERT INTO tbl_member_group
+        (member_id, group_id)
+        VALUES(#{memberId}, #{groupId});
+    </insert>
+    <!-- 그룹아이디로 memberGoupId 조회하기 -->
+    <select id="selectByGroupId" resultType="long">
+        select member_group_id from tbl_member_group
+        where group_id = #{groupId}
+    </select>
+    <!-- 그룹아이디로 member수 구하기 -->
+    <select id="memberCountByGroupId" resultType="_int">
+        select count(member_Id) from tbl_member_group
+        where group_id = #{groupId}
+    </select>
+    <!-- groupId로 삭제하기 -->
+    <delete id="delete">
+        delete from tbl_member_group
+        where group_id = #{groupId}
+    </delete>
+
 </mapper>
