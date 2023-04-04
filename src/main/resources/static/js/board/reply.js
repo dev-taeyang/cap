@@ -186,7 +186,6 @@ $delete.each((i,e) => {
 })
 
 
-
 function showWarnModal(modalMessage) {
     $('.modal-content').html(modalMessage);
     $('.warn-modal').css('animation', 'popUp 0.5s');
@@ -220,6 +219,7 @@ $('#replyContainer').on('click', function () {
     if (modalCheck) {
         $('div.text-warn-modal').css('animation', 'popDown 0.5s');
         $('div.text-modal').fadeOut(500);
+        location.reload();
     }
 });
 

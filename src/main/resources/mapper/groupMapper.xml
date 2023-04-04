@@ -78,7 +78,7 @@
     <!-- 그룹 정보 수정 -->
     <update id="update">
         update tbl_group
-        set group_name= #{groupName}, group_title = #{groupTitle} , group_location = #{groupLocation}, group_category= #{groupCategory},
+        set group_name= #{groupName}, group_title = #{groupTitle}, group_content = #{groupContent} , group_location = #{groupLocation}, group_category= #{groupCategory},
         group_max_value= #{groupMaxValue}, group_end_date= #{groupEndDate}, group_meet_date= #{groupMeetDate}, group_file_original_name= #{groupFileOriginalName},
         group_file_uuid= #{groupFileUuid}, group_file_path= #{groupFilePath}, group_file_size= #{groupFileSize}, group_file_type= #{groupFileType},
         group_captain= #{groupCaptain}

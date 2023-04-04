@@ -237,3 +237,76 @@ $ModifyInput.on("blur", function(){
     }
 
 })
+
+/*check 된것 JS로 표시 해주기*/
+let categoryInput = document.querySelector('input[name="groupCategory"]:checked');
+let category1 = categoryInput.nextElementSibling;
+$(category1).addClass("CategoryActive");
+
+
+/* 사진 업로드 및 저장 */
+
+globalThis.i = 0;
+globalThis.uuids = [];
+
+$("input[name='file']").on("change", function () {
+    const file = $("input[name=file]")[0].files[0];
+    let formData = new FormData();
+    formData.append("file", file);
+    $.ajax({
+        url: "/groups/upload",
+        type: "post",
+        data: formData,
+        async: false,
+        contentType: false,
+        processData: false,
+        success: function (uuid) {
+            globalThis.uuids.push(uuid);
+            if (file.type.startsWith("image")) {
+                $("#thumbnail").append(`
+                    <div class="thumbnail">
+                        <span class="thumbnailSpan">
+                            <img src="/reviews/display?fileName=${toStringByFormatting(new Date())}/t_${uuid}_${file.name}">
+                        </span>
+                    </div>
+                `);
+            } else {
+                $("#thumbnail").append(`
+                    <div class="thumbnail">
+                        <span class="thumbnailSpan">
+                            <img src="/images/camera_icon.png" width="100">
+                        </span>
+                    </div>
+                `);
+            }
+            // 게시글 추가 부분
+            let text = "";
+            text +=
+                `
+                    <input type="hidden" name="groupFileOriginalName" value="${file.name}">
+                    <input type="hidden" name="groupFilePath" value="${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="groupFileUuid" value="${globalThis.uuids[i]}">
+                    <input type="hidden" name="groupFileSize" value="${file.size}">
+                    <input type="hidden" name="groupFileType" value="${file.type.startsWith("image")}">
+                    `;
+            $("form[name=recruit]").append(text);
+
+        }
+    });
+});
+console.log($("form[name=recruit]"));
+function leftPad(value) {
+    if (value >= 10) {
+        return value;
+    }
+
+    return `0${value}`;
+}
+
+function toStringByFormatting(source, delimiter = '/') {
+    const year = source.getFullYear();
+    const month = leftPad(source.getMonth() + 1);
+    const day = leftPad(source.getDate());
+
+    return [year, month, day].join(delimiter);
+}

@@ -19,8 +19,8 @@
                 <span style="font-weight: 700;">탐험대 수정</span>
             </div>
             <div class="SectionMaker-Wrapper">
-                <div class="SectionMaker-contentWrapper">
-                    <form action="">
+                <div class="SectionMaker-contentWrapper" th:object="${group}">
+                    <form name="recruit" th:action="'/groups/'+ *{groupId} + '/modify'" method="post">
                         <div class="formSection-contentContainer">
                             <div class="formTitle-wrapper">
                                 <div class="formTitle">
@@ -67,19 +67,19 @@
                                     </legend>
                                     <div class="ButtonItem-list">
                                         <!-- 선택한 카테고리값이 들어갈 곳 -->
-                                        <input type="radio" name="groupCategory" id="adventure" style="display: none;" th:checked="${group.groupCategory == '모험'}">
+                                        <input type="radio" name="groupCategory" id="adventure" style="display: none;" value="모험" th:checked="${group.groupCategory == '모험'}">
                                         <button type="button" class="CategoryItem category-Adventure">
                                             <span>모험</span>
                                         </button>
-                                        <input type="radio" name="groupCategory" id="horror" style="display: none;" th:checked="${group.groupCategory == '공포'}" >
+                                        <input type="radio" name="groupCategory" id="horror" style="display: none;" value="공포" th:checked="${group.groupCategory == '공포'}" >
                                         <button type="button" class="CategoryItem category-Horror">
                                             <div>공포</div>
                                         </button>
-                                        <input type="radio" name="groupCategory" id="tour" style="display: none;" th:checked="${group.groupCategory == '관광'}" >
+                                        <input type="radio" name="groupCategory" id="tour" style="display: none;" value="관광" th:checked="${group.groupCategory == '관광'}" >
                                         <button type="button" class="CategoryItem category-Tour">
                                             <div>관광</div>
                                         </button>
-                                        <input type="radio" name="groupCategory" id="leisure" style="display: none;" th:checked="${group.groupCategory == '레저'}" >
+                                        <input type="radio" name="groupCategory" id="leisure" style="display: none;" value="레저" th:checked="${group.groupCategory == '레저'}" >
                                         <button type="button" class="CategoryItem category-Leisure">
                                             <div>레저</div>
                                         </button>
@@ -106,11 +106,11 @@
                                     <legend class="formTitle-legend">
                                         <span>모집 마감</span>
                                     </legend>
-                                        <input name="groupEndDate" class="formTime" type="datetime-local" th:value="${group.groupEndDate}">
+                                        <input name="groupEndDate" class="formTime" type="date" th:value="${group.groupEndDate}">
                                     <legend class="formTitle-legend form-meetEndTime">
                                         <span>만남 시간</span>
                                     </legend>
-                                        <input name="groupMeetDate" class="formTime" type="datetime-local" th:value="${group.groupMeetDate}">
+                                        <input name="groupMeetDate" class="formTime" type="date" th:value="${group.groupMeetDate}">
                                 </div>
                             </div>
                         </div>
@@ -168,6 +168,10 @@
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script th:inline="javascript">
+    let group = [[${group}]];
+    console.log(group);
+</script>
 <script src="/js/main/header.js"></script>
-<script src="../../static/js/board/recruitModify.js"></script>
+<script src="/js/board/recruitModify.js"></script>
 </html>
