@@ -68,7 +68,9 @@ public class GroupController {
 
     /* 그룹 수정 완료 */
     @PostMapping("{groupId}/modify")
-    public RedirectView modify(GroupVO groupVO, @PathVariable("groupId") Long groupId, RedirectAttributes redirectAttributes) {
+    public RedirectView modify(GroupVO groupVO, @PathVariable("groupId") Long groupId, HttpSession session, RedirectAttributes redirectAttributes) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        groupVO.setGroupCaptain(memberId);
         groupService.modify(groupVO);
         redirectAttributes.addFlashAttribute("group", groupVO);
         return new RedirectView("/groups/list");
