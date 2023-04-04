@@ -44,8 +44,8 @@ public class GroupDAO {
     };
 
     /* 그룹 수정 */
-    public void update(Long groupId){
-        groupMapper.update(groupId);
+    public void update(GroupVO groupVO){
+        groupMapper.update(groupVO);
     };
 
     /* 그룹 삭제 */
@@ -77,4 +77,13 @@ public class GroupDAO {
     public int findCountByGroupId(Long groupId){
         return groupMapper.selectCount(groupId);
     };
+
+    /* 모든 탐험대 조회 */
+    public List<GroupDTO> findAllGroup(Criteria criteria) {
+        return groupMapper.selectAllGroup(criteria);
+    }
+    /* 모든 탐험대 수 조회 */
+    public Integer findcountAllGroup() {
+        return groupMapper.countAllGroup();
+    }
 }

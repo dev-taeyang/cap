@@ -14,15 +14,15 @@
 </head>
 <body>
 <div th:insert="~{/main/header :: header}"></div>
-    <div class="modal-container" style="display: none;">
+    <div class="modal-container" th:if="${captain.memberId == sessionId}" style="display: none;">
         <div class="modal">
-          <div class="warn-modal">
-            <div class="modal-content"></div>
-          </div>
-          <div class="modal-button-wrap">
-            <button class="delete-button">삭제</button>
-            <button class="cancel-button">취소</button>
-          </div>
+            <div class="warn-modal">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-button-wrap">
+                <button class="delete-button">삭제</button>
+                <button class="cancel-button">취소</button>
+            </div>
         </div>
     </div>
     <div class="boardDetailPage-wrapper">
@@ -33,6 +33,7 @@
                 <section class="boardDetail-headSectionWrapper">
                     <!-- 원정대 소개 사진들이 나오는 곳 -->
                     <div class="presentationImage-wrapper RecruitImage-section">
+                        <!-- 원정대 사진 출력 -->
                         <div class="presentationImage-content">
                             <div class="introduceImage-wrapper">
                                 <!-- 이미지가 들어갈 곳 -->
@@ -225,8 +226,14 @@
     </div>
 <div th:insert="~{/main/footer :: footer}"></div>
 </body>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e010e1c47083a81e5873ca2682380a56&libraries=services"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e010e1c47083a81e5873ca2682380a56&libraries=services"></script>
+<script th:inline="javascript">
+    let group = [[${group}]];
+    let captain = [[${captain}]];
+    let sessionId = [[${sessionId}]];
+</script>
 <script type="text/javascript" src="/js/board/boardDetail.js"></script>
+<script type="text/javascript" src="/js/board/groupDetail.js"></script>
 <script src="/js/main/header.js"></script>
 </html>

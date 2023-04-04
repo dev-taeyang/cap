@@ -158,20 +158,20 @@
                         <div class="formTitle-wrapper">
                             <div class="formTitle">
                                 <legend class="formTitle-legend">
-                                    <span>모집 마감</span>
+                                    <span>마감 날짜</span>
                                 </legend>
                                 <input
                                         name="groupEndDate"
                                         class="formTime"
-                                        type="datetime-local"
+                                        type="date"
                                 />
                                 <legend class="formTitle-legend form-meetEndTime">
-                                    <span>만남 시간</span>
+                                    <span>만남 날짜</span>
                                 </legend>
                                 <input
                                         name="groupMeetDate"
                                         class="formTime"
-                                        type="datetime-local"
+                                        type="date"
                                 />
                             </div>
                         </div>
@@ -239,6 +239,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script th:inline="javascript">
     let group = [[${group}]];
+    console.log(group);
 </script>
 <script src="/js/main/header.js"></script>
 <script src="/js/board/recruitMake.js"></script>
