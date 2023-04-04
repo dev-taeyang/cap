@@ -195,7 +195,7 @@
             <div class="floatActionBar-buttonWrapper">
                 <!-- sessionId가 있을때만 버튼이 활성화 됨 -->
                 <button class="floatActionBar-submitButton button-enterRecruit"
-                        th:if="${sessionId}" th:disabled="${!sessionId}">
+                        >
                     <div class="enterButton-Text">참여하기</div>
                 </button>
             </div>
@@ -211,6 +211,12 @@
     let group = [[${group}]];
     let captain = [[${captain}]];
     let sessionId = [[${sessionId}]];
+    let maxValue = [[${maxValue}]];
+    let currentValue = [[${currentValue}]];
+    console.log(maxValue);
+    console.log(currentValue);
+    console.log(group);
+    console.log(captain);
 </script>
 <script type="text/javascript" src="/js/board/boardDetail.js"></script>
 <script type="text/javascript" src="/js/board/groupDetail.js"></script>

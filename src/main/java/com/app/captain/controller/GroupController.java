@@ -7,8 +7,10 @@ import com.app.captain.domain.vo.GroupVO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.service.GroupReplyService;
 import com.app.captain.service.GroupService;
+
 import java.io.File;
 
+import com.app.captain.service.MemberGroupService;
 import com.app.captain.service.MypageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,19 +37,20 @@ public class GroupController {
     private final GroupService groupService;
     private final MypageService mypageService;
     private final GroupReplyService groupReplyService;
+    private final MemberGroupService memberGroupService;
 
     /* 그룹 개설 폼 */
     @GetMapping("write")
-    public String write(Model model){
+    public String write(Model model) {
         GroupVO groupVO = new GroupVO();
-        model.addAttribute("group",groupVO);
+        model.addAttribute("group", groupVO);
         return "recruitPage/recruitMake";
     }
 
     /* 그룹 작성 완료 */
     @PostMapping("write")
-    public RedirectView write(GroupVO groupVO, HttpSession session, RedirectAttributes redirectAttributes){
-        Long memberId = (Long)session.getAttribute("memberId");
+    public RedirectView write(GroupVO groupVO, HttpSession session, RedirectAttributes redirectAttributes) {
+        Long memberId = (Long) session.getAttribute("memberId");
         groupVO.setGroupCaptain(memberId);
         groupService.write(groupVO);
         log.info(groupVO.toString());
@@ -57,7 +60,7 @@ public class GroupController {
 
     /* 그룹 수정 */
     @GetMapping("{groupId}/modify")
-    public String getModify(@PathVariable("groupId") Long groupId, Model model){
+    public String getModify(@PathVariable("groupId") Long groupId, Model model) {
         GroupVO groupVO = groupService.getGroupByGroupId(groupId);
         model.addAttribute("group", groupVO);
         return "recruitPage/recruitModify";
@@ -65,36 +68,58 @@ public class GroupController {
 
     /* 그룹 수정 완료 */
     @PostMapping("{groupId}/modify")
-    public RedirectView modify(GroupVO groupVO, @PathVariable("groupId")Long groupId, RedirectAttributes redirectAttributes){
+    public RedirectView modify(GroupVO groupVO, @PathVariable("groupId") Long groupId, RedirectAttributes redirectAttributes) {
         groupService.modify(groupVO);
-        redirectAttributes.addFlashAttribute("group",groupVO);
+        redirectAttributes.addFlashAttribute("group", groupVO);
         return new RedirectView("/groups/list");
     }
 
     /* 그룹 상세 페이지 */
     @GetMapping("detail/{groupId}")
-    public String getGroup(@PathVariable("groupId")Long groupId, Model model, HttpSession session){
+    public String getGroup(@PathVariable("groupId") Long groupId, Model model, HttpSession session) {
         /* 세션아이디 가져오기 */
         Long sessionId = (Long) session.getAttribute("memberId");
         /* 그룹아이디로 정보가져오기 */
         GroupVO groupVO = groupService.getGroupByGroupId(groupId);
+        /* 그룹 최대인원 변수에 담기 */
+        Long maxValue = groupVO.getGroupMaxValue();
+        /* 가입한 member수 가져오기 */
+        int currentValue = memberGroupService.getCountByGroupId(groupId);
         /* 정보가져온거에서 groupCaptain 변수만들어서 담아주기 */
         Long groupCaptain = groupVO.getGroupCaptain();
         /* groupCaptain으로 memberProfile정보 가져오기 */
         MemberVO memberVO = mypageService.getMemberById(groupCaptain);
-        model.addAttribute("sessionId",sessionId);
-        model.addAttribute("group",groupVO);
-        model.addAttribute("captain",memberVO);
+        /* 화면쪽에 보내주기 */
+        model.addAttribute("currentValue", currentValue);
+        model.addAttribute("maxValue", maxValue);
+        model.addAttribute("sessionId", sessionId);
+        model.addAttribute("group", groupVO);
+        model.addAttribute("captain", memberVO);
         return "recruitPage/recruitDetail";
 
     }
+
     /* 그룹 참여하기 */
+    @GetMapping("register")
+    public void registerGroup(Long groupId, HttpSession session) {
+        Long sessionId = (Long) session.getAttribute("memberId");
+        memberGroupService.register(groupId, sessionId);
+    }
+
+    /* 그룹 삭제하기 */
+    @GetMapping("delete")
+    public String delete(Long groupId) {
+        groupService.delete(groupId);
+        return "groups/list";
+    }
 
     /* 탐험대 리스트 띄우기 */
     @GetMapping("list")
     public String GroupList(Criteria criteria, Model model) {
         List<GroupDTO> groupLists = groupService.getAllGroup(criteria);
-        groupLists.forEach(grouplist -> {grouplist.setGroupReplyCount(groupReplyService.getReplyCount(grouplist.getGroupId()));});
+        groupLists.forEach(grouplist -> {
+            grouplist.setGroupReplyCount(groupReplyService.getReplyCount(grouplist.getGroupId()));
+        });
         model.addAttribute("groupLists", groupLists);
         return "/recruitPage/recruitList";
     }
