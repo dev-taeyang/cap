@@ -6,6 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>공지사항 관리</title>
+        <style>
+            ul#paging {
+                display: flex;
+                justify-content: center;
+            }
+        </style>
         <link
             href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
             rel="stylesheet"
@@ -324,15 +330,13 @@
                         <div class="table__box">
                             <div class="table__search__form">
                                 <div>
-                                    <button
-                                        id="delete-button"
-                                        class="button__type_2 button__color__red"
-                                    >
+                                    <button type="button" id="delete-button" class="button__type_2 button__color__red notice-delete-checkbox">
                                         공지 삭제
                                     </button>
                                     <button
                                         id="insert-button"
                                         class="button__type_2 button__color__blue"
+                                        type="button"
                                     >
                                         공지 추가
                                     </button>
@@ -380,37 +384,14 @@
                                 </div>
                             </div>
                             <table class="table">
-                                <tr class="table__header">
-                                    <th class="content_check">
-                                        <label class="check-label">
-                                            <input type="checkbox" id="checkAll" />
-                                        </label>
-                                    </th>
-                                    <th class="content__id">번호</th>
-                                    <th>제목</th>
-                                    <th style="width: 35%">내용</th>
-                                    <th>작성자</th>
-                                </tr>
-                                <th:block th:each="notice: ${notices}">
-                                    <tr class="table__content">
-                                        <td>
-                                            <label class="check-label">
-                                                <input type="checkbox" name="check" />
-                                            </label>
-                                        </td>
-                                        <td th:text="${notice.noticeId}" class="content__id"></td>
-                                        <td th:text="${notice.noticeTitle}"></td>
-                                        <td th:text="${notice.noticeContent}" style="white-space: pre-wrap"></td>
-                                        <td>관리자</td>
-                                        <td>
-                                            <button class="content__detail__btn button__type_2 button__color__green">
-                                                상세보기
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </th:block>
+
+
+                                <!-- --------------------------  공지사항 목록 -------------------------- -->
+
+
                             </table>
                             <!-- default.css > pagenation -->
+
                             <footer class="page-box">
                                 <div class="page-prev-arrow-box">
                                     <button class="page-double-prev page-button">
@@ -424,9 +405,19 @@
                                         />
                                     </button>
                                 </div>
-                                <button class="page-number page-button page-active">1</button>
-                                <button class="page-number page-button">2</button>
-                                <button class="page-number page-button">3</button>
+
+
+                                <!-- -------------------------- 관리자 페이징 처리 -------------------------- -->
+
+
+                                <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
+                                    <a href="javascript:void(0)" th:if="${criteria.page != page}">
+                                        <button class="page-number page-button page-active" th:text="${page}"></button>
+                                    </a>
+                                    <button class="page-number page-button page-active" th:unless="${criteria.page != page}" th:text="${page}"></button>
+                                </th:block>
+
+
                                 <div class="page-next-arrow-box">
                                     <button class="page-next page-button">
                                         <img
@@ -440,6 +431,7 @@
                                     </button>
                                 </div>
                             </footer>
+
                         </div>
                     </div>
                 </main>
@@ -456,8 +448,8 @@
                         <p>정말로 공지사항을 삭제하겠습니까?</p>
                     </div>
                     <div class="modal-footer">
-                        <button id="confirm-delete" class="btn confirm-btn">확인</button>
-                        <button id="cancel-delete" class="btn cancel-btn">취소</button>
+                        <button id="confirm-delete" type="button" class="btn confirm-btn">확인</button>
+                        <button id="cancel-delete" type="button" class="btn cancel-btn">취소</button>
                     </div>
                 </div>
             </div>
@@ -482,6 +474,10 @@
                     <form class="storage_form" action="">
                         <main class="modal__main">
 
+
+                            <!-- -------------------------- 모달 상세보기 -------------------------- -->
+
+
                         </main>
                     </form>
                 </section>
@@ -491,12 +487,7 @@
                     <div class="modal__header">
                         <h3 class="modal__title">공지사항 추가하기</h3>
                         <a class="modal-close">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                data-name="Capa 1"
-                                id="Capa_1"
-                                viewBox="0 0 20 19.84"
-                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" data-name="Capa 1" id="Capa_1" viewBox="0 0 20 19.84">
                                 <path
                                     d="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"
                                 />
@@ -511,31 +502,26 @@
                                         <li class="content__list">
                                             <span>제목</span>
                                             <div class="content__intput input_box_shadow">
-                                                <input type="text" />
+                                                <input type="text" class="noticeTitle"/>
                                             </div>
                                         </li>
                                         <li class="content__list">
                                             <span>내용</span>
                                             <div class="content__intput input_box_shadow">
-                                                <input type="text" />
+                                                <input type="text" class="noticeContent"/>
                                             </div>
                                         </li>
                                         <li class="content__list">
                                             <span>작성자</span>
                                             <div class="content__intput input_box_shadow">
-                                                <input type="text" />
+                                                <input type="text"/>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="user__profile__button">
-                                <button
-                                    id="completeBtn"
-                                    class="button__type_2 button__color__green"
-                                >
-                                    작성완료
-                                </button>
+                                <button id="completeBtn" class="button__type_2 button__color__green notice-write-button">작성완료</button>
                             </div>
                         </main>
                     </form>

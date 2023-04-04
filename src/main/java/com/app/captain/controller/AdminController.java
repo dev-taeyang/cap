@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -26,8 +27,8 @@ public class AdminController {
     private final ReviewFileService reviewFileService;
 
     @GetMapping("/admin-notice")
-    public void showNotices(Model model, Long noticeId){
-        model.addAttribute("notices", noticeService.getList());
+    public void showNotices(Criteria criteria, Model model, Long noticeId){
+        model.addAttribute("notices", noticeService.getList(criteria));
         model.addAttribute("noticeCount", noticeService.getNoticeCount());
     }
 
@@ -60,7 +61,24 @@ public class AdminController {
 
     @ResponseBody
     @PostMapping("/admin-write")
-    public void write() {
-        
+    public void write(@RequestParam("noticeTitle") String noticeTitle, @RequestParam("noticeContent") String noticeContent) {
+        NoticeVO noticeVO = new NoticeVO();
+
+        noticeVO.setNoticeTitle(noticeTitle);
+        noticeVO.setNoticeContent(noticeContent);
+
+        noticeService.registerNotice(noticeVO);
+    }
+
+    @ResponseBody
+    @DeleteMapping("/admin/admin-delete")
+    public void removeNotice(@RequestParam("noticeId") Long noticeId) {
+        noticeService.removeById(noticeId);
+    }
+
+    @ResponseBody
+    @GetMapping("/admin/admin-list/{page}")
+    public List<NoticeVO> showLists(@PathVariable("page") Integer page, Criteria criteria) {
+        return noticeService.getList(criteria);
     }
 }
