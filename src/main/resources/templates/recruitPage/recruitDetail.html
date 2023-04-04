@@ -43,7 +43,7 @@
                                 <!-- 탐험대 title이 들어갈 곳 -->
                                 <h1 class="infoSection-Title" th:text="${group.groupTitle}"></h1>
                                 <div class="infoSection-actionWrapper" th:if="${group.groupCaptain == sessionId}">
-                                    <a href="">
+                                    <a th:href="@{/groups/{groupId}/modify(groupId=${group.groupId})}">
                                         <span class="actionSection-title">수정</span>
                                     </a>
                                     <span class="actionSection-title deleteButton">삭제</span>
@@ -213,6 +213,7 @@
     let sessionId = [[${sessionId}]];
     let maxValue = [[${maxValue}]];
     let currentValue = [[${currentValue}]];
+    let groupId = [[${groupId}]];
     console.log(maxValue);
     console.log(currentValue);
     console.log(group);
