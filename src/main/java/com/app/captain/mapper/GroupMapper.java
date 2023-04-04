@@ -52,9 +52,9 @@ public interface GroupMapper {
     public int selectCount(Long groupId);
 
     /* 모든 탐험대 조회 */
-    public List<GroupDTO> selectAllGroup(@Param("cri") Criteria criteria);
+    public List<GroupDTO> selectAllGroup(@Param("cri") Criteria criteria,@Param("keyword") String keyword);
     /* 모든 탐험대 수 조회 */
-    public Integer countAllGroup();
+    public Integer countAllGroup(String keyword);
 
 
 }

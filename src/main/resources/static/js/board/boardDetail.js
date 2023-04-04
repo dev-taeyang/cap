@@ -96,7 +96,7 @@ $cancelButton.on('click', function () {
 
 /* 삭제 컨트롤러 타고 이동해야함 */
 $deleteButton.on('click', function () {
-    location.href = '';
+    location.href = '/groups/delete';
   });
 
 
@@ -104,5 +104,9 @@ $deleteButton.on('click', function () {
 const $JoinButton = $('.button-enterRecruit');
 
 $JoinButton.on('click', function(){
-    location.href = '';
+    if(maxValue > currentValue){
+        location.href = '/groups/register';
+    }else {
+        alert("인원이 초과 되었습니다.");
+    }
 })
