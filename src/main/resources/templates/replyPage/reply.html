@@ -14,17 +14,23 @@
 </head>
 <body>
 <div th:insert="~{/main/header :: header}"></div>
-    <div class="modal-container" style="display: none;">
-        <div class="modal">
-          <div class="warn-modal">
+<div class="text-modal">
+    <div class="text-warn-modal">
+        <div class="text-modal-content"></div>
+    </div>
+</div>
+<div class="modal-container" style="display: none;">
+    <div class="modal">
+        <div class="warn-modal">
             <div class="modal-content"></div>
-          </div>
-          <div class="modal-button-wrap">
+        </div>
+        <div class="modal-button-wrap">
             <button class="delete-button">삭제</button>
             <button class="cancel-button">취소</button>
-          </div>
         </div>
     </div>
+</div>
+<main id="replyContainer">
     <div class="page-wrapper">
         <div class="Center-wrapper">
             <h3>댓글</h3>
@@ -32,124 +38,32 @@
         <!-- 댓글이 추가되는 곳 -->
         <div class="boardReplyList-wrapper">
             <!-- 댓글 리스트 -->
-            <div class="ReplyContent-Section">
-                <div class="ReplyContent-wrapper">
-                    <div class="replyContent-profile">
-                        <div class="Image-wrapper">
-                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                       </div>
-                    </div>
-                    <div class="ReplyContent-container">
-                        <!-- 유저의 닉네임이 들어갈 곳 -->
-                        <div class="replyContent-member">댕댕쓰</div>
-                        <!-- 작성한 댓글이 들어갈 곳 -->
-                        <p class="replyContent-comment">테스트 댓글입니다. 얼마나 늘어나나 테스트 중입니다. 한번 길게 적어볼게요.테스트 댓글입니다. 얼마나 늘어나나 테스트 중입니다. 한번 길게 적어볼게요.테스트 댓글입니다. 얼마나 늘어나나 테스트 중입니다. 한번 길게 적어볼게요.</p>
-                        <section class="actionGroup-section">
-                            <!-- 댓글 작성 시간 넣을 곳 -->
-                            <p class="actionMenu-time">방금 전</p>
-                            <!-- 삭제 버튼 -->
-                            <button class="actionMenu-button deleteButton">삭제</button>
-                            <!-- 수정 버튼 -->
-                            <button class="actionMenu-button modifyButton">수정</button>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <!-- 댓글 수정용 폼 나오는 곳 -->
-            <div class="ModifyReply-Section" style="display: none;">
-                <div class="ReplyContent-wrapper">
-                    <div class="replyContent-profile">
-                        <div class="Image-wrapper">
-                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                       </div>
-                    </div>
-                    <div class="ReplyContent-container">
-                        <!-- 유저의 닉네임이 들어갈 곳 -->
-                        <div class="ModifySection-wrapper">
-                            <div class="replyContent-member">댕댕쓰</div>
-                            <div class="ModifyAction-wrapper">
-                                <button class="ReplyModify-action registModify">수정</button>
-                                <button class="ReplyModify-action cancelModify">취소</button>
-                            </div>
-                        </div>
-                        <!-- 작성한 댓글이 들어갈 곳 -->
-                        <textarea name="groupReplyContent" class="modifyReply-area">테스트 댓글입니다. 얼마나 늘어나나 테스트 중입니다. 한번 길게 적어볼게요.테스트 댓글입니다. 얼마나 늘어나나 테스트 중입니다. 한번 길게 적어볼게요.테스트 댓글입니다. 얼마나 늘어나나 테스트 중입니다. 한번 길게 적어볼게요.</textarea>
-                    </div>
-                </div>
-            </div>
-            <!-- 댓글 리스트 -->
-            <div class="ReplyContent-Section">
-                <div class="ReplyContent-wrapper">
-                    <div class="replyContent-profile">
-                        <div class="Image-wrapper">
-                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                       </div>
-                    </div>
-                    <div class="ReplyContent-container">
-                        <!-- 유저의 닉네임이 들어갈 곳 -->
-                        <div class="replyContent-member">댕댕쓰</div>
-                        <!-- 작성한 댓글이 들어갈 곳 -->
-                        <p class="replyContent-comment">테스트 댓글 두번째 입니다. 수정용 폼이 어떤식으로 나오는지 확인 해 보겠습니다.</p>
-                        <section class="actionGroup-section">
-                            <!-- 댓글 작성 시간 넣을 곳 -->
-                            <p class="actionMenu-time">방금 전</p>
-                            <!-- 삭제 버튼 -->
-                            <button class="actionMenu-button deleteButton">삭제</button>
-                            <!-- 수정 버튼 -->
-                            <button class="actionMenu-button modifyButton">수정</button>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <!-- 댓글 수정용 폼 나오는 곳 -->
-            <div class="ModifyReply-Section" style="display: none;">
-                <div class="ReplyContent-wrapper">
-                    <div class="replyContent-profile">
-                        <div class="Image-wrapper">
-                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                            <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                       </div>
-                    </div>
-                    <div class="ReplyContent-container">
-                        <!-- 유저의 닉네임이 들어갈 곳 -->
-                        <div class="ModifySection-wrapper">
-                            <div class="replyContent-member">댕댕쓰</div>
-                            <div class="ModifyAction-wrapper">
-                                <button class="ReplyModify-action registModify">수정</button>
-                                <button class="ReplyModify-action cancelModify">취소</button>
-                            </div>
-                        </div>
-                        <!-- 작성한 댓글이 들어갈 곳 -->
-                        <textarea name="groupReplyContent" class="modifyReply-area">테스트 댓글 두번째 입니다. 수정용 폼이 어떤식으로 나오는지 확인 해 보겠습니다.</textarea>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- 댓글 등록 하는 곳 -->
         <div class="TextAreaSection-wrapper">
             <div class="TextAreaSection-container">
                 <div class="TextAreaSection-profile">
                     <div class="Image-wrapper">
-                        <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                        <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                   </div>
+                    </div>
                 </div>
                 <div class="TextAreaSection-textAreaWrapper">
                     <!-- 댓글 작성하는 곳 -->
                     <textarea name="groupReplyContent" class="TextAreaSection-textWrite" placeholder="댓글 달기..." style="height: 46px;"></textarea>
-                    <a href="">
-                        <button class="TextAreaSection-submitButton" disabled>등록</button>
-                    </a>
+                    <button type="button" class="TextAreaSection-submitButton" disabled>등록</button>
                 </div>
             </div>
         </div>
     </div>
+</main>
 <div th:insert="~{/main/footer :: footer}"></div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script th:inline="javascript">
+    let groupId = [[${groupId}]]
+    let replies = [[${replies}]]
+    let member = [[${member}]]
+</script>
+<script src="/js/mypage/mypageElapsedTime.js"></script>
 <script src="/js/board/reply.js"></script>
 <script src="/js/main/header.js"></script>
 </html>

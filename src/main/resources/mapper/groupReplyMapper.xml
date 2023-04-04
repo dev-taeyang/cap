@@ -26,4 +26,34 @@
         select count(group_reply_id) from tbl_group_reply where group_id = #{groupId}
     </select>
 
+
+    <!-- 그 탐험대의 댓글들 정보 가져오기 -->
+    <select id="selectGroupReply" resultType="groupReplyDTO">
+        select m.member_id, member_identification, member_password, member_email, member_name,
+                member_nickname, member_phone, member_birth, member_gender, member_status,
+                member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+                member_file_size, member_file_type, group_id, group_reply_id,
+                group_reply_content, group_reply_register_date, group_reply_update_date
+        from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id where group_id = #{groupId}
+        order by group_reply_id desc
+    </select>
+
+    <!-- 댓글 입력하기 -->
+    <insert id="insertReply">
+        insert into tbl_group_reply(group_reply_content, member_id, group_id)
+        values (#{groupReplyContent}, #{memberId}, #{groupId})
+    </insert>
+
+    <!-- 댓글 삭제하기 -->
+    <delete id="deleteReply">
+        delete from tbl_group_reply where group_reply_id = #{groupReplyId}
+    </delete>
+
+    <!-- 댓글 수정하기 -->
+    <update id="updateReply">
+        update tbl_group_reply
+        set group_reply_content= #{groupReplyContent}, group_reply_update_date=CURRENT_TIMESTAMP
+        where group_reply_id=#{groupReplyId};
+    </update>
+
 </mapper>
