@@ -1,10 +1,13 @@
 package com.app.captain.domain.dao;
 
 
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -18,6 +21,10 @@ public class MemberDAO {
     public Long findMemberId(String memberIdentification, String memberPassword){
         return memberMapper.selectMemberId(memberIdentification, memberPassword);
     }
+    /* 회원 수 조회*/
+    public Integer findMemberCount(){ return memberMapper.selectMemberCount(); }
+    /* 회원 목록 조회 */
+    public List<MemberVO> findAll(Criteria criteria){ return memberMapper.selectAll(criteria); }
     /* 회원 찾기 */
     public MemberVO findMemberById(Long memberId) { return memberMapper.selectMember(memberId); }
     /* 이메일로 회원 찾기 */
@@ -70,6 +77,9 @@ public class MemberDAO {
 
     /* 회원 프로필 사진 업데이트 */
     public void setMemberFileVO(MemberVO memberVO) { memberMapper.memberFileUpdate(memberVO);}
+
+    /* 관리자용 회원 수정 */
+    public void setMemberAll(MemberVO memberVO) { memberMapper.memberUpdateAll(memberVO); }
 
     /* 회원탈퇴 */
     public void delete(Long memberId) { memberMapper.delete(memberId); }

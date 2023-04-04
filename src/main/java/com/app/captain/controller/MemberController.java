@@ -66,6 +66,9 @@ public class MemberController {
         HttpSession session = request.getSession();
         boolean autoLogin = Boolean.valueOf(request.getParameter("auto-login"));
         log.info(String.valueOf(autoLogin));
+        if(memberId == 1){
+            return "redirect:/admin/admin-member";
+        }
         if (memberId == null) {
             memberIdentification = String.valueOf(request.getAttribute("memberIdentification"));
             memberPassword = String.valueOf(request.getAttribute("memberPassword"));

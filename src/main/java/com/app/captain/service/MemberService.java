@@ -1,6 +1,7 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.MemberDAO;
+import com.app.captain.domain.dto.Criteria;
 import com.app.captain.domain.vo.MailTO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.mapper.MemberMapper;
@@ -14,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -32,6 +34,14 @@ public class MemberService {
     public void setMember(MemberVO memberVO) {
         memberDAO.save(memberVO);
     }
+
+    /* 회원 수 조회*/
+    public Integer getMemberCount(){ return memberDAO.findMemberCount(); }
+
+    /* 회원 목록 조회 */
+    public List<MemberVO> getMembers(Criteria criteria){
+        criteria.create(memberDAO.findMemberCount());
+        return memberDAO.findAll(criteria); }
 
     /* 이메일로 회원 조회 */
     public MemberVO getMemberByEmail(String memberEmail) { return memberDAO.findMemberByEmail(memberEmail); }
@@ -125,4 +135,8 @@ public class MemberService {
     public void changePassword(String memberEmail, String memberPassword){
         memberDAO.changePassword(memberEmail, memberPassword);
     }
+
+    /* 관리자용 회원 수정 */
+    public void modifyMemberAll(MemberVO memberVO) { memberDAO.setMemberAll(memberVO); }
+
 }
