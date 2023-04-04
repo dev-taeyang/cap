@@ -58,7 +58,7 @@ const $input = $('.content__intput');
 const $modalCancel = $("#Capa_1");
 
 $modalCancel.on("click", function(e) {
-    $(".modal-stage").hide();
+    $(".modal-stage").fadeOut(500);
 });
 
 
@@ -77,9 +77,9 @@ $("table.table").on("click", ".content__detail__btn",  function (e) {
 /* ---------------------------- 관리자 공지사항 작성 버튼 이벤트 ---------------------------- */
 
 
-const $writeButton = $(".notice-write-button");
+const $writeConfirmButton = $(".write-modal");
 
-$writeButton.on("click", function(e) {
+$writeConfirmButton.on("click", ".notice-write-button", function(e) {
     let noticeTitle = $(".noticeTitle").val();
     let noticeContent = $(".noticeContent").val();
 
@@ -110,6 +110,60 @@ $deleteConfirmButton.on("click", function(e) {
         adminService.noticeDelete(checkBoxArr[i]);
     }
 });
+
+
+/* ---------------------------- 관리자 공지사항 공지 추가 버튼 이벤트 ---------------------------- */
+
+
+const $writeButton = $("#insert-button");
+
+$writeButton.on("click", function(e) {
+    // $(".detail-modal").empty();
+    getWriteModal();
+});
+
+
+/* ---------------------------- 관리자 공지사항 공지 추가 모달 ---------------------------- */
+
+
+function getWriteModal() {
+    const $writeModal = $(".write-modal");
+    let text = "";
+
+    text += `
+
+                <div class="modal__content">
+                    <div class="content__main">
+                        <ul class="content__list__wrap">
+                            <li class="content__list">
+                                <span>제목</span>
+                                <div class="content__intput input_box_shadow">
+                                    <input type="text" class="noticeTitle"/>
+                                </div>
+                            </li>
+                            <li class="content__list">
+                                <span>내용</span>
+                                <div class="content__intput input_box_shadow">
+                                    <input type="text" class="noticeContent"/>
+                                </div>
+                            </li>
+                            <li class="content__list">
+                                <span>작성자</span>
+                                <div class="content__intput input_box_shadow">
+                                    <input type="text"/>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="user__profile__button">
+                    <button id="completeBtn" class="button__type_2 button__color__green notice-write-button">작성완료</button>
+                </div>
+    
+            `;
+    $writeModal.empty();
+    $writeModal.append(text);
+}
 
 
 /* ---------------------------- 관리자 공지사항 목록 ---------------------------- */
@@ -195,7 +249,7 @@ let adminService = (function () {
             data: {"noticeId": noticeId},
             success: function (noticeVO) {
             let text = "";
-            const $modal = $(".modal__main");
+            const $modal = $(".detail-modal");
 
             text +=  `
                     <div class="modal__content">
@@ -227,7 +281,7 @@ let adminService = (function () {
                             <button type="button" id="completeBtn" class="button__type_2 button__color__green">수정 완료</button>
                         </div>
                 `;
-
+                $modal.empty();
                 $modal.html(text);
 
                 /* 수정 완료 통신 */
@@ -274,16 +328,21 @@ let adminService = (function () {
             type: "delete",
             data: {"noticeId": noticeId},
             success: function() {
+                let lastIndex = 0;
+
                 if($(".table").children() == null) {
                     globalThis.page--;
                     $(".table").empty();
                     adminService.getLists();
 
                     $pagingList.each((i, li) => {
-                        let lastIndex = li.length - 1;
+                        lastIndex = li.length - 1;
 
-                        lastIndex.remove();
+                        if(lastIndex == i) {
+                            li.remove();
+                        }
                     });
+                    // $pagingList[lastIndex].remove();
                     return;
                 }
                 $(".table").empty();
