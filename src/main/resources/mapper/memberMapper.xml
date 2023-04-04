@@ -108,7 +108,7 @@
     <update id="memberUpdateAll">
         update tbl_member
         set member_identification = #{memberIdentification}, member_email = #{memberEmail},
-        member_name = #{memberName} member_nickname=#{memberNickname},
+        member_name = #{memberName}, member_nickname=#{memberNickname}, member_phone=#{memberPhone},
         member_birth=#{memberBirth}, member_gender = #{memberGender}, member_file_original_name=#{memberFileOriginalName},
         member_file_uuid=#{memberFileUuid}, member_file_path=#{memberFilePath}, member_file_size=#{memberFileSize},
         member_file_type=#{memberFileType}
