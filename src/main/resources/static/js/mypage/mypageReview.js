@@ -7,6 +7,12 @@ const $myReviewWrap = $(".mypage-review-list-wrap")
 const $noReviewWrap = $(".no-myReply");
 let text = "";
 
+console.log(reviews)
+
+// reviews = reviews.filter(review => { review.memberId != members.memberId; })
+
+console.log(reviews)
+
 console.log(reviews.length);
 
 function showMyReview() {
@@ -37,7 +43,7 @@ function showMyReview() {
                       <div class="mypage-review-empty-text">작성한 보고서가 없어요</div>
                     </div>
                 `
-                    $noReviewWrap.html(text)
+                    $myReviewWrap.html(text)
                     /* 전체 보고서들 중 작성자의 id와 현재 세션의 id와 같은 것들이 있다면 */
                 } else if(review.memberId == members.memberId) {
                     console.log("내가 만든 게시글 있음")
@@ -72,7 +78,7 @@ function showMyReview() {
                         </a>
                     </li>
                 `
-                    $myReviewWrap.html(text)
+                    $myReviewWrap.append(text)
                 }
             });
         }
