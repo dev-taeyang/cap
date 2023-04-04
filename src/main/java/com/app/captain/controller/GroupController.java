@@ -88,6 +88,7 @@ public class GroupController {
         return "recruitPage/recruitDetail";
 
     }
+    /* 그룹 참여하기 */
 
     /* 탐험대 리스트 띄우기 */
     @GetMapping("list")
