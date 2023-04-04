@@ -315,28 +315,22 @@ $("input[name='file']").on("change", function () {
                     </div>
                 `);
             }
-            console.log(file)
             // 게시글 추가 부분
-            let text = `
-                <input type="hidden" name="groupFileOriginalName" value="${file.name}">
-                <input type="hidden" name="groupFileUuid" value="${uuid}">
-                <input type="hidden" name="groupFilePath" value="${toStringByFormatting(new Date())}">
-                <input type="hidden" name="groupFileSize" value="${file.size}">
-                <input type="hidden" name="groupFileType" value="${file.type.startsWith("image")}">
-            `;
-
-            /* $("form[name='recruit']").append(text);*/
-            /*group.groupFileOriginalName = file.name;
-            group.groupFilePath = toStringByFormatting(new Date());
-            group.groupFileUuid = uuid;
-            group.groupFileSize = file.size;
-            group.groupFileType = file.type.startsWith("image");*/
+            let text = "";
+            text +=
+                    `
+                    <input type="hidden" name="groupFileOriginalName" value="${file.name}">
+                    <input type="hidden" name="groupFilePath" value="${toStringByFormatting(new Date())}">
+                    <input type="hidden" name="groupFileUuid" value="${globalThis.uuids[i]}">
+                    <input type="hidden" name="groupFileSize" value="${file.size}">
+                    <input type="hidden" name="groupFileType" value="${file.type.startsWith("image")}">
+                    `;
+            $("form[name=recruit]").append(text);
 
         }
     });
-    $("form[name='recruit']").append(text);
 });
-
+console.log($("form[name=recruit]"));
 function leftPad(value) {
     if (value >= 10) {
         return value;

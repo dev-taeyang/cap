@@ -1,6 +1,8 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.GroupDAO;
+import com.app.captain.domain.dto.Criteria;
+import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.vo.GroupVO;
 import com.app.captain.mapper.GroupMapper;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +28,8 @@ public class GroupService {
     };
 
     /* 그룹 수정 */
-    public void modify(Long groupId){
-        groupDAO.update(groupId);
+    public void modify(GroupVO groupVO){
+        groupDAO.update(groupVO);
     };
 
     /* 그룹 삭제 */
@@ -63,5 +65,15 @@ public class GroupService {
     //    path 구하는 메소드
     public String getPath(){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    }
+
+    /* 모든 탐험대 조회 */
+    public List<GroupDTO> getAllGroup(Criteria criteria) {
+        criteria.create(getcountAllGroup());
+        return groupDAO.findAllGroup(criteria);
+    }
+    /* 모든 탐험대 수 조회 */
+    public Integer getcountAllGroup() {
+        return groupDAO.findcountAllGroup();
     }
 }

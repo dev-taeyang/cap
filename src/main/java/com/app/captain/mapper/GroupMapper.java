@@ -31,7 +31,7 @@ public interface GroupMapper {
     public GroupVO selectByGroupId(Long groupId);
 
     /* 그룹 수정 */
-    public void update(Long groupId);
+    public void update(GroupVO groupVO);
 
     /* 그룹 삭제 */
     public void delete(Long groupId);
@@ -50,6 +50,11 @@ public interface GroupMapper {
 
     /* 그룹 수 세는 거 */
     public int selectCount(Long groupId);
+
+    /* 모든 탐험대 조회 */
+    public List<GroupDTO> selectAllGroup(@Param("cri") Criteria criteria);
+    /* 모든 탐험대 수 조회 */
+    public Integer countAllGroup();
 
 
 }
