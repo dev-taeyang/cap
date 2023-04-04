@@ -2,6 +2,9 @@ FileList.prototype.forEach = Array.prototype.forEach;
 globalThis.arrayFile = new Array();
 globalThis.i = 0;
 const ONE = 1;
+reviews = reviews.filter(review =>{
+   review.memberId != memberVO.getMemberId();
+});
 
 $("input[name='file']").on("change", function () {
     const $files = $("input[name=file]")[0].files;
