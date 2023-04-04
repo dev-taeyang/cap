@@ -61,11 +61,32 @@ $("table.table").on("click", ".content__detail__btn",  function (e) {
     $(".modal-stage").show();
 });
 
+/* ---------------------------- 관리자 회원 삭제 ---------------------------- */
+
+
+const $removeButton = $("#delete-button");
+const $deleteConfirmButton = $("#confirm-delete");
+let checkBoxArr = [];
+
+$deleteConfirmButton.on("click", function(e) {
+    // const $checkBox = $("input[type=checkbox]");
+    var $checkboxes = $('.table__content input[type="checkbox"]');
+
+    $checkboxes.each((i, v) => {
+        if(v.checked) {
+            checkBoxArr.push($(".content__id").eq(i + 1).text());
+        }
+    });
+
+    for (let i = 0; i < checkBoxArr.length; i++) {
+        adminMemberService.memberDelete(checkBoxArr[i]);
+    }
+});
 
 /* ---------------------------- 관리자 회원 목록 ---------------------------- */
 
 
-function showLists(members) {
+function showMemberLists(members) {
     const $append = $(".table");
     let detailCount = 0;
     let text = "";
@@ -90,7 +111,7 @@ function showLists(members) {
               `;
 
         text +=
-              `
+            `
                     <tr class="table__content">
                         <td>
                             <label class="check-label">
@@ -127,30 +148,6 @@ $pagingList.each((i, li) => {
     });
 });
 
-
-
-/* ---------------------------- 관리자 회원 삭제 ---------------------------- */
-
-
-const $removeButton = $("#delete-button");
-const $deleteConfirmButton = $("#confirm-delete");
-let checkBoxArr = [];
-
-$deleteConfirmButton.on("click", function(e) {
-    // const $checkBox = $("input[type=checkbox]");
-    var $checkboxes = $('.table__content input[type="checkbox"]');
-
-    $checkboxes.each((i, v) => {
-        if(v.checked) {
-            checkBoxArr.push($(".content__id").eq(i + 1).text());
-        }
-    });
-
-    for (let i = 0; i < checkBoxArr.length; i++) {
-        adminMemberService.memberDelete(checkBoxArr[i]);
-    }
-});
-
 /* ---------------------------- 관리자 회원 ajax 모듈화 ---------------------------- */
 
 globalThis.page = 1;
@@ -160,7 +157,7 @@ let adminMemberService = (function () {
         $.ajax({
             url: `/admin/admin/member-list/${page}`,
             success: function(members) {
-                showLists(members);
+                showMemberLists(members);
             }
         })
     }
@@ -287,7 +284,7 @@ let adminMemberService = (function () {
             contentType: "application/json; charset=utf-8",
             success: function() {
                 console.log(memberVO);
-                location.reload();
+                adminMemberService.getMemberList();
             }
         });
     }
@@ -298,15 +295,19 @@ let adminMemberService = (function () {
             type: "delete",
             data: {"memberId": memberId},
             success: function() {
+                let lastIndex = 0;
+
                 if($(".table").children() == null) {
                     globalThis.page--;
                     $(".table").empty();
                     adminMemberService.getMemberList();
 
                     $pagingList.each((i, li) => {
-                        let lastIndex = li.length - 1;
+                        lastIndex = li.length - 1;
 
-                        lastIndex.remove();
+                        if(lastIndex == i) {
+                            li.remove();
+                        }
                     });
                     return;
                 }

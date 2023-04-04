@@ -34,11 +34,6 @@ public class AdminController {
         model.addAttribute("noticeCount", noticeService.getNoticeCount());
     }
 
-    @GetMapping("/admin-review")
-    public void showReviews(Model model, Criteria criteria){
-        model.addAttribute("reviews", reviewService.getList(criteria));
-    }
-
     @ResponseBody
     @GetMapping("/admin-detail")
     public NoticeVO showDetail(@RequestParam("noticeId") Long noticeId) {
@@ -122,11 +117,11 @@ public class AdminController {
 
     /* =================================================================================== */
 
-    @GetMapping("/admin-recruit")
-    public void showRecruits(Criteria criteria, Model model, Long recruitId){
-        model.addAttribute("recruits", groupService.getAllGroup(criteria));
-        model.addAttribute("recruitCount", groupService.getcountAllGroup());
-    }
+//    @GetMapping("/admin-recruit")
+//    public void showRecruits(Criteria criteria, Model model, Long recruitId){
+//        model.addAttribute("recruits", groupService.getAllGroup(criteria));
+//        model.addAttribute("recruitCount", groupService.getcountAllGroup());
+//    }
 
     /* =================================================================================== */
 
