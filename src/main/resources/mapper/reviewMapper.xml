@@ -69,6 +69,9 @@
             any_value(f.review_file_type) as review_file_type
         from tbl_review r
         join tbl_review_file f on r.review_id = f.review_id
+        <if test="category != null">
+            where review_category like concat('%',#{category},'%')
+        </if>
         group by r.review_id
         order by review_id desc
         limit 0, 6

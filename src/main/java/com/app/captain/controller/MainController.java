@@ -26,12 +26,12 @@ public class MainController {
     private final ReviewService reviewService;
 
     @GetMapping("/main")
-    public String main(Model model){
-        List<GroupDTO> mainGroups = groupService.getMainGroup();
+    public String main(Model model,@RequestParam(value = "category",required = false)String category){
+        List<GroupDTO> mainGroups = groupService.getMainGroup(category);
         mainGroups.forEach(mainGroup -> {mainGroup.setGroupReplyCount(groupReplyService.getReplyCount(mainGroup.getGroupId()));});
 
         model.addAttribute("mainGroups", mainGroups);
-        model.addAttribute("mainReviews", reviewService.getTotalMain());
+        model.addAttribute("mainReviews", reviewService.getTotalMain(category));
 
         return "/main/main";}
 

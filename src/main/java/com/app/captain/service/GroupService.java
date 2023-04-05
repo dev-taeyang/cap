@@ -78,7 +78,7 @@ public class GroupService {
     }
 
     /* 메인에 띄울 탐험대 조회 */
-    public List<GroupDTO> getMainGroup() {
-        return groupDAO.findMainGroup();
+    public List<GroupDTO> getMainGroup(String category) {
+        return groupDAO.findMainGroup(category);
     }
 }

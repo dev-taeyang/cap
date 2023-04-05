@@ -39,5 +39,5 @@ public interface ReviewMapper {
     public int getTotal();
 
 //    review 메인 조회
-    public List<ReviewDTO> selectMain();
+    public List<ReviewDTO> selectMain(@Param("category") String category);
 }
