@@ -33,3 +33,31 @@ function showCaptainImg() {
     $captainImg.append(text);
 }
 showCaptainImg();
+
+
+/*===================================================================================*/
+
+/* 참여하기 버튼눌렀을때 */
+const $joinBtn = $(".floatActionBar-wrapper");
+
+/* 모달 */
+let modalCheck;
+
+function showTextModal(modalMessage) {
+    modalCheck = false;
+    $('div.text-modal-content').html(modalMessage);
+    $('div.text-warn-modal').css('animation', 'popUp 0.5s');
+    $('div.text-modal').css('display', 'flex').hide().fadeIn(500);
+    setTimeout(function () {
+        modalCheck = true;
+    }, 500);
+}
+
+    if($joinBtn.attr('display') == 'none'){
+        let modalMessage = "참여가 완료되었습니다.";
+        showTextModal(modalMessage);
+        if (modalCheck) {
+            $('div.text-warn-modal').css('animation', 'popDown 0.5s');
+            $('div.text-modal').fadeOut(500);
+        }
+    }

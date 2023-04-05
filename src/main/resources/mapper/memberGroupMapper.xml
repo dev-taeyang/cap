@@ -10,7 +10,7 @@
     </insert>
     <!-- 그룹아이디로 memberGoupId 조회하기 -->
     <select id="selectByGroupId" resultType="long">
-        select member_group_id from tbl_member_group
+        select member_id from tbl_member_group
         where group_id = #{groupId}
     </select>
     <!-- 그룹아이디로 member수 구하기 -->
