@@ -37,7 +37,7 @@ public interface GroupMapper {
     public void delete(Long groupId);
 
     /* 그룹 전체 조회 */
-    public List<GroupVO> sellectAll();
+    public List<GroupVO> selectAll(@Param("cri") Criteria criteria);
 
     /* groupCaptain으로  그롭조회 */
     public GroupVO selectByCaptain(Long groupCaptain);
@@ -58,4 +58,9 @@ public interface GroupMapper {
 
     /* 메인에 띄울 탐험대 조회 */
     public List<GroupDTO> selectMainGroup(@Param("category") String category);
+
+    /* 관리자 페이지 탐험대 상세보기 */
+    public GroupDTO selectGroupDTO(Long groupId);
+
+    public int selectCountAll();
 }

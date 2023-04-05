@@ -77,7 +77,7 @@ function showReviewList(reviews) {
                         <td>${review.reviewGrade}</td>
                         <td>
                         <button
-                        class="content__detail__btn button__type_2 button__color__green"
+                        id="detailCount" class="content__detail__btn button__type_2 button__color__green"
                          >
                             상세보기
                         </button>

@@ -23,6 +23,11 @@
         where m.member_id = #{memberId}
     </select>
 
+    <select id="selectCountAll" resultType="_int">
+        select count(group_id)
+        from tbl_group
+    </select>
+
     <!-- 멤버가 가입한 탐험대의 게시자와 탐험대의 정보 가져오기 -->
     <select id="selectParticipateRecruit" resultType="groupDTO">
         select m.member_id, member_identification, member_password, member_email, member_name,
@@ -62,7 +67,7 @@
     </select>
 
     <select id="selectAll" resultType="groupVO">
-        select group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
+        select group_Id, group_name, group_max_value, group_category, group_title, group_content, group_location, group_register_date,
         group_end_date, group_meet_date, group_file_original_name, group_file_uuid, group_file_path, group_file_size,
         group_file_type, group_captain from tbl_group
     </select>
@@ -154,5 +159,18 @@
         </if>
         order by group_id desc
         limit 0, 4
+    </select>
+
+    <!-- 관리자 페이지 탐험대 상세보기 -->
+    <select id="selectGroupDTO" resultType="groupDTO">
+        select m.member_id, member_identification, member_password, member_email, member_name,
+                member_nickname, member_phone, member_birth, member_gender, member_status,
+                member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+                member_file_size, member_file_type, g.group_id, group_name, group_max_value,
+                group_category, group_title, group_content, group_location, group_register_date,
+                group_end_date, group_meet_date, group_file_original_name, group_file_uuid,
+                group_file_path, group_file_size, group_file_type, group_captain
+        from tbl_member m join tbl_group g on m.member_id = g.group_captain
+        where group_id = #{group_id}
     </select>
 </mapper>

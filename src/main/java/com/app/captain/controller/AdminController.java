@@ -165,12 +165,40 @@ public class AdminController {
         return reviewService.getList(criteria);
     }
 
-    /* =================================================================================== */
+    /* ======================탐험대====================== */
 
     @GetMapping("/admin-recruit")
-    public void showRecruits(Criteria criteria, String keyword, Model model, Long groupId, String category){
-        model.addAttribute("recruits", groupService.getAllGroup(criteria, keyword, category));
-        model.addAttribute("recruitCount", groupService.getCountByGroupId(groupId));
+    public void showRecruits(Criteria criteria, Model model, Long groupId){
+        model.addAttribute("groups", groupService.getList(criteria));
+        model.addAttribute("groupCount", groupService.getCountAll());
+    }
+
+    /* 탐험대 상세 페이지 */
+    @ResponseBody
+    @GetMapping("/recruit-detail")
+    public GroupDTO showGroupDetail(@RequestParam("groupId") Long groupId) {
+        return groupService.getGroupDTO(groupId);
+    }
+
+    /* 탐험대 수정 */
+    @ResponseBody
+    @PostMapping("/recruit-update")
+    public void updateGroup(@RequestBody GroupVO groupVO) {
+        groupService.modify(groupVO);
+    }
+
+    /* 멤버 삭제 */
+    @ResponseBody
+    @DeleteMapping("/admin/recruit-delete")
+    public void removeGroup(@RequestParam("groupId") Long groupId) {
+        groupService.delete(groupId);
+    }
+
+    /* 멤버 목록 페이징 */
+    @ResponseBody
+    @GetMapping("/admin/recruit-list/{page}")
+    public List<GroupVO> showGroupList(@PathVariable("page") Integer page, Criteria criteria) {
+        return groupService.getList(criteria);
     }
 
     /* ======================댓글====================== */

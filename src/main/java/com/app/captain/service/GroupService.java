@@ -38,8 +38,9 @@ public class GroupService {
     };
 
     /* 그룹 전체 조회 */
-    public List<GroupVO> getList(){
-        return groupDAO.findAll();
+    public List<GroupVO> getList(Criteria criteria){
+        criteria.create(groupDAO.findCountAll());
+        return groupDAO.findAll(criteria);
     };
 
     /* groupCaptain으로  그롭조회 */
@@ -81,4 +82,9 @@ public class GroupService {
     public List<GroupDTO> getMainGroup(String category) {
         return groupDAO.findMainGroup(category);
     }
+
+    /* 관리자 페이지 탐험대 상세보기 */
+    public GroupDTO getGroupDTO(Long groupId){ return groupDAO.findGroupDTO(groupId); };
+
+    public int getCountAll(){ return groupDAO.findCountAll(); };
 }

@@ -82,7 +82,7 @@ function showGroupReplyList(groupReplies) {
                         <td>${reply.memberName}</td>
                         <td>
                             <button
-                                class="content__detail__btn button__type_2 button__color__green group-reply-detail-button"
+                                id="detailCount" class="content__detail__btn button__type_2 button__color__green group-reply-detail-button"
                             >
                                 상세보기
                             </button>
