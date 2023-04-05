@@ -109,10 +109,12 @@ $JoinButton.on('click', function(e){
         e.preventDefault();
         $(".floatActionBar-wrapper").hide();
         location.href = `/groups/register?groupId=${groupId}`;
-        location.reload();
+
 
     }else {
+        console.log("참여불가함 떠야됨");
         $JoinButton.css("background-color","red");
+        $JoinButton.attr("disabled", true);
         $(".enterButton-Text").html("참여가 불가능합니다.");
     }
 })

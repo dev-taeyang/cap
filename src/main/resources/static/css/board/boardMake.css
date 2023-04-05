@@ -212,6 +212,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     height: 100px;
+    white-space:pre-wrap;
 }
 
 .bottomButton-wrapper {
