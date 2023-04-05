@@ -127,8 +127,8 @@ public class GroupController {
 
     /* 탐험대 리스트 띄우기 */
     @GetMapping("list")
-    public String GroupList(Criteria criteria, HttpSession session ,Model model,@RequestParam(value = "keyword",required = false)String keyword) {
-        List<GroupDTO> groupLists = groupService.getAllGroup(criteria,keyword);
+    public String GroupList(Criteria criteria, HttpSession session ,Model model,@RequestParam(value = "keyword",required = false)String keyword,@RequestParam(value = "category",required = false)String category) {
+        List<GroupDTO> groupLists = groupService.getAllGroup(criteria,keyword,category);
         Long sessionId = (Long)session.getAttribute("memberId");
         groupLists.forEach(grouplist -> {grouplist.setGroupReplyCount(groupReplyService.getReplyCount(grouplist.getGroupId()));});
         model.addAttribute("sessionId", sessionId);

@@ -181,3 +181,27 @@ function remainingDays(date) {
         return `모집 마감까지 ${Math.ceil(diff)}일`;
     }
 }
+
+
+/*카테고리 눌렀을때 */
+
+$('.CategoryItem').on('click', function() {
+    // 클릭된 버튼의 자식 요소인 span의 내용을 콘솔에 출력
+    console.log($(this).find('span').text());
+    category =  $(this).find('span').text();
+    window.location.href = `/groups/list?category=${category}`
+});
+
+// 현재 페이지의 URL에서 카테고리 파라미터 값을 가져옴
+const urlParams = new URLSearchParams(window.location.search);
+const selectedCategory = urlParams.get('category');
+
+// 모든 카테고리 버튼에 대해 반복문 실행
+$('.CategoryItem').each(function() {
+    // 버튼에 해당하는 카테고리 이름을 가져오는겁니다행님
+    const category = $(this).find('span').text();
+    // 선택된 카테고리와 현재 버튼의 카테고리가 일치하면 버튼에 색깔을 입힘
+    if (selectedCategory === category) {
+        $(this).addClass('CategoryActive');
+    }
+});
