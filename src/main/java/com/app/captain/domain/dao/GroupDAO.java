@@ -79,8 +79,8 @@ public class GroupDAO {
     };
 
     /* 모든 탐험대 조회 */
-    public List<GroupDTO> findAllGroup(Criteria criteria,String keyword) {
-        return groupMapper.selectAllGroup(criteria,keyword);
+    public List<GroupDTO> findAllGroup(Criteria criteria,String keyword,String category) {
+        return groupMapper.selectAllGroup(criteria,keyword,category);
     }
     /* 모든 탐험대 수 조회 */
     public Integer findcountAllGroup(String keyword) {

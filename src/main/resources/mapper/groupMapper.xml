@@ -121,6 +121,9 @@
         <if test="keyword!=null">
             where group_title like concat('%',#{keyword},'%')
         </if>
+        <if test="category != null">
+            and group_category like concat('%',#{category},'%')
+        </if>
         order by group_id desc
         limit #{cri.offset}, #{cri.rowCount}
     </select>
