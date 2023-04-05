@@ -117,7 +117,7 @@ globalThis.page = 1;
 let adminGroupReplyService = (function () {
     function getGroupReplyList() {
         $.ajax({
-            url: `/admin/admin/group-reply-list/${page}`,
+            url: `/admin/admin-group-reply-list/${page}`,
             success: function(groupReplies) {
                 showGroupReplyList(groupReplies);
             }
@@ -186,7 +186,7 @@ let adminGroupReplyService = (function () {
 
     function groupReplyUpdate(groupReplyDTO) {
         $.ajax({
-            url: "/admin/group-reply-update",
+            url: "/admin/admin/group-reply-update",
             type: "post",
             data: JSON.stringify(groupReplyDTO),
             contentType: "application/json; charset=utf-8",
@@ -199,7 +199,7 @@ let adminGroupReplyService = (function () {
 
     function groupReplyDelete(groupReplyId) {
         $.ajax({
-            url: "/admin/group-reply-delete",
+            url: "/admin/admin/group-reply-delete",
             type: "delete",
             data: {"groupReplyId": groupReplyId},
             success: function() {
@@ -208,7 +208,7 @@ let adminGroupReplyService = (function () {
                 if($(".table").children() == null) {
                     globalThis.page--;
                     $(".table").empty();
-                    adminService.getGroupReplyList();
+                    adminGroupReplyService.getGroupReplyList();
 
                     $pagingList.each((i, li) => {
                         lastIndex = li.length - 1;
@@ -217,15 +217,14 @@ let adminGroupReplyService = (function () {
                             li.remove();
                         }
                     });
-                    // $pagingList[lastIndex].remove();
                     return;
                 }
                 $(".table").empty();
-                adminService.getGroupReplyList();
+                adminGroupReplyService.getGroupReplyList();
             }
         })
     }
     return {getGroupReplyList: getGroupReplyList, groupReplyDetail: groupReplyDetail, groupReplyUpdate: groupReplyUpdate, groupReplyDelete: groupReplyDelete}
 })();
 
-adminService.getGroupReplyList();    // 페이지 요청 시 가져올 목록
+adminGroupReplyService.getGroupReplyList();    // 페이지 요청 시 가져올 목록

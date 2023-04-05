@@ -46,7 +46,6 @@ const $deleteConfirmButton = $("#confirm-delete");
 let checkBoxArr = [];
 
 $deleteConfirmButton.on("click", function(e) {
-    // const $checkBox = $("input[type=checkbox]");
     var $checkboxes = $('.table__content input[type="checkbox"]');
 
     $checkboxes.each((i, v) => {
@@ -67,7 +66,7 @@ $deleteConfirmButton.on("click", function(e) {
 const $writeButton = $("#insert-button");
 
 $writeButton.on("click", function(e) {
-    // $(".detail-modal").empty();
+    $(".detail-modal").empty();
     getWriteModal();
 });
 
@@ -128,7 +127,6 @@ function showLists(notices) {
         detailCount++;
         str = `
                     <tr class="table__header">
-                    
                         <th class="content_check">
                             <!--<label class="check-label">
                                 <input type="checkbox" id="checkAll" />
@@ -187,7 +185,7 @@ globalThis.page = 1;
 let adminService = (function () {
     function getLists() {
         $.ajax({
-            url: `/admin/admin/admin-list/${page}`,
+            url: `/admin/admin/admin-list/${globalThis.page}`,
             success: function(notices) {
                 showLists(notices);
             }
@@ -265,10 +263,9 @@ let adminService = (function () {
             type: "post",
             data: {"noticeTitle": noticeTitle, "noticeContent": noticeContent},
             success: function() {
-                // $(".table").empty();
-                // $(".modal-stage").hide();
-                // adminService.getLists();
-                location.reload();
+                $(".table").empty();
+                $(".modal-stage").fadeOut(500);
+                adminService.getLists();
             }
         })
     }
@@ -279,26 +276,16 @@ let adminService = (function () {
             type: "delete",
             data: {"noticeId": noticeId},
             success: function() {
-                let lastIndex = 0;
-
                 if($(".table").children() == null) {
+                    alert("어")
                     globalThis.page--;
                     $(".table").empty();
                     adminService.getLists();
-                    // location.reload();
-
-                    $pagingList.each((i, li) => {
-                        lastIndex = li.length - 1;
-
-                        if(lastIndex == i) {
-                            li.remove();
-                        }
-                    });
-                    $pagingList[lastIndex].remove();
                     return;
                 }
                 $(".table").empty();
                 adminService.getLists();
+                location.reload();
             }
         })
     }
