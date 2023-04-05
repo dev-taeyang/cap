@@ -68,7 +68,7 @@
         </button>
     </div>
 </footer>
-<div class="FloatingButton-wrapper">
+<div class="FloatingButton-wrapper" th:inline="text" th:style="${sessionId == null ? 'display:none;' : ''}">
     <div class="FloatingButton-layoutWrapper">
         <a href="/groups/write">
             <button class="plusLink-icon">
@@ -83,8 +83,8 @@
 <script th:inline="javascript">
     let groupLists = [[${groupLists}]]
     let criteria = [[${criteria}]]
+    let sessionId = [[${sessionId}]]
 </script>
-<script src="/js/mypage/mypageElapsedTime.js"></script>
 <script src="/js/board/boardButton.js"></script>
 <script src="/js/board/boardList.js"></script>
 <script src="/js/main/header.js"></script>

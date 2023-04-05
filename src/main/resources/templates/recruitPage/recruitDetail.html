@@ -69,7 +69,7 @@
                                         </a>
                                     </div>
                                     <!-- 작성자의 닉네임이 들어오는 곳-->
-                                    <span class="Profile-MemberStat" th:text="${captain.memberNickname}">
+                                    <span class="Profile-MemberStat" th:text="'등록일:'+ ' ' + ${group.groupRegisterDate}">
                                         </span>
                                 </div>
                             </div>
@@ -129,6 +129,11 @@
                         </hgroup>
                     </header>
                     <dl class="ArticleInfoSection-infoContainer">
+                        <div>
+                            <dt>탐험대 명</dt>
+                            <!-- 탐험대 명을 받아오는 곳 -->
+                            <dd style="color: #2c5815; font-weight: bold" th:text="${group.groupName}"></dd>
+                        </div>
                         <div>
                             <dt>주소</dt>
                             <!-- 모집 location을 받아오는 곳 -->
