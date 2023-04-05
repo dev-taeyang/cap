@@ -188,8 +188,17 @@
             <div class="floatActionBar-buttonWrapper" >
                 <!-- sessionId가 있을때만 버튼이 활성화 됨 -->
                 <button class="floatActionBar-submitButton button-enterRecruit"
-                        style="background-color: #0c0c0c">
-                    <div class="enterButton-Text">이미 참여한 탐험대 입니다.</div>
+                        style="background-color: #0c0c0c" disabled>
+                    <div class="enterButton-Text">이미 참여한 탐험대입니다.</div>
+                </button>
+            </div>
+        </div>
+        <div class="floatActionBar-wrapper" th:if="${group.groupCaptain == sessionId}">
+            <div class="floatActionBar-buttonWrapper" >
+                <!-- sessionId가 있을때만 버튼이 활성화 됨 -->
+                <button class="floatActionBar-submitButton button-enterRecruit"
+                        style="background-color: #0c0c0c" disabled>
+                    <div class="enterButton-Text">당신이 개설한 탐험대입니다.</div>
                 </button>
             </div>
         </div>

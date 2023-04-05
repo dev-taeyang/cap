@@ -22,7 +22,7 @@ showImg();
 const $captainImg = $(".ProfileInfo-profileImage");
 function showCaptainImg() {
     let text = "";
-    if (captain.memberFileOriginalName == 0){
+    if (captain.memberFileOriginalName != null){
         text =
                 `
                 <a href="">
@@ -105,12 +105,17 @@ showMembers();
 const $JoinButton = $('.button-enterRecruit');
 
 $JoinButton.on('click', function(e){
-    if(maxValue > currentValue && sessionId != null){
+    if(maxValue > currentValue && sessionId != null && group.groupCaptain != sessionId && !memberVOS.includes(sessionId)){
+        e.preventDefault();
         $(".floatActionBar-wrapper").hide();
         location.href = `/groups/register?groupId=${groupId}`;
+
+
     }else {
+        console.log("참여불가함 떠야됨");
         $JoinButton.css("background-color","red");
-        $(".enterButton-Text").html("로그인 후 이용해 주세요.");
+        $JoinButton.attr("disabled", true);
+        $(".enterButton-Text").html("참여가 불가능합니다.");
     }
 })
 
