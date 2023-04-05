@@ -18,6 +18,7 @@
         from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id
         join tbl_group g on gr.group_id = g.group_id
         where m.member_id = #{memberId}
+        order by group_reply_id desc
         limit #{cri.offset}, #{cri.rowCount}
     </select>
 

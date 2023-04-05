@@ -56,5 +56,6 @@ public interface GroupMapper {
     /* 모든 탐험대 수 조회 */
     public Integer countAllGroup(String keyword);
 
-
+    /* 메인에 띄울 탐험대 조회 */
+    public List<GroupDTO> selectMainGroup();
 }

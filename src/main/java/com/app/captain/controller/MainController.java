@@ -1,10 +1,9 @@
 package com.app.captain.controller;
 
+import com.app.captain.domain.dto.GroupDTO;
 import com.app.captain.domain.dto.ReviewFileDTO;
 import com.app.captain.domain.vo.MemberVO;
-import com.app.captain.service.MemberService;
-import com.app.captain.service.ReviewFileService;
-import com.app.captain.service.ReviewService;
+import com.app.captain.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,18 +15,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 public class MainController {
-    private final MemberService memberService;
+    private final GroupService groupService;
+    private final GroupReplyService groupReplyService;
     private final ReviewService reviewService;
-    private final ReviewFileService reviewFileService;
 
     @GetMapping("/main")
     public String main(Model model){
-        model.addAttribute("reviews", reviewService.getTotalMain());
+        List<GroupDTO> mainGroups = groupService.getMainGroup();
+        mainGroups.forEach(mainGroup -> {mainGroup.setGroupReplyCount(groupReplyService.getReplyCount(mainGroup.getGroupId()));});
+
+        model.addAttribute("mainGroups", mainGroups);
+        model.addAttribute("mainReviews", reviewService.getTotalMain());
+
         return "/main/main";}
 
 }

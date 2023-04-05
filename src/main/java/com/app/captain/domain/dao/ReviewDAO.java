@@ -62,5 +62,5 @@ public class ReviewDAO {
     };
 
     //    review 메인 조회
-    public List<ReviewVO> findtTotalMain(){ return reviewMapper.selectMain(); };
+    public List<ReviewDTO> findTotalMain(){ return reviewMapper.selectMain(); };
 }
