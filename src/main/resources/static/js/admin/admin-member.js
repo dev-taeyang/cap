@@ -1,50 +1,5 @@
 /* admin-member.html */
 
-/* 사이드바 */
-const $sidebar = $('.sidebar__main');
-const $sidebarSlide = $('.sidebar__wrapper__slider');
-const $sidebarMenu = $('.sidebar__menu');
-
-/* 테이블 내용(컨텐츠) */
-const $tableContent = $('.table__content');
-
-/* 체크박스 */
-const $checkAll = $('#checkAll');
-const $check = $("input[name='check']");
-
-/* 검색조건 select-box */
-const $selectBox = $('.listbox-selecter');
-const $listbox = $('.listbox');
-const $list = $('.list');
-const $searchType = $("input[name='searchType']");
-
-/* 검색바 */
-const $searchBar = $('.search-input');
-
-/* 상세보기 관련 */
-const $detailButton = $('.content__detail__btn');
-const $insertButton = $('#insert-button');
-const $modalStage = $('.modal-stage');
-const $modalInsert = $('.modal-stage-insert');
-
-/* 시게 */
-const clock = document.querySelector('.clock h1');
-
-/* 모달창 */
-
-
-/* 파일 썸네일교체 */
-const $storageFile = $("input[name='file']");
-const $thumbnail = $(".content__img img");
-const $closeButton = $('.closeImgButton');
-
-/* 페이징 */
-const $pageNumber = $(".page-number ");
-
-/* input[type=text] 효과 */
-
-const $input = $('.content__intput');
-
 /* 모달 닫기 */
 const $modalCancel = $("#Capa_1");
 
@@ -168,6 +123,7 @@ let adminMemberService = (function () {
             data: {"memberId": memberId},
             success: function (memberVO) {
                 let text = "";
+                const $modal = $(".member-detail-modal");
                 text += `
             <h4>탐험가 정보</h4>
             <!-- 회원 프로필 이미지 -->
@@ -254,10 +210,8 @@ let adminMemberService = (function () {
                 </button>
             </div>
                 `;
-
-                const $memberModal = $(".member-detail-modal");
-
-                $memberModal.html(text);
+                $modal.empty();
+                $modal.html(text);
 
                 $(".member-update-button").on("click", function(e) {
                     let memberVO = new Object();
@@ -271,6 +225,7 @@ let adminMemberService = (function () {
                     memberVO.memberGender = $('.memberGender').val();
                     console.log(memberVO);
                     adminMemberService.memberUpdate(memberVO);
+                    $(".modal-stage").hide();
                 });
             }
         })
@@ -283,7 +238,7 @@ let adminMemberService = (function () {
             data: JSON.stringify(memberVO),
             contentType: "application/json; charset=utf-8",
             success: function() {
-                console.log(memberVO);
+                $(".table").empty();
                 adminMemberService.getMemberList();
             }
         });
