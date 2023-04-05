@@ -913,3 +913,9 @@
     height: 50px;
     top: calc(50% + 34px);
 }
+
+.end-info {
+    color: red;
+    position: absolute;
+    font-size: 17px;
+}
