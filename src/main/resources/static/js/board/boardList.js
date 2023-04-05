@@ -131,13 +131,26 @@ function showGroupList() {
 }
 showGroupList();
 
+let keyword = $("input[name=keyword]").val();
+const urlParams = new URLSearchParams(window.location.search);
+const selectedCategory = urlParams.get('category');
+const selectedKeyword = urlParams.get('keyword');
+console.log(selectedKeyword);
 const $changePage = $('.changePage');
 // 페이징 클릭 이벤트
 $changePage.each(function (i, changePage) {
     $(changePage).on("click", e => {
         e.preventDefault();
         criteria.page = ($(this).attr("href"));
-        window.location.href = `/groups/list?page=${criteria.page}`;
+        console.log(keyword);
+        if (selectedKeyword != null){
+            window.location.href = `/groups/list?page=${criteria.page}&keyword=${selectedKeyword}`;
+        }else if(selectedCategory != null){
+            window.location.href = `/groups/list?page=${criteria.page}&category=${selectedCategory}`;
+        }else{
+            window.location.href = `/groups/list?page=${criteria.page}`;
+        }
+
     })
 });
 
@@ -192,9 +205,6 @@ $('.CategoryItem').on('click', function() {
     window.location.href = `/groups/list?category=${category}`
 });
 
-// 현재 페이지의 URL에서 카테고리 파라미터 값을 가져옴
-const urlParams = new URLSearchParams(window.location.search);
-const selectedCategory = urlParams.get('category');
 
 // 모든 카테고리 버튼에 대해 반복문 실행
 $('.CategoryItem').each(function() {

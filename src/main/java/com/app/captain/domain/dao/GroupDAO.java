@@ -83,8 +83,8 @@ public class GroupDAO {
         return groupMapper.selectAllGroup(criteria,keyword,category);
     }
     /* 모든 탐험대 수 조회 */
-    public Integer findcountAllGroup(String keyword) {
-        return groupMapper.countAllGroup(keyword);
+    public Integer findcountAllGroup(String keyword,String category) {
+        return groupMapper.countAllGroup(keyword,category);
     }
 
     /* 메인에 띄울 탐험대 조회 */
