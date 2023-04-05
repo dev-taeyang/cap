@@ -1,6 +1,7 @@
 /* 그룹 이미지 뿌리는 곳*/
 const $groupImg = $(".RecruitImage-section");
-
+/* 모달 숨기기 */
+$(".text-modal").hide();
 
 /* 탐험대 사진 뿌리기 */
 function showImg() {
@@ -43,14 +44,14 @@ const $joinBtn = $(".floatActionBar-wrapper");
 const $JoinButton = $('.button-enterRecruit');
 
 $JoinButton.on('click', function(e){
+    console.log("앙 눌러띠");
     if(maxValue > currentValue){
-        e.preventDefault();
         let modalMessage = "참여가 완료되었습니다.";
+        $(".floatActionBar-wrapper").hide();
         showTextModal(modalMessage);
-
-        location.href = `/groups/register?groupId=${groupId}`;
     }else {
-        $JoinButton.append("<p style='color: red'>정원이 마감되었습니다.</p>")
+        let modalMessage = "정원이 마감되었습니다.";
+        showTextModal(modalMessage);
     }
 })
 
@@ -66,3 +67,13 @@ function showTextModal(modalMessage) {
         modalCheck = true;
     }, 500);
 }
+
+$('.boardDetailPage-wrapper').on('click', function () {
+    if (modalCheck) {
+        $('div.text-warn-modal').css('animation', 'popDown 0.5s');
+        $('div.text-modal').fadeOut(500);
+        if(maxValue > currentValue){
+            location.href = `/groups/register?groupId=${groupId}`;
+        }
+    }
+});
