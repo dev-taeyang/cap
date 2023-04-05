@@ -33,7 +33,8 @@
 <div class="boardDetailPage-wrapper">
     <div class="boardDetailPage-contentWrapper">
         <!-- 원정대에 관한 상세정보 -->
-        <span class="end-info" th:if="${maxValue <= currentValue}"> 정원이 마감된 탐험대 입니다. </span>
+        <span class="end-info" th:if="${maxValue <= currentValue}"> * 정원이 마감된 탐험대 입니다. </span>
+        <span class="end-info" style="color: #0c0c0c"></span>
         <div class="boardDetailPage-contentContainer">
             <!-- 컨셉 이미지와 작성자의 정보가 나오는 섹션 -->
             <section class="boardDetail-headSectionWrapper">
@@ -82,39 +83,11 @@
                         </div>
                     </section>
                     <!-- 탐험대에 참가한 인원들의 프로필 이미지와 닉네임이 들어갈 곳 -->
-                    <!-- 다하고 나중에 해볼곳 -->
                     <section class="presentationInfo-InfoSection infoSection-space">
                         <span>탐험대에 함께 하시는 분들</span>
-                        <div class="OtherMemberCount-wrapper" style="display: none;">
-                            <span class="OtherMember-title">아직 함께 하시는 탐험대원이 없습니다</span>
-                        </div>
+                        <!-- 가입한 맴버들 정보 뿌리기 -->
                         <div class="OtherMemberContent-container">
-                            <div class="OtherMember-wrapper">
-                                <a href="">
-                                    <div class="OtherMember-profile">
-                                        <div class="OtherMember-image">
-                                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                                            <img class="Image-style recruit-Member"
-                                                 src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                                        </div>
-                                    </div>
-                                    <!-- 유저의 닉네임을 받아올 곳 -->
-                                    <span class="OtherMember-nickname">타인</span>
-                                </a>
-                            </div>
-                            <div class="OtherMember-wrapper">
-                                <a href="">
-                                    <div class="OtherMember-profile">
-                                        <div class="OtherMember-image">
-                                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                                            <img class="Image-style recruit-Member"
-                                                 src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
-                                        </div>
-                                    </div>
-                                    <!-- 유저의 닉네임을 받아올 곳 -->
-                                    <span class="OtherMember-nickname">테스트용 긴 닉네임</span>
-                                </a>
-                            </div>
+                            <!-- 화면에 뿌려지는 곳 -->
                         </div>
                     </section>
                     <section class="presentationInfo-InfoSection infoSection-infoWrapper ">
@@ -212,10 +185,10 @@
             </div>
         </div>
         <div class="floatActionBar-wrapper" th:if="${joinedMember.contains(sessionId)}">
-            <div class="floatActionBar-buttonWrapper">
+            <div class="floatActionBar-buttonWrapper" >
                 <!-- sessionId가 있을때만 버튼이 활성화 됨 -->
                 <button class="floatActionBar-submitButton button-enterRecruit"
-                >
+                        style="background-color: #0c0c0c">
                     <div class="enterButton-Text">이미 참여한 탐험대 입니다.</div>
                 </button>
             </div>
@@ -235,10 +208,13 @@
     let currentValue = [[${currentValue}]];
     let groupId = [[${groupId}]];
     let joinedMember = [[${joinedMember}]];
+    let memberVOS = [[${memberVOS}]];
     console.log(currentValue);
     console.log(joinedMember);
+    console.log(memberVOS);
 </script>
 <script type="text/javascript" src="/js/board/boardDetail.js"></script>
 <script type="text/javascript" src="/js/board/groupDetail.js"></script>
+<script type="text/javascript" src="/js/board/remainDays.js"></script>
 <script src="/js/main/header.js"></script>
 </html>
