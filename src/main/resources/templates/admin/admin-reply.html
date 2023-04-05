@@ -378,55 +378,8 @@
                             </div>
                             <!-- 댓글 정보 불러오는 곳 -->
                             <table class="table">
-                                <tr class="table__header">
-                                    <th class="content_check">
-                                        <label class="check-label">
-                                            <input type="checkbox" id="checkAll" />
-                                        </label>
-                                    </th>
-                                    <th class="content__id">번호</th>
-                                    <th>제목</th>
-                                    <th style="width: 35%">내용</th>
-                                    <th>작성자</th>
-                                </tr>
-                                <tr class="table__content">
-                                    <td>
-                                        <label class="check-label">
-                                            <input type="checkbox" name="check" />
-                                        </label>
-                                    </td>
-                                    <td class="content__id">1</td>
-                                    <td>지욱이형이 게시판해야되는데</td>
-                                    <td>
-                                        어떻게 생각하시나요?
-                                    </td>
-                                    <td>이영준</td>
-                                    <td>
-                                        <button
-                                            class="content__detail__btn button__type_2 button__color__green"
-                                        >
-                                            상세보기
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="table__content">
-                                    <td>
-                                        <label class="check-label">
-                                            <input type="checkbox" name="check" />
-                                        </label>
-                                    </td>
-                                    <td class="content__id">2</td>
-                                    <td>지욱아 관리자 빨리하고 도와줘야된다</td>
-                                    <td>오키?</td>
-                                    <td>오태양</td>
-                                    <td>
-                                        <button
-                                            class="content__detail__btn button__type_2 button__color__green"
-                                        >
-                                            상세보기
-                                        </button>
-                                    </td>
-                                </tr>
+
+
                             </table>
                             <!-- default.css > pagenation -->
                             <!-- 페이징 처리하는 부분 -->
@@ -501,39 +454,10 @@
                     </div>
                     <!-- 댓글 수정 할 부분 -->
                     <form class="storage_form" action="">
-                        <main class="modal__main">
-                            <div class="modal__content">
-                                <div class="content__main">
-                                    <ul class="content__list__wrap">
-                                        <li class="content__list">
-                                            <span>제목</span>
-                                            <div class="content__intput input_box_shadow">
-                                                <input type="text" />
-                                            </div>
-                                        </li>
-                                        <li class="content__list">
-                                            <span>내용</span>
-                                            <div class="content__intput input_box_shadow">
-                                                <input type="text" />
-                                            </div>
-                                        </li>
-                                        <li class="content__list">
-                                            <span>작성자</span>
-                                            <div class="content__intput input_box_shadow">
-                                                <input type="text" />
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="user__profile__button">
-                                <button
-                                    id="completeBtn"
-                                    class="button__type_2 button__color__green"
-                                >
-                                    수정 완료
-                                </button>
-                            </div>
+                        <main class="modal__main group-reply-detail">
+
+                            <!-- 댓글 상세보기 모달창 -->
+
                         </main>
                     </form>
                 </section>

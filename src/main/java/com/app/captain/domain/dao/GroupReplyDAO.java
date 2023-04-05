@@ -20,6 +20,9 @@ public class GroupReplyDAO {
     /* 멤버가 쓴 댓글 찾기 */
     public List<GroupReplyDTO> findMemberReply(Long memberId, Criteria criteria) { return groupReplyMapper.selectMemberReply(memberId, criteria); }
 
+    /* 전체 댓글 */
+    public GroupReplyDTO findGroupReplyDTO(Criteria criteria){ return groupReplyMapper.selectGroupReplyDTO(criteria);}
+
     /* 그룹 id로 탐험대에 작성된 댓글의 갯수 가져오기 */
     public Long findReplyCount(Long groupId) { return groupReplyMapper.selectReplyCount(groupId); }
 
