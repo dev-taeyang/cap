@@ -5,10 +5,10 @@ const $ImageWrapper = $(".Image-wrapper");
 let contents = "";
 
 function showMemberProfile() {
-    if(member.memberFilePath == 0) {
+    if(!member.memberFileType) {
         contents = `
              <!-- 유저의 프로필 사진을 가져오는 곳 -->
-             <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+             <img class="Image-style" src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
         `
     } else {
         contents = `
@@ -33,10 +33,10 @@ function showReplyList() {
                     <div class="replyContent-profile">
                         <div class="Image-wrapper">
                 `
-        if(reply.memberFileType == 0) {
+        if(!reply.memberFileType) {
             text += `
                             <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                           <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                           <img class="Image-style" src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
                             `
         } else {
             text += `
@@ -76,10 +76,10 @@ function showReplyList() {
                     <div class="replyContent-profile">
                         <div class="Image-wrapper">
                 `
-        if(reply.memberFileType == 0) {
+        if(!reply.memberFileType) {
             text += `
                                 <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                               <img class="Image-style" src="https://k.kakaocdn.net/dn/bsSATJ/btry9gwkdhb/Y5L6OyBllzjAkOOMFYupF0/img_110x110.jpg">
+                               <img class="Image-style" src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
                                             `
         } else {
             text += `

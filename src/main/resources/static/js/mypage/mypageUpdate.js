@@ -122,9 +122,9 @@ $inputBirth.on('blur', function () {
     $warnText.hide();
     $changeButtons.eq(1).removeClass("button-set")
     $(this).val(
-      $(this)
-        .val()
-        .replace(/^(\d{4})(\d{2})(\d{2})$/, `$1.$2.$3`)
+        $(this)
+            .val()
+            .replace(/^(\d{4})(\d{2})(\d{2})$/, `$1.$2.$3`)
     );
     $inputBirth.css('border', '1px solid rgb(238, 238, 238)');
   } else {
@@ -143,77 +143,74 @@ $changeButtons.on('click', function () {
   $inputUsers.eq(i).focus();
 });
 
+
+const $nickname = $inputNickname.val();
 let ajaxCheck = false;
 
 /* 저장 버튼 클릭 이벤트 */
 $saveButton.on('click', function () {
-  let modalMessage = '';
 
-  $.ajax({
-    type: "POST",
-    url: "/member/checkNickname",
-    data: {memberNickname: $inputNickname.val()},
-    async: false,
-    success: function (result) {
-      let message;
-      if (result != "success") {
-        message = "중복된 닉네임입니다.";
-        ajaxCheck = false;
-        $warnText.eq(0).show();
-        $inputNickname.css('border', '1px solid rgb(255, 64, 62)');
-      } else {
-        ajaxCheck = true;
-        $changeButtons.eq(0).removeClass("button-set")
+  if($nickname != $inputNickname.val()) {
+    let modalMessage = '';
+    $.ajax({
+      type: "POST",
+      url: "/member/checkNickname",
+      data: {memberNickname: $inputNickname.val()},
+      async: false,
+      success: function (result) {
+        let message;
+        if (result != "success") {
+          message = "중복된 닉네임입니다.";
+          ajaxCheck = false;
+          $warnText.eq(0).show();
+          $inputNickname.css('border', '1px solid rgb(255, 64, 62)');
+        } else {
+          ajaxCheck = true;
+          $changeButtons.eq(0).removeClass("button-set")
+        }
+        $warnText.eq(0).text(message);
+        $changeButtons.eq(0).addClass("button-set")
       }
-      $warnText.eq(0).text(message);
-      $changeButtons.eq(0).addClass("button-set")
+    })
+    /* 닉네임check false면 다시 입력하라는 모달창 */
+    if (!nicknameCheck) {
+      modalMessage = '닉네임을 다시 입력하세요.';
+      showWarnModal(modalMessage);
+      return;
+    } else if (!birthCheck) {
+      /* 생알check false면 다시 입력하라는 모달창 */
+      modalMessage = '생일을 다시 입력하세요.';
+      showWarnModal(modalMessage);
+      return;
     }
-  })
-  /* 닉네임check false면 다시 입력하라는 모달창 */
-  if (!nicknameCheck) {
-    modalMessage = '닉네임을 다시 입력하세요.';
-    showWarnModal(modalMessage);
-    return;
-  } else if (!birthCheck) {
-  /* 생알check false면 다시 입력하라는 모달창 */
-    modalMessage = '생일을 다시 입력하세요.';
-    showWarnModal(modalMessage);
-    return;
-  }
-  /* 닉네임 중복 값이 있다면 모달창 */
-  else if(!ajaxCheck) {
-    modalMessage = '닉네임이 중복되었습니다.';
-    showWarnModal(modalMessage);
-    return;
-  }
-
-  // 닉네임과 생일 value값 가져오기
-  const $Nickname = $("input[name=memberNickname]").val();
-  const $birth = $("input[name=memberBirth]").val();
-
-  let memberVO = new Object();
-      memberVO.memberNickname = $Nickname;
-      memberVO.memberBirth = $birth;
-      memberVO.memberId = members.memberId;
-
-  $.ajax({
-    url: "/mypage/Update",
-    type: "post",
-    data: JSON.stringify(memberVO),
-    contentType: "application/json; charset=utf-8",
-    success: function(){
+    /* 닉네임 중복 값이 있다면 모달창 */
+    else if(!ajaxCheck) {
+      modalMessage = '닉네임이 중복되었습니다.';
+      showWarnModal(modalMessage);
+      return;
     }
-  });
 
-  /* 닉네임, 생일check 둘 다 true면 저장되었다는 모달창 */
-  modalMessage = '저장되었습니다.';
-  showWarnModal(modalMessage);
-  $changeButtons.eq(0).removeClass("button-set")
+    // 닉네임과 생일 value값 가져오기
 
-  /*$inputNickname.attr('disabled', false);
-  $inputBirth.attr('disabled', false);
-  document.memberUpdate.submit()*/
+    let memberVO = new Object();
+    memberVO.memberNickname = $inputNickname.val();
+    memberVO.memberBirth = $inputBirth.val();
+    memberVO.memberId = members.memberId;
 
+    $.ajax({
+      url: "/mypage/Update",
+      type: "post",
+      data: JSON.stringify(memberVO),
+      contentType: "application/json; charset=utf-8",
+      success: function(){
+      }
+    });
+
+    /* 닉네임, 생일check 둘 다 true면 저장되었다는 모달창 */
+    modalMessage = '저장되었습니다.';
+    showWarnModal(modalMessage);
+    $changeButtons.eq(0).removeClass("button-set")
+  }
 })
 
 /* 모달창 */
@@ -235,74 +232,74 @@ $('#mypageUpdate').on('click', function () {
   }
 });
 
-    globalThis.uuids;
+globalThis.uuids;
 
-    /* 이미지 사진을 바꾸면 바로 바뀜 */
-  $("input[name=memberFile]").on("change", function () {
-    const $file = $("input[name=memberFile]")[0].files[0]
-    if($file.type.includes('image')) {
-      let formData = new FormData();
-      formData.append("memberFile", $file)
+/* 이미지 사진을 바꾸면 바로 바뀜 */
+$("input[name=memberFile]").on("change", function () {
+  const $file = $("input[name=memberFile]")[0].files[0]
+  if($file.type.includes('image')) {
+    let formData = new FormData();
+    formData.append("memberFile", $file)
 
-      $.ajax({
-        url: "/mypage/upload",
-        type: "post",
-        data: formData,
-        async: false,
-        contentType: false,
-        processData: false,
-        success: function(uuids) {
-          globalThis.uuids = uuids;
-        }
-      });
+    $.ajax({
+      url: "/mypage/upload",
+      type: "post",
+      data: formData,
+      async: false,
+      contentType: false,
+      processData: false,
+      success: function(uuids) {
+        globalThis.uuids = uuids;
+      }
+    });
 
-      let memberVO = new Object();
-      memberVO.memberFileOriginalName = $file.name;
-      memberVO.memberFileUuid = globalThis.uuids;
-      memberVO.memberFilePath = toStringByFormatting(new Date());
-      memberVO.memberFileSize = $file.size;
-      memberVO.memberFileType = $file.type.startsWith("image");
-      memberVO.memberId = members.memberId;
+    let memberVO = new Object();
+    memberVO.memberFileOriginalName = $file.name;
+    memberVO.memberFileUuid = globalThis.uuids;
+    memberVO.memberFilePath = toStringByFormatting(new Date());
+    memberVO.memberFileSize = $file.size;
+    memberVO.memberFileType = $file.type.startsWith("image");
+    memberVO.memberId = members.memberId;
 
-      $.ajax({
-        url: "/mypage/UpdateFile",
-        type: "post",
-        data: JSON.stringify(memberVO),
-        contentType: "application/json; charset=utf-8",
-        success: function(){
-        }
-      });
+    $.ajax({
+      url: "/mypage/UpdateFile",
+      type: "post",
+      data: JSON.stringify(memberVO),
+      contentType: "application/json; charset=utf-8",
+      success: function(){
+      }
+    });
 
-      modalMessage = '프로필 사진이 변경되었습니다.';
-      showWarnModal(modalMessage);
-    } else {
-      modalMessage = '이미지 파일이 아닙니다.';
-      showWarnModal(modalMessage);
-    }
-  })
+    modalMessage = '프로필 사진이 변경되었습니다.';
+    showWarnModal(modalMessage);
+  } else {
+    modalMessage = '이미지 파일이 아닙니다.';
+    showWarnModal(modalMessage);
+  }
+})
 
 
 
 /*****************************************************/
-  function leftPad(value) {
-    if (value >= 10) {
-      return value;
-    }
-
-    return `0${value}`;
+function leftPad(value) {
+  if (value >= 10) {
+    return value;
   }
 
-  function toStringByFormatting(source, delimiter = '/') {
-    const year = source.getFullYear();
-    const month = leftPad(source.getMonth() + 1);
-    const day = leftPad(source.getDate());
+  return `0${value}`;
+}
 
-    return [year, month, day].join(delimiter);
-  }
+function toStringByFormatting(source, delimiter = '/') {
+  const year = source.getFullYear();
+  const month = leftPad(source.getMonth() + 1);
+  const day = leftPad(source.getDate());
+
+  return [year, month, day].join(delimiter);
+}
 /*****************************************************/
 
 /* 비밀번호 변경 버튼 누르면 이동하기 */
 $updatePassword.on('click', function () {
-    location.href = "/mypage/UpdatePassword";
+  location.href = "/mypage/UpdatePassword";
 })
 
