@@ -327,4 +327,3 @@ $deleteButton.on('click', function () {
     location.href = `/reviews/${review.reviewId}/remove`;
 });
 
-/*===================================================================================*/

@@ -1,5 +1,6 @@
 /* admin-notice.html */
 
+
 /* ---------------------------- 관리자 공지사항 상세보기 모달 닫기 ---------------------------- */
 
 
@@ -98,7 +99,7 @@ function getWriteModal() {
                             <li class="content__list">
                                 <span>작성자</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" value="관리자" readonly/>
+                                    <input type="text"/>
                                 </div>
                             </li>
                         </ul>
@@ -127,11 +128,13 @@ function showLists(notices) {
         detailCount++;
         str = `
                     <tr class="table__header">
+                    
                         <th class="content_check">
-                            <label class="check-label">
+                            <!--<label class="check-label">
                                 <input type="checkbox" id="checkAll" />
-                            </label>
+                            </label>-->
                         </th>
+                        
                         <th class="content__id">번호</th>
                         <th>제목</th>
                         <th style="width: 35%">내용</th>
@@ -282,6 +285,7 @@ let adminService = (function () {
                     globalThis.page--;
                     $(".table").empty();
                     adminService.getLists();
+                    // location.reload();
 
                     $pagingList.each((i, li) => {
                         lastIndex = li.length - 1;
@@ -290,7 +294,7 @@ let adminService = (function () {
                             li.remove();
                         }
                     });
-                    // $pagingList[lastIndex].remove();
+                    $pagingList[lastIndex].remove();
                     return;
                 }
                 $(".table").empty();

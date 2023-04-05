@@ -25,6 +25,11 @@
         </div>
     </div>
 </div>
+<div class="text-modal" style="display: none">
+    <div class="text-warn-modal">
+        <div class="text-modal-content"></div>
+    </div>
+</div>
 <div class="boardDetailPage-wrapper">
     <div class="boardDetailPage-contentWrapper">
         <!-- 원정대에 관한 상세정보 -->
@@ -196,7 +201,7 @@
             </section>
         </div>
         <!-- 원정대에 참여할 건지 결정하는 버튼 -->
-        <div class="floatActionBar-wrapper">
+        <div class="floatActionBar-wrapper" th:unless="${joinedMember.contains(sessionId)}">
             <div class="floatActionBar-buttonWrapper">
                 <!-- sessionId가 있을때만 버튼이 활성화 됨 -->
                 <button class="floatActionBar-submitButton button-enterRecruit"
@@ -219,10 +224,12 @@
     let maxValue = [[${maxValue}]];
     let currentValue = [[${currentValue}]];
     let groupId = [[${groupId}]];
+    let joinedMember = [[${joinedMember}]];
     console.log(maxValue);
     console.log(currentValue);
     console.log(group);
     console.log(captain);
+    console.log(joinedMember);
 </script>
 <script type="text/javascript" src="/js/board/boardDetail.js"></script>
 <script type="text/javascript" src="/js/board/groupDetail.js"></script>

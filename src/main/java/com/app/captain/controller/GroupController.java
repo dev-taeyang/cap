@@ -87,6 +87,8 @@ public class GroupController {
         Long maxValue = groupVO.getGroupMaxValue();
         /* 가입한 member수 가져오기 */
         int currentValue = memberGroupService.getCountByGroupId(groupId);
+        /* 가입한사람 memberId 가져오기 */
+        List<Long> joinedMember = memberGroupService.getMemberId(groupId);
         /* 정보가져온거에서 groupCaptain 변수만들어서 담아주기 */
         Long groupCaptain = groupVO.getGroupCaptain();
         /* groupCaptain으로 memberProfile정보 가져오기 */
@@ -94,6 +96,7 @@ public class GroupController {
         /* groupId 전달*/
         Long id = groupVO.getGroupId();
         /* 화면쪽에 보내주기 */
+        model.addAttribute("joinedMember", joinedMember);
         model.addAttribute("currentValue", currentValue);
         model.addAttribute("groupId", id);
         model.addAttribute("maxValue", maxValue);

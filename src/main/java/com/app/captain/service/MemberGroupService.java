@@ -4,6 +4,8 @@ import com.app.captain.domain.dao.MemberGroupDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MemberGroupService {
@@ -16,7 +18,7 @@ public class MemberGroupService {
     };
 
     /* 그룹아이디로 memberGroupId 조회하기 */
-    public Long getMemberId(Long groupId){
+    public List<Long> getMemberId(Long groupId){
         return memberGroupDAO.findMemberIdByGroupId(groupId);
     };
 

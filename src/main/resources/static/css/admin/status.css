@@ -8,7 +8,7 @@ ul.status-list {
 }
 
 li.status-list-item {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   border-radius: 8px;
   height: 150px;
@@ -16,7 +16,18 @@ li.status-list-item {
   box-shadow: 4px 4px 4px rgb(48 52 65 / 4%);
   width: 18%;
   background-color: #ffffff;
+  color: #303441;*/
+
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;
+  height: 36px;
+  padding: 16px;
+  width: 30%;
+  background-color: #ffffff;
   color: #303441;
+  justify-content: center;
+  align-items: stretch;
 }
 
 div.status-item-wrapper {
@@ -59,13 +70,21 @@ input[type='date']::-webkit-datetime-edit-text {
 }
 
 .clock {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 13px;
   flex: 1 1;
+  position: relative;*/
+
+  display: flex;
+  gap: 13px;
+  flex: 1 1;
   position: relative;
+  flex-direction: row-reverse;
+  margin-right: 15px;
+  margin-top: 15px;
 }
 
 .clock h1 {

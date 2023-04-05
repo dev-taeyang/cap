@@ -33,3 +33,36 @@ function showCaptainImg() {
     $captainImg.append(text);
 }
 showCaptainImg();
+
+
+/*===================================================================================*/
+
+/* 참여하기 버튼눌렀을때 */
+const $joinBtn = $(".floatActionBar-wrapper");
+
+const $JoinButton = $('.button-enterRecruit');
+
+$JoinButton.on('click', function(e){
+    if(maxValue > currentValue){
+        e.preventDefault();
+        let modalMessage = "참여가 완료되었습니다.";
+        showTextModal(modalMessage);
+
+        location.href = `/groups/register?groupId=${groupId}`;
+    }else {
+        $JoinButton.append("<p style='color: red'>정원이 마감되었습니다.</p>")
+    }
+})
+
+/* 모달 */
+let modalCheck;
+
+function showTextModal(modalMessage) {
+    modalCheck = false;
+    $('div.text-modal-content').html(modalMessage);
+    $('div.text-warn-modal').css('animation', 'popUp 0.5s');
+    $('div.text-modal').css('display', 'flex').hide().fadeIn(500);
+    setTimeout(function () {
+        modalCheck = true;
+    }, 500);
+}

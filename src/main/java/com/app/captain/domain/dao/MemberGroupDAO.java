@@ -4,6 +4,8 @@ import com.app.captain.mapper.MemberGroupMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class MemberGroupDAO {
@@ -15,8 +17,8 @@ public class MemberGroupDAO {
         memberGroupMapper.join(groupId, memberId);
     };
 
-    /* 그룹아이디로 memberGroupId 조회하기 */
-    public Long findMemberIdByGroupId(Long groupId){
+    /* 그룹아이디로 memberId 조회하기 */
+    public List<Long> findMemberIdByGroupId(Long groupId){
         return memberGroupMapper.selectByGroupId(groupId);
     };
 
