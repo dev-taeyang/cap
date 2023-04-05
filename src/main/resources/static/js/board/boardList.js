@@ -114,7 +114,7 @@ function showGroupList() {
                             </div>
                             <!-- 댓글로 이동할 수 있는 곳 -->
                             <div class="actionGroup-wrapper">
-                              <a class="actionGroup-reply" href="">
+                              <a class="actionGroup-reply" href="/replies/list/${groupList.groupId}">
                                 <img
                                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 21 18'%3E %3Cpath fill='none' stroke='%234E5968' stroke-width='1.5' d='M20.25.75H.75v11.818h3.842v4.015l5.9-4.015h9.758V.75z'/%3E %3C/svg%3E"
                                   alt=""
