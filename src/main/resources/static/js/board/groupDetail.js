@@ -40,6 +40,20 @@ showCaptainImg();
 /* 참여하기 버튼눌렀을때 */
 const $joinBtn = $(".floatActionBar-wrapper");
 
+const $JoinButton = $('.button-enterRecruit');
+
+$JoinButton.on('click', function(e){
+    if(maxValue > currentValue){
+        e.preventDefault();
+        let modalMessage = "참여가 완료되었습니다.";
+        showTextModal(modalMessage);
+
+        location.href = `/groups/register?groupId=${groupId}`;
+    }else {
+        $JoinButton.append("<p style='color: red'>정원이 마감되었습니다.</p>")
+    }
+})
+
 /* 모달 */
 let modalCheck;
 
@@ -52,12 +66,3 @@ function showTextModal(modalMessage) {
         modalCheck = true;
     }, 500);
 }
-
-    if($joinBtn.attr('display') == 'none'){
-        let modalMessage = "참여가 완료되었습니다.";
-        showTextModal(modalMessage);
-        if (modalCheck) {
-            $('div.text-warn-modal').css('animation', 'popDown 0.5s');
-            $('div.text-modal').fadeOut(500);
-        }
-    }

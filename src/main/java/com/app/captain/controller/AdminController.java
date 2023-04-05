@@ -6,6 +6,7 @@ import com.app.captain.domain.vo.NoticeVO;
 import com.app.captain.domain.vo.ReviewFileVO;
 import com.app.captain.domain.vo.ReviewVO;
 import com.app.captain.service.*;
+import jdk.jfr.Category;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -170,8 +171,8 @@ public class AdminController {
     /* =================================================================================== */
 
     @GetMapping("/admin-recruit")
-    public void showRecruits(Criteria criteria, String keyword, Model model, Long groupId){
-        model.addAttribute("recruits", groupService.getAllGroup(criteria, keyword));
+    public void showRecruits(Criteria criteria, String keyword, Model model, Long groupId, String category){
+        model.addAttribute("recruits", groupService.getAllGroup(criteria, keyword, category));
         model.addAttribute("recruitCount", groupService.getCountByGroupId(groupId));
     }
 
