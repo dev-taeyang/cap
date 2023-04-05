@@ -293,3 +293,8 @@ section.modal-stage-insert {
 .btn:focus {
   outline: none;
 }
+
+textarea {
+  font-family: 'NanumBarunGothic';
+  color: #777777;
+}

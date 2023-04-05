@@ -42,12 +42,17 @@
     <!-- =======================================관리자용=======================================-->
 
     <select id="selectGroupReplyOne" resultType="groupReplyDTO">
-        select m.member_id, member_identification, member_password, member_email, member_name,
-                member_nickname, member_phone, member_birth, member_gender, member_status,
-                member_random_key, member_file_original_name, member_file_uuid, member_file_path,
-                member_file_size, member_file_type, group_id, group_reply_id,
-                group_reply_content, group_reply_register_date, group_reply_update_date
-        from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id where group_id = #{groupId}
+        select  m.member_id, member_identification, member_password, member_email, member_name,
+            member_nickname, member_phone, member_birth, member_gender, member_status,
+            member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+            member_file_size, member_file_type, g.group_id, group_name, group_max_value,
+            group_category, group_title, group_content, group_location, group_register_date,
+            group_end_date,	group_meet_date, group_file_original_name, group_file_uuid,
+            group_file_path, group_file_size, group_file_type, group_captain, group_reply_id,
+            group_reply_content, group_reply_register_date, group_reply_update_date
+        from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id
+        join tbl_group g on gr.group_id = g.group_id
+        where group_reply_id = #{groupReplyId}
         order by group_reply_id desc
     </select>
 

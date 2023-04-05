@@ -150,7 +150,7 @@ function showLists(notices) {
                         </td>
                         <td class="content__id">${notice.noticeId}</td>
                         <td>${notice.noticeTitle}</td>
-                        <td style="white-space: pre-wrap">${notice.noticeContent}</td>
+                        <td style="white-space: pre-wrap; text-overflow: ellipsis;">${notice.noticeContent}</td>
                         <td>관리자</td>
                         <td>
                             <button id=detailCount class="content__detail__btn button__type_2 button__color__green">상세보기</button>
@@ -214,7 +214,8 @@ let adminService = (function () {
                                 <li class="content__list">
                                     <span>내용</span>
                                     <div class="content__intput input_box_shadow">
-                                        <input type="text" value="${noticeVO.noticeContent}" class="noticeContent">
+<!--                                        <input type="text" value="${noticeVO.noticeContent}" class="noticeContent">-->
+                                            <textarea cols="30" rows="10" class="noticeContent">${noticeVO.noticeContent}</textarea>
                                     </div>
                                 </li>
                                 <li class="content__list">
@@ -277,7 +278,6 @@ let adminService = (function () {
             data: {"noticeId": noticeId},
             success: function() {
                 if($(".table").children() == null) {
-                    alert("어")
                     globalThis.page--;
                     $(".table").empty();
                     adminService.getLists();
