@@ -56,6 +56,16 @@
         order by group_reply_id desc
     </select>
 
+    <select id="selectGroupReplyOne" resultType="groupReplyDTO">
+        select m.member_id, member_identification, member_password, member_email, member_name,
+                member_nickname, member_phone, member_birth, member_gender, member_status,
+                member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+                member_file_size, member_file_type, group_id, group_reply_id,
+                group_reply_content, group_reply_register_date, group_reply_update_date
+        from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id where group_id = #{groupId}
+        order by group_reply_id desc
+    </select>
+
     <!-- 댓글 입력하기 -->
     <insert id="insertReply">
         insert into tbl_group_reply(group_reply_content, member_id, group_id)

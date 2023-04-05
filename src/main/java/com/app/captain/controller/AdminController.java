@@ -177,18 +177,26 @@ public class AdminController {
 
     /* ======================댓글====================== */
 
-    /* 댓글 목록 페이지 */
-    @GetMapping("/admin-group-reply")
-    public void showReplies(Criteria criteria, Model model, Long replyId){
-        model.addAttribute("replies", groupReplyService.getGroupReplyDTO(criteria));
-        model.addAttribute("replyCount", reviewService.getTotalCount());
-    }
-
-    /* 댓글 상세 페이지 */
+//    /* 댓글 목록 페이지 */
+//    @GetMapping("/admin-group-reply")
+//    public void showReplies(Criteria criteria, Model model, Long groupReplyId){
+//        model.addAttribute("replies", groupReplyService.getGroupReplyDTO(criteria));
+//        model.addAttribute("replyCount", reviewService.getTotalCount());
+//    }
+//
+//    /* 댓글 상세 페이지 */
+//    @ResponseBody
+//    @GetMapping("/review-detail")
+//    public ReviewFileDTO showReviewDetail(@RequestParam("reviewId") Long reviewId) {
+//        ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId).toDTO();
+//        reviewFileDTO.setFiles(reviewFileService.getList(reviewId));
+//        return reviewFileDTO;
+//    }
 //    @ResponseBody
 //    @GetMapping("/group-reply-detail")
-//    public GroupReplyDTO showReplyDetail(@RequestParam("replyId") Long replyId) {
-//        return groupReplyService.getGroupReplyDTO(replyId, criteria);
+//    public GroupReplyDTO showReplyDetail(@RequestParam("groupReplyId") Long groupReplyId) {
+//        GroupReplyDTO groupReplyDTO = groupReplyService.getGroupReply(groupReplyId);
+//        return groupReplyService.getGroupReplyDTO(groupReplyId, criteria);
 //    }
 //    /* 댓글 수정 */
 //

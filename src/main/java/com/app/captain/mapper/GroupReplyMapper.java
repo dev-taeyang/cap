@@ -23,6 +23,7 @@ public interface GroupReplyMapper {
 
     /* 그룹 id로 탐험대에 작성된 댓글들의 정보 가져오기 */
     public List<GroupReplyDTO> selectGroupReply(Long groupId);
+    public GroupReplyDTO selectGroupReplyDTOOne(Long groupReplyId);
 
     /* 댓글 입력하기 */
     public void insertReply(GroupReplyVO groupReplyVO);
