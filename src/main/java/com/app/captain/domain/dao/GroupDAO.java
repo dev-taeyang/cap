@@ -88,7 +88,7 @@ public class GroupDAO {
     }
 
     /* 메인에 띄울 탐험대 조회 */
-    public List<GroupDTO> findMainGroup() {
-        return groupMapper.selectMainGroup();
+    public List<GroupDTO> findMainGroup(String category) {
+        return groupMapper.selectMainGroup(category);
     }
 }

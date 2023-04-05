@@ -20,15 +20,15 @@ function remainingDays(date) {
 }
 
 /* 카테고리 버튼 누르기 */
-const $Category = $(".CategoryItem");
-
-$Category.each((i, e) => {
-    $(e).click(function(){
-        $Category.removeClass("CategoryActive");
-        $(e).addClass("CategoryActive");
-
-    })
-})
+// const $Category = $(".CategoryItem");
+//
+// $Category.each((i, e) => {
+//     $(e).click(function(){
+//         $Category.removeClass("CategoryActive");
+//         $(e).addClass("CategoryActive");
+//
+//     })
+// })
 
 /* 탐험대 리스트를 놓을 곳 */
 const $mainGroupWrapper = $(".mainGroupWrapper");
@@ -220,3 +220,43 @@ function showMainReviewList() {
     }
 }
 showMainReviewList();
+
+
+/*카테고리 검색 */
+const urlParams = new URLSearchParams(window.location.search);
+const selectedCategory = urlParams.get('category');
+const selectedKeyword = urlParams.get('keyword');
+console.log(selectedCategory);
+const $changePage = $('.changePage');
+// 페이징 클릭 이벤트
+$changePage.each(function (i, changePage) {
+    $(changePage).on("click", e => {
+        e.preventDefault();
+        criteria.page = ($(this).attr("href"));
+        if(selectedCategory != null){
+            window.location.href = `/main?category=${selectedCategory}`;
+        }
+    })
+});
+
+/*카테고리 눌렀을때 */
+
+$('.CategoryItem').on('click', function() {
+    // 클릭된 버튼의 자식 요소인 span의 내용을 콘솔에 출력
+    console.log($(this).find('div').text());
+    category =  $(this).find('div').text();
+    window.location.href = `/main?category=${category}`
+});
+
+
+// 모든 카테고리 버튼에 대해 반복문 실행
+$('.CategoryItem').each(function() {
+    // 버튼에 해당하는 카테고리 이름을 가져오는겁니다행님
+    const category = $(this).find('div').text();
+    // 선택된 카테고리와 현재 버튼의 카테고리가 일치하면 버튼에 색깔을 입힘
+    if (selectedCategory === category) {
+        $(this).addClass('CategoryActive');
+    }
+});
+
+
