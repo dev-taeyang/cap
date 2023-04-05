@@ -176,10 +176,9 @@ public class AdminController {
     /* ======================댓글====================== */
 
     /* 댓글 목록 페이지 */
-    @GetMapping("/admin-" +
-            "reply")
+    @GetMapping("/admin-reply")
     public void showReplies(Criteria criteria, Model model, Long groupReplyId){
-        model.addAttribute("replies", groupReplyService.getList(criteria));
+        model.addAttribute("groupReplies", groupReplyService.getList(criteria));
         model.addAttribute("replyCount", groupReplyService.getReplyCountAll());
     }
 
@@ -193,7 +192,12 @@ public class AdminController {
 
     @ResponseBody
     @PostMapping("/group-reply-update")
-    public void updateReply(@RequestBody GroupReplyVO groupReplyVO) {
+    public void updateReply(@RequestParam("groupReplyId") Long groupReplyId, @RequestParam("groupReplyContent") String groupReplyContent) {
+        GroupReplyVO groupReplyVO = new GroupReplyVO();
+        groupReplyVO.setGroupReplyId(groupReplyId);
+        groupReplyVO.setGroupReplyContent(groupReplyContent);
+        log.info(groupReplyVO.toString());
+
         groupReplyService.modifyReply(groupReplyVO);
     }
 
@@ -207,8 +211,8 @@ public class AdminController {
 
     /* 댓글 목록 페이징 */
     @ResponseBody
-    @GetMapping("/admin/group-reply-list/{page}")
-    public List<GroupReplyDTO> showReplyList(@PathVariable("page") Integer page, Criteria criteria) {
+    @GetMapping("/group-reply-list/{page}")
+    public List<GroupReplyDTO> showGroupReplyList(@PathVariable("page") Integer page, Criteria criteria) {
         return groupReplyService.getList(criteria);
     }
 

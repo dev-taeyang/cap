@@ -186,3 +186,14 @@ li {
 .modal__profile__top{
   margin-left: 25px;
 }
+
+textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  padding: 3px 12px;
+}
+
+textarea:focus {
+  outline: none;
+}

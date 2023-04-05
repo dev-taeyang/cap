@@ -22,7 +22,7 @@ public class GroupReplyDAO {
     public List<GroupReplyDTO> findMemberReply(Long memberId, Criteria criteria) { return groupReplyMapper.selectMemberReply(memberId, criteria); }
 
     /* 댓글 상세보기 */
-    public GroupReplyDTO findMemberReplyById(Long groupReplyId) { return groupReplyMapper.selectGroupReplyDTOOne(groupReplyId);}
+    public GroupReplyDTO findMemberReplyById(Long groupReplyId) { return groupReplyMapper.selectGroupReplyOne(groupReplyId);}
 
     /* 전체 댓글 */
     public GroupReplyDTO findGroupReplyDTO(){ return groupReplyMapper.selectGroupReplyDTO();}

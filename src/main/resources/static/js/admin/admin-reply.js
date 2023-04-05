@@ -10,7 +10,7 @@ $modalCancel.on("click", function(e) {
 });
 
 
-/* ---------------------------- 관리자 공지사항 상세보기 모달 ---------------------------- */
+/* ---------------------------- 관리자 댓글 상세보기 모달 ---------------------------- */
 
 
 globalThis.groupReplyId = "";
@@ -82,7 +82,7 @@ function showGroupReplyList(groupReplies) {
                         <td>${reply.memberName}</td>
                         <td>
                             <button
-                                class="content__detail__btn button__type_2 button__color__green"
+                                class="content__detail__btn button__type_2 button__color__green group-reply-detail-button"
                             >
                                 상세보기
                             </button>
@@ -117,7 +117,7 @@ globalThis.page = 1;
 let adminGroupReplyService = (function () {
     function getGroupReplyList() {
         $.ajax({
-            url: `/admin/admin-group-reply-list/${page}`,
+            url: `/admin/group-reply-list/${globalThis.page}`,
             success: function(groupReplies) {
                 showGroupReplyList(groupReplies);
             }
@@ -137,9 +137,9 @@ let adminGroupReplyService = (function () {
                                 <div class="content__main">
                                     <ul class="content__list__wrap">
                                         <li class="content__list">
-                                            <span>제목</span>
+                                            <span>탐험대</span>
                                             <div class="content__intput input_box_shadow">
-                                                <input type="text" value="${groupReplyDTO.groupName}" class="groupName"/>
+                                                <input type="text" value="${groupReplyDTO.groupName}" class="groupName" readonly/>
                                             </div>
                                         </li>
                                         <li class="content__list">
@@ -151,7 +151,7 @@ let adminGroupReplyService = (function () {
                                         <li class="content__list">
                                             <span>작성자</span>
                                             <div class="content__intput input_box_shadow">
-                                                <input type="text" value="${groupReplyDTO.memberName}" class="memberName"/>
+                                                <input type="text" value="${groupReplyDTO.memberName}" class="memberName" readonly/>
                                             </div>
                                         </li>
                                     </ul>
@@ -159,6 +159,7 @@ let adminGroupReplyService = (function () {
                             </div>
                             <div class="user__profile__button">
                                 <button
+                                    type="button"
                                     id="completeBtn"
                                     class="button__type_2 button__color__green"
                                 >
@@ -171,25 +172,22 @@ let adminGroupReplyService = (function () {
 
                 /* 수정 완료 통신 */
                 $("#completeBtn").on("click", function(e) {
-                    let groupReplyDTO = new Object();
-                    groupReplyDTO.groupReplyId = globalThis.groupReplyId;
-                    groupReplyDTO.groupName = $('.groupName').val();
-                    groupReplyDTO.groupReplyContent = $('.groupReplyContent').val();
-                    groupReplyDTO.memberName = $('.memberName').val();
-                    console.log(groupReplyDTO);
-                    adminGroupReplyService.groupReplyUpdate(groupReplyDTO);
+                    let groupReplyId = globalThis.groupReplyId;
+                    let groupReplyContent = $('.groupReplyContent').val();
+                    console.log($('.groupReplyContent').val());
+
+                    adminGroupReplyService.groupReplyUpdate(groupReplyId, groupReplyContent);
                     $(".modal-stage").hide();
                 });
             }
         })
     }
 
-    function groupReplyUpdate(groupReplyDTO) {
+    function groupReplyUpdate(groupReplyId, groupReplyContent) {
         $.ajax({
-            url: "/admin/admin/group-reply-update",
+            url: "/admin/group-reply-update",
             type: "post",
-            data: JSON.stringify(groupReplyDTO),
-            contentType: "application/json; charset=utf-8",
+            data: {"groupReplyId":groupReplyId, "groupReplyContent": groupReplyContent},
             success: function() {
                 $(".table").empty();
                 adminGroupReplyService.getGroupReplyList();
@@ -199,7 +197,7 @@ let adminGroupReplyService = (function () {
 
     function groupReplyDelete(groupReplyId) {
         $.ajax({
-            url: "/admin/admin/group-reply-delete",
+            url: "/admin/group-reply-delete",
             type: "delete",
             data: {"groupReplyId": groupReplyId},
             success: function() {
