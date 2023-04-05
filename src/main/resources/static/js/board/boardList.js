@@ -137,7 +137,7 @@ $changePage.each(function (i, changePage) {
     $(changePage).on("click", e => {
         e.preventDefault();
         criteria.page = ($(this).attr("href"));
-        window.location.href = `/mypage/myRecruit?page=${criteria.page}`;
+        window.location.href = `/groups/list?page=${criteria.page}`;
     })
 });
 
