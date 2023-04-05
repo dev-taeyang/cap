@@ -122,11 +122,11 @@ public class MypageController {
 
     /* 비밀번호 변경 수행하기 */
     @PostMapping("UpdatePassword")
-    public String UpdatePassword(MemberVO memberVO, HttpServletRequest request) {
+    public String UpdatePassword(MemberVO memberVO, HttpServletRequest request, HttpSession httpSession) {
         mypageService.modifyPassword(memberVO);
+        Long memberId = (Long) httpSession.getAttribute("memberId");
         HttpSession session = request.getSession();
-        session.setAttribute("member", memberVO);
-
+        session.setAttribute("member", mypageService.getMemberById(memberId));
         return "redirect:/mypage/me";
     }
 
