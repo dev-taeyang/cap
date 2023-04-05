@@ -109,7 +109,7 @@ public class GroupController {
     public RedirectView registerGroup(@RequestParam("groupId") Long groupId, HttpSession session, RedirectAttributes redirectAttributes) {
         Long sessionId = (Long) session.getAttribute("memberId");
         memberGroupService.register(groupId, sessionId);
-        return new RedirectView("groups/detail/{groupId}");
+        return new RedirectView("detail/" + groupId);
     }
 
     /* 그룹 삭제하기 */
@@ -124,11 +124,11 @@ public class GroupController {
 
     /* 탐험대 리스트 띄우기 */
     @GetMapping("list")
-    public String GroupList(Criteria criteria, Model model,@RequestParam(value = "keyword",required = false)String keyword) {
+    public String GroupList(Criteria criteria, HttpSession session ,Model model,@RequestParam(value = "keyword",required = false)String keyword) {
         List<GroupDTO> groupLists = groupService.getAllGroup(criteria,keyword);
-        log.info(keyword);
-        log.info(groupLists.toString());
+        Long sessionId = (Long)session.getAttribute("memberId");
         groupLists.forEach(grouplist -> {grouplist.setGroupReplyCount(groupReplyService.getReplyCount(grouplist.getGroupId()));});
+        model.addAttribute("sessionId", sessionId);
         model.addAttribute("groupLists", groupLists);
         return "/recruitPage/recruitList";
     }

@@ -66,7 +66,7 @@ function showGroupList() {
                                 <!-- 글쓴이의 이름과 글쓴 시간 -->
                                 <div class="MemberProfileText-wrapper">
                                   <p class="ProfileName">${groupList.memberNickname}</p>
-                                  <div class="RegistTime">` + elapsedTime(groupList.groupRegisterDate) +`</div>
+                                  <div class="RegistTime">` + remainingDays(groupList.groupEndDate) +`</div>
                                 </div>
                               </div>
                             </div>
@@ -140,3 +140,44 @@ $changePage.each(function (i, changePage) {
         window.location.href = `/mypage/myRecruit?page=${criteria.page}`;
     })
 });
+
+/*  일랩스드 타임   */
+function elapsedTime(date) {
+    const start = new Date(date);
+    const end = new Date();
+
+    const diff = (end - start) / 1000;
+
+    const times = [
+        { name: '년', milliSeconds: 60 * 60 * 24 * 365 },
+        { name: '개월', milliSeconds: 60 * 60 * 24 * 30 },
+        { name: '일', milliSeconds: 60 * 60 * 24 },
+        { name: '시간', milliSeconds: 60 * 60 },
+        { name: '분', milliSeconds: 60 },
+    ];
+
+    for (const value of times) {
+        const betweenTime = Math.floor(diff / value.milliSeconds);
+
+        if (betweenTime > 0) {
+            return `${betweenTime}${value.name} 전`;
+        }
+    }
+    return '방금 전';
+}
+
+/* 남은 일자 구하기 */
+function remainingDays(date) {
+    const start = new Date();
+    const end = new Date(date);
+
+    const diff = (end - start) / (1000 * 60 * 60 * 24);
+
+    if (diff < 0) {
+        return '모집이 마감되었습니다.';
+    } else if (diff === 0) {
+        return '오늘이 마감일 입니다.';
+    } else {
+        return `모집 마감까지 ${Math.ceil(diff)}일`;
+    }
+}
