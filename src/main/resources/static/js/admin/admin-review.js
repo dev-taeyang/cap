@@ -60,7 +60,6 @@ function showReviewList(reviews) {
                          <th>제목</th>
                          <th style="width: 40%">내용</th>
                          <th style="width: 12%">별점</th>
-                         <th>등록일</th>
                     </tr>
               `;
 
@@ -76,7 +75,6 @@ function showReviewList(reviews) {
                         <td>${review.reviewTitle}</td>
                         <td>${review.reviewContent}</td>
                         <td>${review.reviewGrade}</td>
-                        <td>${review.reviewRegisterDate}</td>
                         <td>
                         <button
                         class="content__detail__btn button__type_2 button__color__green"
@@ -121,134 +119,113 @@ let adminReviewService = (function () {
         $.ajax({
             url: "/admin/review-detail",
             data: {"reviewId": reviewId},
-            success: function (reviewDTO) {
+            success: function (reviewFileDTO) {
                 let text = "";
                 const $modal = $(".review-detail-modal");
 
                 text += `
                     <div class="modal__content">
-                        <div class="content__title">
-                         <h4>탐험 위치</h4>
-                         </div>
-                         <!-- 탐험 위치 띄우는 곳 -->
-                         <div class="content__intput input_box_shadow">
-                             <input
-                                    type="text"
-                                    name=""
-                                    value="경기 의왕시 경수대로 262"
-                                    readonly="true"
-                             />
-                         </div>
                          <div class="content__main">
                             <div class="content__img__wrap">
                              <!-- 기존이미지 띄우는 부분 -->
-                                <span class="stay-img">*기존 리뷰 사진</span>
+                                <span class="stay-img">*리뷰 사진</span>
+                                    <div class="review-img-wrapper">
+                                        <label>
                                 `
-                // if($files[0] != null) {
-                //     $files.forEach((file, i) => {
-                //         text += `
-                //                 <div class="review-img-wrapper">
-                //                     <label>
-                //                         <div class="content__img">
-                //                             <img
-                //                             src="/admin/display?fileName=${$files.reviewFilePath}/${$files.reviewFileUuid}_${$files.reviewFileOriginalName}"
-                //                              />
-                //                         </div>
-                //                         <input
-                //                         type="file"
-                //                         name="file"
-                //                         style="display: none"
-                //                         />
-                //                     </label>
-                //                  </div>
-                //                  `
-                //     })
-                // }else {
-                //     text += `<div class="review-img-wrapper">
-                //                     <label>
-                //                         <div class="content__img">
-                //                             <img
-                //                                 src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
-                //                              />
-                //                         </div>
-                //                         <input
-                //                         type="file"
-                //                         name="file"
-                //                         style="display: none"
-                //                         />
-                //                     </label>
-                //                     <label>
-                //                         <div class="content__img">
-                //                             <img
-                //                                 src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
-                //                              />
-                //                         </div>
-                //                         <input
-                //                         type="file"
-                //                         name="file"
-                //                         style="display: none"
-                //                         />
-                //                     </label>
-                //                     <label>
-                //                         <div class="content__img">
-                //                             <img
-                //                                 src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
-                //                              />
-                //                         </div>
-                //                         <input
-                //                         type="file"
-                //                         name="file"
-                //                         style="display: none"
-                //                         />
-                //                     </label>
-                //                     <label>
-                //                         <div class="content__img">
-                //                             <img
-                //                                 src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
-                //                              />
-                //                         </div>
-                //                         <input
-                //                         type="file"
-                //                         name="file"
-                //                         style="display: none"
-                //                         />
-                //                     </label>
-                //                  </div>
-                //                  `
-                // }
+                if(reviewFileDTO.files[0] != null) {
+                    reviewFileDTO.files.forEach((file, i) => {
+                        text += `
+                                        <div class="content__img">
+                                            <img
+                                            src="/admin/display?fileName=${reviewFileDTO.files[i].reviewFilePath}/${reviewFileDTO.files[i].reviewFileUuid}_${reviewFileDTO.files[i].reviewFileOriginalName}"
+                                             />
+                                        </div>
+                                        <input
+                                        type="file"
+                                        name="file"
+                                        style="display: none"
+                                        />
+                                 `
+                    })
+                }else {
+                    text += `
+                                        <div class="content__img">
+                                            <img
+                                                src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
+                                             />
+                                        </div>
+                                        <input
+                                        type="file"
+                                        name="file"
+                                        style="display: none"
+                                        />
+                                    </label>
+                                    <label>
+                                        <div class="content__img">
+                                            <img
+                                                src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
+                                             />
+                                        </div>
+                                        <input
+                                        type="file"
+                                        name="file"
+                                        style="display: none"
+                                        />
+                                    </label>
+                                    <label>
+                                        <div class="content__img">
+                                            <img
+                                                src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
+                                             />
+                                        </div>
+                                        <input
+                                        type="file"
+                                        name="file"
+                                        style="display: none"
+                                        />
+                                    </label>
+                                    <label>
+                                        <div class="content__img">
+                                            <img
+                                                src="https://us.123rf.com/450wm/mathier/mathier1905/mathier190500002/134557216-%EC%8D%B8%EB%84%A4%EC%9D%BC-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%86%EC%9D%8C-%ED%8F%AC%EB%9F%BC-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%B0%8F-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90.jpg?ver=6"
+                                             />
+                                        </div>
+                                        <input
+                                        type="file"
+                                        name="file"
+                                        style="display: none"
+                                        />
+                                 `
+                }
 
                 text += `
+                        </label>
+                                 </div>
                          <!-- ========================================================== -->
                          <!-- 상세보기 입력 부분 -->
                          <ul class="content__list__wrap">
                              <li class="content__list">
-                                <span>작성자</span>
-                                <div class="content__intput input_box_shadow">
-                                    <input type="text" value="${reviewDTO.memberName}"/>
-                                </div>
-                             </li>
-                             <li class="content__list">
                                 <span>제목</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" value="${reviewDTO.reviewTitle}" class="reviewTitle"/>
+                                    <input type="text" value="${reviewFileDTO.reviewTitle}" class="reviewTitle"/>
                                 </div>
                              </li>
                              <li class="content__list">
                                 <span>내용</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" value="${reviewDTO.reviewContent}" class="reviewContent"/>
+                                    <input type="text" value="${reviewFileDTO.reviewContent}" class="reviewContent"/>
                                 </div>
                              </li>
                              <li class="content__list">
                                 <span>별점</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" value="${reviewDTO.reviewGrade}" class="reviewGrade"/>
+                                    <input type="text" value="${reviewFileDTO.reviewGrade}" class="reviewGrade"/>
                                 </div>
                              </li>
                              <li class="content__list">
                                 <span>등록일</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" value="${reviewDTO.reviewRegisterDate}" class="reviewRegisterDate"/>
+                                    <input type="text" value="${reviewFileDTO.reviewRegisterDate}" class="reviewRegisterDate"/>
                                 </div>
                              </li>
                          </ul>

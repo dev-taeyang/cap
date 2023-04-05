@@ -22,6 +22,23 @@
         limit #{cri.offset}, #{cri.rowCount}
     </select>
 
+    <!-- 관리자에서 댓글과, 탐험대, 작성자의 정보를 가져오는 DTO -->
+    <select id="selectGroupReplyDTO" resultType="groupReplyDTO">
+        select  m.member_id, member_identification, member_password, member_email, member_name,
+            member_nickname, member_phone, member_birth, member_gender, member_status,
+            member_random_key, member_file_original_name, member_file_uuid, member_file_path,
+            member_file_size, member_file_type, g.group_id, group_name, group_max_value,
+            group_category, group_title, group_content, group_location, group_register_date,
+            group_end_date,	group_meet_date, group_file_original_name, group_file_uuid,
+            group_file_path, group_file_size, group_file_type, group_captain, group_reply_id,
+            group_reply_content, group_reply_register_date, group_reply_update_date
+        from tbl_member m join tbl_group_reply gr on m.member_id = gr.member_id
+        join tbl_group g on gr.group_id = g.group_id
+        where m.member_id = #{memberId}
+        order by group_reply_id desc
+        limit #{cri.offset}, #{cri.rowCount}
+    </select>
+
     <!-- 그룹 아이디로 그 탐험대의 댓글 갯수 가져오기 -->
     <select id="selectReplyCount" resultType="long">
         select count(group_reply_id) from tbl_group_reply where group_id = #{groupId}

@@ -1,9 +1,6 @@
 package com.app.captain.controller;
 
-import com.app.captain.domain.dto.Criteria;
-import com.app.captain.domain.dto.ReviewDTO;
-import com.app.captain.domain.dto.ReviewFileDTO;
-import com.app.captain.domain.dto.Search;
+import com.app.captain.domain.dto.*;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.domain.vo.NoticeVO;
 import com.app.captain.domain.vo.ReviewFileVO;
@@ -143,8 +140,10 @@ public class AdminController {
     /* 리뷰 상세 페이지 */
     @ResponseBody
     @GetMapping("/review-detail")
-    public ReviewDTO showReviewDetail(@RequestParam("reviewId") Long reviewId) {
-        return reviewService.getDTO(reviewId);
+    public ReviewFileDTO showReviewDetail(@RequestParam("reviewId") Long reviewId) {
+        ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId).toDTO();
+        reviewFileDTO.setFiles(reviewFileService.getList(reviewId));
+        return reviewFileDTO;
     }
 
     /* 리뷰 수정 */
@@ -170,17 +169,52 @@ public class AdminController {
 
     /* =================================================================================== */
 
-//    @GetMapping("/admin-recruit")
-//    public void showRecruits(Criteria criteria, Model model, Long recruitId){
-//        model.addAttribute("recruits", groupService.getAllGroup(criteria));
-//        model.addAttribute("recruitCount", groupService.getcountAllGroup());
+    @GetMapping("/admin-recruit")
+    public void showRecruits(Criteria criteria, String keyword, Model model, Long groupId){
+        model.addAttribute("recruits", groupService.getAllGroup(criteria, keyword));
+        model.addAttribute("recruitCount", groupService.getCountByGroupId(groupId));
+    }
+
+    /* ======================댓글====================== */
+
+    /* 댓글 목록 페이지 */
+    @GetMapping("/admin-group-reply")
+    public void showReplies(Criteria criteria, Model model, Long replyId){
+        model.addAttribute("replies", groupReplyService.getGroupReplyDTO(criteria));
+        model.addAttribute("replyCount", reviewService.getTotalCount());
+    }
+
+    /* 댓글 상세 페이지 */
+//    @ResponseBody
+//    @GetMapping("/group-reply-detail")
+//    public GroupReplyDTO showReplyDetail(@RequestParam("replyId") Long replyId) {
+//        return groupReplyService.getGroupReplyDTO(replyId, criteria);
+//    }
+//    /* 댓글 수정 */
+//
+//    @ResponseBody
+//    @PostMapping("/group-reply-update")
+//    public void updateMember(@RequestBody MemberVO memberVO) {
+//        memberService.modifyMemberAll(memberVO);
+//    }
+//
+//    /* 댓글 삭제 */
+//
+//    @ResponseBody
+//    @DeleteMapping("/admin/group-reply-delete")
+//    public void removeMember(@RequestParam("memberId") Long memberId) {
+//        mypageService.remove(memberId);
+//    }
+//
+//    /* 댓글 목록 페이징 */
+//
+//    @ResponseBody
+//    @GetMapping("/admin/group-reply-list/{page}")
+//    public List<MemberVO> showMemberLists(@PathVariable("page") Integer page, Criteria criteria) {
+//        return memberService.getMembers(criteria);
 //    }
 
     /* =================================================================================== */
-
-    @GetMapping("/admin-reply")
-    public void showReplies(Criteria criteria, Model model, Long replyId){
-    }
 
     /* 사진 불러오기 */
     @GetMapping("/display")
