@@ -134,6 +134,9 @@
         <if test="keyword!=null">
             where group_title like concat('%',#{keyword},'%')
         </if>
+        <if test="category != null">
+            and group_category like concat('%',#{category},'%')
+        </if>
     </select>
 
     <!-- 메인에 띄울 탐험대 -->

@@ -54,7 +54,7 @@ public interface GroupMapper {
     /* 모든 탐험대 조회 */
     public List<GroupDTO> selectAllGroup(@Param("cri") Criteria criteria,@Param("keyword") String keyword,@Param("category") String category);
     /* 모든 탐험대 수 조회 */
-    public Integer countAllGroup(String keyword);
+    public Integer countAllGroup(String keyword,String category);
 
     /* 메인에 띄울 탐험대 조회 */
     public List<GroupDTO> selectMainGroup();

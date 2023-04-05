@@ -69,12 +69,12 @@ public class GroupService {
 
     /* 모든 탐험대 조회 */
     public List<GroupDTO> getAllGroup(Criteria criteria,String keyword,String category) {
-        criteria.create(getcountAllGroup(keyword));
+        criteria.create(getcountAllGroup(keyword,category));
         return groupDAO.findAllGroup(criteria,keyword,category);
     }
     /* 모든 탐험대 수 조회 */
-    public Integer getcountAllGroup(String keyword) {
-        return groupDAO.findcountAllGroup(keyword);
+    public Integer getcountAllGroup(String keyword,String category) {
+        return groupDAO.findcountAllGroup(keyword,category);
     }
 
     /* 메인에 띄울 탐험대 조회 */
