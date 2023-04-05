@@ -25,6 +25,10 @@ public class GroupReplyService {
 
     public GroupReplyDTO getGroupReplyDTO(Criteria criteria){ return groupReplyDAO.findGroupReplyDTO(criteria);}
 
+    /* 댓글 상세보기 */
+    public GroupReplyDTO getGroupReplyOne(Long groupReplyId) { return groupReplyDAO.findMemberReplyById(groupReplyId);}
+
+
     /* 댓글 입력하기 */
     public void setReply(GroupReplyVO groupReplyVO) {
         groupReplyDAO.saveReply(groupReplyVO);
