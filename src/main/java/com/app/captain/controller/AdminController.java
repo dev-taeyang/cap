@@ -1,10 +1,7 @@
 package com.app.captain.controller;
 
 import com.app.captain.domain.dto.*;
-import com.app.captain.domain.vo.MemberVO;
-import com.app.captain.domain.vo.NoticeVO;
-import com.app.captain.domain.vo.ReviewFileVO;
-import com.app.captain.domain.vo.ReviewVO;
+import com.app.captain.domain.vo.*;
 import com.app.captain.service.*;
 import jdk.jfr.Category;
 import lombok.RequiredArgsConstructor;
@@ -178,50 +175,42 @@ public class AdminController {
 
     /* ======================댓글====================== */
 
-//    /* 댓글 목록 페이지 */
-//    @GetMapping("/admin-group-reply")
-//    public void showReplies(Criteria criteria, Model model, Long groupReplyId){
-//        model.addAttribute("replies", groupReplyService.getGroupReplyDTO(criteria));
-//        model.addAttribute("replyCount", reviewService.getTotalCount());
-//    }
-//
-//    /* 댓글 상세 페이지 */
-//    @ResponseBody
-//    @GetMapping("/review-detail")
-//    public ReviewFileDTO showReviewDetail(@RequestParam("reviewId") Long reviewId) {
-//        ReviewFileDTO reviewFileDTO = reviewService.getReview(reviewId).toDTO();
-//        reviewFileDTO.setFiles(reviewFileService.getList(reviewId));
-//        return reviewFileDTO;
-//    }
-//    @ResponseBody
-//    @GetMapping("/group-reply-detail")
-//    public GroupReplyDTO showReplyDetail(@RequestParam("groupReplyId") Long groupReplyId) {
-//        GroupReplyDTO groupReplyDTO = groupReplyService.getGroupReply(groupReplyId);
-//        return groupReplyService.getGroupReplyDTO(groupReplyId, criteria);
-//    }
-//    /* 댓글 수정 */
-//
-//    @ResponseBody
-//    @PostMapping("/group-reply-update")
-//    public void updateMember(@RequestBody MemberVO memberVO) {
-//        memberService.modifyMemberAll(memberVO);
-//    }
-//
-//    /* 댓글 삭제 */
-//
-//    @ResponseBody
-//    @DeleteMapping("/admin/group-reply-delete")
-//    public void removeMember(@RequestParam("memberId") Long memberId) {
-//        mypageService.remove(memberId);
-//    }
-//
-//    /* 댓글 목록 페이징 */
-//
-//    @ResponseBody
-//    @GetMapping("/admin/group-reply-list/{page}")
-//    public List<MemberVO> showMemberLists(@PathVariable("page") Integer page, Criteria criteria) {
-//        return memberService.getMembers(criteria);
-//    }
+    /* 댓글 목록 페이지 */
+    @GetMapping("/admin-" +
+            "reply")
+    public void showReplies(Criteria criteria, Model model, Long groupReplyId){
+        model.addAttribute("replies", groupReplyService.getList(criteria));
+        model.addAttribute("replyCount", groupReplyService.getReplyCountAll());
+    }
+
+    /* 댓글 상세 페이지 */
+    @ResponseBody
+    @GetMapping("/group-reply-detail")
+    public GroupReplyDTO showReplyDetail(@RequestParam("groupReplyId") Long groupReplyId) {
+        return groupReplyService.getGroupReplyOne(groupReplyId);
+    }
+    /* 댓글 수정 */
+
+    @ResponseBody
+    @PostMapping("/group-reply-update")
+    public void updateReply(@RequestBody GroupReplyVO groupReplyVO) {
+        groupReplyService.modifyReply(groupReplyVO);
+    }
+
+    /* 댓글 삭제 */
+
+    @ResponseBody
+    @DeleteMapping("/admin/group-reply-delete")
+    public void removeReply(@RequestParam("groupReplyId") Long groupReplyId) {
+        groupReplyService.removeReply(groupReplyId);
+    }
+
+    /* 댓글 목록 페이징 */
+    @ResponseBody
+    @GetMapping("/admin/group-reply-list/{page}")
+    public List<GroupReplyDTO> showReplyList(@PathVariable("page") Integer page, Criteria criteria) {
+        return groupReplyService.getList(criteria);
+    }
 
     /* =================================================================================== */
 

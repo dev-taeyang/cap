@@ -16,6 +16,7 @@ public class GroupReplyDAO {
 
     /* 댓글 개수 찾기 */
     public Integer findMemberReplyCount(Long memberId) { return groupReplyMapper.selectMemberReplyCount(memberId); }
+    public Integer findReplyCountAll() { return groupReplyMapper.selectReplyCountAll(); }
 
     /* 멤버가 쓴 댓글 찾기 */
     public List<GroupReplyDTO> findMemberReply(Long memberId, Criteria criteria) { return groupReplyMapper.selectMemberReply(memberId, criteria); }
@@ -24,7 +25,10 @@ public class GroupReplyDAO {
     public GroupReplyDTO findMemberReplyById(Long groupReplyId) { return groupReplyMapper.selectGroupReplyDTOOne(groupReplyId);}
 
     /* 전체 댓글 */
-    public GroupReplyDTO findGroupReplyDTO(Criteria criteria){ return groupReplyMapper.selectGroupReplyDTO(criteria);}
+    public GroupReplyDTO findGroupReplyDTO(){ return groupReplyMapper.selectGroupReplyDTO();}
+
+    /* 댓글 전체 리스트 가져오기 */
+    public List<GroupReplyDTO> findGroupReplyList(Criteria criteria) { return groupReplyMapper.selectGroupReplyAll(criteria);}
 
     /* 그룹 id로 탐험대에 작성된 댓글의 갯수 가져오기 */
     public Long findReplyCount(Long groupId) { return groupReplyMapper.selectReplyCount(groupId); }
