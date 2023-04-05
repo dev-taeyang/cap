@@ -22,58 +22,119 @@ showImg();
 const $captainImg = $(".ProfileInfo-profileImage");
 function showCaptainImg() {
     let text = "";
-    text =
-            `
-            <a href="">
-                <div class="Image-wrapper">
-                    <!-- 유저의 프로필 사진을 가져오는 곳 -->
-                    <img class="Image-style" src="/groups/display?fileName=${captain.memberFilePath}/${captain.memberFileUuid}_${captain.memberFileOriginalName}">
-                </div>
-            </a>
-            `
+    if (captain.memberFileOriginalName == 0){
+        text =
+                `
+                <a href="">
+                    <div class="Image-wrapper">
+                        <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                        <img class="Image-style" src="/groups/display?fileName=${captain.memberFilePath}/${captain.memberFileUuid}_${captain.memberFileOriginalName}">
+                    </div>
+                </a>
+                `
+    }else {
+        text =
+                `
+                <a href="">
+                    <div class="Image-wrapper">
+                        <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                        <img class="Image-style" src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
+                    </div>
+                </a>
+                `
+    }
     $captainImg.append(text);
 }
 showCaptainImg();
+
+/* 가입한 유저들 뿌리기 */
+function showMembers() {
+    let text = "";
+    if(memberVOS.length != 0){
+        memberVOS.forEach((memberVO,i) => {
+            if (memberVO.memberFileOriginalName != null){
+                text += `
+                    <div class="OtherMember-wrapper">
+                        <a href="">
+                            <div class="OtherMember-profile">
+                                <div class="OtherMember-image">
+                                <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                                    <img class="Image-style recruit-Member"
+                                        src="/groups/display?fileName=${memberVO.memberFilePath}/${memberVO.memberFileUuid}_${memberVO.memberFileOriginalName}">
+                                </div>
+                            </div>
+                            <!-- 유저의 닉네임을 받아올 곳 -->
+                            <span class="OtherMember-nickname">${memberVO.memberNickname}</span>
+                        </a>
+                    </div>
+                    `
+            }else {
+                text += `
+                <div class="OtherMember-wrapper">
+                    <a href="">
+                        <div class="OtherMember-profile">
+                            <div class="OtherMember-image">
+                            <!-- 유저의 프로필 사진을 가져오는 곳 -->
+                                <img class="Image-style recruit-Member"
+                                    src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png">
+                            </div>
+                        </div>
+                        <!-- 유저의 닉네임을 받아올 곳 -->
+                        <span class="OtherMember-nickname">${memberVO.memberNickname}</span>
+                    </a>
+                </div>
+                `
+            }
+        });
+    }else {
+        console.log("들어좀 와라")
+        text =
+            `
+                <span class="OtherMember-title">아직 함께 하시는 탐험대원이 없습니다</span>
+            `
+    }
+    $(".OtherMemberContent-container").append(text);
+}
+
+showMembers();
 
 
 /*===================================================================================*/
 
 /* 참여하기 버튼눌렀을때 */
-const $joinBtn = $(".floatActionBar-wrapper");
-
 const $JoinButton = $('.button-enterRecruit');
 
 $JoinButton.on('click', function(e){
-    console.log("앙 눌러띠");
-    if(maxValue > currentValue){
-        let modalMessage = "참여가 완료되었습니다.";
+    if(maxValue > currentValue && sessionId != null){
         $(".floatActionBar-wrapper").hide();
-        showTextModal(modalMessage);
+        location.href = `/groups/register?groupId=${groupId}`;
     }else {
-        let modalMessage = "정원이 마감되었습니다.";
-        showTextModal(modalMessage);
+        $JoinButton.css("background-color","red");
+        $(".enterButton-Text").html("로그인 후 이용해 주세요.");
     }
 })
 
-/* 모달 */
-let modalCheck;
 
-function showTextModal(modalMessage) {
-    modalCheck = false;
-    $('div.text-modal-content').html(modalMessage);
-    $('div.text-warn-modal').css('animation', 'popUp 0.5s');
-    $('div.text-modal').css('display', 'flex').hide().fadeIn(500);
-    setTimeout(function () {
-        modalCheck = true;
-    }, 500);
+/* date안에 날짜형식의 값을 넣으면 알아서 계산됨. */
+function remainingDays(date) {
+    const start = new Date();
+    const end = new Date(date);
+
+    const diff = (end - start) / (1000 * 60 * 60 * 24);
+
+    if (diff < 0) {
+        return '모집이 마감되었습니다.';
+    } else if (diff === 0) {
+        return '오늘이 마감일 입니다.';
+    } else {
+        return `모집 마감까지 ${Math.ceil(diff)}일`;
+    }
 }
 
-$('.boardDetailPage-wrapper').on('click', function () {
-    if (modalCheck) {
-        $('div.text-warn-modal').css('animation', 'popDown 0.5s');
-        $('div.text-modal').fadeOut(500);
-        if(maxValue > currentValue){
-            location.href = `/groups/register?groupId=${groupId}`;
-        }
-    }
-});
+/* end-info의 2번째꺼에 마감일 안내 */
+if(maxValue > currentValue){
+    $(".end-info").html("* " + remainingDays(group.groupEndDate));
+    $(".end-info").css("color","gray");
+}
+
+

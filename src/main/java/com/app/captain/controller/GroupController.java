@@ -26,6 +26,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -89,6 +90,12 @@ public class GroupController {
         int currentValue = memberGroupService.getCountByGroupId(groupId);
         /* 가입한사람 memberId 가져오기 */
         List<Long> joinedMember = memberGroupService.getMemberId(groupId);
+        /* memberVO타입의 List를 선언해서 */
+        List<MemberVO> memberVOS = new ArrayList<>();
+        /* 가입한 memberId들의 정보들을 조회해와서 memberVOS에 담아줌 */
+        joinedMember.forEach(v -> {
+            memberVOS.add(mypageService.getMemberById(v));
+        });
         /* 정보가져온거에서 groupCaptain 변수만들어서 담아주기 */
         Long groupCaptain = groupVO.getGroupCaptain();
         /* groupCaptain으로 memberProfile정보 가져오기 */
@@ -96,6 +103,7 @@ public class GroupController {
         /* groupId 전달*/
         Long id = groupVO.getGroupId();
         /* 화면쪽에 보내주기 */
+        model.addAttribute("memberVOS",memberVOS);
         model.addAttribute("joinedMember", joinedMember);
         model.addAttribute("currentValue", currentValue);
         model.addAttribute("groupId", id);
