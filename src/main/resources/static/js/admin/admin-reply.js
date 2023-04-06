@@ -56,11 +56,7 @@ function showGroupReplyList(groupReplies) {
         detailCount++;
         str = `
                     <tr class="table__header">
-                        <th class="content_check">
-                            <label class="check-label">
-                                <input type="checkbox" id="checkAll" />
-                            </label>
-                        </th>
+                        <th class="content_check"></th>
                         <th class="content__id">번호</th>
                         <th>탐험대</th>
                         <th style="width: 35%">내용</th>
@@ -82,7 +78,7 @@ function showGroupReplyList(groupReplies) {
                         <td>${reply.memberName}</td>
                         <td>
                             <button
-                                class="content__detail__btn button__type_2 button__color__green group-reply-detail-button"
+                                id="detailCount" class="content__detail__btn button__type_2 button__color__green group-reply-detail-button"
                             >
                                 상세보기
                             </button>

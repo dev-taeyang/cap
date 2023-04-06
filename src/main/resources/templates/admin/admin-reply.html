@@ -283,19 +283,6 @@
                             <ul class="status-list">
                                 <li class="status-list-item">
                                     <div class="status-item-wrapper">
-                                        <img
-                                            src="/images/reply.png"
-                                            class="profile-img"
-                                        />
-                                        <div class="status-item-name">금일 신규댓글</div>
-                                    </div>
-                                    <!-- 신규 댓글 Count 뽑는곳 -->
-                                    <div class="status-item-count">
-                                        <a href="">0</a>
-                                    </div>
-                                </li>
-                                <li class="status-list-item">
-                                    <div class="status-item-wrapper">
                                         <div class="problem-icon-wrapper">
                                             <div class="problem-icon">
                                                 <div>
@@ -314,11 +301,10 @@
                                     </div>
                                     <!-- 총 댓글 Count 뽑는곳 -->
                                     <div class="status-item-count">
-                                        <a href="">0</a>
+                                        <a href="" th:text="${replyCount}"></a>
                                     </div>
                                 </li>
                                 <div class="clock">
-                                    <h2>현재시간</h2>
                                     <h1></h1>
                                 </div>
                             </ul>
@@ -334,47 +320,6 @@
                                     </button>
                                 </div>
                                 <!-- default.css -->
-                                <!-- 검색조건 선택하는 곳 추후 맞게 정하기 -->
-                                <div class="search-box-wrap">
-                                    <div class="select-box">
-                                        <button class="listbox-selecter">검색조건 선택</button>
-                                        <ul class="listbox displayNone" id="listbox">
-                                            <li><button class="list">전체</button></li>
-                                            <li><button class="list">검색조건1</button></li>
-                                            <li><button class="list">검색조건2</button></li>
-                                        </ul>
-                                        <input
-                                            type="text"
-                                            name="searchType"
-                                            style="display: none"
-                                            value="all"
-                                        />
-                                    </div>
-                                    <div class="search-box">
-                                        <input
-                                            type="text"
-                                            name="userId"
-                                            class="input__type_1 search-input"
-                                            placeholder="검색"
-                                        />
-                                        <span>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                enable-background="new 0 0 32 32"
-                                                id="Glyph"
-                                                version="1.1"
-                                                viewBox="0 0 32 32"
-                                                xml:space="preserve"
-                                            >
-                                                <path
-                                                    d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"
-                                                    id="XMLID_223_"
-                                                />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             <!-- 댓글 정보 불러오는 곳 -->
                             <table class="table">
@@ -391,7 +336,7 @@
 
                                 <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
                                     <a href="javascript:void(0)" th:if="${criteria.page != page}">
-                                        <button class="page-number page-button page-active" th:text="${page}"></button>
+                                        <button class="page-number page-button" th:text="${page}"></button>
                                     </a>
                                     <button class="page-number page-button page-active" th:unless="${criteria.page != page}" th:text="${page}"></button>
                                 </th:block>

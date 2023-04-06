@@ -47,6 +47,9 @@ public class GroupDAO {
     public void update(GroupVO groupVO){
         groupMapper.update(groupVO);
     };
+    public void updateByAdmin(GroupVO groupVO){
+        groupMapper.updateByAdmin(groupVO);
+    };
 
     /* 그룹 삭제 */
     public void delete(Long groupId){
@@ -54,8 +57,8 @@ public class GroupDAO {
     };
 
     /* 그룹 전체 조회 */
-    public List<GroupVO> findAll(){
-        return groupMapper.sellectAll();
+    public List<GroupVO> findAll(Criteria criteria){
+        return groupMapper.selectAll(criteria);
     };
 
     /* groupCaptain으로  그롭조회 */
@@ -91,4 +94,9 @@ public class GroupDAO {
     public List<GroupDTO> findMainGroup(String category) {
         return groupMapper.selectMainGroup(category);
     }
+
+    /* 관리자 페이지 탐험대 상세보기 */
+    public GroupDTO findGroupDTO(Long groupId){ return groupMapper.selectGroupDTO(groupId); };
+
+    public int findCountAll(){ return groupMapper.selectCountAll(); };
 }

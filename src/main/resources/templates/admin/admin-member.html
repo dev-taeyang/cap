@@ -286,18 +286,6 @@
                             <ul class="status-list">
                                 <li class="status-list-item">
                                     <div class="status-item-wrapper">
-                                        <img
-                                            src="/images/profile.png"
-                                            class="profile-img"
-                                        />
-                                        <div class="status-item-name">금일 신규대원</div>
-                                    </div>
-                                    <div class="status-item-count">
-                                        <a href="">0</a>
-                                    </div>
-                                </li>
-                                <li class="status-list-item">
-                                    <div class="status-item-wrapper">
                                         <div class="problem-icon-wrapper">
                                             <div class="problem-icon">
                                                 <div>
@@ -315,33 +303,10 @@
                                         <div class="status-item-name">총 대원수</div>
                                     </div>
                                     <div class="status-item-count">
-                                        <a href="">0</a>
-                                    </div>
-                                </li>
-                                <li class="status-list-item">
-                                    <div class="status-item-wrapper">
-                                        <div class="problem-icon-wrapper">
-                                            <div class="problem-icon">
-                                                <div>
-                                                    <div>
-                                                        <span>
-                                                            <img
-                                                                src="/images/profile.png"
-                                                                class="profile-img"
-                                                            />
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="status-item-name">탈퇴 대원수</div>
-                                    </div>
-                                    <div class="status-item-count">
-                                        <a href="">0</a>
+                                        <a href="" th:text="${memberCount}"></a>
                                     </div>
                                 </li>
                                 <div class="clock">
-                                    <h2>현재시간</h2>
                                     <h1></h1>
                                 </div>
                             </ul>
@@ -355,64 +320,11 @@
                                     강제 퇴소
                                 </button>
                                 <!-- default.css -->
-                                <!-- 검색 부분 -->
-                                <div class="search-box-wrap">
-                                    <div class="select-box">
-                                        <button class="listbox-selecter">검색조건 선택</button>
-                                        <ul class="listbox displayNone" id="listbox">
-                                            <li><button class="list">전체</button></li>
-                                            <li><button class="list">이름</button></li>
-                                            <li><button class="list">그룹</button></li>
-                                        </ul>
-                                        <input
-                                            type="text"
-                                            name="searchType"
-                                            style="display: none"
-                                            value="all"
-                                        />
-                                    </div>
-                                    <div class="search-box">
-                                        <input
-                                            type="text"
-                                            name="userId"
-                                            class="input__type_1 search-input"
-                                            placeholder="검색"
-                                        />
-                                        <span>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                enable-background="new 0 0 32 32"
-                                                id="Glyph"
-                                                version="1.1"
-                                                viewBox="0 0 32 32"
-                                                xml:space="preserve"
-                                            >
-                                                <path
-                                                    d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"
-                                                    id="XMLID_223_"
-                                                />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             <table class="table">
                             </table>
                             <!-- default.css > pagenation -->
                             <footer class="page-box">
-                                <div class="page-prev-arrow-box">
-                                    <button class="page-double-prev page-button">
-                                        <img
-                                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E"
-                                        />
-                                    </button>
-                                    <button class="page-prev page-button">
-                                        <img
-                                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                                        />
-                                    </button>
-                                </div>
 
 
                                 <!-- -------------------------- 관리자 페이징 처리 -------------------------- -->
@@ -420,24 +332,12 @@
 
                                 <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
                                     <a href="javascript:void(0)" th:if="${criteria.page != page}">
-                                        <button class="page-number page-button page-active" th:text="${page}"></button>
+                                        <button class="page-number page-button" th:text="${page}"></button>
                                     </a>
                                     <button class="page-number page-button page-active" th:unless="${criteria.page != page}" th:text="${page}"></button>
                                 </th:block>
 
 
-                                <div class="page-next-arrow-box">
-                                    <button class="page-next page-button">
-                                        <img
-                                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath d='M18 0H0v18h18z'/%3E %3Cpath stroke='%23000' stroke-width='1.5' d='M7 5l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                                        />
-                                    </button>
-                                    <button class="page-double-next page-button">
-                                        <img
-                                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Crect width='40' height='40' fill='%23FFF' fill-opacity='0' fill-rule='nonzero' rx='20'/%3E %3Cg stroke='%23000' stroke-width='1.5'%3E %3Cpath d='M16 16l4 4-4 4M21 16l4 4-4 4'/%3E %3C/g%3E %3C/g%3E %3C/svg%3E"
-                                        />
-                                    </button>
-                                </div>
                             </footer>
                         </div>
                     </div>
