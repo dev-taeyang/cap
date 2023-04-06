@@ -92,7 +92,7 @@ function getWriteModal() {
                             <li class="content__list">
                                 <span>내용</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" class="noticeContent"/>
+                                    <textarea cols="30" rows="10" class="noticeContent"></textarea>
                                 </div>
                             </li>
                             <li class="content__list">
