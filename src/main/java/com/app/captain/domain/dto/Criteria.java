@@ -21,7 +21,7 @@ public class Criteria {
     }
 
     public void create(int total) {
-        this.rowCount = 9;
+        this.rowCount = 6;
         this.total = total;
         this.pageCount = 5;
         this.offset = (page - 1) * rowCount;
