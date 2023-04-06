@@ -90,6 +90,7 @@
         where group_id= #{groupId}
     </update>
 
+    <!-- 그룹 정보 수정 By admin -->
     <update id="updateByAdmin">
         update tbl_group
         set  group_category= #{groupCategory}, group_max_value= #{groupMaxValue}
