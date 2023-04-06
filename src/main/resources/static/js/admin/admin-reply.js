@@ -141,7 +141,8 @@ let adminGroupReplyService = (function () {
                                         <li class="content__list">
                                             <span>내용</span>
                                             <div class="content__intput input_box_shadow">
-                                                <input type="text" value="${groupReplyDTO.groupReplyContent}" class="groupReplyContent"/>
+                                                <textarea cols="30" rows="10" class="groupReplyContent">${groupReplyDTO.groupReplyContent}</textarea>
+                                                
                                             </div>
                                         </li>
                                         <li class="content__list">
