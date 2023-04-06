@@ -48,24 +48,37 @@ function showProfile() {
         text += `
               <a class="head-user-info" href="/mypage/Update">
                 <img src="/mypage/display?fileName=${members.memberFilePath}/${members.memberFileUuid}_${members.memberFileOriginalName}" class="user-profile-image" />
-                <div class="head-userinfo-textwrapper">
-                  <div class="head-userinfo-nickname">${members.memberNickname}</div>
-                  <div class="head-userinfo-email">이메일 계정</div>
-                </div>
-            </a>
         `
-        $memberProfile.append(text)
     } else {
     text += `
               <a class="head-user-info" href="/mypage/Update">
                 <img src="https://t1.kakaocdn.net/together_image/common/avatar/avatar.png" class="user-profile-image" />
-                <div class="head-userinfo-textwrapper">
-                  <div class="head-userinfo-nickname">${members.memberNickname}</div>
-                  <div class="head-userinfo-email">이메일 계정</div>
+        `
+  }
+    text += `
+            <div class="head-userinfo-textwrapper">
+                <div class="head-userinfo-nickname">${members.memberNickname}</div>
+      `
+  if(members.memberStatus == 0) {
+      text += `
+              
+                    <div class="head-userinfo-email">일반 계정</div>
                 </div>
             </a>
-        `
-    $memberProfile.append(text)
+      `
+    } else if(members.memberStatus == 1) {
+      text += `
+                  <div class="head-userinfo-email">카카오 계정</div>
+                </div>
+            </a>
+      `
+  } else if(members.memberStatus == 2) {
+      text += `
+                  <div class="head-userinfo-email">네이버 계정</div>
+                </div>
+            </a>
+      `
   }
+    $memberProfile.append(text)
 };
 showProfile();
