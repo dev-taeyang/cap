@@ -110,8 +110,8 @@ public class MemberController {
 
     /* 회원가입 선택 페이지 */
     @GetMapping("join-check")
-    public void joinCheck() {
-        ;
+    public void joinCheck(HttpSession session) {
+        session.invalidate();
     }
 
     /* 회원가입 페이지 */
@@ -285,7 +285,7 @@ public class MemberController {
 
     /* 카카오 로그인 페이지*/
     @GetMapping("/kakao")
-    public String kakaoLogin(MemberVO member, String code, HttpSession session) throws Exception {
+    public String kakaoLogin(MemberVO member, String code, HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
         String token = kakaoService.getKaKaoAccessToken(code);
         MemberVO kakaoInfo = kakaoService.getKakaoInfo(token);
         //    클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
@@ -300,7 +300,6 @@ public class MemberController {
         member.setMemberStatus(1);
         session.setAttribute("member", member);
         session.setAttribute("memberId", memberId);
-        log.info(member.toString());
         return "redirect:/main";
     }
 
