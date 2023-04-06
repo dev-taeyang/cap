@@ -58,9 +58,9 @@ public class ReviewService {
         return reviewDAO.findByMemberId(memberId);
     }
 
-//    memberId로 review 개수 조회
-    public Long reviewCount(Long memberId){
-        return reviewDAO.getCountByMemberId(memberId);
+    //    memberId로 review 개수 조회
+    public int reviewCount(Long memberId){
+        return reviewDAO.findCountByMemberId(memberId);
     }
 
     //    review 총 개수 조회

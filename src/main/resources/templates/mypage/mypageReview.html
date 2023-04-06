@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>마이페이지 보고서 모음</title>
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/css/mypage/mypageReview.css" />
-    <link rel="stylesheet" href="/css/main/common.css" />
-    <link rel="stylesheet" href="/css/main/header.css">
-    <link rel="stylesheet" href="/css/main/footer.css">
-    <link
-      href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
-      rel="stylesheet"
-    />
-  </head>
-  <style>
-    body {
-      font-family: 'SUIT Variable', sans-serif;
-    }
-  </style>
-  <body>
-  <div th:insert="~{/main/header :: header}"></div>
-    <main id="mypage-review">
-      <header class="mypage-review-header">
-        <h1>내가 작성한 보고서</h1>
-      </header>
-      <section class="mypage-review-section">
-        <div class="no-myReply"></div>
-        <ul class="mypage-review-list-wrap">
-        </ul>
-        <footer class="mypage-reply-paging-wrap">
-          <div class="prev-button-wrap">
-            <button class="arrow-button prev-button page-button changePage" th:href="@{${criteria.startPage - 1}}" th:if="${criteria.prev}">
-              <img
-                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                      class="arrow-button-image"
-              />
-            </button>
-          </div>
-          <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
-            <button th:if="${criteria.page != page}" th:href="@{${page}}" class="page-number page-button changePage" th:text="${page}"></button>
-            <button th:unless="${criteria.page != page}" th:text="${page}" class="page-number page-button page-active"></button>
-          </th:block>
-          <div class="next-button-wrap">
-            <button class="arrow-button next-button page-button changePage" th:href="@{${criteria.endPage + 1}}" th:if="${criteria.next}">
-              <img
-                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
-                      class="arrow-button-image"
-              />
-            </button>
-          </div>
-        </footer>
-      </section>
-    </main>
-  <div th:insert="~{/main/footer :: footer}"></div>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-  <script th:inline="javascript">
-    let members = [[${members}]]
-    let reviews = [[${reviews}]]
-    let criteria = [[${criteria}]]
-    console.log(reviews);
-  </script>
-  <script src="/js/mypage/mypageReview.js"></script>
-  <script src="/js/main/header.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지 보고서 모음</title>
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/mypage/mypageReview.css" />
+  <link rel="stylesheet" href="/css/main/common.css" />
+  <link rel="stylesheet" href="/css/main/header.css">
+  <link rel="stylesheet" href="/css/main/footer.css">
+  <link
+          href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+          rel="stylesheet"
+  />
+</head>
+<style>
+  body {
+    font-family: 'SUIT Variable', sans-serif;
+  }
+</style>
+<body>
+<div th:insert="~{/main/header :: header}"></div>
+<main id="mypage-review">
+  <header class="mypage-review-header">
+    <h1>내가 작성한 보고서</h1>
+  </header>
+  <section class="mypage-review-section">
+    <div class="no-myReply"></div>
+    <ul class="mypage-review-list-wrap">
+    </ul>
+    <footer class="mypage-reply-paging-wrap">
+      <div class="prev-button-wrap">
+        <button class="arrow-button prev-button page-button changePage" th:href="@{${criteria.startPage - 1}}" th:if="${criteria.prev}">
+          <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                  class="arrow-button-image"
+          />
+        </button>
+      </div>
+      <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
+        <button th:if="${criteria.page != page}" th:href="@{${page}}" class="page-number page-button changePage" th:text="${page}"></button>
+        <button th:unless="${criteria.page != page}" th:text="${page}" class="page-number page-button page-active"></button>
+      </th:block>
+      <div class="next-button-wrap">
+        <button class="arrow-button next-button page-button changePage" th:href="@{${criteria.endPage + 1}}" th:if="${criteria.next}">
+          <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cpath fill='none' d='M0 0h40v40H0z'/%3E %3Cpath stroke='%23DDD' stroke-width='1.5' d='M18 16l4 4-4 4'/%3E %3C/g%3E %3C/svg%3E"
+                  class="arrow-button-image"
+          />
+        </button>
+      </div>
+    </footer>
+  </section>
+</main>
+<div th:insert="~{/main/footer :: footer}"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script th:inline="javascript">
+  let myReviews = [[${myReviews}]]
+  let criteria = [[${criteria}]]
+</script>
+<script src="/js/mypage/mypageReview.js"></script>
+<script src="/js/main/header.js"></script>
 </html>

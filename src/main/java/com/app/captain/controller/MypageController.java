@@ -159,28 +159,11 @@ public class MypageController {
         return "redirect:/main";
     }
 
-//    내가 작성한 보고서
+    //    내가 작성한 보고서
     @GetMapping("myReview")
     public String getMyReviewList(Model model, HttpSession session, Criteria criteria) {
         Long memberId = (Long) session.getAttribute("memberId");
-        /*Review와reviewFile 조인한 DTO 타입의 ArrayList를 선언*/
-        List<ReviewFileDTO> reviewFileDTOS = new ArrayList<>();
-        /*리뷰 전체 리스트들을 담음*/
-        List<ReviewVO> reviewVOS = mypageService.getReviewList(criteria);
-        /*forEach를 사용하여 ArrayList에 있는 reviewVO를 toDTO메소드를 사용하여 DTO로 변환 해준다음 DTO에 담아줌*/
-        reviewVOS.forEach(reviewVO -> {
-            reviewFileDTOS.add(reviewVO.toDTO());
-        });
-        /*reviewFileDTO 들에 각각 reviewId로 조회해온 file들을 담아줌 */
-        reviewFileDTOS.forEach(reviewFileDTO -> {
-            log.info(mypageService.getReviewFileList(reviewFileDTO.getReviewId()).toString());
-            Long reviewId = reviewFileDTO.getReviewId();
-            reviewFileDTO.setFiles(mypageService.getReviewFileList(reviewId));
-        });
-
-        /*model 객체를 통해 reviewFileDTOS를 reviews라는 키 name으로 view에 전달해줌*/
-        model.addAttribute("reviews", reviewFileDTOS);
-        model.addAttribute("members", mypageService.getMemberById(memberId));
+        model.addAttribute("myReviews", mypageService.getMyReview(criteria, memberId));
         return "mypage/mypageReview";
     }
 
