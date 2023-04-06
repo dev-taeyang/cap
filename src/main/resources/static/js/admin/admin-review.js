@@ -209,7 +209,7 @@ let adminReviewService = (function () {
                              <li class="content__list">
                                 <span>내용</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text" value="${reviewFileDTO.reviewContent}" class="reviewContent"/>
+                                    <textarea cols="30" rows="10" class="reviewContent">${reviewFileDTO.reviewContent}</textarea>
                                 </div>
                              </li>
                              <li class="content__list">
