@@ -1,10 +1,7 @@
 package com.app.captain.service;
 
 import com.app.captain.domain.dao.*;
-import com.app.captain.domain.dto.Criteria;
-import com.app.captain.domain.dto.GroupDTO;
-import com.app.captain.domain.dto.GroupReplyDTO;
-import com.app.captain.domain.dto.Search;
+import com.app.captain.domain.dto.*;
 import com.app.captain.domain.vo.GroupVO;
 import com.app.captain.domain.vo.MemberVO;
 import com.app.captain.domain.vo.ReviewFileVO;
@@ -82,10 +79,16 @@ public class MypageService {
         return reviewFileDAO.findById(reviewId);
     }
 
-    //    리뷰 수 조회
-    public Long getMyReviewCount(Long memberId){
-        return reviewDAO.getCountByMemberId(memberId);
+    //    멤버의 리뷰 수 조회
+    public int getMyReviewCount(Long memberId){
+        return reviewDAO.findCountByMemberId(memberId);
     };
+
+    //    memberId로 내가 쓴 리뷰 조회
+    public List<ReviewDTO> getMyReview(Criteria criteria, Long memberId) {
+        criteria.create(getMyReviewCount(memberId));
+        return reviewDAO.getMyReview(criteria, memberId); }
+
 
 
 }

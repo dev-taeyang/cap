@@ -51,11 +51,6 @@ public class ReviewDAO {
         return reviewMapper.selectByMemberId(memberId);
     };
 
-    //    리뷰 수 조회
-    public Long getCountByMemberId(Long memberId){
-        return reviewMapper.getCount(memberId);
-    };
-
     //    review 총 개수 조회
     public int findTotal(){
         return reviewMapper.getTotal();
@@ -63,4 +58,12 @@ public class ReviewDAO {
 
     //    review 메인 조회
     public List<ReviewDTO> findTotalMain(String category){ return reviewMapper.selectMain(category); };
+
+    //    리뷰 수 조회
+    public int findCountByMemberId(Long memberId){
+        return reviewMapper.getCount(memberId);
+    };
+
+    //    memberId로 내가 쓴 리뷰 조회
+    public List<ReviewDTO> getMyReview(Criteria criteria, Long memberId) { return reviewMapper.selectMyReview(criteria, memberId); };
 }

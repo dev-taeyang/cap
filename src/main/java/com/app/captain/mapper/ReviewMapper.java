@@ -32,12 +32,15 @@ public interface ReviewMapper {
 //    리뷰 멤버 조인한거 memberId로 조회
     public ReviewDTO selectByMemberId(Long memberId);
 
-//    memberId로 리뷰 수 조회
-    public Long getCount(Long memberId);
-
 //    review 총 개수 조회
     public int getTotal();
 
 //    review 메인 조회
     public List<ReviewDTO> selectMain(@Param("category") String category);
+
+    //    memberId로 리뷰 수 조회
+    public int getCount(Long memberId);
+
+    //    memberId로 내가 쓴 리뷰 조회
+    public List<ReviewDTO> selectMyReview(@Param("cri") Criteria criteria, Long memberId);
 }
