@@ -47,6 +47,9 @@ public class GroupDAO {
     public void update(GroupVO groupVO){
         groupMapper.update(groupVO);
     };
+    public void updateByAdmin(GroupVO groupVO){
+        groupMapper.updateByAdmin(groupVO);
+    };
 
     /* 그룹 삭제 */
     public void delete(Long groupId){

@@ -52,11 +52,7 @@ function showGroupList(groups) {
         detailCount++;
         str = `
                  <tr class="table__header">
-                     <th class="content_check">
-                         <label class="check-label">
-                            <input type="checkbox" id="checkAll" />
-                         </label>
-                     </th>
+                     <th class="content_check"></th>
                      <th class="content__id" style="width: 5%;">번호</th>
                      <th>탐험대 명</th>
                      <th>탐험 위치</th>
@@ -301,7 +297,7 @@ let adminGroupService = (function () {
                     <li class="content__list">
                         <span>탐험 위치</span>
                         <div class="content__intput input_box_shadow">
-                            <input type="text" value="${groupDTO.groupLocation}" class="groupLocation"/>
+                            <input type="text" value="${groupDTO.groupLocation}" class="groupLocation" readonly/>
                         </div>
                     </li>
                     <li class="content__list">
@@ -357,7 +353,7 @@ let adminGroupService = (function () {
 
     function groupDelete(groupId) {
         $.ajax({
-            url: "/admin/group-delete",
+            url: "/admin/recruit-delete",
             type: "delete",
             data: {"groupId": groupId},
             success: function() {

@@ -32,6 +32,10 @@ public class GroupService {
         groupDAO.update(groupVO);
     };
 
+    public void modifyByAdmin(GroupVO groupVO){
+        groupDAO.updateByAdmin(groupVO);
+    };
+
     /* 그룹 삭제 */
     public void delete(Long groupId){
         groupDAO.delete(groupId);

@@ -98,7 +98,7 @@ function getWriteModal() {
                             <li class="content__list">
                                 <span>작성자</span>
                                 <div class="content__intput input_box_shadow">
-                                    <input type="text"/>
+                                    <input type="text" value="관리자" readonly/>
                                 </div>
                             </li>
                         </ul>

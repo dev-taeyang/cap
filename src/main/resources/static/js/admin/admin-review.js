@@ -51,11 +51,7 @@ function showReviewList(reviews) {
         detailCount++;
         str = `
                     <tr class="table__header">
-                         <th class="content_check">
-                            <label class="check-label">
-                                <input type="checkbox" id="checkAll" />
-                            </label>
-                         </th>
+                         <th class="content_check"></th>
                          <th class="content__id">번호</th>
                          <th>제목</th>
                          <th style="width: 40%">내용</th>

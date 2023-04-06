@@ -184,17 +184,17 @@ public class AdminController {
     @ResponseBody
     @PostMapping("/recruit-update")
     public void updateGroup(@RequestBody GroupVO groupVO) {
-        groupService.modify(groupVO);
+        groupService.modifyByAdmin(groupVO);
     }
 
-    /* 멤버 삭제 */
+    /* 탐험대 삭제 */
     @ResponseBody
     @DeleteMapping("/admin/recruit-delete")
     public void removeGroup(@RequestParam("groupId") Long groupId) {
         groupService.delete(groupId);
     }
 
-    /* 멤버 목록 페이징 */
+    /* 탐험대 목록 페이징 */
     @ResponseBody
     @GetMapping("/admin/recruit-list/{page}")
     public List<GroupVO> showGroupList(@PathVariable("page") Integer page, Criteria criteria) {

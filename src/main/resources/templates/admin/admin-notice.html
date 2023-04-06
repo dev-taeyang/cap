@@ -358,7 +358,7 @@
 
                         <th:block th:each="page : ${#numbers.sequence(criteria.startPage, criteria.endPage)}">
                             <a href="javascript:void(0)" th:if="${criteria.page != page}">
-                                <button class="page-number page-button page-active" th:text="${page}"></button>
+                                <button class="page-number page-button" th:text="${page}"></button>
                             </a>
                             <button class="page-number page-button page-active" th:unless="${criteria.page != page}" th:text="${page}"></button>
                         </th:block>

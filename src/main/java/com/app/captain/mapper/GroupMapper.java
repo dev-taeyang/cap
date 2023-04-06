@@ -33,6 +33,8 @@ public interface GroupMapper {
     /* 그룹 수정 */
     public void update(GroupVO groupVO);
 
+    public void updateByAdmin(GroupVO groupVO);
+
     /* 그룹 삭제 */
     public void delete(Long groupId);
 
