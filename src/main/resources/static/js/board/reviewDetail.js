@@ -168,7 +168,7 @@ function showInfo() {
                 </div>
                 <div class="Article-descriptionContainer">
                 <!-- 리뷰 작성한 내용이 들어갈 곳 -->
-                    <div class="Article-description">${review.reviewContent}</div>
+                    <div class="Article-description" style="white-space: pre-wrap">${review.reviewContent}</div>
                 </div>
              </article>
     `

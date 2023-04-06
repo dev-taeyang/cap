@@ -22,11 +22,21 @@ $ul.each((i, e) =>{
     });
 });
 
-const $pageNumber = $(".page-number ");
+// const $pageNumber = $(".page-number ");
+//
+// $pageNumber.each((i, e) => {
+//     $(e).click(function(){
+//         $pageNumber.removeClass("page-active");
+//         $(e).addClass("page-active");
+//     });
+// });
 
-$pageNumber.each((i, e) => {
-    $(e).click(function(){
-        $pageNumber.removeClass("page-active");
-        $(e).addClass("page-active");
-    });
+const $changePage = $('.changePage');
+// 페이징 클릭 이벤트
+$changePage.each(function (i, changePage) {
+    $(changePage).on("click", e => {
+        e.preventDefault();
+        criteria.page = ($(this).attr("href"));
+        window.location.href = `/notice/list?page=${criteria.page}`;
+    })
 });

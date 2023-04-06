@@ -137,32 +137,39 @@ li {
     display: none;
 }
 
-.page-box {
+.mypage-reply-paging-wrap {
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-flex: 0;
-    flex: 0 0 auto;
     width: 100%;
     padding: 30px 0px;
     background-color: white;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
-.page-prev-arrow-box {
+.board-paging-wrap {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-flex: 0;
+    width: 100%;
+    padding: 30px 0px;
+    background-color: white;
+}
+
+.prev-button-wrap {
     display: flex;
     margin-right: 10px;
 }
 
-.page-button {
+.double-arrow-button {
     width: 40px;
     height: 40px;
     line-height: normal;
     padding: 0px;
     background-color: white;
     text-align: center;
-    cursor: pointer;
+    cursor: not-allowed;
     border-radius: 50%;
     font-size: 18px;
     display: flex;
@@ -171,23 +178,73 @@ li {
     -webkit-box-align: center;
     align-items: center;
     outline: none;
-    border: none;
+}
+
+.prev-button-wrap .double-arrow-button-image {
+    transform: rotate(180deg);
+    filter: invert(0);
+}
+
+.arrow-button {
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: not-allowed;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+}
+
+.prev-button-wrap .arrow-button-image {
+    transform: rotate(180deg);
+    filter: invert(0);
+}
+
+.page-number {
+    width: 40px;
+    height: 40px;
+    line-height: normal;
+    padding: 0px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    /* color: rgb(51, 151, 255); */
+    font-size: 18px;
     font-weight: 600;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: none;
+}
+
+.next-button-wrap {
+    display: flex;
+    margin-left: 10px;
+}
+
+.next-button-wrap .arrow-button-image {
+    filter: invert(0);
+}
+
+.next-button-wrap .double-arrow-button-image {
+    filter: invert(0);
 }
 
 .page-button:hover {
     background-color: rgb(248, 248, 248);
 }
 
-.page-double-prev img , .page-prev img{
-    transform: rotate(180deg);
-}
-
-.page-next-arrow-box {
-    display: flex;
-    margin-right: 10px;
-}
-
 .page-active {
-    color: rgb(51, 151, 255);
+    color: #00AE68;
 }
